@@ -1,0 +1,18 @@
+Informacion
+-Uso del sistema
+-Manual
+-Contacto o ayuda
+
+//Estudiantes
+Modulo 1
+-Registro (Datos personales)
+-Login
+
+Modulo 2
+-Conformar grupo
+-Datos de proyecto
+
+//Funcionarios
+Modulo 1
+-Registro (Datos personales)
+-Login
