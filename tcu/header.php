@@ -1,4 +1,3 @@
-
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -18,9 +17,10 @@
         <link rel="stylesheet" href="../../css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald|PT+Sans" rel="stylesheet">
         <link rel="stylesheet" href="../../css/main.css">
-
-
+        <link rel="stylesheet" href="../../css/informacion.css">
     </head>
+
+    <body>
 
         <!--[if lte IE 9]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
