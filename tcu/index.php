@@ -50,7 +50,7 @@
                       En esta sección puede acceder al reglamento del Trabajo Comunal Universitario,
                       en formato PDF el cual puede descargar desde la página.
                     </p>
-                    <a href="#" class="button">VER MÁS</a>
+                    <a href="vistas/informacion/reglamento_tcu.php" class="button">VER MÁS</a>
                   </div><!--.tabla-precio-->
                 </li>
                 <li>
