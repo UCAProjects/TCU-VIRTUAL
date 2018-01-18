@@ -3,13 +3,11 @@
 h3 {
   text-transform: uppercase;
   font-family: 'Oswald', sans-serif;
-  padding-bottom: 10px;
 }
 
 p {
   font-family: 'PT Sans', sans-serif;
   font-size: 18px;
-  text-align: justify;
 }
 
 /*VISTA USO DEL SISTEMA*/
@@ -20,58 +18,12 @@ div.instrucciones-generales {
   margin-bottom: 20px;
 }
 
-/*VISTA REGLAMENTO*/
-.seccion-reglamento p {
-  margin-top: 10px;
-  margin-bottom: 20px;
-}
-
-.seccion-reglamento a {
-  color: red;
-  font-weight: bold;
-  text-decoration: none;
-  color: #000000;
-}
-
-.seccion-reglamento a i {
-  font-size: 70px;
-  color: red;
-}
-
-.seccion-reglamento span a {
-  font-weight: bold;
-  color: red;
-  font-style: italic;
-  text-decoration: underline;
-}
-
-.seccion-reglamento span a i {
-  font-size: 18px;
-  color: red;
-  font-style: italic;
-  text-decoration: underline;
-}
-
 /*VISTA CONTACTO*/
 .seccion-informacion .ingreso {
-  margin: 0 auto;
   margin-bottom: 20px;
+  width: 100%;
 }
 
 .seccion-informacion .ingreso .formulario {
-  margin-top: 20px;
-}
-
-.seccion-informacion .ingreso .formulario label{
-  font-size: 16px;
-  font-weight: normal!important;
-}
-
-.seccion-informacion .ingreso .formulario textarea {
-  height: 105px;
-}
-
-.seccion-informacion .ingreso .formulario button {
-  float: right;
-  margin-right: 45px;
+  width: 50%;
 }
