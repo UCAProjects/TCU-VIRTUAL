@@ -40,7 +40,7 @@
                       el uso correcto del sistema y como debe llenar la información tanto de
                       registro.
                     </p>
-                    <a href="#" class="button hollow">VER MÁS</a>
+                    <a href="vistas/informacion/uso_sistema.php" class="button hollow">VER MÁS</a>
                   </div><!--.tabla-precio-->
                 </li>
                 <li>
@@ -61,7 +61,7 @@
                       puede ponerse en contacto con nosotros, accediendo al formulario de
                       contacto.
                     </p>
-                    <a href="#" class="button hollow clearfix">VER MÁS</a>
+                    <a href="vistas/informacion/contacto.php" class="button hollow clearfix">VER MÁS</a>
                   </div><!--.tabla-precio-->
                 </li>
               </ul><!--.lista-precio-->

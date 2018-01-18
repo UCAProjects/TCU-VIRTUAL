@@ -1,0 +1,29 @@
+/*ESTILOS GENERALES*/
+
+h3 {
+  text-transform: uppercase;
+  font-family: 'Oswald', sans-serif;
+}
+
+p {
+  font-family: 'PT Sans', sans-serif;
+  font-size: 18px;
+}
+
+/*VISTA USO DEL SISTEMA*/
+div.instrucciones-generales {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+/*VISTA CONTACTO*/
+.seccion-informacion .ingreso {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.seccion-informacion .ingreso .formulario {
+  width: 50%;
+}
