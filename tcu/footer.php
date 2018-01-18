@@ -25,6 +25,7 @@
 <script>window.jQuery || document.write('<script src="../../js/vendor/jquery-3.2.1.min.js"><\/script>')</script>
 <script src="../../js/plugins.js"></script>
 <script src="../../js/main.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
 <script>
