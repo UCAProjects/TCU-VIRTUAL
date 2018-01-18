@@ -31,8 +31,42 @@
         <main class="site-main">
           <section class="seccion-informacion">
             <h2>Información</h2>
-
-          </section>
+            <div class="contenedor">
+              <ul class="lista-informacion clearfix">
+                <li>
+                  <div class="tabla-informacion">
+                    <h3>Uso del sistema</h3>
+                    <p class="info">En esta sección puede encontrar, los pasos necesarios para
+                      el uso correcto del sistema y como debe llenar la información tanto de
+                      registro.
+                    </p>
+                    <a href="#" class="button hollow">VER MÁS</a>
+                  </div><!--.tabla-precio-->
+                </li>
+                <li>
+                  <div class="tabla-informacion">
+                    <h3>Reglamento TCU</h3>
+                    <p class="info">
+                      En esta sección puede acceder al reglamento del Trabajo Comunal Universitario,
+                      en formato PDF el cual puede descargar desde la página.
+                    </p>
+                    <a href="#" class="button">VER MÁS</a>
+                  </div><!--.tabla-precio-->
+                </li>
+                <li>
+                  <div class="tabla-informacion">
+                    <h3>Contacto</h3>
+                    <p class="info">
+                      Para cualquier duda o consulta sobre el Sistema de TCU,
+                      puede ponerse en contacto con nosotros, accediendo al formulario de
+                      contacto.
+                    </p>
+                    <a href="#" class="button hollow clearfix">VER MÁS</a>
+                  </div><!--.tabla-precio-->
+                </li>
+              </ul><!--.lista-precio-->
+            </div><!--.contenedor-->
+          </section><!--.precios seccion-->
 
           <section class="seccion-ingreso">
             <div class="contenedor-video">

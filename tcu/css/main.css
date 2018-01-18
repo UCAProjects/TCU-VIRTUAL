@@ -137,7 +137,7 @@ li {
   list-style: none;
 }
 
-/**HEADER**/
+/*****HEADER*****/
 
 .fondo-encabezado {
   background-color: #ffffff;
@@ -156,8 +156,62 @@ nav.redes-sociales a {
   margin-right: 10px;
 }
 
-/**SITE-MAIN**/
+/*****SITE-MAIN*****/
 
+/*INFORMACIÓN*/
+ul.lista-informacion > li {
+  padding: 10px;
+  float: left;
+  width: 33.3%;
+}
+
+div.tabla-informacion {
+  border: 1px solid #e1e1e1;
+  background-color: #ffffff;
+  padding: 40px 0;
+  text-align: center;
+  -webkit-transition: all .3s ease-in-out;
+}
+
+div.tabla-informacion:hover {
+  transform: scale(1.1);
+  border: 1px solid #fe4918;
+  box-shadow: 0px 0px 50px #666;
+}
+
+div.tabla-informacion h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+div.tabla-informacion p.info {
+  color: #000000;
+  margin: 20px 20px 20px 20px;
+  text-align: justify;
+}
+
+.button {
+  font-family: 'Oswald', sans-serif;
+  background-color: #fe4918;
+  padding: 8px 40px;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1em;
+  margin-top: 20px;
+  display: inline-block;
+  transition: all 0.6 ease;
+  border: 2px solid #fe4980;
+  width: 50%;
+}
+
+.button:hover {
+  background-color: #e33000;
+}
+
+/*INGRESO AL SISTEMA*/
 .seccion-ingreso {
   position: relative;
 }
@@ -240,7 +294,7 @@ div.ingreso {
   background-color: #e33000;
 }
 
-/**SITE-FOOTER**/
+/*****SITE-FOOTER*****/
 .site-footer {
   background-color: #353535;
   padding-top: 40px;
@@ -286,10 +340,6 @@ p.copyright {
   margin: 20px 0 0 0;
   text-align: center;
 }
-
-
-
-
 
 /* ==========================================================================
    Helper classes
