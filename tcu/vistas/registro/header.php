@@ -22,6 +22,5 @@
         <!-- Add your site or application content here -->
         <header class="site-header">
           <div class="fondo-encabezado">
-
           </div><!-- .fondo-encabezado -->
         </header>

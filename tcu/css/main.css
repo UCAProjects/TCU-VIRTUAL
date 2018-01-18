@@ -216,11 +216,22 @@ div.tabla-informacion p.info {
   position: relative;
 }
 
+
+
 div.contenedor-video {
   width: 100%;
   height: 600px;
   overflow-x: hidden;
   overflow-y: hidden;
+}
+
+.formulario input{
+  color: #000000;
+  font-family: 'PT Sans', sans-serif;
+  width: 100%;
+  height: 35px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 div.contenido-programa {
@@ -248,7 +259,24 @@ div.ingreso {
   font-family: 'Oswald', sans-serif;
 }
 
-.formulario ul li input {
+.formulario ul li input{
+  color: #000000;
+  font-family: 'PT Sans', sans-serif;
+  width: 90%;
+  height: 35px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.formulario ul li textarea{
+  color: #000000;
+  font-family: 'PT Sans', sans-serif;
+  width: 90%;
+  height: 35px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.formulario ul li select{
   color: #000000;
   font-family: 'PT Sans', sans-serif;
   width: 90%;
