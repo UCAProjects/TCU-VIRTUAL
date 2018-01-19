@@ -1,3 +1,49 @@
 .tamanoCompleto{
   width: 100% !important;
 }
+
+.buttonA {
+  font-family: 'Oswald', sans-serif;
+  padding: 10px 20px;
+  color: #000000;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1em;
+  display: inline-block;
+  transition: all 0.6 ease;  
+  cursor: pointer;
+  height: 35px;
+  width: 40px;
+  margin-top: 2px;
+  margin-left: 48px;
+}
+
+button{
+  font-family: 'Oswald', sans-serif;
+  background-color: #fe4918;
+  padding: 10px 40px;
+  color: #ffffff !important;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1em;
+  margin-top: 30px;
+  display: inline-block;
+  transition: all 0.6 ease;
+  border: 2px solid #fe4980;
+  cursor: pointer;
+
+}
+
+.buttonForm{
+  font-family: 'Oswald', sans-serif;
+  padding: 10px 40px !important;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1em;
+  transition: all 0.6 ease;
+  cursor: pointer;
+  border: 2px solid #fe4980;
+}
