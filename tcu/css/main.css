@@ -301,25 +301,6 @@ div.ingreso {
   cursor: pointer;
 }
 
-.formulario button {
-  font-family: 'Oswald', sans-serif;
-  background-color: #fe4918;
-  padding: 10px 40px;
-  color: #ffffff;
-  text-transform: uppercase;
-  font-weight: bold;
-  text-decoration: none;
-  font-size: 1em;
-  display: inline-block;
-  transition: all 0.6 ease;
-  border: 2px solid #fe4980;
-  cursor: pointer;
-}
-
-.formulario button:hover {
-  background-color: #e33000;
-}
-
 .formulario ul li button:hover {
   background-color: #e33000;
 }

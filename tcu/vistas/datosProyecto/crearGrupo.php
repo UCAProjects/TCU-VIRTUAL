@@ -1,9 +1,8 @@
 <!doctype html>
 <html class="no-js" lang="">
     <head>
-      <link rel="stylesheet" href="../../css/datosProyecto.css">
         <title>
-        	Crear Grupo
+        	Crar Grupo
         </title>
     </head>
     <body>
@@ -23,13 +22,13 @@
                   <form class="formulario" novalidate>
                     <div class="row">
                       <div class="col-md-1">
-                        <a href="#" onclick="cargarModal(null,'#buscarEstudianteModalDiv','#buscarEstudiante-modal','modalBuscarEstudiante.php')" class="buttonA"><i class="fa fa-search" aria-hidden="true"></i></a>
+                        <img src="../../img/lupa.png" style="width: 50px">
                       </div>
                       <div class="col-md-6">
-                        <input type="text" name="cedula" id="cedula" placeholder="Cédula" autocomplete="on" required>
+                        <input type="text" name="telefono" id="telefono" placeholder="Cédula" autocomplete="on" required>
                       </div>
                       <div class="col-md-2">
-                        <button><span class="glyphicon glyphicon-plus-sign"></span> Agregar</button>
+                        <button class="btn btn-block btn-success"><span class="glyphicon glyphicon-plus-sign"></span> Agregar</button>
                       </div>
                     </div>
                   </form>
@@ -50,57 +49,35 @@
                     <tbody>
                       <tr>
                         <th scope="row">1</th>
-                        <td>11163452</td>
-                        <td>Marck</td>
-                        <td>Castro</td>
-                        <td><i class="fa fa-trash" aria-hidden="true"></i></td>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                        <td><img src="../../img/delete.png" style="width: 30px"></td>
                       </tr>
                       <tr>
-                        <th scope="row">1</th>
-                        <td>11163452</td>
-                        <td>Marck</td>
-                        <td>Castro</td>
-                        <td><i class="fa fa-trash" aria-hidden="true"></i></td>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                        <td><img src="../../img/delete.png" style="width: 30px"></td>
                       </tr>
                       <tr>
-                        <th scope="row">1</th>
-                        <td>11163452</td>
-                        <td>Marck</td>
-                        <td>Castro</td>
-                        <td><i class="fa fa-trash" aria-hidden="true"></i></td>
+                        <th scope="row">3</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>@twitter</td>
+                        <td><img src="../../img/delete.png" style="width: 30px"></td>
                       </tr>
                     </tbody>
                   </table>
-                  <hr>
-                  <div class="row">
-                    <div class="col-md-3 col-md-offset-8">
-                      <button class="btn btn-block btn-success buttonForm"><i class="fa fa-floppy-o" aria-hidden="true"></i> Confirmar</button>
-                    </div>
-                  </div>                  
-                  <br><br>
                 </div>
               </div><!--.contenedor-->
          
           </section><!--.section programa-->
         </main>
-        <!-- Moda para Buscar Nombres de estudiantes-->
-          <div class="modal fade" id="buscarEstudiante-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content" id="modal_content">
 
-                <div id="buscarEstudianteModalDiv"> <!--Div donde se carga el form para ingresar los datos -->
-                </div>
-              </div>
-            </div>
-          </div>
-          <script src="../../js/datosProyecto.js"></script>
         <?php 
         	include '../../footer.php'
         ?>
-        
     </body>
 </html>
-
-
-
-
