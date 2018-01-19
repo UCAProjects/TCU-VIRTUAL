@@ -7,7 +7,8 @@
 
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
         <link rel="manifest" href="../../site.webmanifest">
         <link rel="apple-touch-icon" href="../../icon.png">
@@ -17,7 +18,10 @@
         <link rel="stylesheet" href="../../css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald|PT+Sans" rel="stylesheet">
         <link rel="stylesheet" href="../../css/main.css">
+        <link rel="stylesheet" href="../../css/informacion.css">
     </head>
+
+
 
         <!--[if lte IE 9]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
@@ -26,5 +30,6 @@
         <!-- Add your site or application content here -->
         <header class="site-header">
           <div class="fondo-encabezado">
+
           </div><!-- .fondo-encabezado -->
         </header>
