@@ -18,12 +18,9 @@
         <link rel="stylesheet" href="../../css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald|PT+Sans" rel="stylesheet">
         <link rel="stylesheet" href="../../css/main.css">
-<<<<<<< HEAD
+
         <link rel="stylesheet" href="../../css/informacion.css">
-=======
 
-
->>>>>>> parent of 8931c0e... Buscar Estudiantes
     </head>
 
 
