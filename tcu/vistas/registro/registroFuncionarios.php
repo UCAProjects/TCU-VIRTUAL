@@ -49,10 +49,24 @@
                     			 <li><label for="telefono">Teléfono</label></li>
                        			<li><input type="text" name="telefono" id="telefono" placeholder="Digite su teléfono" autocomplete="on" required></li>
                     		</div>
-                    	</div>       
+                    	</div>
+
+                      <div class="row">
+                        <div class="col-md-4">
+                          <li><label for="usuario">Usuario</label></li>
+                            <li><input type="text" name="usuario" id="cedula" placeholder="Digite su usuario" autocomplete="on" required></li>
+                        </div>
+                        <div class="col-md-4">
+                          <li><label for="contrasena">Contraseña</label></li>
+                            <li><input type="password" name="contrasena" id="contrasena" placeholder="Digite su contraseña" autocomplete="on" required></li>
+                        </div>
+                        <div class="col-md-4">
+                           <li><label for="contrasena2">Confirmar contraseña</label></li>
+                            <li><input type="password" name="contrasena2" id="contrasena2" placeholder="Vuelva a digitar su contraseña" autocomplete="on" required></li>
+                        </div>
+                      </div>        
      
                       <li><button type="submit">Registro</button>
-                      <button type="submit">Ingreso</button></li>
                     </ul>
                   </form>
                 </div><!--.programa-evento-->

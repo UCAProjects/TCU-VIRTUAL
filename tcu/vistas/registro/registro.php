@@ -106,25 +106,22 @@
                        			 <li><textarea name="lugarTrabajo" id="lugarTrabajo" placeholder="Digite el lugar dónde labora" autocomplete="on" rows="4" required></textarea></li>
                     		</div>
                     	</div>
-                      
-                      
-                      
-                      
-                      
-					   
-
-					   
-
-
-					  
-
-                       
-
-
-
+                      <div class="row">
+                    		<div class="col-md-4">
+                    			<li><label for="usuario">Usuario</label></li>
+                      			<li><input type="text" name="usuario" id="usuario" placeholder="Digite su nombre de usuario" autocomplete="on" required></li>
+                    		</div>
+                    		<div class="col-md-4">
+                    			<li><label for="contrasena">Contraseña</label></li>
+                      			<li><input type="password" name="contrasena" id="contrasena" placeholder="Digite su contraseña" autocomplete="on" required></li>
+                    		</div>
+                    		<div class="col-md-4">
+                    			<li><label for="contrasena2">Confirmar Contraseña</label></li>
+                      			<li><input type="password" name="contrasena2" id="contrasena2" placeholder="Vuelva a digitar su contraseña" autocomplete="on" required></li>
+                    		</div>
+                    	</div>
      
                       <li><button type="submit">Registro</button>
-                      <button type="submit">Ingreso</button></li>
                     </ul>
                   </form>
                 </div><!--.programa-evento-->
