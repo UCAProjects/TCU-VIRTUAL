@@ -1,6 +1,6 @@
 <div class="modal-header" align="center">
-  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+  <button type="button" class="close black" data-dismiss="modal" aria-label="Close">
+    <span class="glyphicon glyphicon-remove black" aria-hidden="true"></span>
   </button>
   <h2><i class="fa fa-search-plus" aria-hidden="true"></i>Buscar Estudiantes</h2>
   

@@ -2,12 +2,14 @@
 <html class="no-js" lang="">
     <head>
         <title>
-        	Registro
+        	Registro Estudiantes
         </title>
+         <link rel="stylesheet" href="../../css/datosProyecto.css">
     </head>
     <body>
     	<?php 
-    		include '../../header.php'
+    		include '../../header.php';
+    		include '../../coneccionAlbin.php';
     	?>
         <!--[if lte IE 9]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
@@ -19,6 +21,7 @@
               <div class="contenedor clearfix">
                 <div class="">
                   <h2>Registro</h2>
+                  <div class="ingreso ingresoTamano">
                   <form class="formulario" novalidate>
                     <ul>
                     	<div class="row">
@@ -56,10 +59,16 @@
                     			<li><label for="carrera">Carrera</label></li>
                       			<li>
                       				<select name="carrera" id="carrera" required>
-								  		<option value="volvo">Informática</option>
-								  		<option value="saab">Educación Física </option>
-								  		<option value="mercedes">Recursos Humanos</option>
-								  		<option value="audi">Contaduría</option>
+								  		
+                                        <?php
+                                            $query = "SELECT * FROM tigrupou_tcu.carreras;";
+                                            $stmt = $db->prepare($query);
+                                            $stmt -> execute();
+                                            $result = $stmt -> fetchAll();
+                                            foreach ($result as $row) {
+                                              echo "<option value=\"$row[codigo]\"> $row[carrera] </option>"; 
+                                            }
+                                        ?>
 									</select>
 					   		   </li>
                     		</div>
@@ -67,9 +76,15 @@
                     			<li><label for="grado">Grado</label></li>
 					   			<li>
 					   				<select name="grado" id="grado" required>
-								  		<option value="volvo">Bachillerato</option>
-								  		<option value="saab">Licenciatura</option>
-								  		<option value="mercedes">Maestría</option>
+								  		<?php
+                                            $query = "SELECT * FROM tigrupou_tcu.grados;";
+                                            $stmt = $db->prepare($query);
+                                            $stmt -> execute();
+                                            $result = $stmt -> fetchAll();
+                                            foreach ($result as $row) {
+                                              echo "<option value=\"$row[codigo]\"> $row[grado] </option>"; 
+                                            }
+                                        ?>
 									</select>
 					   			</li>
                     		</div>
@@ -77,9 +92,15 @@
                     			 <li><label for="periodo">Período</label></li>
 					   			<li>
 					   				<select name="periodo" id="periodo" required>
-								  		<option value="volvo">Cuatrimestre 1</option>
-								  		<option value="saab">Cuatrimestre 2</option>
-								  		<option value="mercedes">Cuatrimestre 3</option>
+								  		<?php
+                                            $query = "SELECT * FROM tigrupou_tcu.periodos;";
+                                            $stmt = $db->prepare($query);
+                                            $stmt -> execute();
+                                            $result = $stmt -> fetchAll();
+                                            foreach ($result as $row) {
+                                              echo "<option value=\"$row[codigo]\"> $row[periodo] </option>"; 
+                                            }
+                                        ?>
 									</select>
 					   			</li>
                     		</div>
@@ -91,9 +112,15 @@
                     			<li><label for="sede">Sede</label></li>
 					   				<li>
 					   					<select name="sede" id="sede" required>
-								  			<option value="volvo">Central</option>
-								  			<option value="saab">Heredia</option>
-								  			<option value="mercedes">Turrialba</option>
+								  			<?php
+                                            $query = "SELECT * FROM tigrupou_tcu.sedes;";
+                                            $stmt = $db->prepare($query);
+                                            $stmt -> execute();
+                                            $result = $stmt -> fetchAll();
+                                            foreach ($result as $row) {
+                                              echo "<option value=\"$row[codigo]\"> $row[sede] </option>"; 
+                                            }
+                                        ?>
 										</select>
 					   				</li>
                     		</div>
@@ -121,7 +148,7 @@
                     		</div>
                     	</div>
      
-                      <li><button type="submit">Registro</button>
+                      <li><button type="submit">Registro</button> <br><br><br></li>
                     </ul>
                   </form>
                 </div><!--.programa-evento-->

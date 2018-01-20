@@ -16,3 +16,24 @@ function cargarModal(pParametros,pDivMostrar,pNombreModal,pUrl){
       }
     });
 }
+
+function agregarInfoTabla(data){
+      
+          const row2 = agregarLineaTabla(data);
+          $('#tbodyAgregarEstudiantes').append(row2);
+        }
+
+
+//Crear una fila nueva en la tabla encargados
+  function agregarLineaTabla(data) {
+    return (
+      `<tr>` +
+        `<td>${data.codigo}</td>` +
+        `<td>${data.cedula}</td>` +
+        `<td>${data.nombre}</td>` +
+         `<td>${data.apellidos}</td>` +
+         `<td>${data.codigo}</td>` +
+      `</tr>`
+    );
+  }
+  

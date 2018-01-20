@@ -2,12 +2,14 @@
 <html class="no-js" lang="">
     <head>
         <title>
-        	Registro
+        	Registro Funcionarios
         </title>
+        <link rel="stylesheet" href="../../css/datosProyecto.css">
     </head>
     <body>
     	<?php 
-    		include '../../header.php'
+    		include '../../header.php';
+        
     	?>
         <!--[if lte IE 9]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
@@ -19,6 +21,7 @@
               <div class="contenedor clearfix">
                 <div class="">
                   <h2>Registro</h2>
+                <div class="ingreso ingresoTamano">
                   <form class="formulario" novalidate>
                     <ul>
                     	<div class="row">
@@ -66,7 +69,7 @@
                         </div>
                       </div>        
      
-                      <li><button type="submit">Registro</button>
+                      <li><button type="submit">Registro</button><br><br><br></li>
                     </ul>
                   </form>
                 </div><!--.programa-evento-->

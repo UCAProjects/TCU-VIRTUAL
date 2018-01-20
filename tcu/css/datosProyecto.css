@@ -1,7 +1,9 @@
 .tamanoCompleto{
   width: 100% !important;
 }
-
+ .black{
+  color: black;
+ }
 .buttonA {
   font-family: 'Oswald', sans-serif;
   padding: 10px 20px;
@@ -46,4 +48,13 @@ button{
   transition: all 0.6 ease;
   cursor: pointer;
   border: 2px solid #fe4980;
+}
+
+
+div.ingresoTamano {
+  width: 100% !important;
+}
+
+.formulario textarea {
+   height: 40px !important;
 }

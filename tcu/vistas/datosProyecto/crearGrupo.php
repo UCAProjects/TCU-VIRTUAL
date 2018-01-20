@@ -8,8 +8,10 @@
     </head>
     <body>
       <?php 
-        include '../../header.php'
+        include '../../header.php';
+        include '../../coneccionAlbin.php';
       ?>
+      
         <!--[if lte IE 9]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
         <![endif]-->
@@ -20,7 +22,7 @@
               <div class="contenedor clearfix">
                 <div class="">
                   <h2>Conformar Grupo</h2>
-                  <form class="formulario" novalidate>
+                  <div class="formulario" novalidate>
                     <div class="row">
                       <div class="col-md-1">
                         <a href="#" onclick="cargarModal(null,'#buscarEstudianteModalDiv','#buscarEstudiante-modal','modalBuscarEstudiante.php')" class="buttonA"><i class="fa fa-search" aria-hidden="true"></i></a>
@@ -29,10 +31,10 @@
                         <input type="text" name="cedula" id="cedula" placeholder="Cédula" autocomplete="on" required>
                       </div>
                       <div class="col-md-2">
-                        <button><span class="glyphicon glyphicon-plus-sign"></span> Agregar</button>
+                        <button onclick="consultaCed()"><span class="glyphicon glyphicon-plus-sign"></span> Agregar</button>
                       </div>
                     </div>
-                  </form>
+                  </div>
                 </div><!--.programa-evento-->
                 <hr>
                 <br>
@@ -47,7 +49,7 @@
                         <th scope="col">Acción</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="tbodyAgregarEstudiantes">
                       <tr>
                         <th scope="row">1</th>
                         <td>11163452</td>
@@ -97,6 +99,25 @@
         <?php 
           include '../../footer.php'
         ?>
-        
+        <script type="text/javascript">
+        function consultaCed(){
+            var ced = $('#cedula').val();
+            if(ced != ''){
+              <?php 
+                                            $query = "SELECT * FROM tigrupou_tcu.sedes;";
+                                            $stmt = $db->prepare($query);
+                                            $stmt -> execute();
+                                            $result = $stmt -> fetchAll();
+                                            foreach ($result as $row) {?>
+                                              var data = {codigo :<?php echo  $row['codigo'] ?>,cedula: <?php echo  $row['codigo'] ?>,nombre: <?php echo  $row['codigo'] ?>,apellidos:<?php echo  $row['codigo'] ?>};
+                                              agregarInfoTabla(data);<?php
+                                            }
+                                      
+              ?>
+            }else{
+              alert("Cédula vacía");
+            }
+        }
+      </script>
     </body>
 </html>
