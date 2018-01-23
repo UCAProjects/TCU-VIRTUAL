@@ -20,12 +20,19 @@
 </p>
 </footer>
 
+
 <script src="../../js/vendor/modernizr-3.5.0.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="../../js/vendor/jquery-3.2.1.min.js"><\/script>')</script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="../../js/plugins.js"></script>
 <script src="../../js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/zebra_dialog/dist/zebra_dialog.min.js"></script>
+
+<!-- for a specific version -->
+<script src="https://cdn.jsdelivr.net/npm/zebra_dialog@1.4.0/dist/zebra_dialog.min.js"></script>
+<!-- replacing "min" with "src" will serve you the non-compressed version -->
+<!-- for the most recent version of the "flat" theme -->
 
 <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
 <script>

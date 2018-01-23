@@ -11,48 +11,17 @@
   <div class="formulario">
     <div class="row">
       <div class="col-md-7 col-md-offset-1">
-        <input type="text" name="cedula" id="cedula" placeholder="Buscar Nombre" autocomplete="on" required>
+        <input type="text" name="nombre" id="nombre" placeholder="Buscar Nombre" autocomplete="on" required>
       </div>
       <div class="col-md-3">
-        <button  class="" >Buscar</button>
+        <button  onclick="cargarResultados()" name="btnBuscar" >Buscar</button>
       </div>
     </div>
   </div>
   <hr>
-                    <table class="table table-striped">
-                    <thead>
-                      <tr>
-                        <th scope="col">Cod</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Apellidos</th>
-                        <th scope="col">Acción</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Marck</td>
-                        <td>Castro</td>
-                        <td><a href="#"><i class="fa fa-check-circle" aria-hidden="true"></i></a></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Marck</td>
-                        <td>Castro</td>
-                        <td><a href="#"><i class="fa fa-check-circle" aria-hidden="true"></i></a></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Marck</td>
-                        <td>Castro</td>
-                        <td><a href="#"><i class="fa fa-check-circle" aria-hidden="true"></i></a></td>
-                      </tr>
-                    </tbody>
-                  </table>
+  <div id="resultadoBusqueda"></div>
 </div>
-  <br>
-
-  <br>
-  <div class="modal-footer">
-  
+<br>
+<br>
+<div class="modal-footer">
 </div>

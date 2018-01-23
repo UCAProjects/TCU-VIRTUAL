@@ -5,6 +5,17 @@
         <title>
           Crear Grupo
         </title>
+        <!-- for the most recent version -->
+
+
+
+
+
+
+
+
+
+
     </head>
     <body>
       <?php 
@@ -50,27 +61,7 @@
                       </tr>
                     </thead>
                     <tbody id="tbodyAgregarEstudiantes">
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>11163452</td>
-                        <td>Marck</td>
-                        <td>Castro</td>
-                        <td><i class="fa fa-trash" aria-hidden="true"></i></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>11163452</td>
-                        <td>Marck</td>
-                        <td>Castro</td>
-                        <td><i class="fa fa-trash" aria-hidden="true"></i></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>11163452</td>
-                        <td>Marck</td>
-                        <td>Castro</td>
-                        <td><i class="fa fa-trash" aria-hidden="true"></i></td>
-                      </tr>
+                      <!-- Información de estudiantes -->
                     </tbody>
                   </table>
                   <hr>
@@ -99,25 +90,9 @@
         <?php 
           include '../../footer.php'
         ?>
+
         <script type="text/javascript">
-        function consultaCed(){
-            var ced = $('#cedula').val();
-            if(ced != ''){
-              <?php 
-                                            $query = "SELECT * FROM tigrupou_tcu.sedes;";
-                                            $stmt = $db->prepare($query);
-                                            $stmt -> execute();
-                                            $result = $stmt -> fetchAll();
-                                            foreach ($result as $row) {?>
-                                              var data = {codigo :<?php echo  $row['codigo'] ?>,cedula: <?php echo  $row['codigo'] ?>,nombre: <?php echo  $row['codigo'] ?>,apellidos:<?php echo  $row['codigo'] ?>};
-                                              agregarInfoTabla(data);<?php
-                                            }
-                                      
-              ?>
-            }else{
-              alert("Cédula vacía");
-            }
-        }
+        
       </script>
     </body>
 </html>
