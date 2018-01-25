@@ -1,8 +1,19 @@
 
 var arrayEstudiantesSelecciondos=[];
 
+
+
+function mensaje(tipo,mensaje,duracion = 2000){
+  new $.Zebra_Dialog(mensaje,{
+                      'type': tipo,
+                      'auto_close': duracion,
+                      'buttons':  false,
+                      'modal': false,
+                      'position': ['right - 20', 'top + 10'],
+                    });
+}
+
 function cargarModal(pParametros,pDivMostrar,pNombreModal,pUrl){
-    debugger;
     var param = pParametros
     var options = { "backdrop": "static", keyboard: true };
     $.ajax({
@@ -15,13 +26,7 @@ function cargarModal(pParametros,pDivMostrar,pNombreModal,pUrl){
         $(pNombreModal).modal('show');
       },
       error: function () {
-        new $.Zebra_Dialog('Error al cargar la información',{
-                      'type': 'error',
-                      'auto_close': 2000,
-                      'buttons':  false,
-                      'modal': false,
-                      'position': ['right - 20', 'top + 10'],
-                    });
+        mensaje('error','Error al cargar la información');
       }
     });
 }
@@ -33,82 +38,27 @@ function consultaCed(){
           $.ajax({
                   data: parametros,
                   type: "POST",
-                  url: "consultasDatosProyecto.php",
+                  url: "../../accesoDatos/datosProyecto/consultasDatosProyecto.php",
                   success: function (data) {
                     if(data != 0){
                       agregarEstudianteTabla(data);   
                     }else{
-                      new $.Zebra_Dialog('No se ha encontrado información que coincida con la búsqueda deseada',{
-                      'type': 'warning',
-                      'auto_close': 2000,
-                      'buttons':  false,
-                      'modal': false,
-                      'position': ['right - 20', 'top + 10'],
-                    });
+                      mensaje('warning','No se ha encontrado información que coincida con la búsqueda deseada');
                     }
                   },
                   error: function () {
-                    new $.Zebra_Dialog('Error al cargar la información',{
-                      'type': 'error',
-                      'auto_close': 2000,
-                      'buttons':  false,
-                      'modal': false,
-                      'position': ['right - 20', 'top + 10'],
-                    });
+                    mensaje('error','Error al cargar la información');
                   }
                 });
   }else{
-    new $.Zebra_Dialog('Cédula no digita',{
-                      'type': 'warning',
-                      'auto_close': 2000,
-                      'buttons':  false,
-                      'modal': false,
-                      'position': ['right - 20', 'top + 10'],
-                    });
+    mensaje('warning','Cédula no digita');
   }
 }
 
 function agregarInfoTabla(data){
           const row2 = agregarLineaTabla(data);
           $('#tbodyAgregarEstudiantes').append(row2);
-
-
-    function cargarModal(pParametros,pDivMostrar,pNombreModal,pUrl){
-      debugger;
-      var param = pParametros
-      var options = { "backdrop": "static", keyboard: true };
-      $.ajax({
-        data : param,
-        type: "POST",
-        url: pUrl,
-        success: function (data) {
-          $(pDivMostrar).html(data);
-          $(pNombreModal).modal(options);
-          $(pNombreModal).modal('show');
-        },
-        error: function () {
-          alert("Error al cargar la información");
-        }
-      });
-    }
-
-    function agregarInfoTabla(data){
-      const row2 = agregarLineaTabla(data);
-      $('#tbodyAgregarEstudiantes').append(row2);
-    }
-
-    //Crear una fila nueva en la tabla encargados
-      function agregarLineaTabla(data) {
-        return (
-          `<tr>` +
-            `<td>${data.codigo}</td>` +
-            `<td>${data.cedula}</td>` +
-            `<td>${data.nombre}</td>` +
-             `<td>${data.apellidos}</td>` +
-             `<td>${data.codigo}</td>` +
-          `</tr>`
-        );
-      }
+}
 
 
 //Crear una fila nueva en la tabla encargados
@@ -143,58 +93,82 @@ function agregarInfoTabla(data){
   }
 
 
-  function cargarResultados(){
+function cargarResultados(){
   var nombre = $('#nombre').val();
   if(nombre != ''){
     var parametros = {"id":nombre,"tipo":2};
           $.ajax({
                   data: parametros,
                   type: "POST",
-                  url: "consultasDatosProyecto.php",
+                  url: "../../accesoDatos/datosProyecto/consultasDatosProyecto.php",
                   success: function (data) {
                     if(data != 0){
                       $('#resultadoBusqueda').html(data);
                     }
                     else{
-                      new $.Zebra_Dialog('Error al cargar la información',{
-                      'type': 'error',
-                      'auto_close': 2000,
-                      'buttons':  false,
-                      'modal': false,
-                      'position': ['right - 20', 'top + 10'],
-                    });
+                      mensaje('error','Error al cargar la información');
                     }
                     
                   },
                   error: function () {
-                    
+                    mensaje('error','Error al cargar la información');
                   }
                 });
-        }
+  }
 }
 function agregarEstudianteTabla(datas){
   var array = datas.split(",");
   if(validarEstudiantesRepetidos(array[0])){
-  arrayEstudiantesSelecciondos.push(array);
-  var data = {codigo :array[0],cedula:array[1] ,nombre: array[2] ,apellidos:array[3]};
-  agregarInfoTabla(data);
-  new $.Zebra_Dialog('El estudiante ha sido agregado con éxito',{
-        'type': 'confirmation',
-        'auto_close': 2000,
-        'buttons':  false,
-        'modal': false,
-        'position': ['right - 20', 'top + 10'],
-
-      });
+      arrayEstudiantesSelecciondos.push(array);
+      var data = {codigo :array[0],cedula:array[1] ,nombre: array[2] ,apellidos:array[3]};
+      agregarInfoTabla(data);
+      mensaje('confirmation','El estudiante ha sido agregado con éxito');
   }else{
-    new $.Zebra_Dialog('El estudiante ya ha sido agregado anteriormente',{
-        'type': 'warning',
-        'auto_close': 2000,
-        'buttons':  false,
-        'modal': false,
-        'position': ['right - 20', 'top + 10'],
-
-      });
+    mensaje('warning','El estudiante ya ha sido agregado anteriormente');
   }
+}
+
+
+function agregarGrupo(){
+  if(arrayEstudiantesSelecciondos.length >0){
+    var parametros = {"estudiantes":arrayEstudiantesSelecciondos,"tipo":1};
+          $.ajax({
+                  data: parametros,
+                  type: "POST",
+                  url: "../../accesoDatos/datosProyecto/insertarEditarGrupo.php",
+                  success: function (data) {
+                    if(data == "Error al procesar la información"){
+                       mensaje('error',data);
+                    }else{
+                      if(data[0] =="N"){
+                         mensaje('confirmation',data,5000);
+                      }else{
+                        mensaje('confirmation',data,5000);
+
+                        function redirect() {
+                            setTimeout(function(){ window.location="datosProyecto.php"; }, 5000);
+                        }
+                        redirect();
+                      }
+                    }
+                  },
+                  error: function () {
+                    new $.Zebra_Dialog("Error al cargar la información",{
+                      'type': 'error',
+                      'auto_close': 2000,
+                      'buttons':  false,
+                      'modal': false,
+                      'position': ['right - 20', 'top + 10'],});
+                  }
+                });
+        }else{
+            new $.Zebra_Dialog("No se han seleccionado estudiantes",{
+                      'type': 'warning',
+                      'auto_close': 2000,
+                      'buttons':  false,
+                      'modal': false,
+                      'position': ['right - 20', 'top + 10'],})
+        }
+  
 }
 

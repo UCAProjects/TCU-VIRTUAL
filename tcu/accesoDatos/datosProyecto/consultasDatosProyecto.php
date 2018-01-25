@@ -55,6 +55,5 @@
 		}catch (Exception $e) {
 			echo 0; // ERROR
 		}
-	}
-	 
+	} 
 ?>

@@ -22,7 +22,7 @@
                 <div class="">
                   <h2>Registro</h2>
                 <div class="ingreso ingresoTamano">
-                  <form class="formulario" novalidate>
+                  <form class="formulario" onsubmit="return validarRegistroFuncionarios()" action="../../accesoDatos/registro/insertarEditarRegistroFuncionarios.php" method="POST">
                     <ul>
                     	<div class="row">
                     		<div class="col-md-4">
@@ -53,11 +53,10 @@
                        			<li><input type="text" name="telefono" id="telefono" placeholder="Digite su teléfono" autocomplete="on" required></li>
                     		</div>
                     	</div>
-
                       <div class="row">
                         <div class="col-md-4">
                           <li><label for="usuario">Usuario</label></li>
-                            <li><input type="text" name="usuario" id="cedula" placeholder="Digite su usuario" autocomplete="on" required></li>
+                            <li><input type="text" name="usuario" id="usuario" placeholder="Digite su usuario" autocomplete="on" required></li>
                         </div>
                         <div class="col-md-4">
                           <li><label for="contrasena">Contraseña</label></li>
@@ -68,8 +67,8 @@
                             <li><input type="password" name="contrasena2" id="contrasena2" placeholder="Vuelva a digitar su contraseña" autocomplete="on" required></li>
                         </div>
                       </div>        
-     
-                      <li><button type="submit">Registro</button><br><br><br></li>
+
+                      <li><button type="submit" id="btnRegistro" name="btnRegistro">Registro</button><br><br><br></li>
                     </ul>
                   </form>
                 </div><!--.programa-evento-->
@@ -77,7 +76,7 @@
          
           </section><!--.section programa-->
         </main>
-
+        <script src="../../js/registro.js"></script>
         <?php 
         	include '../../footer.php'
         ?>

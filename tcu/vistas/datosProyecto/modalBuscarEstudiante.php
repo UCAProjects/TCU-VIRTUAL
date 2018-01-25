@@ -11,7 +11,7 @@
   <div class="formulario">
     <div class="row">
       <div class="col-md-7 col-md-offset-1">
-        <input type="text" name="nombre" id="nombre" placeholder="Buscar Nombre" autocomplete="on" required>
+        <input type="text" name="nombre" id="nombre" placeholder="Buscar Nombre" required>
       </div>
       <div class="col-md-3">
         <button  onclick="cargarResultados()" name="btnBuscar" >Buscar</button>

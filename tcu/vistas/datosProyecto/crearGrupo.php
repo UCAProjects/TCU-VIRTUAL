@@ -5,22 +5,11 @@
         <title>
           Crear Grupo
         </title>
-        <!-- for the most recent version -->
-
-
-
-
-
-
-
-
-
-
     </head>
     <body>
       <?php 
         include '../../header.php';
-        include '../../coneccionAlbin.php';
+        include '../../conection.php';
       ?>
       
         <!--[if lte IE 9]>
@@ -39,7 +28,7 @@
                         <a href="#" onclick="cargarModal(null,'#buscarEstudianteModalDiv','#buscarEstudiante-modal','modalBuscarEstudiante.php')" class="buttonA"><i class="fa fa-search" aria-hidden="true"></i></a>
                       </div>
                       <div class="col-md-6">
-                        <input type="text" name="cedula" id="cedula" placeholder="Cédula" autocomplete="on" required>
+                        <input type="text" name="cedula" id="cedula" placeholder="Cédula" required>
                       </div>
                       <div class="col-md-2">
                         <button onclick="consultaCed()"><span class="glyphicon glyphicon-plus-sign"></span> Agregar</button>
@@ -67,7 +56,7 @@
                   <hr>
                   <div class="row">
                     <div class="col-md-3 col-md-offset-8">
-                      <button class="btn btn-block btn-success buttonForm"><i class="fa fa-floppy-o" aria-hidden="true"></i> Confirmar</button>
+                      <button onclick="agregarGrupo()" class="btn btn-block btn-success buttonForm"><i class="fa fa-floppy-o" aria-hidden="true"></i> Confirmar</button>
                     </div>
                   </div>                  
                   <br><br>

@@ -9,6 +9,22 @@
 <body>
  <?php 
     include '../../header.php';
+    include '../../conection.php'; //Conección a la DB
+
+      $query = "select grupo from tigrupou_tcu.estudiantes where codigo like 9";
+      $stmt = $db->prepare($query);
+      $stmt -> execute();
+      $result = $stmt -> fetchAll();
+      $grupo = 0;
+      foreach($result as $row){
+        $grupo = $row["grupo"];
+      }
+
+      $query = "select codigo,nombre_completo,primer_apellido, cedula from tigrupou_tcu.estudiantes where grupo like $grupo";
+      $stmt = $db->prepare($query);
+      $stmt -> execute();
+      $resultEstudiantes = $stmt -> fetchAll();
+    
  ?>
         <!--[if lte IE 9]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
@@ -21,14 +37,42 @@
                 <div class="">
                   <h2>Datos del Proyecto</h2>
                   <div  class="ingreso ingresoTamano">
+
                     <form class="formulario" novalidate>
                       <ul>
+                        <li>
+                          <label for="temaProyecto">Integrantes</label></li>
+                          <table class="table table-striped">
+                              <thead>
+                                <tr>
+                                  <th>Cod</th>
+                                  <th>Nombre</th>
+                                  <th>Apellidos</th>
+                                  <th>Cédula</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <?php
+                                  foreach ($resultEstudiantes as $row ){
+                                  ?>
+                                  <tr>
+                                    <th scope="row"><?php echo $row["codigo"] ?></th>
+                                    <td><?php echo $row["nombre_completo"] ?></td>
+                                    <td><?php echo $row["primer_apellido"] ?></td>
+                                    <td><?php echo $row["cedula"] ?></td>
+                                  </tr><?php 
+                                }
+                              ?>
+                              </tbody>
+                          </table>
+                          <hr><br>
+                        </li>
                         <div class="row">
                           <div class="col-md-12">
                             <li><label for="temaProyecto">Tema del proyecto</label></li>
-                            <li><textarea rows="2" id="temaProyecto" name="temaProyecto" class="tamanoCompleto" placeholder="Digiete el tema del proyecto"></textarea></li>
+                            <li><textarea rows="2" id="temaProyecto" name="temaProyecto" class="tamanoCompleto" placeholder="Digite el tema del proyecto"></textarea></li>
                           </div>
-                        </div><br>
+                        </div>
 
                         <div class="row">
                           <div class="col-md-6">
@@ -39,7 +83,7 @@
                             <li><label for="supervisor">Supervisor(a) del T.C.U. </label></li>
                             <li><textarea rows="5" id="supervisor" name="supervisor" class="tamanoCompleto" placeholder="Digite el supervisor(a) del T.C.U."></textarea></li>
                           </div>
-                        </div><br>
+                        </div>
 
 
                         <div class="row">
@@ -55,7 +99,7 @@
                             <li><label for="correo" >Correo</label></li>
                             <li><input type="email" id="correo" name="correo" class="tamanoCompleto" placeholder="Digite el correo electrónico"></li>
                           </div>
-                        </div><br>
+                        </div>
 
                         <div class="row">
                           <div class="col-md-12">
@@ -74,7 +118,8 @@
           </main>
 
           <?php 
-          include '../../footer.php'
+          include '../../footer.php';
           ?>
+
         </body>
         </html>

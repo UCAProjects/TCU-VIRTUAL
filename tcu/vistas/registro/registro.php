@@ -9,7 +9,7 @@
     <body>
     	<?php 
     		include '../../header.php';
-    		include '../../coneccionAlbin.php';
+    		include '../../conection.php';
     	?>
         <!--[if lte IE 9]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
@@ -22,7 +22,7 @@
                 <div class="">
                   <h2>Registro</h2>
                   <div class="ingreso ingresoTamano">
-                  <form class="formulario" novalidate>
+                  <form class="formulario" onsubmit="return validarRegistroEstudiantes()" method="POST" action="../../accesoDatos/registro/insertarEditarRegistroEstudiantes.php">
                     <ul>
                     	<div class="row">
                     		<div class="col-md-4">
@@ -53,13 +53,12 @@
                        			<li><input type="text" name="telefono" id="telefono" placeholder="Digite su teléfono" autocomplete="on" required></li>
                     		</div>
                     	</div>
-
                     	<div class="row">
                     		<div class="col-md-4">
                     			<li><label for="carrera">Carrera</label></li>
                       			<li>
                       				<select name="carrera" id="carrera" required>
-								  		
+                                <option value="0"> &ltSin Asignar&gt</option>
                                         <?php
                                             $query = "SELECT * FROM tigrupou_tcu.carreras;";
                                             $stmt = $db->prepare($query);
@@ -69,13 +68,14 @@
                                               echo "<option value=\"$row[codigo]\"> $row[carrera] </option>"; 
                                             }
                                         ?>
-									</select>
+									         </select>
 					   		   </li>
                     		</div>
                     		<div class="col-md-4">
                     			<li><label for="grado">Grado</label></li>
 					   			<li>
 					   				<select name="grado" id="grado" required>
+                      <option value="0"> &ltSin Asignar&gt</option>
 								  		<?php
                                             $query = "SELECT * FROM tigrupou_tcu.grados;";
                                             $stmt = $db->prepare($query);
@@ -92,6 +92,7 @@
                     			 <li><label for="periodo">Período</label></li>
 					   			<li>
 					   				<select name="periodo" id="periodo" required>
+                      <option value="0"> &ltSin Asignar&gt</option>
 								  		<?php
                                             $query = "SELECT * FROM tigrupou_tcu.periodos;";
                                             $stmt = $db->prepare($query);
@@ -112,6 +113,7 @@
                     			<li><label for="sede">Sede</label></li>
 					   				<li>
 					   					<select name="sede" id="sede" required>
+                        <option value="0"> &ltSin Asignar&gt</option>
 								  			<?php
                                             $query = "SELECT * FROM tigrupou_tcu.sedes;";
                                             $stmt = $db->prepare($query);
@@ -148,7 +150,7 @@
                     		</div>
                     	</div>
      
-                      <li><button type="submit">Registro</button> <br><br><br></li>
+                      <li><button type="submit" id="btnRegistro" name="btnRegistro">Registro</button> <br><br><br></li>
                     </ul>
                   </form>
                 </div><!--.programa-evento-->
@@ -156,7 +158,7 @@
          
           </section><!--.section programa-->
         </main>
-
+        <script src="../../js/registro.js"></script>
         <?php 
         	include '../../footer.php'
         ?>
