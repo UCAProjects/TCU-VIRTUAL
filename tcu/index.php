@@ -37,8 +37,7 @@
                   <div class="tabla-informacion">
                     <h3>Uso del sistema</h3>
                     <p class="info">En esta sección puede encontrar, los pasos necesarios para
-                      el uso correcto del sistema y como debe llenar la información tanto de
-                      registro.
+                      el uso correcto del sistema y como debe llenar la información.
                     </p>
                     <a href="vistas/informacion/uso_sistema.php" class="button hollow">VER MÁS</a>
                   </div><!--.tabla-precio-->
@@ -80,12 +79,15 @@
               <div class="contenedor clearfix">
                 <div class="ingreso">
                   <h2>Ingreso al sistema</h2>
-                  <form class="formulario" novalidate>
+                  <form class="formulario clearfix" novalidate>
                     <ul>
                       <li><label for="usuario">Usuario:</label></li>
                       <li><input type="text" name="usuario" id="usuario" placeholder="Digite su usuario" autocomplete="on" required></li>
                       <li><label for="password">Contraseña:</label></li>
                       <li><input type="text" name="password" id="password" placeholder="Digite su contraseña" autocomplete="on" required></li>
+                      <li><input type="radio" name="usuario" class="seleccionar" id="usuario" value="usuario"><label for="estudiante">Estudiante</label></li>
+                      <li><input type="radio" name="usuario" class="seleccionar" id="usuario" value="usuario"><label for="estudiante">Funcionario</label></li>
+
                       <li><button type="submit">Registro</button>
                       <button type="submit">Ingreso</button></li>
                     </ul>
