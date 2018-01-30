@@ -55,5 +55,16 @@
 		}catch (Exception $e) {
 			echo 0; // ERROR
 		}
-	} 
+
+	}elseif($tipo ==3){
+		try {
+			$query = "update tigrupou_tcu.estudiantes set  grupo = null where codigo like $codigo";
+		  	$stmt = $db->prepare($query);
+		  	$stmt -> execute();
+		  	echo "Eliminado con éxito!!";
+		} catch (Exception $e) {
+			echo 0;
+		}
+		
+	}
 ?>

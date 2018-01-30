@@ -13,6 +13,40 @@ function mensaje(tipo,mensaje,duracion = 2000){
                     });
 }
 
+function abandonarGrupo(cod){
+
+  $.Zebra_Dialog('Esta seguro que desea abandonar este grupo?', {
+    'type':     'question',
+    'position': ['right - 450', 'top + 150'],
+    'buttons':  [
+                    {caption: 'SI', callback: function() {
+                          var parametros = {"id":cod,"tipo":3};
+                          $.ajax({
+                              data: parametros,
+                              type: "POST",
+                              url: "../../accesoDatos/datosProyecto/consultasDatosProyecto.php",
+                              success: function (data) {
+                                if(data!=0){
+                                  mensaje('confirmation',data,3000);
+                                  function redirect() {
+                                    setTimeout(function(){ window.location="crearGrupo.php?tipo=0"; }, 3000);
+                                  }
+                                  redirect();
+                                }
+                                else{
+                                  mensaje('warning',"Error al procesar la información",3000);
+                                }
+                              },
+                              error: function () {
+                                mensaje('error','Error al cargar la información');
+                              }
+                            });
+                    }},
+                    {caption: 'No', callback: function() {}},
+                ]
+});
+}
+
 function cargarModal(pParametros,pDivMostrar,pNombreModal,pUrl){
     var param = pParametros
     var options = { "backdrop": "static", keyboard: true };
@@ -129,9 +163,9 @@ function agregarEstudianteTabla(datas){
 }
 
 
-function agregarGrupo(){
+function agregarGrupo(tipo){
   if(arrayEstudiantesSelecciondos.length >0){
-    var parametros = {"estudiantes":arrayEstudiantesSelecciondos,"tipo":1};
+    var parametros = {"estudiantes":arrayEstudiantesSelecciondos,"tipo":tipo};
           $.ajax({
                   data: parametros,
                   type: "POST",
@@ -143,12 +177,12 @@ function agregarGrupo(){
                       if(data[0] =="N"){
                          mensaje('confirmation',data,5000);
                       }else{
-                        mensaje('confirmation',data,5000);
-
-                        function redirect() {
-                            setTimeout(function(){ window.location="datosProyecto.php"; }, 5000);
+                        mensaje('confirmation',data,3000);
+                        if(tipo == 0){
+                          setTimeout(function(){ window.location="datosProyecto.php"; }, 3000);
+                        }else{
+                          setTimeout(function(){ window.location="../principalEstudiantes/principalEstudiantes.php"; }, 5000);
                         }
-                        redirect();
                       }
                     }
                   },
@@ -169,6 +203,16 @@ function agregarGrupo(){
                       'modal': false,
                       'position': ['right - 20', 'top + 10'],})
         }
-  
 }
+
+
+    $(".nav li").on("click", function() {
+      $(".nav li").removeClass("active");
+      $(".nav li .color").css('background-color', '');
+      $(".nav li .color .white").css('color', '#fe4918');
+      $(this).addClass("active");
+      $(".nav .active .color").css('background-color', '#fe4918');
+      $(".nav .active .color .white").css('color', 'white');
+    });
+
 

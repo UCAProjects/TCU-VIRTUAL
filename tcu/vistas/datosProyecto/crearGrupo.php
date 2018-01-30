@@ -1,3 +1,10 @@
+<?php 
+  $tipo = $_GET['tipo'];
+  $sesionId = 9;
+  $grupo = 0;
+?>
+
+
 <!doctype html>
 <html class="no-js" lang="">
     <head>
@@ -9,8 +16,12 @@
     <body>
       <?php 
         include '../../header.php';
+        if($tipo == 1){
+          include '../../subHeaderEstudiantes.php';
+        }
         include '../../conection.php';
       ?>
+
       
         <!--[if lte IE 9]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
@@ -50,13 +61,45 @@
                       </tr>
                     </thead>
                     <tbody id="tbodyAgregarEstudiantes">
+                      <?php
+                      if($tipo == 1){// Tipo 1 quiere decir que la petición la realizó un estudiante para editar
+                          $query = "select grupo from tigrupou_tcu.estudiantes where codigo like $sesionId";
+                          $stmt = $db->prepare($query);
+                          $stmt -> execute();
+                          $result = $stmt -> fetchAll();
+                          foreach($result as $row){
+                            $grupo = $row["grupo"];
+                          }
+
+                          $query = "select codigo,nombre_completo,primer_apellido, cedula from tigrupou_tcu.estudiantes where grupo like $grupo";
+                          $stmt = $db->prepare($query);
+                          $stmt -> execute();
+                          $resultEstudiantes = $stmt -> fetchAll();
+    
+                                  foreach ($resultEstudiantes as $row ){
+                                  ?>
+                                  <tr>
+                                    <th scope="row"><?php echo $row["codigo"] ?></th>
+                                    <td><?php echo $row["cedula"] ?></td>
+                                    <td><?php echo $row["nombre_completo"] ?></td>
+                                    <td><?php echo $row["primer_apellido"] ?></td>
+                                    <td>
+                                      <?php if($sesionId == $row["codigo"]){ ?>
+                                        <a onclick="abandonarGrupo(<?php echo $sesionId ?>)"><i title="ABANDONAR GRUPO" class="fa fa-user-times" aria-hidden="true"></i></a> <?php
+                                      } ?>
+                                      
+                                    </td>
+                                  </tr><?php 
+                                }  
+                              }    
+    ?>
                       <!-- Información de estudiantes -->
                     </tbody>
                   </table>
                   <hr>
                   <div class="row">
                     <div class="col-md-3 col-md-offset-8">
-                      <button onclick="agregarGrupo()" class="btn btn-block btn-success buttonForm"><i class="fa fa-floppy-o" aria-hidden="true"></i> Confirmar</button>
+                      <button onclick="agregarGrupo(<?php echo $grupo ?>)" class="btn btn-block btn-success buttonForm"><i class="fa fa-floppy-o" aria-hidden="true"></i> Confirmar</button>
                     </div>
                   </div>                  
                   <br><br>
@@ -75,11 +118,12 @@
               </div>
             </div>
           </div>
-          <script src="../../js/datosProyecto.js"></script>
+         
         <?php 
           include '../../footer.php'
         ?>
-
+         <script src="../../js/datosProyecto.js"></script>
+        <!-- Se confirma la extracción del ácido  -->
         <script type="text/javascript">
         
       </script>

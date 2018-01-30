@@ -527,4 +527,8 @@ p.copyright {
     h3 {
         page-break-after: avoid;
     }
+
+    .nav .active .over:hover {
+    background-color:#fe4918;
+}
 }
