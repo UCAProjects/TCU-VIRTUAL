@@ -24,6 +24,7 @@
         <!-- Add your site or application content here -->
         <header class="site-header">
           <div class="fondo-encabezado">
+            <img src="img/franja_tcu.jpg" alt="Logo TCU">
 
           </div><!-- .fondo-encabezado -->
         </header>
