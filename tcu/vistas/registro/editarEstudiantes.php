@@ -25,8 +25,6 @@
                   <div class="ingreso ingresoTamano">
                   <form class="formulario" onsubmit="return validarRegistroEstudiantes()" method="POST" action="../../accesoDatos/registro/insertarEditarRegistroEstudiantes.php">
                     <ul>
-
-                
                       <div class="row">
                         <div class="col-md-6">
                           <li><label for="usuario">Usuario</label></li>
@@ -34,21 +32,21 @@
                         </div>
                         <div class="col-md-6">
                           <li><label for="contrasena">Contraseña Anterior</label></li>
-                            <li><input type="password" name="contrasena" id="contrasena" placeholder="Digite su contraseña" autocomplete="on" required></li>
+                            <li><input type="password" name="contrasenaA" id="contrasenaA" placeholder="Digite su antigua contraseña" autocomplete="on" required></li>
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-md-6">
                           <li><label for="contrasena2">Nueva Contraseña</label></li>
-                            <li><input type="password" name="contrasena2" id="contrasena2" placeholder="Vuelva a digitar su contraseña" autocomplete="on" required></li>
+                            <li><input type="password" name="contrasenaN" id="contrasenaN" placeholder="Digite su nueva contraseña" autocomplete="on" required></li>
                         </div>
                         <div class="col-md-6">
                           <li><label for="contrasena2">Confirmar Nueva Contraseña</label></li>
-                            <li><input type="password" name="contrasena2" id="contrasena2" placeholder="Vuelva a digitar su contraseña" autocomplete="on" required></li>
+                            <li><input type="password" name="contrasenaN2" id="contrasenaN2" placeholder="Vuelva a digitar su nueva contraseña" autocomplete="on" required></li>
                         </div>
                       </div>
      
-                      <li><button type="submit" id="btnRegistro" name="btnRegistro">Confirmar</button> <br><br><br></li>
+                      <li><button type="submit" id="btnUserContrasena" name="btnUserContrasena">Confirmar</button> <br><br><br></li>
                     </ul>
                   </form>
                 </div><!--.programa-evento-->
@@ -147,7 +145,6 @@
                     		</div>
                     	</div>
                       
-
                       <div class="row">
                     		<div class="col-md-4">
                     			<li><label for="sede">Sede</label></li>
@@ -176,7 +173,7 @@
                     		</div>
                     	</div>
      
-                      <li><button type="submit" id="btnRegistro" name="btnRegistro">Actualizar</button> <br><br><br></li>
+                      <li><button type="submit" id="btnEditarInformacion" name="btnEditarInformacion">Actualizar</button> <br><br><br></li>
                     </ul>
                   </form>
                 </div><!--.programa-evento-->

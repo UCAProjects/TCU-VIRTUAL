@@ -31,9 +31,6 @@
       $stmt = $db->prepare($query);
       $stmt -> execute();
       $resultEstudiantes = $stmt -> fetchAll();
-
-      if($tipo == 1){
-        include '../../subHeaderEstudiantes.php';
         $codigo = "";
         $tema = "";
         $organizacion = "";
@@ -42,6 +39,9 @@
         $celular = "";
         $correo = "";
         $direccion = "";
+      if($tipo == 1){
+        include '../../subHeaderEstudiantes.php';
+        
         $query = "select * from tigrupou_tcu.datos where grupo like $grupo";
         $stmt = $db->prepare($query);
         $stmt -> execute();

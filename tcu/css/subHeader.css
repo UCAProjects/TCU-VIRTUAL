@@ -1,0 +1,50 @@
+    /* CSS used here will be applied after bootstrap.css */
+    .tabbable {
+        margin: 30px;
+        height: 300px;
+        overflow: hidden;
+        border-bottom: 1px solid #d45500;
+    }
+
+    .nav-tabs {
+        margin: 0;
+    }
+
+    .tab-content {
+        padding: 30px;
+        height: 100%; 
+        border-left: 1px solid #d45500 ; 
+        border-right: 1px solid #d45500;
+    }
+
+    .nav-tabs>.active>a, .nav-tabs>.active>a:hover, .nav-tabs>.active>a:focus {
+        border-color: #d45500;
+        border-bottom-color: transparent;
+    }
+    .nav-tabs {
+        border-bottom: 1px solid #d45500;
+    }
+
+    .nav li a:hover{
+        background-color:#fe4918;
+        color:white;
+    }
+        .nav li a:hover i{
+        color:white;
+    }
+     .nav li a:hover span{
+        color:white;
+    }
+
+    .active .color{
+        background-color:#fe4918 !important;
+        color:white !important;
+    }
+
+    #liSalir{
+        margin-right: 2%;
+    }
+
+    .colorNaranja{
+        color:#fe4918;
+    }

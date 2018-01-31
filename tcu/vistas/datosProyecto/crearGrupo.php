@@ -12,8 +12,10 @@
         <title>
           Crear Grupo
         </title>
+
     </head>
     <body>
+      
       <?php 
         include '../../header.php';
         if($tipo == 1){
@@ -28,6 +30,7 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
+
         <main class="site-main">
           <section class="seccion-informacion">
               <div class="contenedor clearfix">
@@ -42,7 +45,7 @@
                         <input type="text" name="cedula" id="cedula" placeholder="Cédula" required>
                       </div>
                       <div class="col-md-2">
-                        <button onclick="consultaCed()"><span class="glyphicon glyphicon-plus-sign"></span> Agregar</button>
+                        <button class="btn" onclick="consultaCed()"><span class="glyphicon glyphicon-plus-sign"></span> Agregar</button>
                       </div>
                     </div>
                   </div>
