@@ -206,13 +206,6 @@ function agregarGrupo(tipo){
 }
 
 
-    $(".nav li").on("click", function() {
-      $(".nav li").removeClass("active");
-      $(".nav li .color").css('background-color', '');
-      $(".nav li .color .white").css('color', '#fe4918');
-      $(this).addClass("active");
-      $(".nav .active .color").css('background-color', '#fe4918');
-      $(".nav .active .color .white").css('color', 'white');
-    });
+
 
 
