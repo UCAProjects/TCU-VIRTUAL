@@ -2,17 +2,6 @@
 var arrayEstudiantesSelecciondos=[];
 
 
-
-function mensaje(tipo,mensaje,duracion = 2000){
-  new $.Zebra_Dialog(mensaje,{
-                      'type': tipo,
-                      'auto_close': duracion,
-                      'buttons':  false,
-                      'modal': false,
-                      'position': ['right - 20', 'top + 10'],
-                    });
-}
-
 function abandonarGrupo(cod){
 
   $.Zebra_Dialog('Esta seguro que desea abandonar este grupo?', {

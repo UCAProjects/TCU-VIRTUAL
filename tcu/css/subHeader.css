@@ -29,10 +29,13 @@
         background-color:#fe4918;
         color:white;
     }
-        .nav li a:hover i{
-        color:white;
+    .nav li a:hover i{
+        color:white !important;
     }
      .nav li a:hover span{
+        color:white;
+    }
+    .nav li a:hover span{
         color:white;
     }
 

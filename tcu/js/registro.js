@@ -1,3 +1,10 @@
+$( document ).ready(function() {
+    $('#cedula').on('input', function() { 
+    $('#usuario').val($(this).val());
+});
+});
+
+
 function validarContrasena(){
 	var contrasena = $("#contrasena").val();
     var contrasena2 = $("#contrasena2").val();
@@ -22,22 +29,11 @@ function validarRegistroEstudiantes(){
 
 
     if(valueCarrera == 0 || valueGrado == 0 ||valuePeriodo == 0 || valueSede == 0){
-    	new $.Zebra_Dialog('Datos imcopletos',{
-                      'type': 'warning',
-                      'auto_close': 2000,
-                      'buttons':  false,
-                      'modal': false,
-                      'position': ['right - 20', 'top + 10'],
-                    });
+      mensaje('warning','Datos imcopletos');
     	return false;
+
     }else if(!validarContrasena()){
-    	new $.Zebra_Dialog('Las contraseñas no coinciden',{
-                      'type': 'warning',
-                      'auto_close': 2000,
-                      'buttons':  false,
-                      'modal': false,
-                      'position': ['right - 20', 'top + 10'],
-                    });
+      mensaje('warning','Las contraseñas no coinciden')
     	return false;
     }
     return true;
@@ -45,14 +41,68 @@ function validarRegistroEstudiantes(){
 
 function validarRegistroFuncionarios(){
     if(!validarContrasena()){
-    	new $.Zebra_Dialog('Las contraseñas no coinciden',{
-                      'type': 'warning',
-                      'auto_close': 2000,
-                      'buttons':  false,
-                      'modal': false,
-                      'position': ['right - 20', 'top + 10'],
-                    });
+      mensaje('warning','Las contraseñas no coinciden')
     	return false;
     }
     return true;
 }
+
+function validarEditarUsuarioContrasena(cod,tipo){
+  var contrasenaA = $('#contrasenaA').val();
+  if(contrasenaA != ''){
+      var parametros = {"id":cod,"tipo":tipo}
+      $.ajax({
+          data: parametros,
+          type: "POST",
+          url: "../../accesoDatos/registro/consultasRegistro.php",
+          success: function (data) {
+            if(data != "Error al procesar la información"){
+              if(data != contrasenaA){
+                mensaje('error','Contraseña Incorrecta');
+              }else{
+                var contrasenaN = $('#contrasenaN').val();
+                var contrasenaN2 = $('#contrasenaN2').val();
+                if(contrasenaN != "" && contrasenaN2 != ""){
+                  if(contrasenaN == contrasenaN2){
+                    cambiarContrasena(cod,contrasenaN,tipo);
+                  }else{
+                    mensaje('error','Las nuevas contraseñas no coinciden');
+                  }
+                }else{
+                  mensaje('warning','Datos incompletos');
+                }
+              }
+            }else{
+              mensaje('error','Error al procesar la información');
+            }
+          },
+          error: function () {
+            mensaje('error','Error al cargar la información');
+          }
+      });
+  }else{
+    mensaje('warning','Datos incompletos');
+  }
+}
+
+function cambiarContrasena(cod, contrasena, tipo){
+  var parametros = {"codigo":cod,"tipo":tipo, "contrasena":contrasena}
+  $.ajax({
+          data: parametros,
+          type: "POST",
+          url: "../../accesoDatos/registro/editarUsuarioContrasena.php",
+          success: function (data) {
+            mensaje('information',data)
+          },
+          error: function () {
+            mensaje('error','Error al cargar la información');
+          }
+      });
+}
+
+
+function valueSelect(id,value){
+  $("#" + id).val(value);
+}
+
+

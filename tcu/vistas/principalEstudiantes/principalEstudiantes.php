@@ -2,7 +2,7 @@
 <html class="no-js" lang="">
 <head>
   <title>
-   Datos del Proyecto
+   TCU
  </title>
  <link rel="stylesheet" href="../../css/datosProyecto.css">
 </head>
@@ -10,7 +10,7 @@
 
  <?php 
     include '../../header.php';
-    include '../../subHeaderEstudiantes.php';
+    include '../../subHeaderFuncionarios.php';
     include '../../conection.php'; //Conección a la DB
  ?>
         <!--[if lte IE 9]>
@@ -26,7 +26,42 @@
                 <div class="">
                   <h2>Estatus del TCU</h2>
                   <div  class="ingreso ingresoTamano">
-
+                    
+                      <form class="formulario">
+                        <li>
+                           <span class="h3" style="color:#fe4918">Estatus:</span> <span class="h2">Revisado</span>
+                        </li>
+                        <hr>
+                        <h3>Historial</h3>
+                        <table class="table table-striped">
+                          <thead>
+                            <tr>
+                              <th>Fecha</th>
+                              <th>Estatus</th>
+                              <th>Comentarios</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>01/02/2018</td>
+                              <td>Revisado</td>
+                              <td>Mejorar referencias</td>
+                            </tr>
+                            <tr>
+                              <td>01/02/2018</td>
+                              <td>Aprobado</td>
+                              <td>Sin correcciones</td>
+                            </tr>
+                            <tr>
+                              <td>01/02/2018</td>
+                              <td>En edición</td>
+                              <td>En proceso</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </form>
+                     
+                    
                   </div>
                 </div><!--.programa-evento-->
               </div><!--.contenedor-->

@@ -9,13 +9,10 @@
           <i  style="color: #fe4918" title="INICIO" class="fa fa-university white" aria-hidden="true"></i>
         </a>
       </li>
-      <li class="dropdown">
-        <a  class="color" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="white">Datos del Proyecto </span><span class="caret white colorNaranja"></span></a>
-        <ul class="dropdown-menu">
-          <li><a class="over" href="../datosProyecto/crearGrupo.php?tipo=1">Editar Grupo de Trabajo</a></li>
-          <li><a href="../datosProyecto/datosProyecto.php?tipo=1">Editar Datos del Proyecto</a></li>
-        </ul>
-      </li>
+
+      <li id="liSalir"><a class="color"  href="#"> Calificar TCU</a></li>
+      <li id="liSalir"><a class="color"  href="#"> Grupos de TCU</a></li>
+      <li id="liSalir"><a class="color"  href="#"> Descargables</a></li>
 
       <li class="navbar-right" id="liSalir"><a class="color colorNaranja"  href="#"><i  class="fa fa-sign-out" aria-hidden="true" title="SALIR"></i></a></li>
 
@@ -27,7 +24,6 @@
           <li><a href="../registro/editarContrasena.php?tipo=1">Cambiar Contraseña</a></li> 
         </ul>
       </li>
-      
     </ul>
   </div><!-- .fondo-encabezado -->
 </header>

@@ -89,13 +89,16 @@
                                     <td>
                                       <?php if($sesionId == $row["codigo"]){ ?>
                                         <a onclick="abandonarGrupo(<?php echo $sesionId ?>)"><i title="ABANDONAR GRUPO" class="fa fa-user-times" aria-hidden="true"></i></a> <?php
+                                      }else{ ?>
+                                      <i class="fa fa-lock"></i><?php
+
                                       } ?>
                                       
                                     </td>
                                   </tr><?php 
                                 }  
                               }    
-    ?>
+      ?>
                       <!-- Información de estudiantes -->
                     </tbody>
                   </table>

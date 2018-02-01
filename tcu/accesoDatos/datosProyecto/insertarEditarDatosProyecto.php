@@ -1,10 +1,5 @@
 <?php
-function redirect($url) {
-    ob_start();
-    header('Location: '.$url);
-    ob_end_flush();
-    die();
-} 
+ 	include("../redireccionar.php");// Contiene función que redirecciona a cualquier otra página
 	include("../../conection.php");// conexión a DB
 
 	// Se reciben todos los campos asociados a un estudiante
