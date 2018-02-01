@@ -23,9 +23,8 @@
 
         <!-- Add your site or application content here -->
         <header class="site-header">
-          <div class="fondo-encabezado">
+          <div class="fondo-encabezado clearfix">
             <img src="img/franja_tcu.jpg" alt="Logo TCU">
-
           </div><!-- .fondo-encabezado -->
         </header>
 
@@ -88,7 +87,6 @@
                       <li><input type="text" name="password" id="password" placeholder="Digite su contraseña" autocomplete="on" required></li>
                       <li><input type="radio" name="usuario" class="seleccionar" id="usuario" value="usuario"><label for="estudiante">Estudiante</label></li>
                       <li><input type="radio" name="usuario" class="seleccionar" id="usuario" value="usuario"><label for="estudiante">Funcionario</label></li>
-
                       <li><button type="submit">Registro</button>
                       <button type="submit">Ingreso</button></li>
                     </ul>
