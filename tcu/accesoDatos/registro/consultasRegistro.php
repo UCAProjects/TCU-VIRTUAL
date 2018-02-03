@@ -19,6 +19,19 @@
 		}
 	}
 	elseif($tipo ==2){
+		$query = "select password from tigrupou_tcu.autentificacion_funcionarios where usuario like $codigo";
+		try {
+			$stmt = $db->prepare($query);
+			$stmt -> execute();
+			$result = $stmt -> fetchAll();
+			$password = "";
+			foreach ($result as $row ) {
+				$password = $row["password"];
+			}
+			echo $password;
+		} catch (Exception $e) {
+			echo 0; // ERROR
+		}
 	}elseif($tipo ==3){
 	}
 ?>

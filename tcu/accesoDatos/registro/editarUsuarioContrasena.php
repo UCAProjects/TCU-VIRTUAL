@@ -18,7 +18,18 @@
 					echo "Error al procesar la información";		
 				}			
 	     	
-		}else{
+		}elseif($tipo ==2){
+			try {
+					$query = "update tigrupou_tcu.autentificacion_funcionarios set password = $contrasena where usuario = $codigo";
+
+					$stmt = $db->prepare($query);//Inserta a DB 
+					$stmt -> execute();
+					echo "Sus datos se han cambiado éxitosamente";
+					
+									
+				} catch (Exception $e) {
+					echo "Error al procesar la información";		
+				}		
 		  
 		}
 	 

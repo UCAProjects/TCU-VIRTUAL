@@ -3,7 +3,7 @@
 // TIPO = 1 . Cambio de contraseña para estudiantes.
 // TIPO = 2. Cambio de contraseña para funcionarios.
   $tipo = $_GET['tipo'];
-  $sesionId = '8';
+  $sesionId = '2';
   $query = "";
   
 ?>
@@ -20,11 +20,12 @@
     <body>
     	<?php 
     		include '../../header.php';
-        include '../../subHeaderEstudiantes.php';
     		include '../../conection.php';
         if($tipo ==1){
+          include '../../subHeaderEstudiantes.php';
           $query = "SELECT nombre_usuario FROM tigrupou_tcu.autentificacion_estudiantes where usuario like $sesionId;";
           }elseif($tipo ==2){
+            include '../../subHeaderFuncionarios.php';
             $query = "SELECT nombre_usuario FROM tigrupou_tcu.autentificacion_funcionarios where usuario like $sesionId;";
           }
           $nombre_usuario = "";
@@ -78,9 +79,9 @@
           </section><!--.section programa-->
         
         </main>
-        <script src="../../js/registro.js"></script>
         <?php 
         	include '../../footer.php'
         ?>
+        <script src="../../js/registro.js"></script>
     </body>
 </html>

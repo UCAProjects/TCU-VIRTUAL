@@ -4,14 +4,21 @@
   <div class="fondo-encabezado">
     
     <ul class="nav nav-tabs">
-      <li>
-        <a href="../principalEstudiantes/principalEstudiantes.php">
+      <li class="active">
+        <a class="color" href="../principalEstudiantes/principalEstudiantes.php">
           <i  style="color: #fe4918" title="INICIO" class="fa fa-university white" aria-hidden="true"></i>
         </a>
       </li>
 
-      <li id="liSalir"><a class="color"  href="#"> Calificar TCU</a></li>
-      <li id="liSalir"><a class="color"  href="#"> Grupos de TCU</a></li>
+
+      <li class="dropdown">
+          <a class="color" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="white">Calificar TCU </span><span style="color: #fe4918" class="caret white colorNaranja"></span></a>
+          <ul class="dropdown-menu">
+            <li><a class="over" href="../datosProyecto/crearGrupo.php?tipo=1">Datos del Proyecto <span class="circle green">2</span></a></li>
+            <li><a href="../datosProyecto/datosProyecto.php?tipo=1">Ante Proyecto <span class="circle blue">5</span></a></li>
+          </ul>
+        </li>
+      <li id="liSalirs"><a class="color"  href="#"> Grupos de TCU</a></li>
       <li id="liSalir"><a class="color"  href="#"> Descargables</a></li>
 
       <li class="navbar-right" id="liSalir"><a class="color colorNaranja"  href="#"><i  class="fa fa-sign-out" aria-hidden="true" title="SALIR"></i></a></li>
@@ -20,8 +27,8 @@
         <a  href="#" class="dropdown-toggle color colorNaranja" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ><i title="USUARIO" class="fa fa-user white" aria-hidden="true" ></i> <span  class="caret white colorNaranja"></span></a>
 
         <ul class="dropdown-menu">
-          <li><a href="../registro/registro.php?tipo=1">Editar Perfil</a></li>
-          <li><a href="../registro/editarContrasena.php?tipo=1">Cambiar Contraseña</a></li> 
+          <li><a href="../registro/registro.php?tipo=2">Editar Perfil</a></li>
+          <li><a href="../registro/editarContrasena.php?tipo=2">Cambiar Contraseña</a></li> 
         </ul>
       </li>
     </ul>

@@ -1,9 +1,8 @@
 $( document ).ready(function() {
     $('#cedula').on('input', function() { 
-    $('#usuario').val($(this).val());
+      $('#usuario').val($(this).val());
+    });
 });
-});
-
 
 function validarContrasena(){
 	var contrasena = $("#contrasena").val();
@@ -26,7 +25,6 @@ function validarRegistroEstudiantes(){
 
     var sede = document.getElementById("sede");
     var valueSede = sede.options[sede.selectedIndex].value;
-
 
     if(valueCarrera == 0 || valueGrado == 0 ||valuePeriodo == 0 || valueSede == 0){
       mensaje('warning','Datos imcopletos');
@@ -99,7 +97,6 @@ function cambiarContrasena(cod, contrasena, tipo){
           }
       });
 }
-
 
 function valueSelect(id,value){
   $("#" + id).val(value);
