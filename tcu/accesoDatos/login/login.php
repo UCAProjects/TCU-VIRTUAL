@@ -44,7 +44,6 @@
       					echo "1-0";
       				}else{
       					echo "1-$datos";
-      				}
 				}else{
 					echo "false";
 				}
@@ -55,7 +54,7 @@
 		}catch (Exception $e){
 			echo "error";
 		}
-	}elseif($tipo == 2){//Logueo de Estudiante
+	}elseif($tipo == 2){//Logueo de Funcionario
 		try {
 			$query = "SELECT E.codigo, A.nombre_usuario, A.password FROM tigrupou_tcu.funcionarios E JOIN tigrupou_tcu.autentificacion_funcionarios A ON E.codigo LIKE A.usuario WHERE A.nombre_usuario LIKE :usuario AND A.password like :contrasena ;";
 
