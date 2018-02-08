@@ -1,4 +1,5 @@
-<?php 
+<?php
+	session_start();
 	include("../../conection.php");// conexión a DB
 
 	// Se reciben todos los campos asociados a un estudiante
@@ -31,7 +32,8 @@
 								$cantidad +=1;
 						     	$queryUpdate = "update tigrupou_tcu.estudiantes set  grupo = $id where codigo like $cod";
 						     	$stmt = $db->prepare($queryUpdate);//Inserta a DB 
-						     	$stmt -> execute();	
+						     	$stmt -> execute();
+						     	$_SESSION["grupo"] = $id;
 							}
 						}
 					}

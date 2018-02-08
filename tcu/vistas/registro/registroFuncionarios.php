@@ -8,9 +8,41 @@
     </head>
     <body>
     	<?php 
-    		include '../../header.php';
-        
-    	?>
+        include '../../header.php';
+        include '../../conection.php';
+
+        $tipo = $_GET['tipo'];
+
+        $sesionId = "1";
+        $pApellido = "";
+        $sApellido = "";
+        $nombre ="";
+        $cedula ="";
+        $correo ="";
+        $telefono = "";
+        $telTrabajo = "";
+
+        if($tipo ==2){ //Editar Funcionarios
+          include '../../subHeaderFuncionarios.php';
+          $query = "select * from tigrupou_tcu.funcionarios where codigo like $sesionId;";
+          $stmt = $db->prepare($query);
+          $stmt -> execute();
+          $result = $stmt -> fetchAll();
+          foreach($result as $row){
+            $pApellido = $row["primer_apellido"];
+            $sApellido = $row["segundo_apellido"];
+            $nombre = $row["nombre_completo"];
+            $cedula = $row["cedula"];
+            $correo = $row["correo_electronico"];
+            $telefono = $row["celular"];
+            $telTrabajo = $row["telefono_trabajo"];
+          }
+        }
+
+      
+
+
+      ?>
         <!--[if lte IE 9]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
         <![endif]-->
@@ -24,49 +56,56 @@
                 <div class="ingreso ingresoTamano">
                   <form class="formulario" onsubmit="return validarRegistroFuncionarios()" action="../../accesoDatos/registro/insertarEditarRegistroFuncionarios.php" method="POST">
                     <ul>
+                      <input type="hidden" name="tipo" id="tipo" value="<?php echo $tipo ?>">
+                      <input type="hidden" name="codigo" id="codigo" value="<?php echo $sesionId ?>">
                     	<div class="row">
                     		<div class="col-md-4">
                     			<li><label for="apellido1">Primer Apellido</label></li>
-                      			<li><input type="text" name="apellido1" id="apellido1" placeholder="Digite su primer apellido" autocomplete="on" required></li>
+                      			<li><input type="text" name="apellido1" id="apellido1" placeholder="Digite su primer apellido" value="<?php echo $pApellido ?>" required></li>
                     		</div>
                     		<div class="col-md-4">
                     			<li><label for="apellido2">Segundo Apellido</label></li>
-                      			<li><input type="text" name="apellido2" id="apellido2" placeholder="Digite su segundo apellido" autocomplete="on" required></li>
+                      			<li><input type="text" name="apellido2" id="apellido2" placeholder="Digite su segundo apellido" value="<?php echo $sApellido ?>" required></li>
                     		</div>
                     		<div class="col-md-4">
                     			<li><label for="nombre">Nombre</label></li>
-                      			<li><input type="text" name="nombre" id="nombre" placeholder="Digite su nombre" autocomplete="on" required></li>
+                      			<li><input type="text" name="nombre" id="nombre" placeholder="Digite su nombre" value="<?php echo $nombre ?>" required></li>
                     		</div>
                     	</div>
 
                     	<div class="row">
                     		<div class="col-md-4">
                     			<li><label for="cedula">Cédula</label></li>
-                      			<li><input type="text" name="cedula" id="cedula" placeholder="Digite su cédula" autocomplete="on" required></li>
+                      			<li><input type="text" name="cedula" id="cedula" placeholder="Digite su cédula" value="<?php echo $cedula ?>" required></li>
                     		</div>
                     		<div class="col-md-4">
                     			<li><label for="correo">Correo</label></li>
-                      			<li><input type="email" name="correo" id="correo" placeholder="Digite su correo" autocomplete="on" required></li>
+                      			<li><input type="email" name="correo" id="correo" placeholder="Digite su correo" value="<?php echo $correo ?>" required></li>
                     		</div>
                     		<div class="col-md-4">
                     			 <li><label for="telefono">Teléfono</label></li>
-                       			<li><input type="text" name="telefono" id="telefono" placeholder="Digite su teléfono" autocomplete="on" required></li>
+                       			<li><input type="text" name="telefono" id="telefono" placeholder="Digite su teléfono" value="<?php echo $telTrabajo ?>" required></li>
                     		</div>
                     	</div>
-                      <div class="row">
-                        <div class="col-md-4">
-                          <li><label for="usuario">Usuario</label></li>
-                            <li><input type="text" name="usuario" id="usuario" placeholder="Digite su usuario" autocomplete="on" required></li>
-                        </div>
-                        <div class="col-md-4">
-                          <li><label for="contrasena">Contraseña</label></li>
-                            <li><input type="password" name="contrasena" id="contrasena" placeholder="Digite su contraseña" autocomplete="on" required></li>
-                        </div>
-                        <div class="col-md-4">
-                           <li><label for="contrasena2">Confirmar contraseña</label></li>
-                            <li><input type="password" name="contrasena2" id="contrasena2" placeholder="Vuelva a digitar su contraseña" autocomplete="on" required></li>
-                        </div>
-                      </div>        
+                      <?php 
+                        if($tipo == 0){ ?>
+                          <div class="row">
+                            <div class="col-md-4">
+                              <li><label for="usuario">Usuario</label></li>
+                                <li><input type="text" name="usuario" id="usuario" placeholder="Digite su usuario" autocomplete="on" required readonly></li>
+                            </div>
+                            <div class="col-md-4">
+                              <li><label for="contrasena">Contraseña</label></li>
+                                <li><input type="password" name="contrasena" id="contrasena" placeholder="Digite su contraseña" autocomplete="on" required></li>
+                            </div>
+                            <div class="col-md-4">
+                               <li><label for="contrasena2">Confirmar contraseña</label></li>
+                                <li><input type="password" name="contrasena2" id="contrasena2" placeholder="Vuelva a digitar su contraseña" autocomplete="on" required></li>
+                            </div>
+                          </div> <?php       
+                        }
+                      ?>
+                      
 
                       <li><button type="submit" id="btnRegistro" name="btnRegistro">Registro</button><br><br><br></li>
                     </ul>
@@ -76,9 +115,9 @@
          
           </section><!--.section programa-->
         </main>
-        <script src="../../js/registro.js"></script>
         <?php 
         	include '../../footer.php'
         ?>
+        <script src="../../js/registro.js"></script>
     </body>
 </html>

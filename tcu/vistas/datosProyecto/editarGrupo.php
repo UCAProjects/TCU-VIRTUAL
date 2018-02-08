@@ -1,5 +1,7 @@
 <?php 
   $tipo = $_GET['tipo'];
+  session_start();
+
 ?>
 
 <!doctype html>
@@ -32,14 +34,11 @@
     include '../../conection.php'; //Conección a la DB
 
     if($tipo == 1){// Tipo 1 quiere decir que la petición la realizó un estudiante
-      $query = "select grupo from tigrupou_tcu.estudiantes where codigo like 9";
+      $query = "select grupo from tigrupou_tcu.estudiantes where codigo like $_SESSION["codigo"];";
       $stmt = $db->prepare($query);
       $stmt -> execute();
       $result = $stmt -> fetchAll();
-      $grupo = 0;
-      foreach($result as $row){
-        $grupo = $row["grupo"];
-      }
+      $grupo = $_SESSION["grupo"];;
 
       $query = "select codigo,nombre_completo,primer_apellido, cedula from tigrupou_tcu.estudiantes where grupo like $grupo";
       $stmt = $db->prepare($query);

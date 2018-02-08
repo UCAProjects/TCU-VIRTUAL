@@ -168,7 +168,7 @@ function agregarGrupo(tipo){
                       }else{
                         mensaje('confirmation',data,3000);
                         if(tipo == 0){
-                          setTimeout(function(){ window.location="datosProyecto.php"; }, 3000);
+                          setTimeout(function(){ window.location="datosProyecto.php?tipo=0"; }, 3000);
                         }else{
                           setTimeout(function(){ window.location="../principalEstudiantes/principalEstudiantes.php"; }, 5000);
                         }

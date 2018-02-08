@@ -27,17 +27,13 @@
         <a  href="#" class="dropdown-toggle color colorNaranja" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ><i title="USUARIO" class="fa fa-user white" aria-hidden="true" ></i> <span  class="caret white colorNaranja"></span></a>
 
         <ul class="dropdown-menu">
-          <li><a href="../registro/registro.php?tipo=2">Editar Perfil</a></li>
+          <li><a href="../registro/registroFuncionarios.php?tipo=2">Editar Perfil</a></li>
           <li><a href="../registro/editarContrasena.php?tipo=2">Cambiar Contraseña</a></li> 
         </ul>
       </li>
     </ul>
   </div><!-- .fondo-encabezado -->
-</header>
-
-
-
-<!--  <style type="text/css">
+</header><!--  <style type="text/css">
     .nav li a:hover{
     background-color:#fe4918;
     color:white;
@@ -123,7 +119,3 @@
 </div>
 
 </div> -->
-  
-
-
-

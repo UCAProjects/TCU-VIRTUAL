@@ -47,6 +47,7 @@
         text-align: center;
         width: 1.6em; 
     }
+    /*Colores de los círculos */
     span.red{
         background: red;
     }

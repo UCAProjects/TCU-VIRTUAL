@@ -1,6 +1,8 @@
 <?php 
+session_start();
+
   $tipo = $_GET['tipo'];
-  $sesionId = 9;
+  $sesionId = $_SESSION["codigo"];
   $grupo = 0;
 ?>
 

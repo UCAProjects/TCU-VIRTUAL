@@ -7,6 +7,7 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/zebra_dialog@latest/dist/css/flat/zebra_dialog.min.css">
         <link rel="manifest" href="site.webmanifest">
         <link rel="apple-touch-icon" href="icon.png">
         <!-- Place favicon.ico in the root directory -->
@@ -79,18 +80,18 @@
               <div class="contenedor clearfix">
                 <div class="ingreso">
                   <h2>Ingreso al sistema</h2>
-                  <form class="formulario clearfix" novalidate>
+                  <div class="formulario clearfix" novalidate>
                     <ul>
                       <li><label for="usuario">Usuario:</label></li>
                       <li><input type="text" name="usuario" id="usuario" placeholder="Digite su usuario" autocomplete="on" required></li>
                       <li><label for="password">Contraseña:</label></li>
                       <li><input type="text" name="password" id="password" placeholder="Digite su contraseña" autocomplete="on" required></li>
-                      <li><input type="radio" name="usuario" class="seleccionar" id="usuario" value="usuario"><label for="estudiante">Estudiante</label></li>
-                      <li><input type="radio" name="usuario" class="seleccionar" id="usuario" value="usuario"><label for="estudiante">Funcionario</label></li>
-                      <li><button type="submit">Registro</button>
-                      <button type="submit">Ingreso</button></li>
+                      <li><input type="radio" name="tipoUsuario" class="seleccionar" id="estudiante" value="1"><label for="estudiante">Estudiante</label></li>
+                      <li><input type="radio" name="tipoUsuario" class="seleccionar" id="funcionario" value="2"><label for="estudiante">Funcionario</label></li>
+                      <li><button onclick="registroUsuario()">Registro</button>
+                      <button onclick="login()">Ingreso</button></li>
                     </ul>
-                  </form>
+                  </div>
                 </div><!--.programa-evento-->
               </div><!--.contenedor-->
             </div><!--.contenido-programa-->
@@ -122,9 +123,15 @@
         <script src="js/vendor/modernizr-3.5.0.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>')</script>
+<script src="https://cdn.jsdelivr.net/npm/zebra_dialog/dist/zebra_dialog.min.js"></script>
+
+        <!-- for a specific version -->
+        <script src="https://cdn.jsdelivr.net/npm/zebra_dialog@1.4.0/dist/zebra_dialog.min.js"></script>
+        
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
 
+        
         <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
         <script>
             window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;

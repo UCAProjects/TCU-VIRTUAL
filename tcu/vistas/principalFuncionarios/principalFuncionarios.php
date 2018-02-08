@@ -11,7 +11,7 @@
     session_start();
     echo $_SESSION["codigo"];
     include '../../header.php';
-    include '../../subHeaderEstudiantes.php';
+    include '../../subHeaderFuncionarios.php';
     include '../../conection.php'; //Conección a la DB
     
 

@@ -30,8 +30,7 @@
 		if($tipo == 0){
 			try {
 			$ano = date('Y');
-			$query = "insert into tigrupou_tcu.estudiantes(primer_apellido,segundo_apellido,nombre_completo,cedula,correo_electronico,telefono_trabajo,celular,carrera,grado,cuatrimestre,aino,sede,lugar_trabajo)  
-values('$apellido1','$apellido2','$nombre','$cedula','$correo','$telefonoT','$telefono',$carrera,$grado,$periodo,'$ano',$sede,'$lugarTrabajo')";
+			$query = "insert into tigrupou_tcu.estudiantes(primer_apellido,segundo_apellido,nombre_completo,cedula,correo_electronico,telefono_trabajo,celular,carrera,grado,cuatrimestre,aino,sede,lugar_trabajo) values('$apellido1','$apellido2','$nombre','$cedula','$correo','$telefonoT','$telefono',$carrera,$grado,$periodo,'$ano',$sede,'$lugarTrabajo')";
 
 			$stmt = $db->prepare($query);//Inserta a DB 
 	     	$stmt -> execute();
@@ -44,7 +43,12 @@ values('$usuario','$contrasena',$id)";
 			$stmtAu = $db->prepare($queryAutentificacion);//Inserta a DB 
 	     	$stmtAu -> execute();
 
-	     	redirect("../../vistas/principalEstudiantes/principalEstudiantes.php");
+	     	session_start();
+      		$_SESSION["codigo"] = $id;
+      		$_SESSION["usuario"] = $nombre_usuario;
+      		$_SESSION["grupo"] = "";
+
+	     	redirect("../../vistas/datosProyecto/crearGrupo.php?tipo=0");
 
 			
 			} catch (Exception $e) {

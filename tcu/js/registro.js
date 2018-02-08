@@ -5,7 +5,7 @@ $( document ).ready(function() {
 });
 
 function validarContrasena(){
-	var contrasena = $("#contrasena").val();
+	  var contrasena = $("#contrasena").val();
     var contrasena2 = $("#contrasena2").val();
     if(contrasena == contrasena2){
     	return true;
@@ -14,7 +14,7 @@ function validarContrasena(){
 }
 
 function validarRegistroEstudiantes(){
-	var carrera = document.getElementById("carrera");
+	  var carrera = document.getElementById("carrera");
     var valueCarrera = carrera.options[carrera.selectedIndex].value;
 
     var grado = document.getElementById("grado");

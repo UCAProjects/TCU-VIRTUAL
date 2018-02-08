@@ -213,11 +213,11 @@
         
 
         <?php 
-        	include '../../footer.php';
-
-
-          if($tipo == 1){ // Modo editar ?>
+        	include '../../footer.php'; ?>
+          
           <script src="../../js/registro.js"></script>
+    <?php
+          if($tipo == 1){ // Modo editar ?>
             <script type="text/javascript">
               valueSelect('carrera',<?php echo $carrera ?>);
               valueSelect('grado',<?php echo $grado ?>);

@@ -1,7 +1,8 @@
-<?php 
+<?php
+  session_start();
+  $sesionId = $_SESSION["codigo"];
+  $grupo = $_SESSION["grupo"]; 
   $tipo = $_GET['tipo'];
-  $sesionId = 9;
-  $grupo = 0;
 ?>
 
 <!doctype html>
@@ -17,15 +18,6 @@
  <?php 
     include '../../header.php';
     include '../../conection.php'; //Conección a la DB
-
-      $query = "select grupo from tigrupou_tcu.estudiantes where codigo like $sesionId";
-      $stmt = $db->prepare($query);
-      $stmt -> execute();
-      $result = $stmt -> fetchAll();
-      $grupo = 0;
-      foreach($result as $row){
-        $grupo = $row["grupo"];
-      }
 
       $query = "select codigo,nombre_completo,primer_apellido, cedula from tigrupou_tcu.estudiantes where grupo like $grupo";
       $stmt = $db->prepare($query);
