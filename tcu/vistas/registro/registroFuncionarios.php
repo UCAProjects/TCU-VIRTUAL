@@ -8,12 +8,13 @@
     </head>
     <body>
     	<?php 
+        session_start();
         include '../../header.php';
         include '../../conection.php';
 
         $tipo = $_GET['tipo'];
 
-        $sesionId = "1";
+        $sesionId = $_SESSION["codigo"];
         $pApellido = "";
         $sApellido = "";
         $nombre ="";
@@ -107,7 +108,7 @@
                       ?>
                       
 
-                      <li><button type="submit" id="btnRegistro" name="btnRegistro">Registro</button><br><br><br></li>
+                      <li><button type="submit" id="btnRegistro" name="btnRegistro">Confirmar</button><br><br><br></li>
                     </ul>
                   </form>
                 </div><!--.programa-evento-->

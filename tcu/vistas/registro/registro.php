@@ -7,13 +7,14 @@
          <link rel="stylesheet" href="../../css/datosProyecto.css">
     </head>
     <body>
-    	<?php 
+    	<?php
+        session_start(); 
     		include '../../header.php';
     		include '../../conection.php';
 
         $tipo = $_GET['tipo'];
 
-        $sesionId = "8";
+        $sesionId = $_SESSION["codigo"];
         $pApellido = "";
         $sApellido = "";
         $nombre ="";

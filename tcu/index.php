@@ -85,7 +85,7 @@
                       <li><label for="usuario">Usuario:</label></li>
                       <li><input type="text" name="usuario" id="usuario" placeholder="Digite su usuario" autocomplete="on" required></li>
                       <li><label for="password">Contraseña:</label></li>
-                      <li><input type="text" name="password" id="password" placeholder="Digite su contraseña" autocomplete="on" required></li>
+                      <li><input type="password" name="password" id="password" placeholder="Digite su contraseña" autocomplete="on" required></li>
                       <li><input type="radio" name="tipoUsuario" class="seleccionar" id="estudiante" value="1"><label for="estudiante">Estudiante</label></li>
                       <li><input type="radio" name="tipoUsuario" class="seleccionar" id="funcionario" value="2"><label for="estudiante">Funcionario</label></li>
                       <li><button onclick="registroUsuario()">Registro</button>

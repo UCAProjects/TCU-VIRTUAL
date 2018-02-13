@@ -27,10 +27,8 @@
 
 	
 	if(isset($_POST["btnRegistro"])){ //Si se presiona el boton de confirmar
-		if($tipo == 0){
-			$query = "insert into tigrupou_tcu.funcionarios(primer_apellido,segundo_apellido,nombre_completo,cedula,correo_electronico,telefono_trabajo)  
-		}
-values('$apellido1','$apellido2','$nombre','$cedula','$correo','$telefono')";
+		if($tipo == 0){ // Insertar un nuevo registro
+			$query = "insert into tigrupou_tcu.funcionarios(primer_apellido,segundo_apellido,nombre_completo,cedula,correo_electronico,telefono_trabajo)values('$apellido1','$apellido2','$nombre','$cedula','$correo','$telefono')";
 
 			$stmt = $db->prepare($query);//Inserta a DB 
 	     	$stmt -> execute();
@@ -40,12 +38,18 @@ values('$apellido1','$apellido2','$nombre','$cedula','$correo','$telefono')";
 			// insertar usuario y contraseña
 	     	$queryAutentificacion = "insert into tigrupou_tcu.autentificacion_funcionarios(nombre_usuario,password,usuario)  
 values('$usuario','$contrasena',$id)";
-
+		
 			$stmtAu = $db->prepare($queryAutentificacion);//Inserta a DB 
 	     	$stmtAu -> execute();
 
+	     	session_start();
+      		$_SESSION["codigo"] = $id;
+      		$_SESSION["usuario"] = $nombre_usuario;
+      		$_SESSION["grupo"] = "";
+
+	     	redirect("../../vistas/principalFuncionarios/principalFuncionarios.php");
 		}
-		else{
+		else{ //
 			$query = "update tigrupou_tcu.funcionarios set primer_apellido = '$apellido1',segundo_apellido = '$apellido2' ,nombre_completo = '$nombre' ,cedula = '$cedula',correo_electronico = '$correo',telefono_trabajo = '$telefono' where codigo like $codigo ";
 
 			$stmt = $db->prepare($query);//Actualiza la DB
@@ -54,7 +58,7 @@ values('$usuario','$contrasena',$id)";
 		    $query = "update tigrupou_tcu.autentificacion_funcionarios set nombre_usuario = '$cedula' where usuario like $codigo ";
 		    $stmt = $db->prepare($query);//Actualiza la DB
 		    $stmt -> execute();
-		    redirect("../../vistas/principalEstudiantes/principalEstudiantes.php");
+		    redirect("../../vistas/principalFuncionarios/principalFuncionarios.php");
 		}
 			
 	}

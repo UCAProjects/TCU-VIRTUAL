@@ -35,6 +35,7 @@
 			$stmt = $db->prepare($query);//Inserta a DB 
 	     	$stmt -> execute();
 	     	$id = $db->lastInsertId();  //Se obtiene el id del elemento insertado anteriormente
+	     	
 
 	     	// insertar usuario y contraseña
 	     	$queryAutentificacion = "insert into tigrupou_tcu.autentificacion_estudiantes(nombre_usuario,password,usuario)  
@@ -51,7 +52,7 @@ values('$usuario','$contrasena',$id)";
 	     	redirect("../../vistas/datosProyecto/crearGrupo.php?tipo=0");
 
 			
-			} catch (Exception $e) {
+			}catch (Exception $e) {
 				?>
 						<script type="text/javascript">
 							alert("ERROR AL PROCESAR LA INFORMACIÓN ");

@@ -2,10 +2,10 @@
 // Se recibe una variable tipo, la cual espercifica como se comportará la pantalla
 // TIPO = 1 . Cambio de contraseña para estudiantes.
 // TIPO = 2. Cambio de contraseña para funcionarios.
+  session_start();
   $tipo = $_GET['tipo'];
-  $sesionId = '2';
+  $sesionId = $_SESSION["codigo"];
   $query = "";
-  
 ?>
 
 

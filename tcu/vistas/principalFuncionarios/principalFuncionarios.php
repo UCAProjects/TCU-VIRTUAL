@@ -9,12 +9,10 @@
 <body>
  <?php 
     session_start();
-    echo $_SESSION["codigo"];
     include '../../header.php';
     include '../../subHeaderFuncionarios.php';
     include '../../conection.php'; //Conección a la DB
     
-
  ?>
         <!--[if lte IE 9]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>

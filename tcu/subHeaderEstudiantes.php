@@ -17,7 +17,7 @@
         </ul>
       </li>
 
-      <li class="navbar-right" id="liSalir"><a class="color colorNaranja"  href="#"><i  class="fa fa-sign-out" aria-hidden="true" title="SALIR"></i></a></li>
+      <li class="navbar-right" id="liSalir"><a class="color colorNaranja"  href="../../index.php"><i  class="fa fa-sign-out" aria-hidden="true" title="SALIR"></i></a></li>
 
       <li class="dropdown navbar-right">
         <a  href="#" class="dropdown-toggle color colorNaranja" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ><i title="USUARIO" class="fa fa-user white" aria-hidden="true" ></i> <span  class="caret white colorNaranja"></span></a>

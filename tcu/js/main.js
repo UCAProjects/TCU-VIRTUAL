@@ -51,7 +51,6 @@
           type: "POST",
           url: "accesoDatos/login/login.php",
           success:function(data){
-            alert(data);
             if(data != "error"){
               if(data != "false"){
                 if(data == "1"){ //Estudiante Logueado
