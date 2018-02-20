@@ -17,6 +17,9 @@
         </ul>
       </li>
 
+      <li class="navbar" id="liSalir"><a class="color"  href="# "><i class="fas fa-file-alt"></i> Ante Proyecto</a></li>
+
+
       <li class="navbar-right" id="liSalir"><a class="color colorNaranja"  href="../../index.php"><i  class="fa fa-sign-out" aria-hidden="true" title="SALIR"></i></a></li>
 
       <li class="dropdown navbar-right">

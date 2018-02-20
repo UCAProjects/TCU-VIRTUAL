@@ -14,7 +14,7 @@
 
         $tipo = $_GET['tipo'];
 
-        $sesionId = $_SESSION["codigo"];
+        
         $pApellido = "";
         $sApellido = "";
         $nombre ="";
@@ -32,6 +32,7 @@
         $contrasena2 ="";
 
         if($tipo ==1){
+          $sesionId = $_SESSION["codigo"];
           include '../../subHeaderEstudiantes.php';
           $query = "select * from tigrupou_tcu.estudiantes where codigo like $sesionId;";
           $stmt = $db->prepare($query);

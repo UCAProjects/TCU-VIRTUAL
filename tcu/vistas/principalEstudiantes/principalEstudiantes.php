@@ -30,7 +30,7 @@
                     
                       <form class="formulario">
                         <li>
-                           <span class="h3" style="color:#fe4918">Estatus:</span> <span class="h2">Revisado</span>
+                           <span class="h3 orange">Estatus:</span> <span class="h2">Revisado</span>
                         </li>
                         <hr>
                         <h3>Historial</h3>

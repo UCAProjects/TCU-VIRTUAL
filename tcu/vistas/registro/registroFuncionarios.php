@@ -14,7 +14,7 @@
 
         $tipo = $_GET['tipo'];
 
-        $sesionId = $_SESSION["codigo"];
+        
         $pApellido = "";
         $sApellido = "";
         $nombre ="";
@@ -24,6 +24,7 @@
         $telTrabajo = "";
 
         if($tipo ==2){ //Editar Funcionarios
+          $sesionId = $_SESSION["codigo"];
           include '../../subHeaderFuncionarios.php';
           $query = "select * from tigrupou_tcu.funcionarios where codigo like $sesionId;";
           $stmt = $db->prepare($query);

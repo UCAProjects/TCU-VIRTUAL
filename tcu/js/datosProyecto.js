@@ -3,7 +3,6 @@ var arrayEstudiantesSelecciondos=[];
 
 
 function abandonarGrupo(cod){
-
   $.Zebra_Dialog('Esta seguro que desea abandonar este grupo?', {
     'type':     'question',
     'position': ['right - 450', 'top + 150'],
@@ -176,21 +175,11 @@ function agregarGrupo(tipo){
                     }
                   },
                   error: function () {
-                    new $.Zebra_Dialog("Error al cargar la información",{
-                      'type': 'error',
-                      'auto_close': 2000,
-                      'buttons':  false,
-                      'modal': false,
-                      'position': ['right - 20', 'top + 10'],});
+                    mensaje('error','Error al cargar la información',3000);
                   }
                 });
         }else{
-            new $.Zebra_Dialog("No se han seleccionado estudiantes",{
-                      'type': 'warning',
-                      'auto_close': 2000,
-                      'buttons':  false,
-                      'modal': false,
-                      'position': ['right - 20', 'top + 10'],})
+          mensaje('warning','No se han seleccionado estudiantes',3000);
         }
 }
 
