@@ -131,9 +131,5 @@ session_start();
           include '../../footer.php'
         ?>
          <script src="../../js/datosProyecto.js"></script>
-        <!-- Se confirma la extracción del ácido  -->
-        <script type="text/javascript">
-        
-      </script>
     </body>
 </html>
