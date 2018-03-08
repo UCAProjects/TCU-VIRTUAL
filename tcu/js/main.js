@@ -72,7 +72,80 @@
           error: function () {
             mensaje("error","Error al procesar la transacción");
           }
-        });
-                    
+        });         
       }
     }
+
+function cargarModal(pParametros,pDivMostrar,pNombreModal,pUrl){
+    var param = pParametros
+    var options = { "backdrop": "static", keyboard: true };
+    $.ajax({
+      data : param,
+      type: "POST",
+      url: pUrl,
+      success: function (data) {
+        $('#'+pDivMostrar).html(data);
+        $('#'+pNombreModal).modal(options);
+        $('#'+pNombreModal).modal('show');
+      },
+      error: function () {
+        mensaje('error','Error al cargar la información');
+      }
+    });
+}
+
+    function cargarFormularios(pUrl,id){
+          var options = { "backdrop": "static", keyboard: true };
+          $.ajax({
+                  type: "GET",
+                  url: pUrl,
+                  contentType: "application/json; charset=utf-8",
+                  datatype: "json",
+                  success: function (data) {
+                    $('#'+id).html(data);
+                  },
+                  error: function () {
+                    mensaje('error','Error al cargar la información');
+                  }
+          });
+}
+
+
+function aumentarProgress(value){
+  var valueMeter = $("#meter").val() + value;
+  $("#meter").val(valueMeter);
+  $("#"+valueMeter).addClass('active');
+}
+
+function disminuirProgress(value){
+  var valueMeter = $("#meter").val() - value;
+  $("#meter").val(valueMeter);
+  $("#"+valueMeter).addClass('active');
+  for (id = valueMeter+value; id <= 100; id+=value) {
+    $("#"+id).removeClass('active');
+  };
+}
+
+function guardar(numeroPagina,grupo,tipo){
+  var url = "";
+  if(tipo == 1){
+    url = "../../accesoDatos/datosProyecto/insertarEditarAnteProyecto.php";
+  }else if(tipo ==2){
+    url = "../../accesoDatos/resumenEjecutivo/insertarEditarResumenEjecutivo.php";
+  }
+  var texto = $("#"+numeroPagina).val();
+  var cod = $("#hiddenCodigo").val();
+  
+  var parametros = {"codigo":cod,"numeroPagina": numeroPagina, "texto":texto,"grupo":grupo}
+  $.ajax({
+    data: parametros,
+    type: "POST",
+    url: url,
+    success:function (data){
+      mensaje('information','Guardando..',1000)
+    },
+    error: function () {
+        mensaje('error','Error al cargar la información');
+    }
+  });
+}

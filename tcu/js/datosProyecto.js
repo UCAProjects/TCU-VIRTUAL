@@ -35,23 +35,7 @@ function abandonarGrupo(cod){
 });
 }
 
-function cargarModal(pParametros,pDivMostrar,pNombreModal,pUrl){
-    var param = pParametros
-    var options = { "backdrop": "static", keyboard: true };
-    $.ajax({
-      data : param,
-      type: "POST",
-      url: pUrl,
-      success: function (data) {
-        $(pDivMostrar).html(data);
-        $(pNombreModal).modal(options);
-        $(pNombreModal).modal('show');
-      },
-      error: function () {
-        mensaje('error','Error al cargar la información');
-      }
-    });
-}
+
 
 function consultaCed(){
   var ced = $('#cedula').val();
@@ -183,30 +167,8 @@ function agregarGrupo(tipo){
         }
 }
 
-function cargarAnteProyecto(pPagina){
-  var url = "anteProyectoBeneficiario.php";
-  if(pPagina == 1){
-    $("#beneficiarioMenu").addClass("active");    
-    url = "anteProyectoBeneficiario.php";
-  }
-  var nombre = $('#nombre').val();
-   var options = { "backdrop": "static", keyboard: true };
-  if(nombre != ''){
-          $.ajax({
-                  type: "GET",
-                  url: url,
-                  contentType: "application/json; charset=utf-8",
-                  datatype: "json",
-                  success: function (data) {
-                    $('#contenedorAnteProyecto').html(data);
 
-                  },
-                  error: function () {
-                    mensaje('error','Error al cargar la información');
-                  }
-                });
-  }
-}
+
 
 
 
