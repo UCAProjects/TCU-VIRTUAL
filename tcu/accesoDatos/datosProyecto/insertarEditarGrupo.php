@@ -37,6 +37,22 @@
 							}
 						}
 					}
+
+					//Se determina a partir del numero de estudiantes de cada carrera a que carrea va a pertenecer el TCU para revisiones.
+
+					
+ 						$query = "SELECT carrera, COUNT(carrera ) totpages FROM tigrupou_tcu.estudiantes where grupo = $id GROUP BY carrera ORDER BY totpages DESC LIMIT 1";
+						$stmt = $db->prepare($query);//Inserta a DB 
+			     		$stmt -> execute();
+			     		$result = $stmt -> fetchAll();
+
+			     		foreach ($result as $row ) {
+							$carrera = $row["carrera"];
+							$queryUpdate = "update tigrupou_tcu.grupos set  carrera = $carrera where codigo like $id";
+						     $stmt = $db->prepare($queryUpdate);//Inserta a DB 
+						     $stmt -> execute();
+						}
+
 					if($valor and $cantidad >0){
 							echo "Los estudiantes con cedulas:" . implode(",", $cedulas) . " no pudieron ser agregados ya que pertenecen a otro grupo de TCU.";
 					}else if($valor and $cantidad == 0){

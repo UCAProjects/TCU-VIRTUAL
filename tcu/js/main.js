@@ -128,9 +128,9 @@ function disminuirProgress(value){
 
 function guardar(numeroPagina,grupo,tipo){
   var url = "";
-  if(tipo == 1){
+  if(tipo == 1){//Insertar AnteProyecto
     url = "../../accesoDatos/datosProyecto/insertarEditarAnteProyecto.php";
-  }else if(tipo ==2){
+  }else if(tipo ==2){ // Insertar Resumen Ejécutivo
     url = "../../accesoDatos/resumenEjecutivo/insertarEditarResumenEjecutivo.php";
   }
   var texto = $("#"+numeroPagina).val();

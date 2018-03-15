@@ -55,7 +55,7 @@
 	
 	}elseif($tipo == 2){//Logueo de Funcionario
 		try {
-			$query = "SELECT E.codigo, A.nombre_usuario, A.password FROM tigrupou_tcu.funcionarios E JOIN tigrupou_tcu.autentificacion_funcionarios A ON E.codigo LIKE A.usuario WHERE A.nombre_usuario LIKE :usuario AND A.password like :contrasena ;";
+			$query = "SELECT E.codigo, E.carrera, E.rol, A.nombre_usuario, A.password FROM tigrupou_tcu.funcionarios E JOIN tigrupou_tcu.autentificacion_funcionarios A ON E.codigo LIKE A.usuario WHERE A.nombre_usuario LIKE :usuario AND A.password like :contrasena ;";
 
 			$stmt = $db->prepare($query);
 			$stmt->execute(array(':usuario' => $usuario,':contrasena' => $contrasena));
@@ -64,17 +64,22 @@
 			$codigoDB = 0;
 			$usuarioDB = "";
 			$contrasenaDB = "";
-
+			$carreraDB = "";
+			$rolDB = "";
 			if(count($result)>0){
 				foreach ($result as $row ) {
 					$codigoDB = $row["codigo"];
 					$usuarioDB = $row["nombre_usuario"];
 					$contrasenaDB = $row["password"];
+					$carreraDB = $row["carrera"];
+					$rolDB = $row["rol"];
 				}
 				if($usuario == $usuarioDB and $contrasena ==$contrasenaDB){
 					session_start();
-      				$_SESSION["codigo"] = $codigoDB;
-      				$_SESSION["usuario"] = $usuarioDB;
+      				$_SESSION["codigoFuncionario"] = $codigoDB;
+      				$_SESSION["usuarioFuncionario"] = $usuarioDB;
+      				$_SESSION["carreraFuncionario"] = $carreraDB;
+      				$_SESSION["rolFuncionario"] = $rolDB;
       				echo "2";
       				
 				}else{

@@ -18,10 +18,15 @@
 				try {
 					$query = "insert into tigrupou_tcu.datos(tema,organizacion,supervisor,telefono,celular,correo,direccion,grupo) values('$temaProyecto','$lugar','$supervisor','$telTrabajo','$celular','$correo','$direccion',$grupo)";
 
+					$queryUp = "UPDATE tigrupou_tcu.grupos SET descripcion  = '$temaProyecto' WHERE codigo LIKE $grupo";
+
 					$stmt = $db->prepare($query);//Inserta a DB 
 	     			$stmt -> execute();
+
+	     			$stmt = $db->prepare($queryUp);//Inserta a DB 
+	     			$stmt -> execute();
 	     	
-	     			redirect("../../vistas/principalEstudiantes/principalEstudiantes.php");
+	     			redirect("../../vistas/datosProyecto/anteProyecto.php");
 	     			//redireccionar a la página principal
 			
 				}catch (Exception $e) {

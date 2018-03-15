@@ -12,6 +12,7 @@
     include '../../header.php';
     include '../../subHeaderFuncionarios.php';
     include '../../conection.php'; //Conección a la DB
+  
     
  ?>
         <!--[if lte IE 9]>

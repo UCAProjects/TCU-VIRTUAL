@@ -1,3 +1,21 @@
+
+<?php 
+  //session_start();
+    include '../../conection.php'; //Conección a la DB
+
+      $carrera = $_SESSION["carreraFuncionario"];
+      $query = "select count(*) total from tigrupou_tcu.grupos G JOIN tigrupou_tcu.ante_proyecto A ON G.codigo LIKE A.grupo where G.carrera  like $carrera and A.estado like 1 ";
+
+      $stmt = $db->prepare($query);
+      $stmt -> execute();
+      $result = $stmt -> fetchAll();
+
+      $numeroAnteProyecto = 0;
+      foreach($result as $row){
+          $numeroAnteProyecto = $row["total"];
+      }
+?>
+
 <link rel="stylesheet" href="../../css/subHeader.css">
 
 <header class="sub-header">
@@ -14,8 +32,7 @@
       <li class="dropdown">
           <a class="color" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="white">Calificar TCU </span><span style="color: #fe4918" class="caret white colorNaranja"></span></a>
           <ul class="dropdown-menu">
-            <li><a class="over" href="../calificarTCU/calificarDatosProyecto.php">Datos del Proyecto <span class="circle green">2</span></a></li>
-            <li><a href="#">Ante Proyecto <span class="circle green">5</span></a></li>
+            <li><a class="over" href="../calificarTCU/calificarDatosProyecto.php">Ante Proyecto <span class="circle green"><?php echo $numeroAnteProyecto; ?></span></a></li>
           </ul>
         </li>
       <li id="liSalirs"><a class="color"  href="../funcionariosGruposTCU/administrarGrupos.php"> Grupos de TCU</a></li>

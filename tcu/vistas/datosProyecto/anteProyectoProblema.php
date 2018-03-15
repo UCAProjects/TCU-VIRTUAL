@@ -35,5 +35,5 @@
 
 <br>
 
-    <button class="btn" onclick="cargarFormularios('anteProyectoBeneficiario.php','contenedorAnteProyecto');aumentarProgress(20); guardar('identificacion_problema',<?php echo $grupo ?>);guardar('descripcion_problema',<?php echo $grupo ?>,1)" style="margin-left:74% !important">Continuar <span class="glyphicon glyphicon-arrow-right"></span></button>
+    <button class="btn" onclick="cargarFormularios('anteProyectoBeneficiario.php','contenedorAnteProyecto');aumentarProgress(20); guardar('identificacion_problema',<?php echo $grupo ?>,1);guardar('descripcion_problema',<?php echo $grupo ?>,1)" style="margin-left:74% !important">Continuar <span class="glyphicon glyphicon-arrow-right"></span></button>
                       
