@@ -104,7 +104,7 @@
 
                         <div class="row">
                           <div class="col-md-6">
-                            <li><label for="lugar">Organización o lugar donde realizará el T.C.U.</label></li>
+                            <li><label for="lugar"ón o lugar >Organizacidonde realizará el T.C.U.</label></li>
                             <li><textarea id="lugar" name="lugar" class="tamanoCompleto" placeholder="Digite la organización o lugar donde realizará el T.C.U." required><?php echo $organizacion ?></textarea></li>
                           </div>
                           <div class="col-md-6">
@@ -133,7 +133,7 @@
                           <div class="col-md-12">
                             <li><label for="direccion">Dirección exacta del lugar dónde realizará el T.C.U.</label></li>
                             <li><textarea id="direccion" name="direccion"  class="tamanoCompleto" placeholder="Digite la dirección exacta del lugar dónde realizará el T.C.U." required><?php echo $direccion ?></textarea></li>
-                          </div>
+                          </div>                                     
                         </div>
                         <li><button id="btnConfirmar" name="btnConfirmar" type="submit">Confirmar</button><br><br><br></li>
                       </ul>

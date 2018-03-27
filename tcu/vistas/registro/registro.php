@@ -193,11 +193,11 @@
                                 <li><input type="text" name="usuario" id="usuario" placeholder="Digite su nombre de usuario" autocomplete="on" required readonly></li>
                             </div>
                             <div class="col-md-4">
-                              <li><label for="contrasena">Contraseña</label></li>
+                              <li><label for="contrasena">Crear Contraseña</label></li>
                                 <li><input type="password" name="contrasena" id="contrasena" placeholder="Digite su contraseña" autocomplete="on" required></li>
                             </div>
                             <div class="col-md-4">
-                              <li><label for="contrasena2">Confirmar Contraseña</label></li>
+                              <li><label for="contrasena2">Confirmar Nueva Contraseña</label></li>
                                 <li><input type="password" name="contrasena2" id="contrasena2" placeholder="Vuelva a digitar su contraseña" autocomplete="on" required></li>
                             </div>
                           </div> <?php

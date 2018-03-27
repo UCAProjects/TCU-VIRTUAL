@@ -2,7 +2,6 @@
   session_start();
   $sesionId = $_SESSION["codigo"];
   $grupo = $_SESSION["grupo"]; 
- 
 ?>
 
 <?php 
@@ -22,12 +21,9 @@
   
  ?>
 
-
-
 <label for="identificacionProblema">ESTRATEGIAS Y PERTENENCIAS DE LAS POSIBLES SOLUCIONES</label>
 	<input type="hidden" name="hiddenCodigo" id="hiddenCodigo" value="<?php echo $codigo?>">
     <textarea  id="estrategias_soluciones" style=" overflow:hidden; font-size:15px; font-family:Arial; text-align : justify;line-height: 1.6; resize:none;" rows="20" cols="87"><?php echo $estrategias_soluciones  ?></textarea>
-
 <br>
       
   <div class="row">

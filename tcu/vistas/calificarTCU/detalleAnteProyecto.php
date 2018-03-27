@@ -1,7 +1,3 @@
-
-
-
-
 <!doctype html>
 <html class="no-js" lang="">
 <head>
@@ -11,12 +7,13 @@
  <link rel="stylesheet" href="../../css/datosProyecto.css">
 
  <style type="text/css">
-	#divE {
+	#divDocument {
     overflow-y: scroll;
-    height: 800px  !important;
-    width: 800px !important;
-    margin-right: 9px;
-    resize: none; /* Remove this if you want the user to resize the textarea */
+    height: 500px  !important;
+    width: 750px !important;
+   
+  
+
 }
 </style>
 
@@ -28,121 +25,184 @@
     include '../../subHeaderFuncionarios.php';
     include '../../conection.php'; //Conección a la DB
 
+    $id = $_GET["id"];
     $carrera = $_SESSION["carreraFuncionario"];
-    $query = "SELECT G.codigo, G.descripcion from tigrupou_tcu.grupos G JOIN tigrupou_tcu.ante_proyecto A ON G.codigo LIKE A.grupo where G.carrera  like $carrera and A.estado like 1";
+    $query = "SELECT D.tema,D.organizacion, D.supervisor, A.* FROM tigrupou_tcu.datos D JOIN tigrupou_tcu.ante_proyecto A ON D.grupo like A.grupo WHERE D.grupo like $id";
+
+    $queryEstudiantes = "SELECT CONCAT(primer_apellido,' ',segundo_apellido,' ',nombre_completo) nombre FROM tigrupou_tcu.estudiantes WHERE grupo LIKE 56 order by primer_apellido";
+    $stmt = $db->prepare($queryEstudiantes);
+    $stmt -> execute();
+    $resultEstudiantes = $stmt -> fetchAll();
 
     $stmt = $db->prepare($query);
     $stmt -> execute();
     $result = $stmt -> fetchAll();
 
-   
+   foreach ($result as $row) {
+  		$tema=$row["tema"];
+  		$organizacion=$row["organizacion"];   	
+  		$supervisor=$row["supervisor"];
+  		$identificacion_problema=$row["identificacion_problema"]; 
+  		$descripcion_problema=$row["descripcion_problema"];   	
+  		$descripcion_beneficiario=$row["descripcion_beneficiario"];
+  		$justificacion_proyecto=$row["justificacion_proyecto"];
+  		$objetivo_general=$row["objetivo_general"];  
+  		$objetivos_especificos=$row["objetivos_especificos"];  
+  		$estrategias_soluciones=$row["estrategias_soluciones"];   	   		
+   }
     
  ?>
 <main class="site-main">
             <section class="seccion-informacion">
-              <div class="contenedor clearfix">
+              <div class=" clearfix">
                 <div class="">
-                  <h2>Ante Proyecto</h2>
+                  
                   <div  class="ingreso ingresoTamano">
                       <form class="">
+                
+                        <div class="row well">
+
+                          <div class="col-md-7" class="well">
+                            <h2>Ante Proyecto</h2>
+                            <div id="divDocument"  style="background-color: white;">
+                            <div style="padding: 40px;">
+                              <center>
+                              <img src="../../img/uca.png" alt="Smiley face">  <br><br><br><br>
+                              <h3>Tema</h3>
+                              <?php echo $tema ?>
+                              <br>
+
+                              <h3>Intergrantes</h3>
+                              <?php 
+                                foreach ($resultEstudiantes as $row) {
+                                  echo $row["nombre"]
+                                  ?> <br>
+                                  <?php
+                                } 
+                              ?>
+                            <br>
+
+                            <h3>Organización</h3>
+                            <?php echo $organizacion ?> <br>
+
+                            <h3>Supervisor</h3>
+                            <?php echo $supervisor ?> <br><br><br><br><br><br><br><br>
+
+                            -------- Fin de Página --------
+
+                            <br><br>
+                            <br><br><br><br>
+                          </center>
+
+                          <h3>Identificación del problema</h3>
+
+                            <?php 
+                              for($i=0;$i<strlen($identificacion_problema);$i++){ 
+                                if( $identificacion_problema[$i] == "\n"){?>
+                                  <br>
+                                <?php
+                                }else{
+                                  echo $identificacion_problema[$i]; 
+                               }
+                              } ?>
+
+                               <h3>Descripción  del problema</h3>
+                                <?php 
+                              for($i=0;$i<strlen($descripcion_problema);$i++){ 
+                                if( $descripcion_problema[$i] == "\n"){?>
+                                  <br>
+                                <?php
+                                }else{
+                                  echo $descripcion_problema[$i]; 
+                               }
+                              } ?>
+
+                              <h3>Descripción del beneficiario</h3>
+                                <?php 
+                              for($i=0;$i<strlen($descripcion_beneficiario);$i++){ 
+                                if( $descripcion_beneficiario[$i] == "\n"){?>
+                                  <br>
+                                <?php
+                                }else{
+                                  echo $descripcion_beneficiario[$i]; 
+                               }
+                              } ?>
+                
+                              <h3>Justificación del Proyecto</h3>
+                                <?php 
+                              for($i=0;$i<strlen($justificacion_proyecto);$i++){ 
+                                if( $justificacion_proyecto[$i] == "\n"){?>
+                                  <br>
+                                <?php
+                                }else{
+                                  echo $justificacion_proyecto[$i]; 
+                               }
+                              } 
+                            ?>
+                             
+                
+                              <h3>Objetivo General</h3>
+                                <?php 
+                              for($i=0;$i<strlen($objetivo_general);$i++){ 
+                                if( $objetivo_general[$i] == "\n"){?>
+                                  <br>
+                                <?php
+                                }else{
+                                  echo $objetivo_general[$i]; 
+                               }
+                              } ?>
+                
+                              <h3>Objetivos Especificos</h3>
+                                <?php 
+                              for($i=0;$i<strlen($objetivos_especificos);$i++){ 
+                                if( $objetivos_especificos[$i] == "\n"){?>
+                                  <br>
+                                <?php
+                                }else{
+                                  echo $objetivos_especificos[$i]; 
+                               }
+                              } ?>
+                            
+        
+                              <h3>Estrategias y Soluciones</h3>
+                                <?php 
+                              for($i=0;$i<strlen($estrategias_soluciones);$i++){ 
+                                if( $estrategias_soluciones[$i] == "\n"){?>
+                                  <br>
+                                <?php
+                                }else{
+                                  echo $estrategias_soluciones[$i]; 
+                               }
+                              } ?>
+
+                              <br><br><br><br><br>
+                              <center>-------- Fin Documento -------</center>
+                               </div>
+                        </div> <!--   END DIV DOCUMENT -->
+                          </div>
+                          
+
+                        <div class="col-md-5" style=" height: 500px;  resize: both;">
+                          <h2>Observaciones</h2>
+                          <textarea cols="56" rows="25" id="txtA_observaciones" placeholder="Observaciones"></textarea>
+                          
+                        </div><!-- END DIV COL -->
+
+                      </div> <!-- END DIV ROW -->
+                                  <div class="row ">
+                            <div class="col-md-3">
+                              <button class="btn btn-block btn-success">Aprobar</button>
+                            </div>
+                            <div class="col-md-4 col-md-offset-1">
+                              <button class="btn btn-block btn-primary">Aprobar con Observaciones</button>
+                            </div>
+                            <div class="col-md-3 col-md-offset-1">
+                              <button class="btn btn-block btn-danger">Reprobado </button>
+                            </div><br>
+                      </div>
+                      
                         
-                        <div id="divE" style="background-color: white; height: ">
-                        	<center>
-                        		<img src="../../img/uca.png" alt="Smiley face">  <br><br><br><br>
-                       			<h3>Tema</h3>
-                       			Deseño de residuos tóxicos 
-
-                       			<br>
-
-                       			<h3>Intergrantes</h3>
-                       			Albin Mora Valverde, 2014084952 <br>
-                       			Albin Mora Valverde, 2014084952 <br>
-                       			Albin Mora Valverde, 2014084952 <br>
-
-                       			<br>
-
-                       			<h3>Organización</h3>
-                       			Instituto Ténologíco de Costa Rica <br>
-
-                       			<h3>Supervisor</h3>
-                       			Juan Carlos Oreamuno Gutierrez <br><br><br><br><br><br>
-
-                       			------------------------------------------------------------------------------------------------------------------ 
-
-                       			
-                       		</center>
-
-                       		<h3>Problema a resolver</h3>
-                       			Una revolución (del latín revolutio, "una vuelta") es un cambio social fundamental en la estructura de poder o la organización que toma lugar en un periodo relativamente corto o largo dependiendo la estructura de la misma. Aristóteles describía dos tipos de revoluciones políticas:
-
-Cambio completo desde una constitución a otra.
-Modificación desde una constitución existente.1​
-Los expertos aún debaten qué puede constituir una revolución y que no. Estudios sobre revoluciones suelen analizar los eventos en la Historia de Occidente desde una perspectiva psicológica, pero también más análisis incluyen eventos globales e incorporar puntos de vista de las ciencias sociales, incluyendo la sociología y las ciencias políticas.
-
-Sus orígenes pueden tener motivos de diversa índole, un cambio tecnológico, un cambio social o un nuevo paradigma basta para que una sociedad cambie radicalmente su estructura y gobierno. Las revoluciones pueden ser pacíficas aunque en general implican violencia, al enfrentarse grupos conservadores con el anterior régimen y aquellos que aspiran al cambio, o incluso entre los que aspiran a un nuevo sistema, pudiendo haber así varias facciones enfrentadas. En la actualidad las revoluciones son consideradas los puntos de inflexión de la historia, de los que parten la mayoría de sistemas políticos y sociales actuales. Revoluciones decisivas en la historia mundial serían Revolución de las Trece Colonias, la Revolución francesa, las revoluciones independentistas de Latinoamérica o la Revolución de Octubre. <br>
-
-<h3>Problema a resolver</h3>
-                       			Una revolución (del latín revolutio, "una vuelta") es un cambio social fundamental en la estructura de poder o la organización que toma lugar en un periodo relativamente corto o largo dependiendo la estructura de la misma. Aristóteles describía dos tipos de revoluciones políticas:
-
-Cambio completo desde una constitución a otra.
-Modificación desde una constitución existente.1​
-Los expertos aún debaten qué puede constituir una revolución y que no. Estudios sobre revoluciones suelen analizar los eventos en la Historia de Occidente desde una perspectiva psicológica, pero también más análisis incluyen eventos globales e incorporar puntos de vista de las ciencias sociales, incluyendo la sociología y las ciencias políticas.
-
-Sus orígenes pueden tener motivos de diversa índole, un cambio tecnológico, un cambio social o un nuevo paradigma basta para que una sociedad cambie radicalmente su estructura y gobierno. Las revoluciones pueden ser pacíficas aunque en general implican violencia, al enfrentarse grupos conservadores con el anterior régimen y aquellos que aspiran al cambio, o incluso entre los que aspiran a un nuevo sistema, pudiendo haber así varias facciones enfrentadas. En la actualidad las revoluciones son consideradas los puntos de inflexión de la historia, de los que parten la mayoría de sistemas políticos y sociales actuales. Revoluciones decisivas en la historia mundial serían Revolución de las Trece Colonias, la Revolución francesa, las revoluciones independentistas de Latinoamérica o la Revolución de Octubre. <br>
-
-<h3>Problema a resolver</h3>
-                       			Una revolución (del latín revolutio, "una vuelta") es un cambio social fundamental en la estructura de poder o la organización que toma lugar en un periodo relativamente corto o largo dependiendo la estructura de la misma. Aristóteles describía dos tipos de revoluciones políticas:
-
-Cambio completo desde una constitución a otra.
-Modificación desde una constitución existente.1​
-Los expertos aún debaten qué puede constituir una revolución y que no. Estudios sobre revoluciones suelen analizar los eventos en la Historia de Occidente desde una perspectiva psicológica, pero también más análisis incluyen eventos globales e incorporar puntos de vista de las ciencias sociales, incluyendo la sociología y las ciencias políticas.
-
-Sus orígenes pueden tener motivos de diversa índole, un cambio tecnológico, un cambio social o un nuevo paradigma basta para que una sociedad cambie radicalmente su estructura y gobierno. Las revoluciones pueden ser pacíficas aunque en general implican violencia, al enfrentarse grupos conservadores con el anterior régimen y aquellos que aspiran al cambio, o incluso entre los que aspiran a un nuevo sistema, pudiendo haber así varias facciones enfrentadas. En la actualidad las revoluciones son consideradas los puntos de inflexión de la historia, de los que parten la mayoría de sistemas políticos y sociales actuales. Revoluciones decisivas en la historia mundial serían Revolución de las Trece Colonias, la Revolución francesa, las revoluciones independentistas de Latinoamérica o la Revolución de Octubre. <br>
-<h3>Problema a resolver</h3>
-                       			Una revolución (del latín revolutio, "una vuelta") es un cambio social fundamental en la estructura de poder o la organización que toma lugar en un periodo relativamente corto o largo dependiendo la estructura de la misma. Aristóteles describía dos tipos de revoluciones políticas:
-
-Cambio completo desde una constitución a otra.
-Modificación desde una constitución existente.1​
-Los expertos aún debaten qué puede constituir una revolución y que no. Estudios sobre revoluciones suelen analizar los eventos en la Historia de Occidente desde una perspectiva psicológica, pero también más análisis incluyen eventos globales e incorporar puntos de vista de las ciencias sociales, incluyendo la sociología y las ciencias políticas.
-
-Sus orígenes pueden tener motivos de diversa índole, un cambio tecnológico, un cambio social o un nuevo paradigma basta para que una sociedad cambie radicalmente su estructura y gobierno. Las revoluciones pueden ser pacíficas aunque en general implican violencia, al enfrentarse grupos conservadores con el anterior régimen y aquellos que aspiran al cambio, o incluso entre los que aspiran a un nuevo sistema, pudiendo haber así varias facciones enfrentadas. En la actualidad las revoluciones son consideradas los puntos de inflexión de la historia, de los que parten la mayoría de sistemas políticos y sociales actuales. Revoluciones decisivas en la historia mundial serían Revolución de las Trece Colonias, la Revolución francesa, las revoluciones independentistas de Latinoamérica o la Revolución de Octubre. <br>
-<h3>Problema a resolver</h3>
-                       			Una revolución (del latín revolutio, "una vuelta") es un cambio social fundamental en la estructura de poder o la organización que toma lugar en un periodo relativamente corto o largo dependiendo la estructura de la misma. Aristóteles describía dos tipos de revoluciones políticas:
-
-Cambio completo desde una constitución a otra.
-Modificación desde una constitución existente.1​
-Los expertos aún debaten qué puede constituir una revolución y que no. Estudios sobre revoluciones suelen analizar los eventos en la Historia de Occidente desde una perspectiva psicológica, pero también más análisis incluyen eventos globales e incorporar puntos de vista de las ciencias sociales, incluyendo la sociología y las ciencias políticas.
-
-Sus orígenes pueden tener motivos de diversa índole, un cambio tecnológico, un cambio social o un nuevo paradigma basta para que una sociedad cambie radicalmente su estructura y gobierno. Las revoluciones pueden ser pacíficas aunque en general implican violencia, al enfrentarse grupos conservadores con el anterior régimen y aquellos que aspiran al cambio, o incluso entre los que aspiran a un nuevo sistema, pudiendo haber así varias facciones enfrentadas. En la actualidad las revoluciones son consideradas los puntos de inflexión de la historia, de los que parten la mayoría de sistemas políticos y sociales actuales. Revoluciones decisivas en la historia mundial serían Revolución de las Trece Colonias, la Revolución francesa, las revoluciones independentistas de Latinoamérica o la Revolución de Octubre. <br>
-<h3>Problema a resolver</h3>
-                       			Una revolución (del latín revolutio, "una vuelta") es un cambio social fundamental en la estructura de poder o la organización que toma lugar en un periodo relativamente corto o largo dependiendo la estructura de la misma. Aristóteles describía dos tipos de revoluciones políticas:
-
-Cambio completo desde una constitución a otra.
-Modificación desde una constitución existente.1​
-Los expertos aún debaten qué puede constituir una revolución y que no. Estudios sobre revoluciones suelen analizar los eventos en la Historia de Occidente desde una perspectiva psicológica, pero también más análisis incluyen eventos globales e incorporar puntos de vista de las ciencias sociales, incluyendo la sociología y las ciencias políticas.
-
-Sus orígenes pueden tener motivos de diversa índole, un cambio tecnológico, un cambio social o un nuevo paradigma basta para que una sociedad cambie radicalmente su estructura y gobierno. Las revoluciones pueden ser pacíficas aunque en general implican violencia, al enfrentarse grupos conservadores con el anterior régimen y aquellos que aspiran al cambio, o incluso entre los que aspiran a un nuevo sistema, pudiendo haber así varias facciones enfrentadas. En la actualidad las revoluciones son consideradas los puntos de inflexión de la historia, de los que parten la mayoría de sistemas políticos y sociales actuales. Revoluciones decisivas en la historia mundial serían Revolución de las Trece Colonias, la Revolución francesa, las revoluciones independentistas de Latinoamérica o la Revolución de Octubre. <br>
-<h3>Problema a resolver</h3>
-                       			Una revolución (del latín revolutio, "una vuelta") es un cambio social fundamental en la estructura de poder o la organización que toma lugar en un periodo relativamente corto o largo dependiendo la estructura de la misma. Aristóteles describía dos tipos de revoluciones políticas:
-
-Cambio completo desde una constitución a otra.
-Modificación desde una constitución existente.1​
-Los expertos aún debaten qué puede constituir una revolución y que no. Estudios sobre revoluciones suelen analizar los eventos en la Historia de Occidente desde una perspectiva psicológica, pero también más análisis incluyen eventos globales e incorporar puntos de vista de las ciencias sociales, incluyendo la sociología y las ciencias políticas.
-
-Sus orígenes pueden tener motivos de diversa índole, un cambio tecnológico, un cambio social o un nuevo paradigma basta para que una sociedad cambie radicalmente su estructura y gobierno. Las revoluciones pueden ser pacíficas aunque en general implican violencia, al enfrentarse grupos conservadores con el anterior régimen y aquellos que aspiran al cambio, o incluso entre los que aspiran a un nuevo sistema, pudiendo haber así varias facciones enfrentadas. En la actualidad las revoluciones son consideradas los puntos de inflexión de la historia, de los que parten la mayoría de sistemas políticos y sociales actuales. Revoluciones decisivas en la historia mundial serían Revolución de las Trece Colonias, la Revolución francesa, las revoluciones independentistas de Latinoamérica o la Revolución de Octubre. <br>
-<h3>Problema a resolver</h3>
-                       			Una revolución (del latín revolutio, "una vuelta") es un cambio social fundamental en la estructura de poder o la organización que toma lugar en un periodo relativamente corto o largo dependiendo la estructura de la misma. Aristóteles describía dos tipos de revoluciones políticas:
-
-Cambio completo desde una constitución a otra.
-Modificación desde una constitución existente.1​
-Los expertos aún debaten qué puede constituir una revolución y que no. Estudios sobre revoluciones suelen analizar los eventos en la Historia de Occidente desde una perspectiva psicológica, pero también más análisis incluyen eventos globales e incorporar puntos de vista de las ciencias sociales, incluyendo la sociología y las ciencias políticas.
-
-Sus orígenes pueden tener motivos de diversa índole, un cambio tecnológico, un cambio social o un nuevo paradigma basta para que una sociedad cambie radicalmente su estructura y gobierno. Las revoluciones pueden ser pacíficas aunque en general implican violencia, al enfrentarse grupos conservadores con el anterior régimen y aquellos que aspiran al cambio, o incluso entre los que aspiran a un nuevo sistema, pudiendo haber así varias facciones enfrentadas. En la actualidad las revoluciones son consideradas los puntos de inflexión de la historia, de los que parten la mayoría de sistemas políticos y sociales actuales. Revoluciones decisivas en la historia mundial serían Revolución de las Trece Colonias, la Revolución francesa, las revoluciones independentistas de Latinoamérica o la Revolución de Octubre. <br>
-
-                        </div>
-
-                        
-                        
+                      
                       </form>
                   </div>
                 </div><!--.programa-evento-->
@@ -150,11 +210,9 @@ Sus orígenes pueden tener motivos de diversa índole, un cambio tecnológico, u
 
             </section><!--.section programa-->
           </main>
-
-
-    <script src="../../js/principalEstudiantes.js"></script>
+          <script src="../../js/principalEstudiantes.js"></script>
           <?php 
-          include '../../footer.php';
+            include '../../footer.php';
           ?>
           <script src="../../js/datosProyecto.js"></script>
         </body>

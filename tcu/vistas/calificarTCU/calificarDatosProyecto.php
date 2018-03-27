@@ -42,7 +42,7 @@
                             <div class="well">
                               <h3><span style="color:#fe4918">Grupo <?php echo $row["codigo"] ?>:</span> <?php echo $row["descripcion"] ?></h3>
                                 <div>
-                                  <button class="btn btn-success">Calificar</button>
+                                  <a class="btn btn-success" href="detalleAnteProyecto.php?id=<?php echo $row['codigo'] ?>">Calificar</a>
                                 </div><br>
                               </div>
                           <?php

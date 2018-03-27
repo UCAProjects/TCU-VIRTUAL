@@ -167,6 +167,16 @@ function agregarGrupo(tipo){
         }
 }
 
+function redirectGrupo(tipo){
+  debugger;
+  if( $('#grupal').prop('checked') ) {
+    window.location.href = "crearGrupo.php?tipo=" + tipo;
+  }
+  if( $('#individual').prop('checked') ){
+    window.location.href = "datosProyecto.php?tipo=" + tipo;
+  }
+}
+
 
 
 

@@ -97,7 +97,7 @@
 					if($valor and $cantidad >0){
 							echo "Los estudiantes con cedulas:" . implode(",", $cedulas) . " no pudieron ser agregados ya que pertenecen a otro grupo de TCU.";
 					}else if($valor and $cantidad == 0){
-						echo "No se pudieron agregar, ya que los estudiantes con cédulas:" . implode(",", $cedulas) . " pertenecen a otro grupo de TCU.";
+						echo "No se pudieron agregar, ya que los estudi antes con cédulas:" . implode(",", $cedulas) . " pertenecen a otro grupo de TCU.";
 					}else{
 						echo "Agregados con éxito.";
 					}

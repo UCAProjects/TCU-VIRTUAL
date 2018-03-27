@@ -19,10 +19,8 @@
 	     	
 	     			echo "OK";
 	     			//redireccionar a la página principal
-			
-				
 			}else{
-				$query = "UPDATE tigrupou_tcu.ante_proyecto SET $numeroPagina = '$texto';";
+				$query = "UPDATE tigrupou_tcu.ante_proyecto SET $numeroPagina = '$texto' where grupo like $grupo;";
 				$stmt = $db->prepare($query);//Inserta a DB 
 	     		$stmt -> execute();
 			}
@@ -30,6 +28,4 @@
 			echo "ERROR";
 		}
 			
-		
-	 
 ?>

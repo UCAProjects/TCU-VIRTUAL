@@ -54,7 +54,7 @@
             if(data != "error"){
               if(data != "false"){
                 if(data == "1"){ //Estudiante Logueado
-                  window.location.href = "vistas/datosProyecto/crearGrupo.php?tipo=0";
+                  window.location.href = "vistas/datosProyecto/tipoGrupo.php?tipo=0";
                 }else if(data[0]== '1' && data[2] != '0'){
                   window.location.href = "vistas/principalEstudiantes/principalEstudiantes.php";
                 }else if(data[0]== '1'){
