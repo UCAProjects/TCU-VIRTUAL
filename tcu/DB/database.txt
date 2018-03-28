@@ -1,4 +1,4 @@
--- MySQL Workbench Forward Engineering
+--- MySQL Workbench Forward Engineering
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
@@ -16,6 +16,17 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `tigrupou_tcu` DEFAULT CHARACTER SET utf8 ;
 USE `tigrupou_tcu` ;
+
+-- -----------------------------------------------------
+-- Table `tigrupou_tcu`.`estado`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `tigrupou_tcu`.`estado` (
+  `codigo` INT(11) NOT NULL,
+  `descripcion` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`codigo`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
 
 -- -----------------------------------------------------
 -- Table `tigrupou_tcu`.`carreras`
@@ -53,7 +64,6 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `tigrupou_tcu`.`ante_proyecto`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `tigrupou_tcu`.`ante_proyecto` (
-  `codigo` INT(11) NOT NULL AUTO_INCREMENT,
   `identificacion_problema` TEXT NOT NULL,
   `descripcion_problema` TEXT NOT NULL,
   `descripcion_beneficiario` TEXT NOT NULL,
@@ -63,14 +73,16 @@ CREATE TABLE IF NOT EXISTS `tigrupou_tcu`.`ante_proyecto` (
   `estrategias_soluciones` TEXT NOT NULL,
   `grupo` INT(11) NOT NULL,
   `estado` INT(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`codigo`),
-  UNIQUE INDEX `grupo_UNIQUE` (`grupo` ASC),
+  PRIMARY KEY (`grupo`),
   INDEX `fk_antreProyecto_grupo_idx` (`grupo` ASC),
+  INDEX `fk_ante_proyecto_estado_idx` (`estado` ASC),
+  CONSTRAINT `fk_ante_proyecto_estado`
+    FOREIGN KEY (`estado`)
+    REFERENCES `tigrupou_tcu`.`estado` (`codigo`),
   CONSTRAINT `fk_antreProyecto_grupo`
     FOREIGN KEY (`grupo`)
     REFERENCES `tigrupou_tcu`.`grupos` (`codigo`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 10
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -151,7 +163,7 @@ CREATE TABLE IF NOT EXISTS `tigrupou_tcu`.`estudiantes` (
     FOREIGN KEY (`sede`)
     REFERENCES `tigrupou_tcu`.`sedes` (`codigo`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 21
+AUTO_INCREMENT = 22
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -276,33 +288,20 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `tigrupou_tcu`.`estado`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `tigrupou_tcu`.`estado` (
-  `codigo` INT(11) NOT NULL,
-  `descripcion` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`codigo`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
 -- Table `tigrupou_tcu`.`resumen_ejecutivo`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `tigrupou_tcu`.`resumen_ejecutivo` (
-  `codigo` INT(11) NOT NULL AUTO_INCREMENT,
   `grupo` INT(11) NOT NULL,
   `resumen_actividades` TEXT NOT NULL,
   `evaluacion` TEXT NOT NULL,
   `conclusion` TEXT NOT NULL,
   `recomendaciones` TEXT NOT NULL,
-  PRIMARY KEY (`codigo`),
+  PRIMARY KEY (`grupo`),
   UNIQUE INDEX `grupo_UNIQUE` (`grupo` ASC),
   CONSTRAINT `fk_resumen_ejecutivo_grupos`
     FOREIGN KEY (`grupo`)
     REFERENCES `tigrupou_tcu`.`grupos` (`codigo`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 2
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -314,19 +313,38 @@ CREATE TABLE IF NOT EXISTS `tigrupou_tcu`.`revision_ante_proyecto` (
   `Observaciones` TEXT NULL DEFAULT NULL,
   `estado` INT(11) NOT NULL,
   `ante_proyecto` INT(11) NOT NULL,
+  `fecha_revision` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`version`, `ante_proyecto`),
   INDEX `fk_revision_ante_proyecto_estado_idx` (`estado` ASC),
   INDEX `fk_revision_ante_proyecto_ante_proyecto_idx` (`ante_proyecto` ASC),
   CONSTRAINT `fk_revision_ante_proyecto_ante_proyecto`
     FOREIGN KEY (`ante_proyecto`)
-    REFERENCES `tigrupou_tcu`.`ante_proyecto` (`codigo`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    REFERENCES `tigrupou_tcu`.`ante_proyecto` (`grupo`),
   CONSTRAINT `fk_revision_ante_proyecto_estado`
     FOREIGN KEY (`estado`)
-    REFERENCES `tigrupou_tcu`.`estado` (`codigo`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    REFERENCES `tigrupou_tcu`.`estado` (`codigo`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `tigrupou_tcu`.`revision_resumen_ejecutivo`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `tigrupou_tcu`.`revision_resumen_ejecutivo` (
+  `version` INT(11) NOT NULL,
+  `observaciones` TEXT NOT NULL,
+  `estado` INT(11) NOT NULL,
+  `resumen_ejecutivo` INT(11) NOT NULL,
+  `fecha_revision` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`version`),
+  INDEX `fk_revision_resumen_ejecutivo_resumen_ejecutivo_idx` (`resumen_ejecutivo` ASC),
+  INDEX `fk_resumen_ejecutivo_estado_idx` (`estado` ASC),
+  CONSTRAINT `fk_resumen_ejecutivo_estado`
+    FOREIGN KEY (`estado`)
+    REFERENCES `tigrupou_tcu`.`estado` (`codigo`),
+  CONSTRAINT `fk_revision_resumen_ejecutivo_resumen_ejecutivo`
+    FOREIGN KEY (`resumen_ejecutivo`)
+    REFERENCES `tigrupou_tcu`.`resumen_ejecutivo` (`grupo`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 

@@ -1,12 +1,14 @@
-function ingresarCalificacion(pGrupo,pCodigoAnteProyecto,pEstado){
-  var observaciones = $("#txtA_observaciones").value;
-  var parametros = {"estado":pEstado,"observaciones":observaciones,"grupo":pGrupo,"ante_proyecto":pCodigoAnteProyecto};
+function ingresarCalificacion(pCodigoAnteProyecto,pEstado){
+  debugger;
+  var observaciones = $('#txtA_observaciones').val();
+  var parametros = {"estado":pEstado,"observaciones":observaciones,"ante_proyecto":pCodigoAnteProyecto};
           $.ajax({
                   data: parametros,
                   type: "POST",
-                  url: "../../accesoDatos/calificarTcu/insertarEditarCalificacionTcus.php",
+                  url: "../../accesoDatos/calificarTcu/insertarCalificacionTcu.php",
                   success: function (data) {
-                    alert(data);
+                    mensaje('confirmation',"Se ha registrado la calificación",2000);
+                    setTimeout(function(){ window.location="calificarDatosProyecto.php"; }, 2000);
                   },
                   error: function () {
                     mensaje('error','Error al cargar la información',3000);

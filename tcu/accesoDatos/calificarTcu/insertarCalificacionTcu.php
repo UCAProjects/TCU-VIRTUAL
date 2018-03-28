@@ -4,13 +4,12 @@
 
 	// Se reciben todos los campos asociados a un estudiante
 	$estado = $_POST["estado"]; 
-	$observaciones = $_POST["Observaciones"];
-	$grupo = $_POST["grupo"];
+	$observaciones = $_POST["observaciones"];
 	$ante_proyecto = $_POST["ante_proyecto"];
 
 	try {
 		
-		$queryNumeroRevisiones "SELECT count(*) AS cantidad FROM tigrupou_tcu.revision_ante_proyecto WHERE ante_proyecto LIKE $grupo";
+		$queryNumeroRevisiones = "SELECT count(*) AS cantidad FROM tigrupou_tcu.revision_ante_proyecto WHERE ante_proyecto LIKE $ante_proyecto";
 
 		$stmt = $db->prepare($queryNumeroRevisiones);//consulta a DB 
      	$stmt -> execute();
@@ -19,11 +18,11 @@
     	foreach($resulNumeroRevisiones as $row){
       		$numeroRevisiones = $row["cantidad"]; 		
     	}
-
+    	echo $numeroRevisiones;
     	if($numeroRevisiones == 0){
     		$version = 1;
     	}else{
-    		$queryMaxVersionSelect = "SELECT max(version) AS max FROM tigrupou_tcu.revision_ante_proyecto WHERE ante_proyecto LIKE $grupo";
+    		$queryMaxVersionSelect = "SELECT max(version) AS max FROM tigrupou_tcu.revision_ante_proyecto WHERE ante_proyecto LIKE $ante_proyecto";
 
     		$stmt = $db->prepare($queryMaxVersionSelect);//consulta a DB 
      		$stmt -> execute();
@@ -36,12 +35,16 @@
     	}
 		
 						
-		$query = "INSERT INTO tigrupou_tcu.revision_ante_proyecto(version, Observaciones,estado,ante_proyecto) values(version,'Hola',$estado,$grupo)";
+		$query = "INSERT INTO tigrupou_tcu.revision_ante_proyecto(version, Observaciones,estado,ante_proyecto) values($version,'$observaciones',$estado,$ante_proyecto)";
 				
 
 		$stmt = $db->prepare($query);//Inserta a DB 
      	$stmt -> execute();
      	
+        $update = "UPDATE tigrupou_tcu.ante_proyecto SET estado = $estado WHERE codigo LIKE $ante_proyecto";
+        $stmt = $db->prepare($update);//Inserta a DB 
+        $stmt -> execute();
+        
      	echo "OK";
      			//redireccionar a la página principal
 		

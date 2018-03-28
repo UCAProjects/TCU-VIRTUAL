@@ -49,15 +49,8 @@
           $direccion = $row["direccion"];
         }
     }
-    
  ?>
-        <!--[if lte IE 9]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-          <![endif]-->
 
-          <!-- Add your site or application content here -->
-
-          
           <main class="site-main">
             <section class="seccion-informacion">
               <div class="contenedor clearfix">

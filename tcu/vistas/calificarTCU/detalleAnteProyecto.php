@@ -9,8 +9,8 @@
  <style type="text/css">
 	#divDocument {
     overflow-y: scroll;
-    height: 500px  !important;
-    width: 750px !important;
+    height: 700px  !important;
+    width: 100% !important;
    
   
 
@@ -26,10 +26,10 @@
     include '../../conection.php'; //Conección a la DB
 
     $id = $_GET["id"];
-    $carrera = $_SESSION["carreraFuncionario"];
+    $carrera = $_SESSION["carreraFuncionario"]; // Carrera a la que partenece el funcionario
     $query = "SELECT D.tema,D.organizacion, D.supervisor, A.* FROM tigrupou_tcu.datos D JOIN tigrupou_tcu.ante_proyecto A ON D.grupo like A.grupo WHERE D.grupo like $id";
 
-    $queryEstudiantes = "SELECT CONCAT(primer_apellido,' ',segundo_apellido,' ',nombre_completo) nombre FROM tigrupou_tcu.estudiantes WHERE grupo LIKE 56 order by primer_apellido";
+    $queryEstudiantes = "SELECT CONCAT(primer_apellido,' ',segundo_apellido,' ',nombre_completo) nombre FROM tigrupou_tcu.estudiantes WHERE grupo LIKE $id order by primer_apellido";
     $stmt = $db->prepare($queryEstudiantes);
     $stmt -> execute();
     $resultEstudiantes = $stmt -> fetchAll();
@@ -50,7 +50,6 @@
   		$objetivos_especificos=$row["objetivos_especificos"];  
   		$estrategias_soluciones=$row["estrategias_soluciones"];   	   		
    }
-    
  ?>
 <main class="site-main">
             <section class="seccion-informacion">
@@ -184,20 +183,20 @@
 
                         <div class="col-md-5" style=" height: 500px;  resize: both;">
                           <h2>Observaciones</h2>
-                          <textarea cols="56" rows="25" id="txtA_observaciones" placeholder="Observaciones"></textarea>
+                          <textarea style="width: 100%;height: 700px" id="txtA_observaciones" placeholder="Observaciones"></textarea>
                           
                         </div><!-- END DIV COL -->
 
                       </div> <!-- END DIV ROW -->
                                   <div class="row ">
                             <div class="col-md-3">
-                              <button class="btn btn-block btn-success">Aprobar</button>
+                              <a onclick="ingresarCalificacion(<?php echo $id;?>,2)" class="btn btn-block btn-success">Aprobar</a>
                             </div>
                             <div class="col-md-4 col-md-offset-1">
-                              <button class="btn btn-block btn-primary">Aprobar con Observaciones</button>
+                              <a onclick="ingresarCalificacion(<?php echo $id;?>,3)" class="btn btn-block btn-primary">Aprobar con Observaciones</a>
                             </div>
                             <div class="col-md-3 col-md-offset-1">
-                              <button class="btn btn-block btn-danger">Reprobado </button>
+                              <a onclick="ingresarCalificacion(<?php echo $id;?>,4)" class="btn btn-block btn-danger">Reprobado </a>
                             </div><br>
                       </div>
                       
@@ -210,7 +209,7 @@
 
             </section><!--.section programa-->
           </main>
-          <script src="../../js/principalEstudiantes.js"></script>
+          <script src="../../js/calificarTcu.js"></script>
           <?php 
             include '../../footer.php';
           ?>
