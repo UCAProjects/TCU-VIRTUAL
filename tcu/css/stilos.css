@@ -1,0 +1,280 @@
+#contenedor{
+    height:auto;
+}
+#rowImage{
+	margin-top:35px !important;
+}
+
+#forms{
+  display: none ;
+}
+
+#calendar{
+  margin-top: 25px !important;
+}
+.checkboxFecha{
+  margin-top: 10px !important;
+}
+
+#cont{
+  margin-top:240px;
+}
+
+#div33{
+  margin-left:10px;
+  margin-top: -30px;
+}
+
+#botonSetting{
+  background-color: transparent;
+  border: none;
+  margin-top:50px;
+  margin-right: -20px;
+}
+
+#footerDiv{
+  margin-top:37px
+}
+
+#footerNav{
+  background-image: URL('../img/PlanificadorFooter.png');
+  background-repeat: no-repeat;
+  height: 70px;
+}
+
+#img_logo{
+  width:75px;
+}
+
+.ridge {
+  border-width: 3px;
+  border-style: ridge;
+  border-color: yellow;
+}
+
+#navPrin{
+  background-image: URL('../img/Planificador.png');
+  background-repeat: no-repeat;
+  height:130px;
+}
+
+#ulPrin{
+  margin-top:37px;
+  margin-right:15px;
+}
+
+.liPrin{
+  background-color: transparent;
+  border: none;
+  color:yellow; 
+}
+#userLog{
+  margin-top:15px;
+}
+.black{
+  color:black;
+}
+#cLugar{
+}
+
+.codigo{
+  visibility: hidden;
+}
+
+.img-circle{
+	width:150px;
+}
+.pequenoLogo{
+	width:70px !important;
+}
+.editLogo{
+	width:30px !important;
+}
+
+
+.vertical-text {
+  margin-top:50px;
+  border: none;
+  position: relative;
+}
+.vertical-text>li {
+  height: 20px;
+  width: 120px;
+  margin-bottom: 100px;
+}
+.vertical-text>li>a {
+  border-bottom: 1px solid #ddd;
+  border-right-color: transparent;
+  text-align: center;
+  border-radius: 4px 4px 0px 0px;
+}
+.vertical-text>li.active>a,
+.vertical-text>li.active>a:hover,
+.vertical-text>li.active>a:focus {
+  border-bottom-color: transparent;
+  border-right-color: #ddd;
+  border-left-color: #ddd;
+}
+.vertical-text.tabs-left {
+  left: -50px;
+}
+.vertical-text.tabs-right {
+  right: -50px;
+}
+.vertical-text.tabs-right>li {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+.vertical-text.tabs-left>li {
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+
+#login-modal .modal-dialog {
+    width: 350px;
+}
+
+#login-modal input[type=text], input[type=password] {
+  margin-top: 10px;
+}
+
+#div-login-msg,
+#div-lost-msg,
+#div-register-msg {
+    border: 1px solid #dadfe1;
+    height: 30px;
+    line-height: 28px;
+    transition: all ease-in-out 500ms;
+}
+
+#div-login-msg.success,
+#div-lost-msg.success,
+#div-register-msg.success {
+    border: 1px solid #68c3a3;
+    background-color: #c8f7c5;
+}
+
+#div-login-msg.error,
+#div-lost-msg.error,
+#div-register-msg.error {
+    border: 1px solid #eb575b;
+    background-color: #ffcad1;
+}
+
+#icon-login-msg,
+#icon-lost-msg,
+#icon-register-msg {
+    width: 30px;
+    float: left;
+    line-height: 28px;
+    text-align: center;
+    background-color: #dadfe1;
+    margin-right: 5px;
+    transition: all ease-in-out 500ms;
+}
+
+#icon-login-msg.success,
+#icon-lost-msg.success,
+#icon-register-msg.success {
+    background-color: #68c3a3 !important;
+}
+
+#icon-login-msg.error,
+#icon-lost-msg.error,
+#icon-register-msg.error {
+    background-color: #eb575b !important;
+}
+
+
+
+/* #########################################
+   #    override the bootstrap configs     #
+   ######################################### */
+
+.modal-backdrop.in {
+    filter: alpha(opacity=50);
+    opacity: .8;
+}
+
+.modal-content {
+    background-color: #ececec;
+    border: 1px solid #bdc3c7;
+    border-radius: 0px;
+    outline: 0;
+}
+
+.modal-header {
+    min-height: 16.43px;
+    padding: 15px 15px 15px 15px;
+    border-bottom: 0px;
+}
+
+.modal-body {
+    position: relative;
+    padding: 5px 15px 5px 15px;
+}
+
+.modal-footer {
+    padding: 15px 15px 15px 15px;
+    text-align: left;
+    border-top: 0px;
+}
+
+.checkbox {
+    margin-bottom: 0px;
+}
+
+.btn {
+    border-radius: 0px;
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn.active.focus {
+    outline: none;
+}
+
+.btn-lg, .btn-group-lg>.btn {
+    border-radius: 0px;
+}
+
+.btn-link {
+    padding: 5px 10px 0px 0px;
+    color: #95a5a6;
+}
+
+.btn-link:hover, .btn-link:focus {
+    color: #2c3e50;
+    text-decoration: none;
+}
+
+.glyphicon {
+    top: 0px;
+}
+
+.form-control {
+  border-radius: 0px;
+}
+
+
+.fc-today {
+    background: #dddd !important;
+    border: none !important;
+    border-top: 1px solid #ddd !important;
+    font-weight: bold;
+}
+.footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 1000px;
+}

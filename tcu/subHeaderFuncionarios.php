@@ -34,7 +34,7 @@
           </ul>
         </li>
       <li id="liSalirs"><a class="color"  href="../funcionariosGruposTCU/administrarGrupos.php"> Grupos de TCU</a></li>
-      <li id="liSalir"><a class="color"  href="#"> Adjuntos</a></li>
+      <li id="liSalir"><a class="color"  href="../Reportes/reportes.php"> Reportes</a></li>
 
       <li class="navbar-right" id="liSalir"><a class="color colorNaranja"  href="../../index.php"><i  class="fa fa-sign-out" aria-hidden="true" title="SALIR"></i></a></li>
 

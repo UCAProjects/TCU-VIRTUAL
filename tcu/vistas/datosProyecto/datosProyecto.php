@@ -14,7 +14,6 @@
  <link rel="stylesheet" href="../../css/datosProyecto.css">
 </head>
 <body>
-
  <?php 
     include '../../header.php';
     include '../../conection.php'; //Conección a la DB
@@ -50,7 +49,6 @@
         }
     }
  ?>
-
           <main class="site-main">
             <section class="seccion-informacion">
               <div class="contenedor clearfix">
