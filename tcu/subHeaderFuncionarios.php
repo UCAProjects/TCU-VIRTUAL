@@ -1,5 +1,5 @@
 
-<?php 
+<?php
   //session_start();
     include '../../conection.php'; //Conección a la DB
 
@@ -19,7 +19,7 @@
 
 <header class="sub-header">
   <div class="fondo-encabezado">
-    
+
     <ul class="nav nav-tabs">
       <li class="active">
         <a class="color" href="../principalFuncionarios/principalFuncionarios.php">
@@ -36,14 +36,14 @@
       <li id="liSalirs"><a class="color"  href="../funcionariosGruposTCU/administrarGrupos.php"> Grupos de TCU</a></li>
       <li id="liSalir"><a class="color"  href="../Reportes/reportes.php"> Reportes</a></li>
 
-      <li class="navbar-right" id="liSalir"><a class="color colorNaranja"  href="../../index.php"><i  class="fa fa-sign-out" aria-hidden="true" title="SALIR"></i></a></li>
+      <li class="navbar-right" id="liSalir"><a class="color colorNaranja"  href="../../index.php"><i  class="fas fa-sign-out-alt" aria-hidden="true" title="SALIR"></i></a></li>
 
       <li class="dropdown navbar-right">
         <a  href="#" class="dropdown-toggle color colorNaranja" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ><i title="USUARIO" class="fa fa-user white" aria-hidden="true" ></i> <span  class="caret white colorNaranja"></span></a>
 
         <ul class="dropdown-menu">
           <li><a href="../registro/registroFuncionarios.php?tipo=2">Editar Perfil</a></li>
-          <li><a href="../registro/editarContrasena.php?tipo=2">Cambiar Contraseña</a></li> 
+          <li><a href="../registro/editarContrasena.php?tipo=2">Cambiar Contraseña</a></li>
         </ul>
       </li>
     </ul>
