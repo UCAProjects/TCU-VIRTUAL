@@ -11,7 +11,6 @@
   <link href='../../fullcalendar-scheduler/scheduler.css' rel='stylesheet' />
 
   <style>
-
     .a{
       font-size: 30px;
     }
@@ -24,30 +23,51 @@
       font-size: 60px;
       color:#337ab7;
     }
+
+    .fc-time-grid .fc-slats td {
+      height: 3.5em;
+    }
+
   </style>
 </head>
 <body>
   <?php
-  session_start();
-  include '../../header.php';
-  include '../../subHeaderFuncionarios.php';
-  include '../../conection.php'; //Conección a la DB
+    session_start();
+    include '../../header.php';
+    include '../../subHeaderEstudiantes.php';
+    include '../../conection.php'; //Conección a la DB
 
-  $carrera = $_SESSION["carreraFuncionario"];
-  $query = "SELECT G.codigo, G.descripcion from tigrupou_tcu.grupos G JOIN tigrupou_tcu.ante_proyecto A ON G.codigo LIKE A.grupo where G.carrera  like $carrera and A.estado like 1";
-
-  $stmt = $db->prepare($query);
-  $stmt -> execute();
-  $result = $stmt -> fetchAll();
+    // $carrera = $_SESSION["carreraFuncionario"];
+    // $query = "SELECT G.codigo, G.descripcion
+    //             FROM tigrupou_tcu.grupos G
+    //               JOIN tigrupou_tcu.ante_proyecto A ON G.codigo LIKE A.grupo
+    //                 WHERE G.carrera  like $carrera and A.estado like 1";
+    //
+    // $stmt = $db->prepare($query);
+    // $stmt -> execute();
+    // $result = $stmt -> fetchAll();
+    /*Codigo que carga todas las actividades de horas Tcu
+     desde la base de datos para su posterior uso*/
+    $query = "SELECT * FROM tigrupou_tcu.horas_tcu;";
+    $stmt = $db->prepare($query);
+    $stmt -> execute();
+    $result = $stmt -> fetchAll();
+    /* -------------------------------------------------------------------------------- */
 
   ?>
 
   <main class="site-main">
     <section class="seccion-informacion">
       <div class="contenedor clearfix">
-        <div class="">
+        <div class="" id="content">
             <div id="contenedor" class="well">
-              <a href="#" onclick="cargarModal({'fecha':_Date},'AddModalDiv','addActivity-modal','agregarActividad.php')" id="plusActivity"><i class="fas fa-plus-circle a"></i></a>
+              <!-- Cargar modal agregar actividad -->
+              <a href="#content" onclick="cargarModal({'fecha':_Date},'AddModalDiv','addActivity-modal','agregarActividad.php')" id="plusActivity"><i class="fas fa-plus-circle a"></i></a>
+              <!-- Aumentar Zoom -->
+              <a href="#content" onclick="zoom()" id="plusActivity"><i class="fas fa-search-plus a"></i></a>
+              <!-- Disminuir Zoom -->
+              <a href="#content" onclick="zoomL(0)" id="plusActivity"><i class="fas fa-search-minus a"></i></a>
+
               <div id="calendar"></div> <!-- Se carga el calendario  -->
             </div>
             <br>
@@ -96,7 +116,7 @@
   -->
   <script>
         /*Javascrip encargado de configurar y dar el diseño a fullCalendar  */
-
+        var calendarHeight = "2.5em";
         var _Date;
         $(document).ready(function() {
           $('#calendar').fullCalendar({
@@ -105,32 +125,65 @@
             dayNames:['Domingo', 'Lunes', 'Martes', 'Miércoles','Jueves', 'Viernes', 'Sábado'],
 
             defaultView: 'agendaDay',
+            contentHeight:'auto',
 
             /*Configuración de la posición y botones y titulos al lado arriba del calendario */
             header: {
               left: '',
               center: 'title',
-              right: 'month,prev,next,today'
+              right: 'month,week,prev,next,today'
             },
 
             /* Establecimiento de la licencia de Full Calendar */
             schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
 
-            eventLimit: true, /* Se encargar de poner un limite a los eventos que se ven por día */
+            eventLimit: false , /* Se encargar de poner un limite a los eventos que se ven por día */
 
            /* Utiliza las actividades cargadas desde la base de datos anteriormente y las muestra en el calendario*/
 
-            events: [
-               ],
+           events: [
+           <?php foreach($result as $event):   /*  Result contiene el resultado de la consulta de todos los evnentos que existan*/
+           $start= [$event['fecha'],$event['hora_entrada']];
+           $end= [$event['fecha'],$event['hora_salida']];
+           if($start[1] == '00:00:00'){
+             $start = $start[0];
+           }else{
+             $start = $event['fecha'] . "T" . $event['hora_entrada'];
+           }
+           if($end[1] == '00:00:00'){
+             $end = $end[0];
+           }else{
+             $end = $event['fecha'] . "T" . $event['hora_salida'];
+           }
+           ?>
+           {
+             id: '<?php echo $event['codigo']; ?>',
+             title: '<?php echo "Horas Realizadas: " . $event['numero_horas']; ?>',
+             description:'<?php echo $event['actividades_realizadas']; ?>',
+             start: '<?php echo $start; ?>',
+             end: '<?php echo $end; ?>'
+
+           },
+           <?php endforeach; ?>
+           ],
               /* ------------------------------------------------------------------------------------------------- */
 
            /* Encargado de imprimir el titulo con un mouseover sobre un evento*/
            eventRender: function(event, element) {
+                 var cal = document.querySelectorAll(".fc-time-grid .fc-slats td");
+                 //document.getElementById("myBtn").style.height = "3.5em";
+                 for (var i = 0; i < cal.length; i++) {
+                   cal[i].style.height = calendarHeight;
+                 }
+
                $(element).tooltip({
                   title: event.title,
                   container: "body"
               });
+              element.find('.fc-title').append("<br/>" + event.description);
           },
+
+          eventColor: '#378006',
 
           /* Cuando el evento es clickeado, carga la página disponible para poder editar*/
           eventClick: function(calEvent, jsEvent, view) {
@@ -160,6 +213,9 @@
           },
         });
         });
+        function zoom(){
+          calendarHeight += 1;
+        }
       </script>
 </body>
 </html>

@@ -3,7 +3,7 @@ var horaEntrante = "";
 var horaSalida = "";
 var cantidadHoras = "";
 var actividades = "";
-
+var calendarHeight = "2.5em";
 function getData(){
   date = $("#Fecha").val();
   horaEntrante = $("#inTime").val();
@@ -31,9 +31,13 @@ function agregarActividad(){
                       type: "POST",
                       url: "../../accesoDatos/calendario/insertarActividad.php",
                       success: function (data) {
-                        alert(data);
-                        mensaje('confirmation',data,8000);
-                        setTimeout(function(){ window.location="calificarDatosProyecto.php"; }, 8000);
+                        if(data == "ERROR"){
+                            alert("Ha ocurrido un error inesperado, intentelo nuevamente");
+                        }else if(data =="OK"){
+                          alert("Ingreso con éxito");
+                          setTimeout(function(){ window.location="calendarioHoras.php"; }, 8000);
+                        }
+
                       },
                       error: function () {
                         mensaje('error','Error al cargar la información',3000);
@@ -42,19 +46,18 @@ function agregarActividad(){
   }else {
     alert("Se debe llenar toda la información");
   }
-  // var param = pParametros
-  // var options = { "backdrop": "static", keyboard: true };
-  // $.ajax({
-  //   data : param,
-  //   type: "POST",
-  //   url: pUrl,
-  //   success: function (data) {
-  //     $('#'+pDivMostrar).html(data);
-  //     $('#'+pNombreModal).modal(options);
-  //     $('#'+pNombreModal).modal('show');
-  //   },
-  //   error: function () {
-  //     mensaje('error','Error al cargar la información');
-  //   }
-  // });
+
+}
+//Add more Zoom to calendar
+function zoomM(){
+  var cal = document.querySelectorAll(".fc-time-grid .fc-slats td");
+  //document.getElementById("myBtn").style.height = "3.5em";
+  for (var i = 0; i < cal.length; i++) {
+    cal[i].style.height = calendarHeight;
+}
+}
+//Subtract zoom to calendar.fc-time-grid .fc-slats td {
+  //height: ;
+function zoomL(){
+
 }

@@ -11,15 +11,12 @@
     overflow-y: scroll;
     height: 700px  !important;
     width: 100% !important;
-   
-  
-
 }
 </style>
 
 </head>
 <body>
- <?php 
+ <?php
     session_start();
     include '../../header.php';
     include '../../subHeaderFuncionarios.php';
@@ -40,25 +37,25 @@
 
    foreach ($result as $row) {
   		$tema=$row["tema"];
-  		$organizacion=$row["organizacion"];   	
+  		$organizacion=$row["organizacion"];
   		$supervisor=$row["supervisor"];
-  		$identificacion_problema=$row["identificacion_problema"]; 
-  		$descripcion_problema=$row["descripcion_problema"];   	
+  		$identificacion_problema=$row["identificacion_problema"];
+  		$descripcion_problema=$row["descripcion_problema"];
   		$descripcion_beneficiario=$row["descripcion_beneficiario"];
   		$justificacion_proyecto=$row["justificacion_proyecto"];
-  		$objetivo_general=$row["objetivo_general"];  
-  		$objetivos_especificos=$row["objetivos_especificos"];  
-  		$estrategias_soluciones=$row["estrategias_soluciones"];   	   		
+  		$objetivo_general=$row["objetivo_general"];
+  		$objetivos_especificos=$row["objetivos_especificos"];
+  		$estrategias_soluciones=$row["estrategias_soluciones"];
    }
  ?>
 <main class="site-main">
             <section class="seccion-informacion">
               <div class=" clearfix">
                 <div class="">
-                  
+
                   <div  class="ingreso ingresoTamano">
                       <form class="">
-                
+
                         <div class="row well">
 
                           <div class="col-md-7" class="well">
@@ -72,12 +69,12 @@
                               <br>
 
                               <h3>Intergrantes</h3>
-                              <?php 
+                              <?php
                                 foreach ($resultEstudiantes as $row) {
                                   echo $row["nombre"]
                                   ?> <br>
                                   <?php
-                                } 
+                                }
                               ?>
                             <br>
 
@@ -95,82 +92,82 @@
 
                           <h3>Identificación del problema</h3>
 
-                            <?php 
-                              for($i=0;$i<strlen($identificacion_problema);$i++){ 
+                            <?php
+                              for($i=0;$i<strlen($identificacion_problema);$i++){
                                 if( $identificacion_problema[$i] == "\n"){?>
                                   <br>
                                 <?php
                                 }else{
-                                  echo $identificacion_problema[$i]; 
+                                  echo $identificacion_problema[$i];
                                }
                               } ?>
 
                                <h3>Descripción  del problema</h3>
-                                <?php 
-                              for($i=0;$i<strlen($descripcion_problema);$i++){ 
+                                <?php
+                              for($i=0;$i<strlen($descripcion_problema);$i++){
                                 if( $descripcion_problema[$i] == "\n"){?>
                                   <br>
                                 <?php
                                 }else{
-                                  echo $descripcion_problema[$i]; 
+                                  echo $descripcion_problema[$i];
                                }
                               } ?>
 
                               <h3>Descripción del beneficiario</h3>
-                                <?php 
-                              for($i=0;$i<strlen($descripcion_beneficiario);$i++){ 
+                                <?php
+                              for($i=0;$i<strlen($descripcion_beneficiario);$i++){
                                 if( $descripcion_beneficiario[$i] == "\n"){?>
                                   <br>
                                 <?php
                                 }else{
-                                  echo $descripcion_beneficiario[$i]; 
+                                  echo $descripcion_beneficiario[$i];
                                }
                               } ?>
-                
+
                               <h3>Justificación del Proyecto</h3>
-                                <?php 
-                              for($i=0;$i<strlen($justificacion_proyecto);$i++){ 
+                                <?php
+                              for($i=0;$i<strlen($justificacion_proyecto);$i++){
                                 if( $justificacion_proyecto[$i] == "\n"){?>
                                   <br>
                                 <?php
                                 }else{
-                                  echo $justificacion_proyecto[$i]; 
+                                  echo $justificacion_proyecto[$i];
                                }
-                              } 
+                              }
                             ?>
-                             
-                
+
+
                               <h3>Objetivo General</h3>
-                                <?php 
-                              for($i=0;$i<strlen($objetivo_general);$i++){ 
+                                <?php
+                              for($i=0;$i<strlen($objetivo_general);$i++){
                                 if( $objetivo_general[$i] == "\n"){?>
                                   <br>
                                 <?php
                                 }else{
-                                  echo $objetivo_general[$i]; 
+                                  echo $objetivo_general[$i];
                                }
                               } ?>
-                
+
                               <h3>Objetivos Especificos</h3>
-                                <?php 
-                              for($i=0;$i<strlen($objetivos_especificos);$i++){ 
+                                <?php
+                              for($i=0;$i<strlen($objetivos_especificos);$i++){
                                 if( $objetivos_especificos[$i] == "\n"){?>
                                   <br>
                                 <?php
                                 }else{
-                                  echo $objetivos_especificos[$i]; 
+                                  echo $objetivos_especificos[$i];
                                }
                               } ?>
-                            
-        
+
+
                               <h3>Estrategias y Soluciones</h3>
-                                <?php 
-                              for($i=0;$i<strlen($estrategias_soluciones);$i++){ 
+                                <?php
+                              for($i=0;$i<strlen($estrategias_soluciones);$i++){
                                 if( $estrategias_soluciones[$i] == "\n"){?>
                                   <br>
                                 <?php
                                 }else{
-                                  echo $estrategias_soluciones[$i]; 
+                                  echo $estrategias_soluciones[$i];
                                }
                               } ?>
 
@@ -179,12 +176,12 @@
                                </div>
                         </div> <!--   END DIV DOCUMENT -->
                           </div>
-                          
+
 
                         <div class="col-md-5" style=" height: 500px;  resize: both;">
                           <h2>Observaciones</h2>
                           <textarea style="width: 100%;height: 700px" id="txtA_observaciones" placeholder="Observaciones"></textarea>
-                          
+
                         </div><!-- END DIV COL -->
 
                       </div> <!-- END DIV ROW -->
@@ -199,9 +196,9 @@
                               <a onclick="ingresarCalificacion(<?php echo $id;?>,4)" class="btn btn-block btn-danger">Reprobado </a>
                             </div><br>
                       </div>
-                      
-                        
-                      
+
+
+
                       </form>
                   </div>
                 </div><!--.programa-evento-->
@@ -210,7 +207,7 @@
             </section><!--.section programa-->
           </main>
           <script src="../../js/calificarTcu.js"></script>
-          <?php 
+          <?php
             include '../../footer.php';
           ?>
           <script src="../../js/datosProyecto.js"></script>
