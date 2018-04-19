@@ -1,7 +1,7 @@
 <?php
   session_start();
   $sesionId = $_SESSION["codigo"];
-  $grupo = $_SESSION["grupo"]; 
+  $grupo = $_SESSION["grupo"];
   $tipo = $_GET['tipo'];
 ?>
 
@@ -14,7 +14,7 @@
  <link rel="stylesheet" href="../../css/datosProyecto.css">
 </head>
 <body>
- <?php 
+ <?php
     include '../../header.php';
     include '../../conection.php'; //Conección a la DB
 
@@ -32,7 +32,7 @@
         $direccion = "";
       if($tipo == 1){
         include '../../subHeaderEstudiantes.php';
-        
+
         $query = "select * from tigrupou_tcu.datos where grupo like $grupo";
         $stmt = $db->prepare($query);
         $stmt -> execute();
@@ -78,7 +78,7 @@
                                     <td><?php echo $row["nombre_completo"] ?></td>
                                     <td><?php echo $row["primer_apellido"] ?></td>
                                     <td><?php echo $row["cedula"] ?></td>
-                                  </tr><?php 
+                                  </tr><?php
                                 }
                               ?>
                               </tbody>
@@ -124,10 +124,14 @@
                           <div class="col-md-12">
                             <li><label for="direccion">Dirección exacta del lugar dónde realizará el T.C.U.</label></li>
                             <li><textarea id="direccion" name="direccion"  class="tamanoCompleto" placeholder="Digite la dirección exacta del lugar dónde realizará el T.C.U." required><?php echo $direccion ?></textarea></li>
-                          </div>                                     
+                          </div>
                         </div>
-                        <li><button id="btnConfirmar" name="btnConfirmar" type="submit">Confirmar</button><br><br><br></li>
                       </ul>
+                      <br>
+                      <div class="col-md-3 col-md-offset-9">
+                        <button  class="btn btn-block btn-success buttonForm" id="btnConfirmar" name="btnConfirmar" type="submit"><i class="far fa-save"></i> Confirmar</button>
+                      </div>
+                      <br><br><br>
                     </form>
                   </div>
                 </div><!--.programa-evento-->
@@ -136,7 +140,7 @@
             </section><!--.section programa-->
           </main>
 
-          <?php 
+          <?php
           include '../../footer.php';
           ?>
 

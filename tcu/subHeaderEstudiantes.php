@@ -5,44 +5,47 @@
     <ul class="nav nav-tabs">
       <li>
         <a href="../principalEstudiantes/principalEstudiantes.php">
-          <i  style="color: #fe4918" title="INICIO" class="fa fa-university white" aria-hidden="true"></i>
+          <i title="INICIO" class="fa fa-university white" aria-hidden="true"></i>
         </a>
       </li>
       <li class="dropdown">
-        <a  class="color" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="white">Datos del Proyecto </span><span class="caret white colorNaranja"></span></a>
+        <a  class="color" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="white"><i class="fas fa-globe"></i> Proyecto TCU</span><span class="caret white colorNaranja"></span></a>
         <ul class="dropdown-menu">
-          <li><a class="over" href="../datosProyecto/crearGrupo.php?tipo=1">Editar Grupo de Trabajo</a></li>
-          <li><a href="../datosProyecto/datosProyecto.php?tipo=1">Editar Datos del Proyecto</a></li>
+          <li><a class="over" href="../datosProyecto/crearGrupo.php?tipo=1"><i class="fas fa-users"></i> Grupo de Trabajo</a></li>
+          <li><a href="../datosProyecto/datosProyecto.php?tipo=1"><i class="fas fa-info-circle"></i> Datos del Proyecto</a></li>
         </ul>
       </li>
-      <li class="navbar" id="liSalir"><a class="color"  href="# "><i class="fas fa-file-alt"></i> Ante Proyecto</a></li>
+
 
       <li class="dropdown">
-        <a  href="#" class="dropdown-toggle color" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" > Horas TCU <span  class="caret white colorNaranja"></span></a>
+        <a  href="#" class="dropdown-toggle color" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ><i class="fas fa-file-alt"></i> Documentación <span  class="caret white colorNaranja"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="../datosProyecto/anteProyecto.php?tipo=1"><i class="fas fa-book"></i> Ante Proyecto</a></li>
+          <li><a href="../resumenEjecutivo/resumenEjecutivo.php"><i class="fas fa-book"></i> Resumen Ejecutivo</a></li>
+        </ul>
+      </li>
+    <!--<li class="navbar" id="liSalir"><a class="color"  href="# "><i class="fas fa-file-alt"></i> Ante Proyecto</a></li> -->
+
+      <li class="dropdown">
+        <a  href="#" class="dropdown-toggle color" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ><i class="fas fa-hourglass-half"></i> Realiazación de Horas <span  class="caret white colorNaranja"></span></a>
 
 
 
         <ul class="dropdown-menu">
-          <li><a href="../registro/registro.php?tipo=1">Descargar Control de Horas</a></li>
-          <li><a href="../registro/editarContrasena.php?tipo=1">Control de horas Digital</a></li> 
+          <li><a href="../horasTCU/calendarioHoras.php"><i class="fas fa-calendar-alt"></i> Control de horas digital</a></li>
+          <li><a href="../registro/registro.php?tipo=1"><i class="fas fa-download"></i> Documento para el control de horas</a></li>
         </ul>
       </li>
 
-      <li class="navbar-right" id="liSalir"><a class="color colorNaranja"  href="../../index.php"><i  class="fa fa-sign-out" aria-hidden="true" title="SALIR"></i></a></li>
+      <li class="navbar-right" id="liSalir"><a class="color"  href="../../index.php"><i class="fas fa-sign-out-alt"></i></a></li>
       <li class="dropdown navbar-right">
-        <a  href="#" class="dropdown-toggle color colorNaranja" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ><i title="USUARIO" class="fa fa-user white" aria-hidden="true" ></i> <span  class="caret white colorNaranja"></span></a>
-
-
+        <a  href="#" class="dropdown-toggle color" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ><i title="USUARIO" class="fa fa-user white" aria-hidden="true" ></i> <span  class="caret white colorNaranja"></span></a>
 
         <ul class="dropdown-menu">
-          <li><a href="../registro/registro.php?tipo=1">Editar Perfil</a></li>
-          <li><a href="../registro/editarContrasena.php?tipo=1">Cambiar Contraseña</a></li> 
+          <li><a href="../registro/registro.php?tipo=1"><i class="fas fa-edit"></i> Editar Perfil</a></li>
+          <li><a href="../registro/editarContrasena.php?tipo=1"><i class="fas fa-key"></i> Cambiar Contraseña</a></li>
         </ul>
       </li>
     </ul>
   </div><!-- .fondo-encabezado -->
 </header>
-
-
-
-

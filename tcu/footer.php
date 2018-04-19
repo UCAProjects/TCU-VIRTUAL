@@ -9,8 +9,8 @@
    <div class="menu">
     <nav class="redes-sociales">
       <h3>Redes <span>sociales</span></h3>
-      <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-      <a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+      <a href="#"><i class="fab fa-facebook-square" aria-hidden="true"></i></i></a>
+      <a href="#"><i class="fab fa-youtube" aria-hidden="true"></i></i></a>
       <a href="#"><i class="fa fa-globe" aria-hidden="true"></i></a>
     </nav>
   </div><!--.menu-->

@@ -1,7 +1,7 @@
 <?php
   // session_start();
   // $sesionId = $_SESSION["codigo"];
-  // $grupo = $_SESSION["grupo"]; 
+  // $grupo = $_SESSION["grupo"];
   // $tipo = $_GET['tipo'];
 ?>
 
@@ -16,7 +16,7 @@
  <style type="text/css">
    .container {
   width: 600px;
-  margin: 100px auto; 
+  margin: 100px auto;
 }
 .progressbar {
   margin: 0;
@@ -72,8 +72,10 @@
 </head>
 <body>
 
- <?php 
+ <?php
+    session_start();
     include '../../header.php';
+    include '../../subHeaderEstudiantes.php';
     include '../../conection.php'; //Conección a la DB
  ?>
         <!--[if lte IE 9]>
@@ -82,7 +84,7 @@
 
           <!-- Add your site or application content here -->
 
-          
+
           <main class="site-main">
             <section class="seccion-informacion">
               <div class="contenedor clearfix">
@@ -101,11 +103,11 @@
                     <div style="margin-left:20%;" method="POST">
                       <div id="contenedorResumenEjecutivo">
                           <?php include 'resumenEjecutivoResumen.php' ?>
-                      
+
                       </div>
                     </div>
 
-                    <meter min="0" max="100" id="meter" 
+                    <meter min="0" max="100" id="meter"
                             low="25" high="75"
                             optimum="100" value="25">
 
@@ -127,11 +129,11 @@
                       <div class="modal-body">
                         <div id="mostrarModalConclusion"></div>
                       </div>
-      
+
                     </div>
               </div>
             </div>
-          <?php 
+          <?php
           include '../../footer.php';
           ?>
         <script src="../../js/datosProyecto.js"></script>

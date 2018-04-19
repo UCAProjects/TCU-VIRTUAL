@@ -1,14 +1,14 @@
 <?php
   session_start();
   $sesionId = $_SESSION["codigo"];
-  $grupo = $_SESSION["grupo"]; 
- 
+  $grupo = $_SESSION["grupo"];
+
 ?>
 
-<?php 
+<?php
     include '../../conection.php'; //Conección a la DB
 
-      $query = "select codigo, identificacion_problema,descripcion_problema from tigrupou_tcu.ante_proyecto where grupo like $grupo;";
+      $query = "select grupo, identificacion_problema,descripcion_problema from tigrupou_tcu.ante_proyecto where grupo like $grupo;";
       $stmt = $db->prepare($query);
       $stmt -> execute();
       $result = $stmt -> fetchAll();
@@ -17,11 +17,11 @@
       $descripcionProblema = "";
       $codigo = "";
       foreach($result as $row){
-      	  $codigo = $row["codigo"];
+      	  $codigo = $row["grupo"];
           $identificacionProblema = $row["identificacion_problema"];
           $descripcionProblema = $row["descripcion_problema"];
       }
-  
+
  ?>
 
 
@@ -36,4 +36,3 @@
 <br>
 
     <button class="btn" onclick="cargarFormularios('anteProyectoBeneficiario.php','contenedorAnteProyecto');aumentarProgress(20); guardar('identificacion_problema',<?php echo $grupo ?>,1);guardar('descripcion_problema',<?php echo $grupo ?>,1)" style="margin-left:74% !important">Continuar <span class="glyphicon glyphicon-arrow-right"></span></button>
-                      

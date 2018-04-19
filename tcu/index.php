@@ -25,7 +25,7 @@
         <!-- Add your site or application content here -->
         <header class="site-header">
           <div class="fondo-encabezado clearfix">
-            <img src="img/franja_tcu.jpg" alt="Logo TCU">
+            <img src="img/Planificador.png" alt="Logo TCU">
           </div><!-- .fondo-encabezado -->
         </header>
 
@@ -127,11 +127,11 @@
 
         <!-- for a specific version -->
         <script src="https://cdn.jsdelivr.net/npm/zebra_dialog@1.4.0/dist/zebra_dialog.min.js"></script>
-        
+
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
 
-        
+
         <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
         <script>
             window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;

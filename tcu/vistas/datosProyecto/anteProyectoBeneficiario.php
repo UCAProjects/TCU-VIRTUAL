@@ -1,14 +1,14 @@
 <?php
   session_start();
   $sesionId = $_SESSION["codigo"];
-  $grupo = $_SESSION["grupo"]; 
- 
+  $grupo = $_SESSION["grupo"];
+
 ?>
 
-<?php 
+<?php
     include '../../conection.php'; //Conección a la DB
 
-      $query = "select codigo, descripcion_beneficiario from tigrupou_tcu.ante_proyecto where grupo like $grupo;";
+      $query = "select grupo, descripcion_beneficiario from tigrupou_tcu.ante_proyecto where grupo like $grupo;";
       $stmt = $db->prepare($query);
       $stmt -> execute();
       $result = $stmt -> fetchAll();
@@ -16,10 +16,10 @@
       $descripcion_beneficiario = "";
       $codigo = "";
       foreach($result as $row){
-      	  $codigo = $row["codigo"];
+      	  $codigo = $row["grupo"];
           $descripcion_beneficiario = $row["descripcion_beneficiario"];
       }
-  
+
  ?>
 
 
@@ -28,7 +28,7 @@
                       <textarea  id="descripcion_beneficiario" style=" overflow:hidden; font-size:15px; font-family:Arial; text-align : justify;line-height: 1.6; resize:none;" rows="10" cols="87"><?php echo $descripcion_beneficiario ?> </textarea>
 
                       <br>
-                      
+
 
 
  <div class="row">

@@ -2,14 +2,14 @@
 <?php
   session_start();
   $sesionId = $_SESSION["codigo"];
-  $grupo = $_SESSION["grupo"]; 
- 
+  $grupo = $_SESSION["grupo"];
+
 ?>
 
-<?php 
+<?php
     include '../../conection.php'; //Conección a la DB
 
-      $query = "select codigo, justificacion_proyecto from tigrupou_tcu.ante_proyecto where grupo like $grupo;";
+      $query = "select grupo, justificacion_proyecto from tigrupou_tcu.ante_proyecto where grupo like $grupo;";
       $stmt = $db->prepare($query);
       $stmt -> execute();
       $result = $stmt -> fetchAll();
@@ -17,10 +17,10 @@
       $descripcion_beneficiario = "";
       $codigo = "";
       foreach($result as $row){
-      	  $codigo = $row["codigo"];
+      	  $codigo = $row["grupo"];
           $descripcion_beneficiario = $row["justificacion_proyecto"];
       }
-  
+
  ?>
 
 
@@ -38,6 +38,3 @@
       <button class="btn" onclick="guardar('justificacion_proyecto',<?php echo $grupo?>,1);aumentarProgress(20);cargarFormularios('anteProyectoObjetivos.php','contenedorAnteProyecto');" style="margin-left:45% !important">Continuar  <span class="glyphicon glyphicon-arrow-right"></span></button>
     </div>
   </div>
-
-                      
-

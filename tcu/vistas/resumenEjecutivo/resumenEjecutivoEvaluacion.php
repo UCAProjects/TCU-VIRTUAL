@@ -1,11 +1,11 @@
 <?php
   session_start();
   $sesionId = $_SESSION["codigo"];
-  $grupo = $_SESSION["grupo"]; 
- 
+  $grupo = $_SESSION["grupo"];
+
     include '../../conection.php'; //Conección a la DB
 
-      $query = "SELECT codigo, evaluacion FROM tigrupou_tcu.resumen_ejecutivo where grupo like $grupo;";
+      $query = "SELECT grupo, evaluacion FROM tigrupou_tcu.resumen_ejecutivo where grupo like $grupo;";
       $stmt = $db->prepare($query);
       $stmt -> execute();
       $result = $stmt -> fetchAll();
@@ -13,10 +13,10 @@
       $evaluacion = "";
       $codigo = "";
       foreach($result as $row){
-      	  $codigo = $row["codigo"];
+      	  $codigo = $row["grupo"];
           $evaluacion = $row["evaluacion"];
       }
-  
+
  ?>
 
 
@@ -35,5 +35,3 @@
       <button class="btn" onclick="guardar('evaluacion',<?php echo $grupo?>,2);cargarFormularios('resumenEjecutivoConclusion.php','contenedorResumenEjecutivo');aumentarProgress(25);" style="margin-left:45% !important">Continuar  <span class="glyphicon glyphicon-arrow-right"></span></button>
     </div>
   </div>
-
-    

@@ -8,13 +8,13 @@
     </head>
     <body>
     	<?php
-        session_start(); 
+        session_start();
     		include '../../header.php';
     		include '../../conection.php';
 
         $tipo = $_GET['tipo'];
 
-        
+
         $pApellido = "";
         $sApellido = "";
         $nombre ="";
@@ -54,7 +54,7 @@
           }
         }
 
-      
+
 
 
     	?>
@@ -115,7 +115,7 @@
                                             $stmt -> execute();
                                             $result = $stmt -> fetchAll();
                                             foreach ($result as $row) {
-                                              echo "<option value=\"$row[codigo]\"> $row[carrera] </option>"; 
+                                              echo "<option value=\"$row[codigo]\"> $row[carrera] </option>";
                                             }
                                         ?>
 									         </select>
@@ -132,7 +132,7 @@
                                             $stmt -> execute();
                                             $result = $stmt -> fetchAll();
                                             foreach ($result as $row) {
-                                              echo "<option value=\"$row[codigo]\"> $row[grado] </option>"; 
+                                              echo "<option value=\"$row[codigo]\"> $row[grado] </option>";
                                             }
                                         ?>
 									</select>
@@ -149,14 +149,14 @@
                                             $stmt -> execute();
                                             $result = $stmt -> fetchAll();
                                             foreach ($result as $row) {
-                                              echo "<option value=\"$row[codigo]\"> $row[periodo] </option>"; 
+                                              echo "<option value=\"$row[codigo]\"> $row[periodo] </option>";
                                             }
                                         ?>
 									</select>
 					   			</li>
                     		</div>
                     	</div>
-                      
+
 
                       <div class="row">
                     		<div class="col-md-4">
@@ -170,7 +170,7 @@
                                             $stmt -> execute();
                                             $result = $stmt -> fetchAll();
                                             foreach ($result as $row) {
-                                              echo "<option value=\"$row[codigo]\"> $row[sede] </option>"; 
+                                              echo "<option value=\"$row[codigo]\"> $row[sede] </option>";
                                             }
                                         ?>
 										</select>
@@ -185,7 +185,7 @@
                        			 <li><textarea name="lugarTrabajo" id="lugarTrabajo" placeholder="Digite el lugar dónde labora" rows="4" required><?php echo $lugar ?></textarea></li>
                     		</div>
                     	</div>
-                      <?php 
+                      <?php
                         if($tipo == 0){ ?>
                           <div class="row">
                             <div class="col-md-4">
@@ -203,20 +203,23 @@
                           </div> <?php
                         }
                       ?>
-     
-                      <li><button type="submit" id="btnRegistro" name="btnRegistro">Confirmar</button> <br><br><br></li>
                     </ul>
+
+                    <div class="col-md-3 col-md-offset-9">
+                      <button class="btn btn-block btn-success buttonForm" type="submit" id="btnRegistro" name="btnRegistro"><i class="far fa-save"></i> Confirmar</button>
+                    </div>
+                    <br><br><br>
                   </form>
                 </div><!--.programa-evento-->
               </div><!--.contenedor-->
-         
+
           </section><!--.section programa-->
         </main>
-        
 
-        <?php 
+
+        <?php
         	include '../../footer.php'; ?>
-          
+
           <script src="../../js/registro.js"></script>
     <?php
           if($tipo == 1){ // Modo editar ?>
@@ -226,10 +229,10 @@
               valueSelect('periodo',<?php echo $periodo ?>);
               valueSelect('sede',<?php echo $sede ?>);
             </script>
-          <?php 
+          <?php
           }
         ?>
 
-        
+
     </body>
 </html>

@@ -7,10 +7,10 @@
  <link rel="stylesheet" href="../../css/datosProyecto.css">
 </head>
 <body>
- <?php 
+ <?php
     session_start();
     $sesionId = $_SESSION["codigo"];
-    $grupo = $_SESSION["grupo"]; 
+    $grupo = $_SESSION["grupo"];
 
     include '../../header.php';
     include '../../subHeaderEstudiantes.php';
@@ -34,15 +34,15 @@
           <![endif]-->
 
           <!-- Add your site or application content here -->
-              
-          
+
+
           <main class="site-main">
             <section class="seccion-informacion">
               <div class="contenedor clearfix">
                 <div class="">
                   <h2>Estatus del TCU</h2>
                   <div  class="ingreso ingresoTamano">
-                    
+
                       <form class="formulario">
                         <!--<li>
                            <span class="h3 orange">Estatus:</span> <span class="h2">Revisado</span>
@@ -58,7 +58,7 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <?php 
+                            <?php
                               foreach($resultHistorialAP as $row){ ?>
                                   <tr>
                                     <td><?php echo $row["fecha"];?></td>
@@ -81,7 +81,7 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <?php 
+                            <?php
                               foreach($resultHistorialRE as $row){ ?>
                                   <tr>
                                     <td><?php echo $row["fecha"];?></td>
@@ -100,7 +100,7 @@
             </section><!--.section programa-->
           </main>
           <script src="../../js/principalEstudiantes.js"></script>
-          <?php 
+          <?php
           include '../../footer.php';
           ?>
           <script src="../../js/datosProyecto.js"></script>

@@ -1,11 +1,11 @@
 <?php
   session_start();
   $sesionId = $_SESSION["codigo"];
-  $grupo = $_SESSION["grupo"]; 
- 
+  $grupo = $_SESSION["grupo"];
+
     include '../../conection.php'; //Conección a la DB
 
-      $query = "SELECT codigo, conclusion FROM tigrupou_tcu.resumen_ejecutivo where grupo like $grupo;";
+      $query = "SELECT grupo, conclusion FROM tigrupou_tcu.resumen_ejecutivo where grupo like $grupo;";
       $stmt = $db->prepare($query);
       $stmt -> execute();
       $result = $stmt -> fetchAll();
@@ -13,10 +13,10 @@
       $conclusion = "";
       $codigo = "";
       foreach($result as $row){
-      	  $codigo = $row["codigo"];
+      	  $codigo = $row["grupo"];
           $conclusion = $row["conclusion"];
       }
-  
+
  ?>
 
 

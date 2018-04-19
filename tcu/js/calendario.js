@@ -3,15 +3,17 @@ var horaEntrante = "";
 var horaSalida = "";
 var cantidadHoras = "";
 var actividades = "";
+var codigo = "";
 var calendarHeight = "2.5em";
+
 function getData(){
+  codigo = $("#Codigo").val();
   date = $("#Fecha").val();
   horaEntrante = $("#inTime").val();
   horaSalida = $("#outTime").val();
   cantidadHoras = $("#quantity").val();
   actividades = $("#actividadesR").val();
 }
-
 
 function validar(){
   if(date!="" && horaEntrante!="" && horaSalida!="" && cantidadHoras !="" && actividades !=""){
@@ -24,7 +26,7 @@ function agregarActividad(){
   getData();
   if(validar()){
       debugger;
-      var parametros = {"fecha":date,"horaEntrada":horaEntrante,"horaSalida":horaSalida,
+      var parametros = {"codigo":codigo, "fecha":date,"horaEntrada":horaEntrante,"horaSalida":horaSalida,
                           "cantidadHoras":cantidadHoras,"actividades":actividades};
               $.ajax({
                       data: parametros,
@@ -35,7 +37,7 @@ function agregarActividad(){
                             alert("Ha ocurrido un error inesperado, intentelo nuevamente");
                         }else if(data =="OK"){
                           alert("Ingreso con éxito");
-                          setTimeout(function(){ window.location="calendarioHoras.php"; }, 8000);
+                          setTimeout(function(){ window.location="calendarioHoras.php"; }, 2000);
                         }
 
                       },

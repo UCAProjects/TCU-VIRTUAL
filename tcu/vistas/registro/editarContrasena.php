@@ -1,4 +1,4 @@
-<?php 
+<?php
 // Se recibe una variable tipo, la cual espercifica como se comportará la pantalla
 // TIPO = 1 . Cambio de contraseña para estudiantes.
 // TIPO = 2. Cambio de contraseña para funcionarios.
@@ -18,7 +18,7 @@
          <link rel="stylesheet" href="../../css/datosProyecto.css">
     </head>
     <body>
-    	<?php 
+    	<?php
     		include '../../header.php';
     		include '../../conection.php';
         if($tipo ==1){
@@ -69,17 +69,19 @@
                             <li><input type="password" name="contrasenaN2" id="contrasenaN2" placeholder="Vuelva a digitar su nueva contraseña" required></li>
                         </div>
                       </div>
-     
-                      <li><button  id="btnUserContrasena" name="btnUserContrasena" onclick="validarEditarUsuarioContrasena(<?php echo $sesionId ?>,<?php echo $tipo ?>)">Confirmar</button> <br><br><br></li>
+                      <div class="col-md-3 col-md-offset-9">
+                        <button  class="btn btn-block btn-success buttonForm" id="btnUserContrasena" name="btnUserContrasena" onclick="validarEditarUsuarioContrasena(<?php echo $sesionId ?>,<?php echo $tipo ?>)"><i class="far fa-save"></i> Confirmar</button>
+                      </div>
+                      <br><br><br>
                     </ul>
                   </div>
                 </div><!--.programa-evento-->
               </div><!--.contenedor-->
-         
+
           </section><!--.section programa-->
-        
+
         </main>
-        <?php 
+        <?php
         	include '../../footer.php'
         ?>
         <script src="../../js/registro.js"></script>

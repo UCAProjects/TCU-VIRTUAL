@@ -1,14 +1,14 @@
 <?php
   session_start();
   $sesionId = $_SESSION["codigo"];
-  $grupo = $_SESSION["grupo"]; 
- 
+  $grupo = $_SESSION["grupo"];
+
 ?>
 
-<?php 
+<?php
     include '../../conection.php'; //Conección a la DB
 
-      $query = "select codigo, objetivo_general,objetivos_especificos from tigrupou_tcu.ante_proyecto where grupo like $grupo;";
+      $query = "select grupo, objetivo_general,objetivos_especificos from tigrupou_tcu.ante_proyecto where grupo like $grupo;";
       $stmt = $db->prepare($query);
       $stmt -> execute();
       $result = $stmt -> fetchAll();
@@ -17,11 +17,11 @@
       $especificos = "";
       $codigo = "";
       foreach($result as $row){
-      	  $codigo = $row["codigo"];
+      	  $codigo = $row["grupo"];
           $general = $row["objetivo_general"];
           $especificos = $row["objetivos_especificos"];
       }
-  
+
  ?>
 
 
@@ -46,4 +46,3 @@
       <button class="btn" onclick="guardar('objetivo_general',<?php echo $grupo ?>,1);guardar('objetivos_especificos',<?php echo $grupo ?>,1); cargarFormularios('anteProyectoEstrategiasPertenencias.php','contenedorAnteProyecto');aumentarProgress(20);" style="margin-left:45% !important">Continuar  <span class="glyphicon glyphicon-arrow-right"></span></button>
     </div>
   </div>
-    

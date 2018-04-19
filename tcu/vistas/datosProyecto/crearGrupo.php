@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 
   $tipo = $_GET['tipo'];
@@ -17,8 +17,8 @@ session_start();
 
     </head>
     <body>
-      
-      <?php 
+
+      <?php
         include '../../header.php';
         if($tipo == 1){
           include '../../subHeaderEstudiantes.php';
@@ -26,7 +26,7 @@ session_start();
         include '../../conection.php';
       ?>
 
-      
+
         <!--[if lte IE 9]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
         <![endif]-->
@@ -80,7 +80,7 @@ session_start();
                           $stmt = $db->prepare($query);
                           $stmt -> execute();
                           $resultEstudiantes = $stmt -> fetchAll();
-    
+
                                   foreach ($resultEstudiantes as $row ){
                                   ?>
                                   <tr>
@@ -95,11 +95,11 @@ session_start();
                                       <i class="fa fa-lock"></i><?php
 
                                       } ?>
-                                      
+
                                     </td>
-                                  </tr><?php 
-                                }  
-                              }    
+                                  </tr><?php
+                                }
+                              }
       ?>
                       <!-- Información de estudiantes -->
                     </tbody>
@@ -107,13 +107,13 @@ session_start();
                   <hr>
                   <div class="row">
                     <div class="col-md-3 col-md-offset-8">
-                      <button onclick="agregarGrupo(<?php echo $grupo ?>)" class="btn btn-block btn-success buttonForm"><i class="fa fa-floppy-o" aria-hidden="true"></i> Confirmar</button>
+                      <button onclick="agregarGrupo(<?php echo $grupo ?>)" class="btn btn-block btn-success buttonForm"><i class="far fa-save"></i> Confirmar</button>
                     </div>
-                  </div>                  
+                  </div>
                   <br><br>
                 </div>
               </div><!--.contenedor-->
-         
+
           </section><!--.section programa-->
         </main>
         <!-- Moda para Buscar Nombres de estudiantes-->
@@ -126,8 +126,8 @@ session_start();
               </div>
             </div>
           </div>
-         
-        <?php 
+
+        <?php
           include '../../footer.php'
         ?>
          <script src="../../js/datosProyecto.js"></script>

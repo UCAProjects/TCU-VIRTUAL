@@ -25,7 +25,7 @@
     }
 
     .fc-time-grid .fc-slats td {
-      height: 3.5em;
+      height: 3em;
     }
 
   </style>
@@ -62,11 +62,11 @@
         <div class="" id="content">
             <div id="contenedor" class="well">
               <!-- Cargar modal agregar actividad -->
-              <a href="#content" onclick="cargarModal({'fecha':_Date},'AddModalDiv','addActivity-modal','agregarActividad.php')" id="plusActivity"><i class="fas fa-plus-circle a"></i></a>
+              <a href="#content" onclick="cargarModal({'fecha':_Date,'codigo':0},'AddModalDiv','addActivity-modal','agregarActividad.php')" id="plusActivity"><i class="fas fa-plus-circle a"></i></a>
               <!-- Aumentar Zoom -->
-              <a href="#content" onclick="zoom()" id="plusActivity"><i class="fas fa-search-plus a"></i></a>
+              <!--<a href="#content" onclick="zoom()" id="plusActivity"><i class="fas fa-search-plus a"></i></a>  -->
               <!-- Disminuir Zoom -->
-              <a href="#content" onclick="zoomL(0)" id="plusActivity"><i class="fas fa-search-minus a"></i></a>
+              <!-- <a href="#content" onclick="zoomL(0)" id="plusActivity"><i class="fas fa-search-minus a"></i></a> -->
 
               <div id="calendar"></div> <!-- Se carga el calendario  -->
             </div>
@@ -76,7 +76,6 @@
 
     </section><!--.section programa-->
   </main>
-
   <!--
       Moda para agregar responsables a la actividad
   -->
@@ -116,7 +115,7 @@
   -->
   <script>
         /*Javascrip encargado de configurar y dar el diseño a fullCalendar  */
-        var calendarHeight = "2.5em";
+        //var calendarHeight = 2.5;
         var _Date;
         $(document).ready(function() {
           $('#calendar').fullCalendar({
@@ -162,19 +161,26 @@
              description:'<?php echo $event['actividades_realizadas']; ?>',
              start: '<?php echo $start; ?>',
              end: '<?php echo $end; ?>'
-
            },
            <?php endforeach; ?>
            ],
               /* ------------------------------------------------------------------------------------------------- */
 
+
+              /* Cuando el evento es clickeado, carga la página disponible para poder editar*/
+              eventClick: function(calEvent, jsEvent, view) {
+                cargarModal({'fecha':_Date,'codigo':calEvent.id},'AddModalDiv','addActivity-modal','agregarActividad.php')
+
+              },
+
+
            /* Encargado de imprimir el titulo con un mouseover sobre un evento*/
            eventRender: function(event, element) {
-                 var cal = document.querySelectorAll(".fc-time-grid .fc-slats td");
+                 /*var cal = document.querySelectorAll(".fc-time-grid .fc-slats td");
                  //document.getElementById("myBtn").style.height = "3.5em";
                  for (var i = 0; i < cal.length; i++) {
                    cal[i].style.height = calendarHeight;
-                 }
+                 }*/
 
                $(element).tooltip({
                   title: event.title,
@@ -185,15 +191,14 @@
 
           eventColor: '#378006',
 
-          /* Cuando el evento es clickeado, carga la página disponible para poder editar*/
-          eventClick: function(calEvent, jsEvent, view) {
-            verDetalleEvento(calEvent.id); /* función ubicada en ajax.js que se encarga de direcciónar a la pagina de edición */
-
-          },
-
           /*Evento que se ejecuta antes de cargar la vista del calendario*/
           /*Se toma la primera fecha que muestra el calendario y se toma esto para configurar el numero de cada semana*/
           viewRender:function(view,element){
+            /*var cal = document.querySelectorAll(".fc-time-grid .fc-slats td");
+            //document.getElementById("myBtn").style.height = "3.5em";
+            for (var i = 0; i < cal.length; i++) {
+              cal[i].style.height = calendarHeight+'em';
+            }*/
             var star =   $('#calendar').fullCalendar('getView').start.format('YYYY-MM-DD');/*Toma la primer fecha que tira le calendario*/
             _Date = star;
             if(view.name == "agendaDay"){
@@ -213,9 +218,12 @@
           },
         });
         });
-        function zoom(){
+        /*function zoom(){
           calendarHeight += 1;
-        }
+          $('#calendar').fullCalendar('prev');
+          $('#calendar').fullCalendar('next');
+          alert(calendarHeight+'em')
+        }*/
       </script>
 </body>
 </html>
