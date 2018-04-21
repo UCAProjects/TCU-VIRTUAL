@@ -36,10 +36,9 @@ function agregarActividad(){
                         if(data == "ERROR"){
                             alert("Ha ocurrido un error inesperado, intentelo nuevamente");
                         }else if(data =="OK"){
-                          alert("Ingreso con éxito");
-                          setTimeout(function(){ window.location="calendarioHoras.php"; }, 2000);
+                          alert("Operación realizada con éxito");
+                          setTimeout(function(){ window.location="calendarioHoras.php"; }, 1000);
                         }
-
                       },
                       error: function () {
                         mensaje('error','Error al cargar la información',3000);
@@ -62,4 +61,25 @@ function zoomM(){
   //height: ;
 function zoomL(){
 
+}
+
+function eliminarActividad(){
+  mCodigo = $("#Codigo").val();
+  var parametros = {"codigo":mCodigo};
+              $.ajax({
+                      data: parametros,
+                      type: "POST",
+                      url: "../../accesoDatos/calendario/eliminarActividad.php",
+                      success: function (data) {
+                        if(data == "ERROR"){
+                            alert("Ha ocurrido un error inesperado, intentelo nuevamente");
+                        }else if(data =="OK"){
+                          alert("Se ha eliminado con éxito");
+                          setTimeout(function(){ window.location="calendarioHoras.php"; }, 1000);
+                        }
+                      },
+                      error: function () {
+                        mensaje('error','Error al cargar la información',3000);
+                      }
+                    });
 }

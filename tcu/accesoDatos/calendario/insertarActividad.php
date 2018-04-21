@@ -13,9 +13,8 @@ session_start();
   $_CantidadHoras = $_POST["cantidadHoras"];
   $_Actividades = $_POST["actividades"];
 
-  if($_Codigo == 0){ // Insertar
+  if($_Codigo == "0"){ // Insertar
     try {
-
     	$queryCalendario = "INSERT INTO tigrupou_tcu.horas_tcu (grupo,fecha, hora_entrada, hora_salida, numero_horas, actividades_realizadas)
                                   VALUES ($grupo,'$_Fecha', '$_HoraEntrada', '$_HoraSalida', $_CantidadHoras, '$_Actividades');";
 
@@ -28,12 +27,11 @@ session_start();
     } catch (Exception $e) {
     	echo "ERROR";
     }
-  }else{
+  }else{ /// Editar
     try {
       $queryCalendario = "UPDATE tigrupou_tcu.horas_tcu
                                 SET fecha='$_Fecha', hora_entrada = '$_HoraEntrada',hora_salida = '$_HoraSalida', numero_horas = $_CantidadHoras, actividades_realizadas = '$_Actividades'
                                       WHERE codigo=$_Codigo";
-
       $stmt = $db->prepare($queryCalendario);//consulta a DB
       $stmt -> execute();
 

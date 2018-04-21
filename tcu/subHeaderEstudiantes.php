@@ -1,5 +1,26 @@
 <link rel="stylesheet" href="../../css/subHeader.css">
 
+<?php
+  //Codigo php que verifica los estados de un determinado
+  //usuario para así habilitar las opciones del menú que sen
+  //realmente necesarias.
+
+  include '../../conection.php'; //Conección a la DB
+
+  // $query = "select codigo from tigrupou_tcu.datos where grupo like $grupoDB";
+  // $stmt = $db->prepare($query);
+  // $stmt->execute();
+  // $result = $stmt -> fetchAll();
+  // foreach ($result as $row ) {
+  // $datos = $row["codigo"];
+  // }
+  // if($datos ==""){
+  //   echo "1-0"; // El estudiante tiene grupo, pero no tiene datos asociada.
+  // }else{
+  //   echo "1-$datos"; // El estudiante tiene tanto grupo como datos asociados.
+  // }
+
+?>
 <header class="sub-header">
   <div class="fondo-encabezado">
     <ul class="nav nav-tabs">

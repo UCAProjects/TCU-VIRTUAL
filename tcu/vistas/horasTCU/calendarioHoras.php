@@ -123,7 +123,7 @@
             monthNames:['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio','Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
             dayNames:['Domingo', 'Lunes', 'Martes', 'Miércoles','Jueves', 'Viernes', 'Sábado'],
 
-            defaultView: 'agendaDay',
+            //defaultView: 'agendaWeek',
             contentHeight:'auto',
 
             /*Configuración de la posición y botones y titulos al lado arriba del calendario */
