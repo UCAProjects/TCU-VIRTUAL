@@ -1,11 +1,44 @@
+    /**
+    * Genera animaciones a las navbar al ser
+    * seleccionadas.
+    **/
     $(".nav li").on("click", function(){
       $(".nav li").removeClass("active");
-      
+
       $(this).addClass("active");
-     
+
     });
 
 
+    /**
+    * Se encarga de limitar el número de lineas que se pueden escribir
+    * en un textarea. Recibe un texto, cuenta cuantos saltos de lineas existen,
+    * y a partir de ahí compara con el número máximo de lineas.
+    * Param e, tecla digitada
+    *Param txt, texto digitado en el textarea.
+    *Param limit, liminte de lineas que acepta el textarea.
+    * Return False, en caso de que se encuentre en el limite de lineas.
+    **/
+    function limitTextArea(e,txt,limit) {
+      tecla = (document.all) ? e.keyCode : e.which;
+      lin = txt.split('\n');
+      if (tecla==13) {
+        if (lin.length==limit) return false;
+      }else{
+        if (lin.length==(limit+1)) return false;
+      }
+    }
+
+    /**
+    * Función que se encarga de utilizar las bibliotecas
+    * de Zebra Dialog para generar mensajes de alert en
+    * patalla, segun el tipo que lo desee el usuario.
+    *
+    * Param tipo: tipo de mensaje, warning, success, etc
+    * Param mensaje: mensaje a ser mostrado por el alert.
+    * Param duracion: duracion que será visible el mensaje.
+    *Return Zebra_Dialog.
+     **/
     function mensaje(tipo,mensaje,duracion = 2000){
   		new $.Zebra_Dialog(mensaje,{
                       'type': tipo,
@@ -16,17 +49,22 @@
                     });
     }
 
+    /**
+    * Verifica si el estudiante a loguearse es un estudiante o un
+    * funcionario, esto por medio de los radio button de selección
+    * En caso de no selección ningun tipo de usuario, se desplegará
+    * un mensjae de error adviertiendo que se debe realizar la selección.
+    * **/
     function validarTipoUsuario(){
       var estudiante = document.getElementById('estudiante');
       var funcionario = document.getElementById('funcionario');
-
       if(!(estudiante.checked || funcionario.checked)){
        mensaje("warning","Debe Seleccionar un tipo de usuario, ya sea Estudiante o Funcionario");
        return 0;
       }else if(estudiante.checked){
         return estudiante.value;
       }else{
-        return funcionario.value;  
+        return funcionario.value;
       }
     }
 
@@ -43,7 +81,6 @@
       var usuario = $("#usuario").val();
       var contrasena = $("#password").val();
       var status = validarTipoUsuario();
-      
       if(status != 0 ){
         var parametros = {"usuario":usuario,"contrasena":contrasena,"tipo":status};
         $.ajax({
@@ -61,7 +98,6 @@
                   window.location.href = "vistas/datosProyecto/datosProyecto.php?tipo=0";
                 }else if(data == "2"){ // Profesor Logueado
                   window.location.href = "vistas/principalFuncionarios/principalFuncionarios.php";
-                }
               }else{
                 mensaje("warning","Credenciales Incorrectas");
               }
@@ -72,7 +108,7 @@
           error: function () {
             mensaje("error","Error al procesar la transacción");
           }
-        });         
+        });
       }
     }
 
@@ -135,7 +171,7 @@ function guardar(numeroPagina,grupo,tipo){
   }
   var texto = $("#"+numeroPagina).val();
   var cod = $("#hiddenCodigo").val();
-  
+
   var parametros = {"codigo":cod,"numeroPagina": numeroPagina, "texto":texto,"grupo":grupo}
   $.ajax({
     data: parametros,

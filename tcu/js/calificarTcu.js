@@ -1,7 +1,7 @@
 function ingresarCalificacion(pCodigoAnteProyecto,pEstado){
   debugger;
   var observaciones = $('#txtA_observaciones').val();
-  var parametros = {"estado":pEstado,"observaciones":observaciones,"ante_proyecto":pCodigoAnteProyecto};
+  var parametros = {"estado":observaciones,"observaciones":observaciones,"ante_proyecto":pCodigoAnteProyecto};
           $.ajax({
                   data: parametros,
                   type: "POST",

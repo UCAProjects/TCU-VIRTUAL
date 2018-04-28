@@ -47,7 +47,7 @@ function consultaCed(){
                   url: "../../accesoDatos/datosProyecto/consultasDatosProyecto.php",
                   success: function (data) {
                     if(data != 0){
-                      agregarEstudianteTabla(data);   
+                      agregarEstudianteTabla(data);
                     }else{
                       mensaje('warning','No se ha encontrado información que coincida con la búsqueda deseada');
                     }
@@ -79,7 +79,7 @@ function agregarInfoTabla(data){
       `</tr>`
     );
   }
-  
+
   function eliminarElemento(cod){
     for (var i = 0; i < arrayEstudiantesSelecciondos.length; i++) {
       if(arrayEstudiantesSelecciondos[i][0] ==cod){
@@ -114,7 +114,7 @@ function cargarResultados(){
                     else{
                       mensaje('error','Error al cargar la información');
                     }
-                    
+
                   },
                   error: function () {
                     mensaje('error','Error al cargar la información');
@@ -176,11 +176,3 @@ function redirectGrupo(tipo){
     window.location.href = "datosProyecto.php?tipo=" + tipo;
   }
 }
-
-
-
-
-
-
-
-

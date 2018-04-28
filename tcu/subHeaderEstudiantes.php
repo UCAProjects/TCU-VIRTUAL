@@ -4,7 +4,6 @@
   //Codigo php que verifica los estados de un determinado
   //usuario para así habilitar las opciones del menú que sen
   //realmente necesarias.
-
   include '../../conection.php'; //Conección a la DB
 
   // $query = "select codigo from tigrupou_tcu.datos where grupo like $grupoDB";
@@ -13,13 +12,12 @@
   // $result = $stmt -> fetchAll();
   // foreach ($result as $row ) {
   // $datos = $row["codigo"];
-  // }
+  // //}
   // if($datos ==""){
   //   echo "1-0"; // El estudiante tiene grupo, pero no tiene datos asociada.
   // }else{
   //   echo "1-$datos"; // El estudiante tiene tanto grupo como datos asociados.
   // }
-
 ?>
 <header class="sub-header">
   <div class="fondo-encabezado">
@@ -37,7 +35,6 @@
         </ul>
       </li>
 
-
       <li class="dropdown">
         <a  href="#" class="dropdown-toggle color" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ><i class="fas fa-file-alt"></i> Documentación <span  class="caret white colorNaranja"></span></a>
         <ul class="dropdown-menu">
@@ -49,19 +46,14 @@
 
       <li class="dropdown">
         <a  href="#" class="dropdown-toggle color" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ><i class="fas fa-hourglass-half"></i> Realiazación de Horas <span  class="caret white colorNaranja"></span></a>
-
-
-
         <ul class="dropdown-menu">
           <li><a href="../horasTCU/calendarioHoras.php"><i class="fas fa-calendar-alt"></i> Control de horas digital</a></li>
           <li><a href="../registro/registro.php?tipo=1"><i class="fas fa-download"></i> Documento para el control de horas</a></li>
         </ul>
       </li>
-
       <li class="navbar-right" id="liSalir"><a class="color"  href="../../index.php"><i class="fas fa-sign-out-alt"></i></a></li>
       <li class="dropdown navbar-right">
         <a  href="#" class="dropdown-toggle color" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ><i title="USUARIO" class="fa fa-user white" aria-hidden="true" ></i> <span  class="caret white colorNaranja"></span></a>
-
         <ul class="dropdown-menu">
           <li><a href="../registro/registro.php?tipo=1"><i class="fas fa-edit"></i> Editar Perfil</a></li>
           <li><a href="../registro/editarContrasena.php?tipo=1"><i class="fas fa-key"></i> Cambiar Contraseña</a></li>

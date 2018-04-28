@@ -1,11 +1,11 @@
-<?php 
+<?php
 	include '../../conection.php';//COnección a la DB
 	include("../redireccionar.php");// Contiene función que redirecciona a cualquier otra página
  	$usuario = $_POST["usuario"]; //Se recibe el usuario a loguearse
 	$contrasena = $_POST["contrasena"]; // Se recibe la contraseña del usuario
 	$tipo = $_POST["tipo"]; // Se recibe un tipo para determinar si es estudiante o profesor
 	if($tipo == 1){//Logueo de Estudiante
-		
+
 			$query = "SELECT E.codigo, E.grupo, A.nombre_usuario, A.password FROM tigrupou_tcu.estudiantes E JOIN tigrupou_tcu.autentificacion_estudiantes A ON E.codigo LIKE A.usuario WHERE A.nombre_usuario LIKE :usuario AND A.password like :contrasena ;";
 
 			$stmt = $db->prepare($query);
@@ -52,7 +52,7 @@
 			}else{
 				echo "false";
 			}
-	
+
 	}elseif($tipo == 2){//Logueo de Funcionario
 		try {
 			$query = "SELECT E.codigo, E.carrera, E.rol, A.nombre_usuario, A.password FROM tigrupou_tcu.funcionarios E JOIN tigrupou_tcu.autentificacion_funcionarios A ON E.codigo LIKE A.usuario WHERE A.nombre_usuario LIKE :usuario AND A.password like :contrasena ;";
@@ -81,19 +81,19 @@
       				$_SESSION["carreraFuncionario"] = $carreraDB;
       				$_SESSION["rolFuncionario"] = $rolDB;
       				echo "2";
-      				
+
 				}else{
 					echo "false";
 				}
 			}else{
 				echo "false";
 			}
-		
+
 		}catch (Exception $e){
 			echo "error";
 		}
 	}
-			
+
 
 
 
