@@ -104,7 +104,8 @@
             }else{
               mensaje("error","Error al procesar la transacción");
             }
-          },
+          }
+        },
           error: function () {
             mensaje("error","Error al procesar la transacción");
           }

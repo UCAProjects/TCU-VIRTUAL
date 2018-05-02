@@ -21,29 +21,32 @@
   <div class="fondo-encabezado">
 
     <ul class="nav nav-tabs">
-      <li class="active">
+      <li>
         <a class="color" href="../principalFuncionarios/principalFuncionarios.php">
-          <i  style="color: #fe4918" title="INICIO" class="fa fa-university white" aria-hidden="true"></i>
+          <i title="INICIO" class="fa fa-university white" aria-hidden="true"></i>
         </a>
       </li>
 
       <li class="dropdown">
-          <a class="color" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="white">Calificar TCU </span><span style="color: #fe4918" class="caret white colorNaranja"></span></a>
+          <a class="color" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="white"><i class="fas fa-check-circle"></i> Calificar TCU </span><span style="color: #fe4918" class="caret white"></span></a>
           <ul class="dropdown-menu">
-            <li><a class="over" href="../calificarTCU/calificarDatosProyecto.php">Ante Proyecto <span class="badge"><?php echo $numeroAnteProyecto; ?></span></a></li>
+            <li><a class="over" href="../calificarTCU/calificarDatosProyecto.php"><i class="fas fa-clipboard-check"></i> Ante Proyecto <span class="badge"><?php echo $numeroAnteProyecto; ?></span></a></li>
+
+            <li><a class="over" href="../calificarTCU/calificarDatosProyecto.php"><i class="fas fa-clipboard-check"></i> Resumen Ejecutivo<span class="badge"><?php echo $numeroAnteProyecto; ?></span></a></li>
+
           </ul>
         </li>
-      <li id="liSalirs"><a class="color"  href="../funcionariosGruposTCU/administrarGrupos.php"> Grupos de TCU</a></li>
-      <li id="liSalir"><a class="color"  href="../Reportes/reportes.php"> Reportes</a></li>
+      <li id="liSalirs"><a class="color"  href="../funcionariosGruposTCU/administrarGrupos.php"><i class="fas fa-users"></i> Grupos de TCU</a></li>
+      <li id="liSalir"><a class="color"  href="../Reportes/reportes.php"><i class="fas fa-table"></i> Reportes</a></li>
 
-      <li class="navbar-right" id="liSalir"><a class="color colorNaranja"  href="../../index.php"><i  class="fas fa-sign-out-alt" aria-hidden="true" title="SALIR"></i></a></li>
+      <li class="navbar-right" id="liSalir"><a class="color"  href="../../index.php"><i  class="fas fa-sign-out-alt" aria-hidden="true" title="SALIR"></i></a></li>
 
       <li class="dropdown navbar-right">
-        <a  href="#" class="dropdown-toggle color colorNaranja" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ><i title="USUARIO" class="fa fa-user white" aria-hidden="true" ></i> <span  class="caret white colorNaranja"></span></a>
+        <a  href="#" class="dropdown-toggle color" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ><i title="USUARIO" class="fa fa-user white" aria-hidden="true" ></i> <span  class="caret white"></span></a>
 
         <ul class="dropdown-menu">
-          <li><a href="../registro/registroFuncionarios.php?tipo=2">Editar Perfil</a></li>
-          <li><a href="../registro/editarContrasena.php?tipo=2">Cambiar Contraseña</a></li>
+          <li><a href="../registro/registroFuncionarios.php?tipo=2"><i class="fas fa-edit"></i> Editar Perfil</a></li>
+          <li><a href="../registro/editarContrasena.php?tipo=2"><i class="fas fa-key"></i> Cambiar Contraseña</a></li>
         </ul>
       </li>
     </ul>

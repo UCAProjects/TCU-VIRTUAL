@@ -5,6 +5,8 @@
   session_start();
   $tipo = $_GET['tipo'];
   $sesionId = $_SESSION["codigo"];
+  $sesionIdF = $_SESSION["codigoFuncionario"];
+  $id = "";
   $query = "";
 ?>
 
@@ -24,9 +26,11 @@
         if($tipo ==1){
           include '../../subHeaderEstudiantes.php';
           $query = "SELECT nombre_usuario FROM tigrupou_tcu.autentificacion_estudiantes where usuario like $sesionId;";
-          }elseif($tipo ==2){
+          $id = $sesionId;
+        }elseif($tipo ==2){
+            $id = $sesionIdF;
             include '../../subHeaderFuncionarios.php';
-            $query = "SELECT nombre_usuario FROM tigrupou_tcu.autentificacion_funcionarios where usuario like $sesionId;";
+            $query = "SELECT nombre_usuario FROM tigrupou_tcu.autentificacion_funcionarios where usuario like $sesionIdF;";
           }
           $nombre_usuario = "";
           $stmt = $db->prepare($query);
@@ -70,7 +74,7 @@
                         </div>
                       </div>
                       <div class="col-md-3 col-md-offset-9">
-                        <button  class="btn btn-block btn-success buttonForm" id="btnUserContrasena" name="btnUserContrasena" onclick="validarEditarUsuarioContrasena(<?php echo $sesionId ?>,<?php echo $tipo ?>)"><i class="far fa-save"></i> Confirmar</button>
+                        <button  class="btn btn-block btn-success buttonForm" id="btnUserContrasena" name="btnUserContrasena" onclick="validarEditarUsuarioContrasena(<?php echo $idti ?>,<?php echo $tipo ?>)"><i class="far fa-save"></i> Confirmar</button>
                       </div>
                       <br><br><br>
                     </ul>

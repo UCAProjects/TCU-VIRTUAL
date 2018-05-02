@@ -27,6 +27,20 @@
                   <h2>Manejar Grupos TCU</h2>
                   <div  class="ingreso ingresoTamano">
                       <div class="formulario">
+
+                      <!--
+                        Boton buscar 
+                        Falta programabilidad 
+                        Evento onChance realiza consulta y setea los datos.
+                        Por Ajax, emigrar pantalla de visualizacion a pantalla externa
+                       -->  
+                      <div class="form-inline">
+                             <input type="text" style="width:50% !important" id="textBucar" class="form-control" placeholder="Buscar">
+                      </div>
+                      
+                      <br>
+                      <hr>
+
                         <?php 
                           $query = "select distinct G.codigo, G.descripcion from tigrupou_tcu.grupos G join tigrupou_tcu.estudiantes E on G.codigo = E.grupo";
 
