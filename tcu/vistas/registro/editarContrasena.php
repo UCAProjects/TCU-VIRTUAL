@@ -4,12 +4,9 @@
 // TIPO = 2. Cambio de contraseña para funcionarios.
   session_start();
   $tipo = $_GET['tipo'];
-  $sesionId = $_SESSION["codigo"];
-  $sesionIdF = $_SESSION["codigoFuncionario"];
   $id = "";
   $query = "";
 ?>
-
 
 <!doctype html>
 <html class="no-js" lang="">
@@ -25,12 +22,12 @@
     		include '../../conection.php';
         if($tipo ==1){
           include '../../subHeaderEstudiantes.php';
-          $query = "SELECT nombre_usuario FROM tigrupou_tcu.autentificacion_estudiantes where usuario like $sesionId;";
-          $id = $sesionId;
+          $id = $_SESSION["codigo"];
+          $query = "SELECT nombre_usuario FROM tigrupou_tcu.autentificacion_estudiantes where usuario like $id;";
         }elseif($tipo ==2){
-            $id = $sesionIdF;
+            $id = $_SESSION["codigoFuncionario"];
             include '../../subHeaderFuncionarios.php';
-            $query = "SELECT nombre_usuario FROM tigrupou_tcu.autentificacion_funcionarios where usuario like $sesionIdF;";
+            $query = "SELECT nombre_usuario FROM tigrupou_tcu.autentificacion_funcionarios where usuario like $id;";
           }
           $nombre_usuario = "";
           $stmt = $db->prepare($query);
@@ -74,14 +71,13 @@
                         </div>
                       </div>
                       <div class="col-md-3 col-md-offset-9">
-                        <button  class="btn btn-block btn-success buttonForm" id="btnUserContrasena" name="btnUserContrasena" onclick="validarEditarUsuarioContrasena(<?php echo $idti ?>,<?php echo $tipo ?>)"><i class="far fa-save"></i> Confirmar</button>
+                        <button  class="btn btn-block btn-success buttonForm" id="btnUserContrasena" name="btnUserContrasena" onclick="validarEditarUsuarioContrasena(<?php echo $id ?>,<?php echo $tipo ?>)"><i class="far fa-save"></i> Confirmar</button>
                       </div>
                       <br><br><br>
                     </ul>
                   </div>
                 </div><!--.programa-evento-->
               </div><!--.contenedor-->
-
           </section><!--.section programa-->
 
         </main>
