@@ -5,7 +5,6 @@
 
       $carrera = $_SESSION["carreraFuncionario"];
       $query = "select count(*) total from tigrupou_tcu.grupos G JOIN tigrupou_tcu.ante_proyecto A ON G.codigo LIKE A.grupo where G.carrera  like $carrera and A.estado like 1 ";
-
       $stmt = $db->prepare($query);
       $stmt -> execute();
       $result = $stmt -> fetchAll();
@@ -39,7 +38,7 @@
           </a>
           <ul class="dropdown-menu">
             <li>
-                  <a class="over" href="../calificarTCU/calificarDatosProyecto.php"><i class="fas fa-clipboard-check"></i>Ante Proyecto
+                  <a class="over" href="../calificarTCU/calificarDatosProyecto.php"><i class="fas fa-clipboard-check"></i> Ante Proyecto
                       <span class="badge" style="background-color:#3a87ad"><?php echo $numeroAnteProyecto; ?></span>
                   </a>
             </li>
@@ -53,16 +52,17 @@
 
 
       <!-- Grupos TCU -->
+
       <li id="liSalirs"><a class="color"  href="../funcionariosGruposTCU/administrarGrupos.php"><i class="fas fa-users"></i> Grupos de TCU</a></li>
+
       <!-- ************************ -->
 
 
-      <!-- ______Reportes___________     -->
+      <!--       Reportes      -->
       <li class="dropdown" id="liSalir">
           <a class="color" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               <span class="white"><i class="fas fa-table"></i> Reportes </span><span style="color: #fe4918" class="caret white"></span>
           </a>
-
           <ul class="dropdown-menu">
             <li><a class="over" href="../calificarTCU/calificarDatosProyecto.php"><i class="fas fa-file-pdf"></i></i> Reporte por Estudiantes </a></li>
             <li><a class="over" href="../calificarTCU/calificarDatosProyecto.php"><i class="fas fa-file-pdf"></i></i> Reporte por Grupo </a></li>
