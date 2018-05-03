@@ -55,7 +55,7 @@
 
       <li id="liSalirs"><a class="color"  href="../funcionariosGruposTCU/administrarGrupos.php"><i class="fas fa-users"></i> Grupos de TCU</a></li>
 
-      <!-- ************************ -->
+      <!-- ************************* -->
 
 
       <!--       Reportes      -->
