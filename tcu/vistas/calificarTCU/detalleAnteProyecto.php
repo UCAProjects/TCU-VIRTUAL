@@ -23,6 +23,7 @@
     include '../../conection.php'; //Conección a la DB
 
     $id = $_GET["id"];
+
     $carrera = $_SESSION["carreraFuncionario"]; // Carrera a la que partenece el funcionario
     $query = "SELECT D.tema,D.organizacion, D.supervisor, A.* FROM tigrupou_tcu.datos D JOIN tigrupou_tcu.ante_proyecto A ON D.grupo like A.grupo WHERE D.grupo like $id";
 
@@ -187,17 +188,15 @@
                       </div> <!-- END DIV ROW -->
                                   <div class="row ">
                             <div class="col-md-3">
-                              <a onclick="ingresarCalificacion(<?php echo $id;?>,2)" class="btn btn-block btn-success">Aprobar</a>
+                              <a onclick="ingresarCalificacion(<?php echo $id;?>,2,1)" class="btn btn-block btn-success">Aprobar</a>
                             </div>
                             <div class="col-md-4 col-md-offset-1">
-                              <a onclick="ingresarCalificacion(<?php echo $id;?>,3)" class="btn btn-block btn-primary">Aprobar con Observaciones</a>
+                              <a onclick="ingresarCalificacion(<?php echo $id;?>,3,1)" class="btn btn-block btn-primary">Aprobar con Observaciones</a>
                             </div>
                             <div class="col-md-3 col-md-offset-1">
-                              <a onclick="ingresarCalificacion(<?php echo $id;?>,4)" class="btn btn-block btn-danger">Reprobado </a>
+                              <a onclick="ingresarCalificacion(<?php echo $id;?>,4,1)" class="btn btn-block btn-danger">Reprobado </a>
                             </div><br>
                       </div>
-
-
 
                       </form>
                   </div>

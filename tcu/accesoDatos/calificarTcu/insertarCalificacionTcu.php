@@ -3,53 +3,74 @@
 	include("../../conection.php");// conexión a DB
 
 	// Se reciben todos los campos asociados a un estudiante
-	$estado = $_POST["estado"]; 
+	$estado = $_POST["estado"];
 	$observaciones = $_POST["observaciones"];
-	$ante_proyecto = $_POST["ante_proyecto"];
+	$documento = $_POST["documento"];
+
+  // 1 para ante proyecto
+  // 2 para resumen ejecutivo
+  $tipo = $_POST["tipo"];
+
+  $queryNumeroRevisiones = "";
+  $queryMaxVersionSelect = "";
+  $queryInsert = "";
+  $queryUpdate = "";
+
+  switch ($tipo) {
+    case 1: // Caso ante proyecto
+      $queryNumeroRevisiones = "SELECT count(*) AS cantidad FROM tigrupou_tcu.revision_ante_proyecto WHERE ante_proyecto LIKE $documento";
+      $queryMaxVersionSelect = "SELECT max(version) AS max FROM tigrupou_tcu.revision_ante_proyecto WHERE ante_proyecto LIKE $documento";
+      $queryUpdate = "UPDATE tigrupou_tcu.ante_proyecto SET estado = $estado WHERE grupo LIKE $documento";
+      $queryInsert = "INSERT INTO tigrupou_tcu.revision_ante_proyecto(version, Observaciones,estado,ante_proyecto) values(version_value,'$observaciones',$estado,$documento)";
+      break;
+    case 2: // Caso resumen ejecutivo
+      $queryNumeroRevisiones = "SELECT count(*) AS cantidad FROM tigrupou_tcu.revision_resumen_ejecutivo WHERE resumen_ejecutivo LIKE $documento";
+      $queryMaxVersionSelect = "SELECT max(version) AS max FROM tigrupou_tcu.revision_resumen_ejecutivo WHERE resumen_ejecutivo LIKE $documento";
+      $queryUpdate = "UPDATE tigrupou_tcu.resumen_ejecutivo SET estado = $estado WHERE grupo LIKE $documento";
+      $queryInsert = "INSERT INTO tigrupou_tcu.revision_resumen_ejecutivo(version, observaciones,estado,resumen_ejecutivo) values(version_value,'$observaciones',$estado,$documento)";
+      break;
+    default:
+      break;
+  }
 
 	try {
-		
-		$queryNumeroRevisiones = "SELECT count(*) AS cantidad FROM tigrupou_tcu.revision_ante_proyecto WHERE ante_proyecto LIKE $ante_proyecto";
 
-		$stmt = $db->prepare($queryNumeroRevisiones);//consulta a DB 
-     	$stmt -> execute();
+		  $stmt = $db->prepare($queryNumeroRevisiones);//consulta a DB
+      $stmt -> execute();
 
+      //Cantidad de revisiones
      	$resulNumeroRevisiones = $stmt -> fetchAll();
     	foreach($resulNumeroRevisiones as $row){
-      		$numeroRevisiones = $row["cantidad"]; 		
+      		$numeroRevisiones = $row["cantidad"];
     	}
-    	echo $numeroRevisiones;
+      // Calcula la version del nuevo documento
     	if($numeroRevisiones == 0){
     		$version = 1;
     	}else{
-    		$queryMaxVersionSelect = "SELECT max(version) AS max FROM tigrupou_tcu.revision_ante_proyecto WHERE ante_proyecto LIKE $ante_proyecto";
-
-    		$stmt = $db->prepare($queryMaxVersionSelect);//consulta a DB 
+    		$stmt = $db->prepare($queryMaxVersionSelect);//consulta a DB
      		$stmt -> execute();
-
      		$resultMaxVersion = $stmt -> fetchAll();
+
     		foreach($resultMaxVersion as $row){
-      			$maxVersion = $row["max"]; 		
+      			$maxVersion = $row["max"];
     		}
     		$version = $maxVersion +1;
     	}
-		
-						
-		$query = "INSERT INTO tigrupou_tcu.revision_ante_proyecto(version, Observaciones,estado,ante_proyecto) values($version,'$observaciones',$estado,$ante_proyecto)";
-				
 
-		$stmt = $db->prepare($query);//Inserta a DB 
+      // Reemplaza la nueva version en la consulta
+      $queryInsert = str_replace("version_value", $version, $queryInsert);
+
+		  $stmt = $db->prepare($queryInsert);//Inserta a DB
      	$stmt -> execute();
-     	
-        $update = "UPDATE tigrupou_tcu.ante_proyecto SET estado = $estado WHERE codigo LIKE $ante_proyecto";
-        $stmt = $db->prepare($update);//Inserta a DB 
-        $stmt -> execute();
-        
+
+      $stmt = $db->prepare($queryUpdate);//Inserta a DB
+      $stmt -> execute();
+
      	echo "OK";
-     			//redireccionar a la página principal
-		
+     	//redireccionar a la página principal
+
 	} catch (Exception $e) {
 		echo "ERROR";
 	}
-			
+
 ?>
