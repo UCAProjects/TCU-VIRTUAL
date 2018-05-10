@@ -25,11 +25,11 @@
 
 <label for="identificacionProblema">DESCRIPCION DEL BENEFICIARIO</label>
 <input type="hidden" id="hiddenCodigo" name="hiddenCodigo" value="<?php echo $codigo ?>">
-                      <textarea  id="descripcion_beneficiario" style=" overflow:hidden; font-size:15px; font-family:Arial; text-align : justify;line-height: 1.6; resize:none;" rows="10" cols="87"><?php echo $descripcion_beneficiario ?> </textarea>
-
-                      <br>
-
-
+        <textarea  id="descripcion_beneficiario"
+              style=" overflow:hidden; font-size:15px; font-family:Arial; text-align : justify;line-height: 1.6; resize:none;"
+                    rows="15" cols="87" maxlength="1305"><?php echo $descripcion_beneficiario ?>
+        </textarea>
+        <br>
 
  <div class="row">
     <div class="col-md-6">

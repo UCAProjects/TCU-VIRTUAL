@@ -41,7 +41,7 @@ session_start();
                   <div class="formulario" novalidate>
                     <div class="row">
                       <div class="col-md-1">
-                        <a href="#" onclick="cargarModal(null,'#buscarEstudianteModalDiv','#buscarEstudiante-modal','modalBuscarEstudiante.php')" class="buttonA"><i class="fa fa-search" aria-hidden="true"></i></a>
+                        <a href="#" onclick="cargarModal(null,'buscarEstudianteModalDiv','buscarEstudiante-modal','modalBuscarEstudiante.php')" class="buttonA"><i class="fa fa-search" aria-hidden="true"></i></a>
                       </div>
                       <div class="col-md-6">
                         <input type="text" name="cedula" id="cedula" placeholder="Cédula" required>

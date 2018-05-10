@@ -1,5 +1,4 @@
 function ingresarCalificacion(pCodigoAnteProyecto,pEstado, pTipo){
-  alert(pCodigoAnteProyecto);
   var observaciones = $('#txtA_observaciones').val();
   var parametros = {"estado":pEstado,"observaciones":observaciones,"documento":pCodigoAnteProyecto, "tipo": pTipo};
           $.ajax({
@@ -9,7 +8,8 @@ function ingresarCalificacion(pCodigoAnteProyecto,pEstado, pTipo){
                   success: function (data) {
                     if(data == "OK"){
                       mensaje('confirmation',"Se ha registrado la calificación",2000);
-                      setTimeout(function(){ window.location="calificarDatosProyecto.php"; }, 2000);
+                      var url = "calificarDatosProyecto.php?class=" + pTipo;
+                      setTimeout(function(){ window.location=url; }, 2000);
                     }else{
                         mensaje('error',"Error al procesar la información, intentelo más tarde.",2000);
                     }

@@ -14,15 +14,17 @@
     include '../../conection.php'; //Conección a la DB
 
     $tipo = $_GET["class"];
-
-    switch ($tipo) {
+    $query = "";
+    switch ($tipo) { //  ANTE PROYECTO
       case 1:
-        $url = "detalleAnteProyecto.php?id";
+        $url = "detalleAnteProyecto.php?id=";
         $title = "Calificar Ante Proyecto";
+        $query = "SELECT G.codigo, G.descripcion from tigrupou_tcu.grupos G JOIN tigrupou_tcu.ante_proyecto A ON G.codigo LIKE A.grupo where G.carrera  like strCarrera and A.estado like 1";
         break;
-      case 2:
+      case 2:    // RESUMEN EJECUTIVO
         $title = "Calificar Resumen Ejecutivo";
-        $url = "detalleResumenEjecutivo.php?id";
+        $url = "detalleResumenEjecutivo.php?id=";
+        $query = "SELECT G.codigo, G.descripcion from tigrupou_tcu.grupos G JOIN tigrupou_tcu.resumen_ejecutivo A ON G.codigo LIKE A.grupo where G.carrera  like strCarrera and A.estado like 1";
         break;
       default:
         // code...
@@ -30,9 +32,10 @@
     }
 
     $carrera = $_SESSION["carreraFuncionario"];
-    $query = "SELECT G.codigo, G.descripcion from tigrupou_tcu.grupos G JOIN tigrupou_tcu.ante_proyecto A ON G.codigo LIKE A.grupo where G.carrera  like $carrera and A.estado like 1";
+    $querySelect = str_replace("strCarrera", $carrera, $query);
 
-    $stmt = $db->prepare($query);
+
+    $stmt = $db->prepare($querySelect);
     $stmt -> execute();
     $result = $stmt -> fetchAll();
 
@@ -60,7 +63,7 @@
                             <div class="well">
                               <h3><span style="color:#fe4918">Grupo <?php echo $row["codigo"] ?>:</span> <?php echo $row["descripcion"] ?></h3>
                                 <div>
-                                  <a class="btn btn-success" href="detalleAnteProyecto.php?id=<?php echo $row['codigo'] ?>">Calificar</a>
+                                  <a class="btn btn-success" href="<?php echo $url . $row['codigo'] ?>">Calificar</a>
                                 </div><br>
                               </div>
                           <?php

@@ -48,7 +48,7 @@
         <a  href="#" class="dropdown-toggle color" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ><i class="fas fa-hourglass-half"></i> Realiazación de Horas <span  class="caret white colorNaranja"></span></a>
         <ul class="dropdown-menu">
           <li><a href="../horasTCU/calendarioHoras.php"><i class="fas fa-calendar-alt"></i> Control de horas digital</a></li>
-          <li><a href="../registro/registro.php?tipo=1"><i class="fas fa-download"></i> Documento para el control de horas</a></li>
+          <li><a href=""><i class="fas fa-download"></i> Documento para el control de horas</a></li>
         </ul>
       </li>
       <li class="navbar-right" id="liSalir"><a class="color"  href="../../index.php"><i class="fas fa-sign-out-alt"></i></a></li>

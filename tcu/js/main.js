@@ -10,24 +10,7 @@
     });
 
 
-    /**
-    * Se encarga de limitar el número de lineas que se pueden escribir
-    * en un textarea. Recibe un texto, cuenta cuantos saltos de lineas existen,
-    * y a partir de ahí compara con el número máximo de lineas.
-    * Param e, tecla digitada
-    *Param txt, texto digitado en el textarea.
-    *Param limit, liminte de lineas que acepta el textarea.
-    * Return False, en caso de que se encuentre en el limite de lineas.
-    **/
-    function limitTextArea(e,txt,limit) {
-      tecla = (document.all) ? e.keyCode : e.which;
-      lin = txt.split('\n');
-      if (tecla==13) {
-        if (lin.length==limit) return false;
-      }else{
-        if (lin.length==(limit+1)) return false;
-      }
-    }
+    
 
     /**
     * Función que se encarga de utilizar las bibliotecas

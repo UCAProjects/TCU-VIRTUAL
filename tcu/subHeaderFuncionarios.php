@@ -38,12 +38,12 @@
           </a>
           <ul class="dropdown-menu">
             <li>
-                  <a class="over" href="../calificarTCU/calificarDatosProyecto.php"><i class="fas fa-clipboard-check"></i> Ante Proyecto
+                  <a class="over" href="../calificarTCU/calificarDatosProyecto.php?class=1"><i class="fas fa-clipboard-check"></i> Ante Proyecto
                       <span class="badge" style="background-color:#3a87ad"><?php echo $numeroAnteProyecto; ?></span>
                   </a>
             </li>
             <li>
-              <a class="over" href="../calificarTCU/calificarDatosProyecto.php"><i class="fas fa-clipboard-check"></i> Resumen Ejecutivo
+              <a class="over" href="../calificarTCU/calificarDatosProyecto.php?class=2"><i class="fas fa-clipboard-check"></i> Resumen Ejecutivo
               <span class="badge" style="background-color:#3a87ad"><?php echo $numeroAnteProyecto; ?></span></a>
             </li>
           </ul>

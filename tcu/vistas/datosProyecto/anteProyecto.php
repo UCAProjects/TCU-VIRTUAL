@@ -1,7 +1,7 @@
 <?php
   // session_start();
   // $sesionId = $_SESSION["codigo"];
-  // $grupo = $_SESSION["grupo"]; 
+  // $grupo = $_SESSION["grupo"];
   // $tipo = $_GET['tipo'];
 ?>
 
@@ -11,72 +11,17 @@
     <title>
       AnteProyecto
     </title>
- 
+
     <link rel="stylesheet" href="../../css/datosProyecto.css">
 
-    <style type="text/css">
-      .container {
-        width: 600px;
-        margin: 100px auto; 
-      }
-      .progressbar {
-        margin: 0;
-        padding: 0;
-        counter-reset: step;
-      }
-      .progressbar li {
-        list-style-type: none;
-        width: 18%;
-        float: left;
-        font-size: 12px;
-        position: relative;
-        text-align: center;
-        text-transform: uppercase;
-        color: #7d7d7d;
-      }
-      .progressbar li:before {
-        width: 30px;
-        height: 30px;
-        content: counter(step);
-        counter-increment: step;
-        line-height: 30px;
-        border: 2px solid #7d7d7d;
-        display: block;
-        text-align: center;
-        margin: 0 auto 10px auto;
-        border-radius: 50%;
-        background-color: white;
-      }
-      .progressbar li:after {
-        width: 100%;
-        height: 2px;
-        content: '';
-        position: absolute;
-        background-color: #7d7d7d;
-        top: 15px;
-        left: -50%;
-        z-index: -1;
-      }
-      .progressbar li:first-child:after {
-        content: none;
-      }
-      .progressbar li.active {
-        color: green;
-      }
-      .progressbar li.active:before {
-        border-color: #55b776;
-      }
-      .progressbar li.active + li:after {
-        background-color: #55b776;
-      }
-    </style>
   </head>
   <body>
-    <?php 
+    <?php
+      session_start();
       include '../../header.php';
+      include '../../subHeaderEstudiantes.php';
       include '../../conection.php'; //Conección a la DB
-    ?>          
-          
+    ?>
     <main class="site-main">
       <section class="seccion-informacion">
         <div class="contenedor clearfix">
@@ -94,7 +39,7 @@
               </div><!--.programa-evento-->
               <div style="margin-left:20%;" method="POST">
                 <div id="contenedorAnteProyecto">
-                  <?php include 'AnteProyectoProblema.php' ?>
+
                 </div>
               </div>
               <meter min="0" max="100" id="meter" low="25" high="75" optimum="100"    value="20">
@@ -121,9 +66,16 @@
         </div>
       </div>
     </div>
-    <?php 
+    <?php
       include '../../footer.php';
     ?>
     <script src="../../js/datosProyecto.js"></script>
+
+    <script>
+        $( document ).ready(function() {
+            cargarFormularios('anteProyectoProblema.php','contenedorAnteProyecto');
+        });
+    </script>
+
   </body>
 </html>

@@ -19,14 +19,14 @@
 
 <label for="identificacionProblema">IDENTIFICACION DEL PROBLEMA</label>
 	<input type="hidden" name="hiddenCodigo" id="hiddenCodigo" value="<?php echo $codigo?>">
-    <textarea  id="identificacion_problema" onkeypress="return limitTextArea(event,this.value,15)"
-          style=" overflow:hidden; font-size:15px; font-family:Arial; text-align : justify;line-height: 1.6; resize:none;"
-                rows="15" cols="87"><?php echo $identificacionProblema ?></textarea>
+    <textarea  id="identificacion_problema"
+          style="font-size:15px; font-family:Arial; text-align : justify;line-height: 1.6; resize:none;"
+                rows="15" cols="87" maxlength="1305"><?php echo $identificacionProblema ?></textarea>
 
     <label for="identificacionProblema2">DESCRIPCION DEL PROBLEMA</label>
     <textarea  id="descripcion_problema" onkeypress="return limitTextArea(event,this.value,21)"
-          style=" overflow:hidden; font-size:15px; font-family:Arial; text-align : justify;line-height: 1.6; resize:none;"
-                rows="21" cols="87"> <?php echo $descripcionProblema ?> </textarea>
+          style=" overflow:hidden; font-size:15px; font-family:Arial; text-align : justify;line-height: 1.6;"
+                rows="21" cols="87" maxlength="1827" > <?php echo $descripcionProblema ?> </textarea>
 
 <br>
     <button class="btn" onclick="cargarFormularios('anteProyectoBeneficiario.php','contenedorAnteProyecto');

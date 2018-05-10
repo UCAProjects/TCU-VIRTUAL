@@ -21,14 +21,18 @@
  ?>
 
 <label for="recomendaciones">RECOMENDACIONES</label>
-	<input type="hidden" name="hiddenCodigo" id="hiddenCodigo" value="<?php echo $codigo?>">
-    <textarea  id="recomendaciones" style=" overflow:hidden; font-size:15px; font-family:Arial; text-align : justify;line-height: 1.6; resize:none;" rows="20" cols="87"><?php echo $recomendaciones  ?></textarea>
+<input type="hidden" name="hiddenCodigo" id="hiddenCodigo" value="<?php echo $codigo?>">
+<textarea  id="recomendaciones"
+      style=" overflow:hidden; font-size:15px; font-family:Arial; text-align : justify;line-height: 1.6; resize:none;"
+            rows="42" cols="87" maxlength="3654"><?php echo $recomendaciones  ?></textarea>
 
 <br>
 
   <div class="row">
     <div class="col-md-6">
-      <button class="btn btn-warning" onclick="guardar('recomendaciones',<?php echo $grupo ?>,2); cargarFormularios('resumenEjecutivoConclusion.php','contenedorResumenEjecutivo'); disminuirProgress(25);"><span class="glyphicon glyphicon-arrow-left"> </span>Atrás</button>
+      <a class="btn btn-warning"  href="#"
+          onclick="guardar('recomendaciones',<?php echo $grupo ?>,2); cargarFormularios('resumenEjecutivoConclusion.php','contenedorResumenEjecutivo'); disminuirProgress(25);">
+              <span class="glyphicon glyphicon-arrow-left"> </span>Atrás</button>
     </div>
     <div class="col-md-6">
       <button class="btn" onclick="cargarModal(null,'mostrarModalConclusion','modalAdjuntarConclusion','modalAdjuntarConclusion.php');" style="margin-left:50% !important"><i class="far fa-paper-plane"></i> ENVIAR</button>

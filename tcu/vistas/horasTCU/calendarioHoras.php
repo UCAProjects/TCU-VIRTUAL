@@ -37,6 +37,7 @@
     include '../../subHeaderEstudiantes.php';
     include '../../conection.php'; //Conección a la DB
 
+    $grupo = $_SESSION["grupo"];
     // $carrera = $_SESSION["carreraFuncionario"];
     // $query = "SELECT G.codigo, G.descripcion
     //             FROM tigrupou_tcu.grupos G
@@ -48,7 +49,7 @@
     // $result = $stmt -> fetchAll();
     /*Codigo que carga todas las actividades de horas Tcu
      desde la base de datos para su posterior uso*/
-    $query = "SELECT * FROM tigrupou_tcu.horas_tcu;";
+    $query = "SELECT * FROM tigrupou_tcu.horas_tcu where grupo like $grupo;";
     $stmt = $db->prepare($query);
     $stmt -> execute();
     $result = $stmt -> fetchAll();

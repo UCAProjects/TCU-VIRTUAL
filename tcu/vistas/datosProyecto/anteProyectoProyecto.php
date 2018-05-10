@@ -26,9 +26,11 @@
 
 <label for="identificacionProblema">JUSTIFICACIÓN DEL PROYECTO</label>
 <input type="hidden" id="hiddenCodigo" name="hiddenCodigo" value="<?php echo $codigo ?>">
-                      <textarea  id="justificacion_proyecto" style=" overflow:hidden; font-size:15px; font-family:Arial; text-align : justify;line-height: 1.6; resize:none;" rows="10" cols="87"><?php echo $descripcion_beneficiario ?> </textarea>
-
-                      <br>
+<textarea  id="justificacion_proyecto"
+      style=" overflow:hidden; font-size:15px; font-family:Arial; text-align : justify;line-height: 1.6; resize:none;"
+            rows="20" cols="87" maxlength="1740"><?php echo $descripcion_beneficiario ?>
+</textarea>
+<br>
 
 <div class="row">
     <div class="col-md-6">
