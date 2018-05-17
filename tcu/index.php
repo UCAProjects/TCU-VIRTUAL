@@ -89,8 +89,9 @@
                       <li><input type="radio" name="tipoUsuario" class="seleccionar" id="estudiante" value="1"><label for="estudiante">Estudiante</label></li>
                       <li><input type="radio" name="tipoUsuario" class="seleccionar" id="funcionario" value="2"><label for="estudiante">Funcionario</label></li>
                       <li><button onclick="registroUsuario()">Registro</button>
-                        <button onclick="login()">Ingreso</button></li>
-                      </ul>
+                        <button onclick="login()">Ingreso</button>
+                      </li>
+                    </ul>
                     </div>
                   </div><!--.programa-evento-->
                 </div><!--.contenedor-->
@@ -127,7 +128,7 @@
 
           <!-- for a specific version -->
           <script src="https://cdn.jsdelivr.net/npm/zebra_dialog@1.4.0/dist/zebra_dialog.min.js"></script>
-          
+
           <script src="js/plugins.js"></script>
           <script src="js/main.js"></script>
 
