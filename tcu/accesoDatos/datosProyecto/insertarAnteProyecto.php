@@ -36,7 +36,7 @@
           echo "Ha ocurrido un error, por favor inténtelo de nuevo.<br>";
         }
         closedir($dir); //Cerramos el directorio de destino
-    }
+      }
    }
 
    foreach($_FILES["uploadedAceptacion"]['tmp_name'] as $key => $tmp_name)

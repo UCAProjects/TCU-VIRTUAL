@@ -1,0 +1,208 @@
+[19-May-2018 16:20:56 UTC] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php on line 11
+[19-May-2018 16:20:56 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php on line 11
+[19-May-2018 16:20:56 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)' in /home/tigrupou/public_html/tcu-virtual/conection.php:3
+Stack trace:
+#0 /home/tigrupou/public_html/tcu-virtual/conection.php(3): PDO->__construct('mysql:host=loca...', 'root', '', Array)
+#1 /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php(13): include('/home/tigrupou/...')
+#2 {main}
+  thrown in /home/tigrupou/public_html/tcu-virtual/conection.php on line 3
+[19-May-2018 16:21:29 UTC] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php on line 11
+[19-May-2018 16:21:29 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php on line 11
+[19-May-2018 16:21:29 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)' in /home/tigrupou/public_html/tcu-virtual/conection.php:3
+Stack trace:
+#0 /home/tigrupou/public_html/tcu-virtual/conection.php(3): PDO->__construct('mysql:host=loca...', 'root', '', Array)
+#1 /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php(13): include('/home/tigrupou/...')
+#2 {main}
+  thrown in /home/tigrupou/public_html/tcu-virtual/conection.php on line 3
+[19-May-2018 16:35:42 UTC] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php on line 11
+[19-May-2018 16:35:42 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php on line 11
+[19-May-2018 16:35:42 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)' in /home/tigrupou/public_html/tcu-virtual/conection.php:3
+Stack trace:
+#0 /home/tigrupou/public_html/tcu-virtual/conection.php(3): PDO->__construct('mysql:host=loca...', 'root', '', Array)
+#1 /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php(13): include('/home/tigrupou/...')
+#2 {main}
+  thrown in /home/tigrupou/public_html/tcu-virtual/conection.php on line 3
+[19-May-2018 16:37:05 UTC] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php on line 11
+[19-May-2018 16:37:05 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php on line 11
+[19-May-2018 16:37:05 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)' in /home/tigrupou/public_html/tcu-virtual/conection.php:3
+Stack trace:
+#0 /home/tigrupou/public_html/tcu-virtual/conection.php(3): PDO->__construct('mysql:host=loca...', 'root', '', Array)
+#1 /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php(13): include('/home/tigrupou/...')
+#2 {main}
+  thrown in /home/tigrupou/public_html/tcu-virtual/conection.php on line 3
+[19-May-2018 16:37:12 UTC] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registroFuncionarios.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registroFuncionarios.php on line 11
+[19-May-2018 16:37:12 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registroFuncionarios.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registroFuncionarios.php on line 11
+[19-May-2018 16:37:12 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)' in /home/tigrupou/public_html/tcu-virtual/conection.php:3
+Stack trace:
+#0 /home/tigrupou/public_html/tcu-virtual/conection.php(3): PDO->__construct('mysql:host=loca...', 'root', '', Array)
+#1 /home/tigrupou/public_html/tcu-virtual/vistas/registro/registroFuncionarios.php(13): include('/home/tigrupou/...')
+#2 {main}
+  thrown in /home/tigrupou/public_html/tcu-virtual/conection.php on line 3
+[19-May-2018 16:39:36 UTC] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php on line 11
+[19-May-2018 16:39:36 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php on line 11
+[19-May-2018 16:39:36 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)' in /home/tigrupou/public_html/tcu-virtual/conection.php:3
+Stack trace:
+#0 /home/tigrupou/public_html/tcu-virtual/conection.php(3): PDO->__construct('mysql:host=loca...', 'root', '', Array)
+#1 /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php(13): include('/home/tigrupou/...')
+#2 {main}
+  thrown in /home/tigrupou/public_html/tcu-virtual/conection.php on line 3
+[19-May-2018 16:56:32 UTC] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php on line 11
+[19-May-2018 16:56:32 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php on line 11
+[19-May-2018 16:56:32 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)' in /home/tigrupou/public_html/tcu-virtual/conection.php:3
+Stack trace:
+#0 /home/tigrupou/public_html/tcu-virtual/conection.php(3): PDO->__construct('mysql:host=loca...', 'root', '', Array)
+#1 /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php(13): include('/home/tigrupou/...')
+#2 {main}
+  thrown in /home/tigrupou/public_html/tcu-virtual/conection.php on line 3
+[19-May-2018 16:56:38 UTC] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registroFuncionarios.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registroFuncionarios.php on line 11
+[19-May-2018 16:56:38 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registroFuncionarios.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registroFuncionarios.php on line 11
+[19-May-2018 16:56:38 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)' in /home/tigrupou/public_html/tcu-virtual/conection.php:3
+Stack trace:
+#0 /home/tigrupou/public_html/tcu-virtual/conection.php(3): PDO->__construct('mysql:host=loca...', 'root', '', Array)
+#1 /home/tigrupou/public_html/tcu-virtual/vistas/registro/registroFuncionarios.php(13): include('/home/tigrupou/...')
+#2 {main}
+  thrown in /home/tigrupou/public_html/tcu-virtual/conection.php on line 3
+[19-May-2018 16:56:57 UTC] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php on line 11
+[19-May-2018 16:56:57 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php on line 11
+[19-May-2018 16:56:57 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)' in /home/tigrupou/public_html/tcu-virtual/conection.php:3
+Stack trace:
+#0 /home/tigrupou/public_html/tcu-virtual/conection.php(3): PDO->__construct('mysql:host=loca...', 'root', '', Array)
+#1 /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php(13): include('/home/tigrupou/...')
+#2 {main}
+  thrown in /home/tigrupou/public_html/tcu-virtual/conection.php on line 3
+[19-May-2018 16:58:03 UTC] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php on line 11
+[19-May-2018 16:58:03 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php on line 11
+[19-May-2018 16:58:03 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)' in /home/tigrupou/public_html/tcu-virtual/conection.php:3
+Stack trace:
+#0 /home/tigrupou/public_html/tcu-virtual/conection.php(3): PDO->__construct('mysql:host=loca...', 'root', '', Array)
+#1 /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php(13): include('/home/tigrupou/...')
+#2 {main}
+  thrown in /home/tigrupou/public_html/tcu-virtual/conection.php on line 3
+[19-May-2018 17:16:43 UTC] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php on line 11
+[19-May-2018 17:16:43 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php on line 11
+[19-May-2018 17:16:43 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)' in /home/tigrupou/public_html/tcu-virtual/conection.php:3
+Stack trace:
+#0 /home/tigrupou/public_html/tcu-virtual/conection.php(3): PDO->__construct('mysql:host=loca...', 'root', '', Array)
+#1 /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php(13): include('/home/tigrupou/...')
+#2 {main}
+  thrown in /home/tigrupou/public_html/tcu-virtual/conection.php on line 3
+[19-May-2018 17:17:09 UTC] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php on line 11
+[19-May-2018 17:17:09 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php on line 11
+[19-May-2018 17:17:09 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)' in /home/tigrupou/public_html/tcu-virtual/conection.php:3
+Stack trace:
+#0 /home/tigrupou/public_html/tcu-virtual/conection.php(3): PDO->__construct('mysql:host=loca...', 'root', '', Array)
+#1 /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php(13): include('/home/tigrupou/...')
+#2 {main}
+  thrown in /home/tigrupou/public_html/tcu-virtual/conection.php on line 3
+[19-May-2018 17:17:14 UTC] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php on line 11
+[19-May-2018 17:17:14 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php on line 11
+[19-May-2018 17:17:14 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)' in /home/tigrupou/public_html/tcu-virtual/conection.php:3
+Stack trace:
+#0 /home/tigrupou/public_html/tcu-virtual/conection.php(3): PDO->__construct('mysql:host=loca...', 'root', '', Array)
+#1 /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php(13): include('/home/tigrupou/...')
+#2 {main}
+  thrown in /home/tigrupou/public_html/tcu-virtual/conection.php on line 3
+[19-May-2018 17:17:28 UTC] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php on line 11
+[19-May-2018 17:17:28 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php on line 11
+[19-May-2018 17:17:28 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)' in /home/tigrupou/public_html/tcu-virtual/conection.php:3
+Stack trace:
+#0 /home/tigrupou/public_html/tcu-virtual/conection.php(3): PDO->__construct('mysql:host=loca...', 'root', '', Array)
+#1 /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php(13): include('/home/tigrupou/...')
+#2 {main}
+  thrown in /home/tigrupou/public_html/tcu-virtual/conection.php on line 3
+[19-May-2018 17:17:33 UTC] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php on line 11
+[19-May-2018 17:17:33 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php on line 11
+[19-May-2018 17:17:33 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)' in /home/tigrupou/public_html/tcu-virtual/conection.php:3
+Stack trace:
+#0 /home/tigrupou/public_html/tcu-virtual/conection.php(3): PDO->__construct('mysql:host=loca...', 'root', '', Array)
+#1 /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php(13): include('/home/tigrupou/...')
+#2 {main}
+  thrown in /home/tigrupou/public_html/tcu-virtual/conection.php on line 3
+[19-May-2018 17:17:35 UTC] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php on line 11
+[19-May-2018 17:17:35 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php on line 11
+[19-May-2018 17:17:35 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)' in /home/tigrupou/public_html/tcu-virtual/conection.php:3
+Stack trace:
+#0 /home/tigrupou/public_html/tcu-virtual/conection.php(3): PDO->__construct('mysql:host=loca...', 'root', '', Array)
+#1 /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php(13): include('/home/tigrupou/...')
+#2 {main}
+  thrown in /home/tigrupou/public_html/tcu-virtual/conection.php on line 3
+[19-May-2018 17:17:37 UTC] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php on line 11
+[19-May-2018 17:17:37 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php on line 11
+[19-May-2018 17:17:37 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)' in /home/tigrupou/public_html/tcu-virtual/conection.php:3
+Stack trace:
+#0 /home/tigrupou/public_html/tcu-virtual/conection.php(3): PDO->__construct('mysql:host=loca...', 'root', '', Array)
+#1 /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php(13): include('/home/tigrupou/...')
+#2 {main}
+  thrown in /home/tigrupou/public_html/tcu-virtual/conection.php on line 3
+[19-May-2018 17:17:39 UTC] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php on line 11
+[19-May-2018 17:17:39 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php on line 11
+[19-May-2018 17:17:39 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)' in /home/tigrupou/public_html/tcu-virtual/conection.php:3
+Stack trace:
+#0 /home/tigrupou/public_html/tcu-virtual/conection.php(3): PDO->__construct('mysql:host=loca...', 'root', '', Array)
+#1 /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php(13): include('/home/tigrupou/...')
+#2 {main}
+  thrown in /home/tigrupou/public_html/tcu-virtual/conection.php on line 3
+[19-May-2018 17:17:40 UTC] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php on line 11
+[19-May-2018 17:17:40 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php on line 11
+[19-May-2018 17:17:40 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)' in /home/tigrupou/public_html/tcu-virtual/conection.php:3
+Stack trace:
+#0 /home/tigrupou/public_html/tcu-virtual/conection.php(3): PDO->__construct('mysql:host=loca...', 'root', '', Array)
+#1 /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php(13): include('/home/tigrupou/...')
+#2 {main}
+  thrown in /home/tigrupou/public_html/tcu-virtual/conection.php on line 3
+[19-May-2018 17:17:41 UTC] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php on line 11
+[19-May-2018 17:17:41 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php on line 11
+[19-May-2018 17:17:41 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)' in /home/tigrupou/public_html/tcu-virtual/conection.php:3
+Stack trace:
+#0 /home/tigrupou/public_html/tcu-virtual/conection.php(3): PDO->__construct('mysql:host=loca...', 'root', '', Array)
+#1 /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php(13): include('/home/tigrupou/...')
+#2 {main}
+  thrown in /home/tigrupou/public_html/tcu-virtual/conection.php on line 3
+[19-May-2018 17:18:20 UTC] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php on line 11
+[19-May-2018 17:18:20 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php on line 11
+[19-May-2018 17:18:20 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)' in /home/tigrupou/public_html/tcu-virtual/conection.php:3
+Stack trace:
+#0 /home/tigrupou/public_html/tcu-virtual/conection.php(3): PDO->__construct('mysql:host=loca...', 'root', '', Array)
+#1 /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php(13): include('/home/tigrupou/...')
+#2 {main}
+  thrown in /home/tigrupou/public_html/tcu-virtual/conection.php on line 3
+[19-May-2018 17:18:45 UTC] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php on line 11
+[19-May-2018 17:18:45 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php on line 11
+[19-May-2018 17:18:45 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)' in /home/tigrupou/public_html/tcu-virtual/conection.php:3
+Stack trace:
+#0 /home/tigrupou/public_html/tcu-virtual/conection.php(3): PDO->__construct('mysql:host=loca...', 'root', '', Array)
+#1 /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php(13): include('/home/tigrupou/...')
+#2 {main}
+  thrown in /home/tigrupou/public_html/tcu-virtual/conection.php on line 3
+[19-May-2018 17:19:53 UTC] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php on line 11
+[19-May-2018 17:19:53 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php on line 11
+[19-May-2018 17:19:53 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)' in /home/tigrupou/public_html/tcu-virtual/conection.php:3
+Stack trace:
+#0 /home/tigrupou/public_html/tcu-virtual/conection.php(3): PDO->__construct('mysql:host=loca...', 'root', '', Array)
+#1 /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php(13): include('/home/tigrupou/...')
+#2 {main}
+  thrown in /home/tigrupou/public_html/tcu-virtual/conection.php on line 3
+[19-May-2018 17:20:12 UTC] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registroFuncionarios.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registroFuncionarios.php on line 11
+[19-May-2018 17:20:12 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registroFuncionarios.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registroFuncionarios.php on line 11
+[19-May-2018 17:20:12 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)' in /home/tigrupou/public_html/tcu-virtual/conection.php:3
+Stack trace:
+#0 /home/tigrupou/public_html/tcu-virtual/conection.php(3): PDO->__construct('mysql:host=loca...', 'root', '', Array)
+#1 /home/tigrupou/public_html/tcu-virtual/vistas/registro/registroFuncionarios.php(13): include('/home/tigrupou/...')
+#2 {main}
+  thrown in /home/tigrupou/public_html/tcu-virtual/conection.php on line 3
+[19-May-2018 17:22:42 UTC] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php on line 11
+[19-May-2018 17:22:42 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php on line 11
+[19-May-2018 17:22:42 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)' in /home/tigrupou/public_html/tcu-virtual/conection.php:3
+Stack trace:
+#0 /home/tigrupou/public_html/tcu-virtual/conection.php(3): PDO->__construct('mysql:host=loca...', 'root', '', Array)
+#1 /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php(13): include('/home/tigrupou/...')
+#2 {main}
+  thrown in /home/tigrupou/public_html/tcu-virtual/conection.php on line 3
+[19-May-2018 17:26:19 UTC] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php on line 11
+[19-May-2018 17:26:19 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php:10) in /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php on line 11
+[19-May-2018 17:26:19 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)' in /home/tigrupou/public_html/tcu-virtual/conection.php:3
+Stack trace:
+#0 /home/tigrupou/public_html/tcu-virtual/conection.php(3): PDO->__construct('mysql:host=loca...', 'root', '', Array)
+#1 /home/tigrupou/public_html/tcu-virtual/vistas/registro/registro.php(13): include('/home/tigrupou/...')
+#2 {main}
+  thrown in /home/tigrupou/public_html/tcu-virtual/conection.php on line 3

@@ -7,14 +7,14 @@
         <link rel="stylesheet" href="../../css/datosProyecto.css">
     </head>
     <body>
-    	<?php 
+    	<?php
         session_start();
         include '../../header.php';
         include '../../conection.php';
 
         $tipo = $_GET['tipo'];
 
-        
+
         $pApellido = "";
         $sApellido = "";
         $nombre ="";
@@ -41,7 +41,7 @@
           }
         }
 
-      
+
 
 
       ?>
@@ -89,7 +89,7 @@
                        			<li><input type="text" name="telefono" id="telefono" placeholder="Digite su teléfono" value="<?php echo $telTrabajo ?>" required></li>
                     		</div>
                     	</div>
-                      <?php 
+                      <?php
                         if($tipo == 0){ ?>
                           <div class="row">
                             <div class="col-md-4">
@@ -104,20 +104,20 @@
                                <li><label for="contrasena2">Confirmar contraseña</label></li>
                                 <li><input type="password" name="contrasena2" id="contrasena2" placeholder="Vuelva a digitar su contraseña" autocomplete="on" required></li>
                             </div>
-                          </div> <?php       
+                          </div> <?php
                         }
                       ?>
-                      
+
 
                       <li><button type="submit" id="btnRegistro" name="btnRegistro">Confirmar</button><br><br><br></li>
                     </ul>
                   </form>
                 </div><!--.programa-evento-->
               </div><!--.contenedor-->
-         
+
           </section><!--.section programa-->
         </main>
-        <?php 
+        <?php
         	include '../../footer.php'
         ?>
         <script src="../../js/registro.js"></script>

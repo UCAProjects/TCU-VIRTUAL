@@ -1,4 +1,4 @@
-<?php 
+<?php
 $sesionId = '8';
 
 
@@ -14,7 +14,7 @@ $sesionId = '8';
  <link rel="stylesheet" href="../../css/datosProyecto.css">
 </head>
 <body>
- <?php 
+ <?php
  include '../../header.php';
  include '../../subHeaderEstudiantes.php';
  include '../../conection.php';
@@ -73,7 +73,7 @@ $sesionId = '8';
                               $stmt -> execute();
                               $result = $stmt -> fetchAll();
                               foreach ($result as $row) {
-                                echo "<option value=\"$row[codigo]\"> $row[carrera] </option>"; 
+                                echo "<option value=\"$row[codigo]\"> $row[carrera] </option>";
                               }
                               ?>
                             </select>
@@ -90,7 +90,7 @@ $sesionId = '8';
                               $stmt -> execute();
                               $result = $stmt -> fetchAll();
                               foreach ($result as $row) {
-                                echo "<option value=\"$row[codigo]\"> $row[grado] </option>"; 
+                                echo "<option value=\"$row[codigo]\"> $row[grado] </option>";
                               }
                               ?>
                             </select>
@@ -107,7 +107,7 @@ $sesionId = '8';
                             $stmt -> execute();
                             $result = $stmt -> fetchAll();
                             foreach ($result as $row) {
-                              echo "<option value=\"$row[codigo]\"> $row[periodo] </option>"; 
+                              echo "<option value=\"$row[codigo]\"> $row[periodo] </option>";
                             }
                             ?>
                           </select>
@@ -127,7 +127,7 @@ $sesionId = '8';
                             $stmt -> execute();
                             $result = $stmt -> fetchAll();
                             foreach ($result as $row) {
-                              echo "<option value=\"$row[codigo]\"> $row[sede] </option>"; 
+                              echo "<option value=\"$row[codigo]\"> $row[sede] </option>";
                             }
                             ?>
                           </select>
@@ -151,7 +151,7 @@ $sesionId = '8';
 
          </section><!--.section programa-->
          <script src="../../js/registro.js"></script>
-         <?php 
+         <?php
          include '../../footer.php'
          ?>
        </body>
