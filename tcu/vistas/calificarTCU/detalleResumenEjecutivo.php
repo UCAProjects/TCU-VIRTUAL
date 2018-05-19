@@ -123,7 +123,6 @@
                     </div>
                   </div> <!--   END DIV DOCUMENT -->
                 </div>
-
                 <div class="col-md-5" style=" height: 500px;  resize: both;">
                   <h2>Observaciones</h2>
                   <textarea style="width: 100%;height: 700px" id="txtA_observaciones" placeholder="Observaciones"></textarea>
@@ -151,5 +150,5 @@
     include '../../footer.php';
   ?>
   <script src="../../js/datosProyecto.js"></script>
-</body>
+ </body>
 </html>
