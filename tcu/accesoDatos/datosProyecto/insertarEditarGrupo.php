@@ -18,6 +18,7 @@
 					$cedulas = [];
 					foreach ($estudiantes as $rowE) {
 						$cod = $rowE[0];
+						//echo $cod;
 						$query = "select grupo, cedula from tigrupou_tcu.estudiantes where codigo like $cod";
 						$stmt = $db->prepare($query);//Inserta a DB
 			     	$stmt -> execute();
@@ -69,7 +70,7 @@
 							echo "Error al procesar la información";
 						}
 
-		}else{
+		}else{ //uPDATE
 		  try {
 			$cantidad = 0;
 			$valor = false;

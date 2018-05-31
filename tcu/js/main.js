@@ -10,8 +10,6 @@
     });
 
 
-    
-
     /**
     * Función que se encarga de utilizar las bibliotecas
     * de Zebra Dialog para generar mensajes de alert en

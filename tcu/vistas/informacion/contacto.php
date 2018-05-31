@@ -1,7 +1,6 @@
 <!doctype html>
   <!--.HEADER-->
   <?php include("../../header.php") ?>
-
         <main class="site-main">
           <section class="seccion-informacion">
             <h2>Conctactenos</h2>

@@ -21,8 +21,8 @@
   <!--[if lte IE 9]>
   <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   <![endif]-->
-
   <!-- Add your site or application content here -->
+
   <header class="site-header">
     <div class="clearfix">
       <img src="img/Planificador.png" alt="Logo TCU">
@@ -37,18 +37,18 @@
           <li>
             <div class="tabla-informacion">
               <h3>Uso del sistema</h3>
-              <p class="info">En esta sección puede encontrar, los pasos necesarios para
-                el uso correcto del sistema y como debe llenar la información.
+              <p class="info">En esta sección encontrará una guía para el uso
+                correcto del sistema y cómo completar la información.
               </p>
               <a href="vistas/informacion/uso_sistema.php" class="button hollow">VER MÁS</a>
             </div><!--.tabla-precio-->
           </li>
           <li>
             <div class="tabla-informacion">
-              <h3>Reglamento TCU</h3>
+              <h3>Reglamento y Tutorial de TCU</h3>
               <p class="info">
-                En esta sección puede acceder al reglamento del Trabajo Comunal Universitario,
-                en formato PDF el cual puede descargar desde la página.
+                En esta sección encontrará el Reglamento del Trabajo Comunal Universitario
+                 y un video tutorial sobre el desarrollo del TCU.
               </p>
               <a href="vistas/informacion/reglamento_tcu.php" class="button">VER MÁS</a>
             </div><!--.tabla-precio-->
@@ -70,12 +70,8 @@
 
     <section class="seccion-ingreso">
       <div class="contenedor-video">
-        <video autoplay loop>
-          <source src="video/video.mp4" type="video/mp4">
-            <source src="video/video.webm" type="video/webm">
-              <source src="video/video.ogv" type="video/ogg">
-              </video>
-            </div>
+          <img src="img/logo.jpg">
+      </div>
             <div class="contenido-programa">
               <div class="contenedor clearfix">
                 <div class="ingreso">

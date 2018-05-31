@@ -1,4 +1,4 @@
-<?php 
+<?php
 	include("../../conection.php");// conexión a DB
 	include("../redireccionar.php");// Contiene función que redirecciona a cualquier otra página
 	// Se reciben todos los campos asociados a un estudiante
@@ -18,7 +18,7 @@
 	$codigo= $_POST["codigo"];
 	$usuario = "";
 	$contrasena = "";
-	
+
 	if(isset($_POST["usuario"])){
 		$usuario = $_POST["usuario"];
 	}
@@ -32,16 +32,16 @@
 			$ano = date('Y');
 			$query = "insert into tigrupou_tcu.estudiantes(primer_apellido,segundo_apellido,nombre_completo,cedula,correo_electronico,telefono_trabajo,celular,carrera,grado,cuatrimestre,aino,sede,lugar_trabajo) values('$apellido1','$apellido2','$nombre','$cedula','$correo','$telefonoT','$telefono',$carrera,$grado,$periodo,'$ano',$sede,'$lugarTrabajo')";
 
-			$stmt = $db->prepare($query);//Inserta a DB 
+			$stmt = $db->prepare($query);//Inserta a DB
 	     	$stmt -> execute();
 	     	$id = $db->lastInsertId();  //Se obtiene el id del elemento insertado anteriormente
-	     	
+
 
 	     	// insertar usuario y contraseña
-	     	$queryAutentificacion = "insert into tigrupou_tcu.autentificacion_estudiantes(nombre_usuario,password,usuario)  
+	     	$queryAutentificacion = "insert into tigrupou_tcu.autentificacion_estudiantes(nombre_usuario,password,usuario)
 values('$usuario','$contrasena',$id)";
 
-			$stmtAu = $db->prepare($queryAutentificacion);//Inserta a DB 
+			$stmtAu = $db->prepare($queryAutentificacion);//Inserta a DB
 	     	$stmtAu -> execute();
 
 	     	session_start();
@@ -49,9 +49,9 @@ values('$usuario','$contrasena',$id)";
       		$_SESSION["usuario"] = $nombre_usuario;
       		$_SESSION["grupo"] = "";
 
-	     	redirect("../../vistas/datosProyecto/crearGrupo.php?tipo=0");
+	     	redirect("../../vistas/datosProyecto/tipoGrupo.php?tipo=0");
 
-			
+
 			}catch (Exception $e) {
 				?>
 						<script type="text/javascript">
@@ -70,14 +70,14 @@ values('$usuario','$contrasena',$id)";
 		     	$stmt = $db->prepare($query);//Actualiza la DB
 		     	$stmt -> execute();
 		     	redirect("../../vistas/principalEstudiantes/principalEstudiantes.php");
-			
+
 			} catch (Exception $e) {
 				?>
 						<script type="text/javascript">
 							alert("ERROR AL PROCESAR LA INFORMACIÓN ");
                				history.back();
 						</script><?php
-			}	
-		}		
+			}
+		}
 	}
 ?>

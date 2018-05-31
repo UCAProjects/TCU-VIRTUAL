@@ -1,0 +1,24 @@
+[19-May-2018 17:41:30 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/tigrupou/public_html/tcu-virtual/vistas/datosProyecto/anteProyecto.php:19) in /home/tigrupou/public_html/tcu-virtual/vistas/datosProyecto/anteProyecto.php on line 20
+[19-May-2018 17:42:20 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/tigrupou/public_html/tcu-virtual/vistas/datosProyecto/anteProyectoProyecto.php:2) in /home/tigrupou/public_html/tcu-virtual/vistas/datosProyecto/anteProyectoProyecto.php on line 3
+[19-May-2018 17:42:33 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/tigrupou/public_html/tcu-virtual/vistas/datosProyecto/anteProyectoProyecto.php:2) in /home/tigrupou/public_html/tcu-virtual/vistas/datosProyecto/anteProyectoProyecto.php on line 3
+[19-May-2018 17:42:57 UTC] PHP Deprecated:  Automatically populating $HTTP_RAW_POST_DATA is deprecated and will be removed in a future version. To avoid this warning set 'always_populate_raw_post_data' to '-1' in php.ini and use the php://input stream instead. in Unknown on line 0
+[19-May-2018 17:45:36 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/tigrupou/public_html/tcu-virtual/vistas/datosProyecto/anteProyectoProyecto.php:2) in /home/tigrupou/public_html/tcu-virtual/vistas/datosProyecto/anteProyectoProyecto.php on line 3
+[19-May-2018 17:45:39 UTC] PHP Deprecated:  Automatically populating $HTTP_RAW_POST_DATA is deprecated and will be removed in a future version. To avoid this warning set 'always_populate_raw_post_data' to '-1' in php.ini and use the php://input stream instead. in Unknown on line 0
+[19-May-2018 17:47:51 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/tigrupou/public_html/tcu-virtual/vistas/datosProyecto/anteProyectoProyecto.php:2) in /home/tigrupou/public_html/tcu-virtual/vistas/datosProyecto/anteProyectoProyecto.php on line 3
+[19-May-2018 17:47:55 UTC] PHP Deprecated:  Automatically populating $HTTP_RAW_POST_DATA is deprecated and will be removed in a future version. To avoid this warning set 'always_populate_raw_post_data' to '-1' in php.ini and use the php://input stream instead. in Unknown on line 0
+[19-May-2018 18:00:05 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/tigrupou/public_html/tcu-virtual/vistas/datosProyecto/anteProyecto.php:19) in /home/tigrupou/public_html/tcu-virtual/vistas/datosProyecto/anteProyecto.php on line 20
+[21-May-2018 16:10:38 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1' in /home/tigrupou/public_html/tcu-virtual/vistas/datosProyecto/datosProyecto.php:22
+Stack trace:
+#0 /home/tigrupou/public_html/tcu-virtual/vistas/datosProyecto/datosProyecto.php(22): PDO->prepare('select codigo,n...')
+#1 {main}
+  thrown in /home/tigrupou/public_html/tcu-virtual/vistas/datosProyecto/datosProyecto.php on line 22
+[21-May-2018 16:11:52 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1' in /home/tigrupou/public_html/tcu-virtual/vistas/datosProyecto/datosProyecto.php:22
+Stack trace:
+#0 /home/tigrupou/public_html/tcu-virtual/vistas/datosProyecto/datosProyecto.php(22): PDO->prepare('select codigo,n...')
+#1 {main}
+  thrown in /home/tigrupou/public_html/tcu-virtual/vistas/datosProyecto/datosProyecto.php on line 22
+[21-May-2018 16:28:07 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1' in /home/tigrupou/public_html/tcu-virtual/vistas/datosProyecto/datosProyecto.php:22
+Stack trace:
+#0 /home/tigrupou/public_html/tcu-virtual/vistas/datosProyecto/datosProyecto.php(22): PDO->prepare('select codigo,n...')
+#1 {main}
+  thrown in /home/tigrupou/public_html/tcu-virtual/vistas/datosProyecto/datosProyecto.php on line 22

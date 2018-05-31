@@ -10,24 +10,23 @@
               <div class="instrucciones-generales">
                 <h3>Acerca del Sistema</h3>
                 <p>
-                  El sistema de Tcu Virtual es una iniciativa de la universidad para facilitar,
-                  el desarrollo del Trabajo Comunal Universitario del estudiantado, esta propusta
-                  pretende poder digitalizar la informacion y que la misma lleve un orden mas coherente
-                  en todo el proceso de desarrollo y sea una herramienta que apoye al estudiante en este
-                  importante proceso como parte de su formación integral y como parte importante para poder
-                  concluir con su plan de estudios.
+                  El sistema de TCU Virtual es una iniciativa de la Universidad para facilitar el desarrollo del
+                  Comunal Universitario. Esta propuesta, pretende digitalizar la información y apoyar al estudiante
+                  a llevar un registro idóneo de todo el proceso de desarrollo de este,
+                  como parte de su formación integral y como requisito ineludible para concluir su plan de estudios.
                 </p>
                 <h3>Registro e ingreso al sistema</h3>
                 <p>
-                  Antes de ingresar al sistema debe registrarse en el mismo, debe presionar el botón de registro,
-                  que lo redirijirá a la sección donde podrá ingresar sus datos personales, así como un usuario y contraseña para poder ingresar
-                  al sistema. Es importante que brinde una dirección de correo válido, para todo lo referente al
-                  proceso de desarrollo del Trabajo Comunal Universitario.
+                  El estudiante debe registrar sus datos personales en el sistema previo a su ingreso, para lo cual
+                  es necesario que de clic sobre la opción de Registro el cual lo redirigirá a la sección para ingreso
+                  de sus datos personales, el sistema solicitará un usuario y contraseña para el ingreso al sistema.
+                  Es menester aclarar que el estudiante debe proporcionar una dirección de correo electrónico válido,
+                  de esa forma podrá notificársele sobre el desarrollo de su TCU.
                 </p>
                 <h3>Datos del proyecto</h3>
                 <p>
-                  Una vez que se halla registrado en el sistema, debe digitar su usuario y contraseña para ingresar al sistema, que lo llevará
-                  a la pantalla de datos del proyecto.
+                  Una vez registrado en el sistema, deberá ingresar su Usuario y Contraseña, el cual le permitirá
+                  ingresar los datos de su proyecto.
                 </p>
               </div>
             </div><!--.contenedor-->

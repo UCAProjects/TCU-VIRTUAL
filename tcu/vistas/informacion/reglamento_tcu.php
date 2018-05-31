@@ -20,10 +20,11 @@
                     Para visualizar y poder descargar el reglamento Trabajo Comunal Universitario,
                     por favor acceda al siguiente link:
                 </p>
-                <a href="../../documentos/Reglamento-Trabajo-Comunal-Universitario-TCU.pdf" target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Ver o descargar PDF</a>
+                   <a href="../../documentos/Reglamento-Trabajo-Comunal-Universitario-TCU.pdf" target="_blank">
+                     <i class="far fa-file-pdf" aria-hidden="true" style="font-size:30px;color:red"></i> Ver o descargar PDF</a>
                 <p>
                     Para cualquier duda o consulta, puede contactarnos por medio del formulario de <span>
-                    <a href="contacto.php"><i class="fa fa-envelope-o" aria-hidden="true"></i> contacto</a></span> de la página y pronto le estaremos contactando.
+                    <a href="contacto.php"><i class="fas fa-envelope" aria-hidden="true"></i> contacto</a></span> de la página y pronto le estaremos contactando.
                 </p>
               </div><!--.instrucciones-generales-->
             </div><!--.contenedor-->

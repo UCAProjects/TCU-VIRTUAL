@@ -167,12 +167,42 @@ function agregarGrupo(tipo){
         }
 }
 
-function redirectGrupo(tipo){
+function redirectGrupo(tipo,id){
   debugger;
   if( $('#grupal').prop('checked') ) {
     window.location.href = "crearGrupo.php?tipo=" + tipo;
   }
   if( $('#individual').prop('checked') ){
-    window.location.href = "datosProyecto.php?tipo=" + tipo;
+          var arrayEstudiante = [];
+          var arrayEstudianteF = [];
+          arrayEstudiante.push(id);
+          arrayEstudiante.push(id);
+          arrayEstudianteF.push(arrayEstudiante);
+
+          var parametros = {"estudiantes":arrayEstudianteF,"tipo":tipo};
+          $.ajax({
+                  data: parametros,
+                  type: "POST",
+                  url: "../../accesoDatos/datosProyecto/insertarEditarGrupo.php",
+                  success: function (data) {
+                    if(data == "Error al procesar la información"){
+                       mensaje('error',data);
+                    }else{
+                      if(data[0] =="N"){
+                         mensaje('confirmation',data,5000);
+                      }else{
+                        mensaje('confirmation',data,3000);
+                        if(tipo == 0){
+                          setTimeout(function(){ window.location="datosProyecto.php?tipo=0"; }, 3000);
+                        }else{
+                          setTimeout(function(){ window.location="../principalEstudiantes/principalEstudiantes.php"; }, 5000);
+                        }
+                      }
+                    }
+                  },
+                  error: function () {
+                    mensaje('error','Error al cargar la información',3000);
+                  }
+                });
   }
 }
