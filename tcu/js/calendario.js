@@ -83,3 +83,17 @@ function eliminarActividad(){
                       }
                     });
 }
+
+function computeHour(){
+  mInTime = $("#inTime").val();
+  mOutTime = $("#outTime").val();
+  if(mInTime != "" && mOutTime != ""){
+    var dateI = moment(mInTime,'HH:mm');
+    var dateO = moment(mOutTime,'HH:mm');
+    var seconds = (dateO - dateI)/1000;
+    var minuts = seconds / 60;
+    var hours = minuts / 60;
+    document.getElementById("quantity").value = parseFloat(hours).toFixed(2);;
+  }
+
+}

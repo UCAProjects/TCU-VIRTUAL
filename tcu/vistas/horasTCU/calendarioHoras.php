@@ -55,12 +55,32 @@
     $result = $stmt -> fetchAll();
     /* -------------------------------------------------------------------------------- */
 
+    $queryHoras = "SELECT sum(numero_horas) as HORAS FROM tigrupou_tcu.horas_tcu WHERE grupo like $grupo";
+    $stmt = $db->prepare($queryHoras);
+    $stmt -> execute();
+    $resultHoras = $stmt -> fetchAll();
+    $cantidad = 0;
+    foreach($resultHoras as $row){
+        $cantidad = $row["HORAS"];
+    }
+
+    $restantes = 150 - $cantidad;
+
+    if($restantes < 0){
+      $restantes = 0;
+    }
   ?>
 
   <main class="site-main">
     <section class="seccion-informacion">
       <div class="contenedor clearfix">
+
         <div class="" id="content">
+            <center><h3>Control de Horas Digital</h3></center>
+            <div class="well">
+              <span><strong >Horas Complentadas:</strong> <?php echo $cantidad ?></span><br>
+              <span><strong >Horas Restantes:</strong> <?php echo $restantes ?> </span>
+            </div>
             <div id="contenedor" class="well">
               <!-- Cargar modal agregar actividad -->
               <a href="#content" onclick="cargarModal({'fecha':_Date,'codigo':0},'AddModalDiv','addActivity-modal','agregarActividad.php')" id="plusActivity"><i class="fas fa-plus-circle a"></i></a>

@@ -71,7 +71,7 @@
                         </table>
 
                         <hr>
-                        <h3><span class="h3 orange">Revsión Resumen Ejecutivo</span></h3>
+                        <h3><span class="h3 orange">Revisión Resumen Ejecutivo</span></h3>
                         <table class="table table-striped">
                           <thead>
                             <tr>

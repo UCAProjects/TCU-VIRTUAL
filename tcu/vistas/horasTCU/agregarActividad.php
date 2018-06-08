@@ -35,17 +35,17 @@
 
    <div class="form-group">
      <label for="inTime">Hora de Entrada</label>
-     <input type="time" class="form-control" value="<?php echo $horaIn; ?>" id="inTime">
+     <input type="time" onchange="computeHour()" class="form-control" value="<?php echo $horaIn; ?>" id="inTime">
    </div>
 
    <div class="form-group">
      <label for="outTime">Hora de Salida</label>
-     <input type="time" class="form-control" value="<?php echo $horaEnd;?>" id="outTime">
+     <input type="time" onchange="computeHour()" class="form-control" value="<?php echo $horaEnd;?>" id="outTime">
    </div>
 
    <div class="form-group">
      <label for="quantity">Cantidad de Horas</label>
-     <input type="number" class="form-control" value="<?php echo $cantidadHoras; ?>"id="quantity">
+     <input type="number" class="form-control" value="<?php echo $cantidadHoras; ?>"id="quantity" readonly>
    </div>
 
    <div class="form-group">

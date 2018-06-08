@@ -3,6 +3,7 @@
   include("../redireccionar.php");// Contiene función que redirecciona a cualquier otra página
   include '../../conection.php'; //Conección a la DB
 
+  //Inicialización de variables
   $boolRealizacion = false;
   $boolAceptacion = false;
   $boolCronograma = false;
@@ -36,13 +37,13 @@
         else {
           echo "Ha ocurrido un error, por favor inténtelo de nuevo.<br>";
         }
-        closedir($dir); //Cerramos el directorio de destino
+          closedir($dir); //Cerramos el directorio de destino
       }
    }
 
-   foreach($_FILES["uploadedAceptacion"]['tmp_name'] as $key => $tmp_name){
+  foreach($_FILES["uploadedAceptacion"]['tmp_name'] as $key => $tmp_name){
      //Validamos que el archivo exista
-     if($_FILES["uploadedAceptacion"]["name"][$key]) {
+    if($_FILES["uploadedAceptacion"]["name"][$key]){
        $filename = $_FILES["uploadedAceptacion"]["name"][$key]; //Obtenemos el nombre original del archivo
        $source = $_FILES["uploadedAceptacion"]["tmp_name"][$key]; //Obtenemos un nombre temporal del archivo
        $tipo = $_FILES['uploadedAceptacion']['type'][$key];
@@ -63,7 +64,7 @@
          echo "Ha ocurrido un error, por favor inténtelo de nuevo.<br>";
        }
        closedir($dir); //Cerramos el directorio de destino
-   }
+    }
   }
 
   foreach($_FILES["uploadedCronograma"]['tmp_name'] as $key => $tmp_name){
@@ -93,12 +94,24 @@
  }
 
   if($boolAceptacion and $boolRealizacion and $boolCronograma){
-    $queryInsertCartas = "INSERT INTO tigrupou_tcu.cartas_adjuntas (url_carta_solicitud, url_carta_aceptacion, url_cronograma_tcu, grupo) VALUES ( \"$target_pathSolicitud\", \"$target_pathAceptacion\", \"$target_pathCronograma\", $grupo);";
+    $queryVerification = "SELECT count(*) as CONT FROM tigrupou_tcu.cartas_adjuntas WHERE grupo LIKE $grupo;";
+    $stmt = $db->prepare($queryVerification);
+    $stmt -> execute();
+    $resultVerfication = $stmt -> fetchAll();
+    foreach($resultVerfication as $row){
+        $cont = $row["CONT"];
+    }
+    $queryInsertCartas = "";
+    if($cont == 0){
+      $queryInsertCartas = "INSERT INTO tigrupou_tcu.cartas_adjuntas (url_carta_solicitud, url_carta_aceptacion, url_cronograma_tcu, grupo) VALUES ( \"$target_pathSolicitud\", \"$target_pathAceptacion\", \"$target_pathCronograma\", $grupo);";
+    }else{
+      $queryInsertCartas = "UPDATE tigrupou_tcu.cartas_adjuntas SET url_carta_solicitud = \"$target_pathSolicitud\", url_carta_aceptacion =\"$target_pathAceptacion\", url_cronograma_tcu = \"$target_pathCronograma\"  WHERE grupo = $grupo;";
+    }
     $stmt = $db->prepare($queryInsertCartas);
     $stmt -> execute();
+
     $stmt = $db->prepare($queryUpdate);
     $stmt -> execute();
-
     redirect("../../vistas/principalEstudiantes/principalEstudiantes.php");
   }
 }

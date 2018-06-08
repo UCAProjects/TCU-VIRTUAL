@@ -19,3 +19,14 @@ function ingresarCalificacion(pCodigoAnteProyecto,pEstado, pTipo){
                   }
                 });
 }
+
+
+function modeLecture(){
+  document.getElementById("RevisionMode").style.display = "none";
+  document.getElementById("LecturaModo").style.display = "block";
+}
+
+function modeRevision(){
+  document.getElementById("RevisionMode").style.display = "block";
+  document.getElementById("LecturaModo").style.display = "none";
+}

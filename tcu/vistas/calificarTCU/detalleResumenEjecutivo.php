@@ -42,109 +42,151 @@
     $conclusion = $row["conclusion"];
     $recomendaciones = $row["recomendaciones"];
   }
+
+
+  $linkConclusion = "";
+  $queryAdjutos = "SELECT url_carta_conclusion FROM tigrupou_tcu.cartas_adjuntas WHERE grupo LIKE $id";
+  $stmt = $db->prepare($queryAdjutos);
+  $stmt -> execute();
+  $resultAdjuntos = $stmt -> fetchAll();
+  foreach ($resultAdjuntos as $row) {
+    $linkConclusion = $row["url_carta_conclusion"];
+  }
   ?>
+
   <main class="site-main">
     <section class="seccion-informacion">
       <div class=" clearfix">
         <div class="">
           <div  class="ingreso ingresoTamano">
             <form class="">
-              <div class="row well">
-                <div class="col-md-7" class="well">
-                  <h2>Resumen Ejecutivo</h2>
-                  <div id="divDocument"  style="background-color: white;">
-                    <div style="padding: 40px;">
-                      <center>
-                        <img src="../../img/uca.png" alt="Smiley face">  <br><br><br><br>
-                        <h3>Tema</h3>
-                        <?php echo $tema ?>
-                        <br>
-                        <h3>Intergrantes</h3>
-                        <?php
-                        foreach ($resultEstudiantes as $row) {
-                          echo $row["nombre"]
-                          ?> <br>
+              <h2>Resumen Ejecutivo</h2>
+
+
+              <ul class="nav nav-tabs" id="nav">
+                  <li class="active"><a href="#nav" onclick="modeLecture()"><i class="fas fa-book"></i> Modo Lectura</a></li>
+                  <li><a href="#nav" onclick="modeRevision()"><i class="fas fa-edit"></i> Modo Revisión</a></li>
+
+              </ul><br>
+
+              <div class="well" id="adjuntos">
+                <div class="row">
+                  <div class="col-md-2">
+                    <b>Adjuntos</b>
+                  </div>
+
+                  <div class="col-md-3" style="margin-right:10px;border-width:5px;border-style:ridge;">
+                    <a href="<?php echo $linkConclusion?>" target="_blank"><i class="far fa-file-alt"></i> Carta Conclusión</a>
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <div id="LecturaModo" style="margin-right:10%;margin-left:10%;">
+                <div class="row well">
+                  <div class="well">
+                    <h3><center>Ante Proyecto</center></h3>
+                    <div id="divDocument"  style="background-color: white;">
+                      <div style="padding: 40px;">
+                        <center>
+                          <img src="../../img/uca.png" alt="Smiley face">  <br><br><br><br>
+                          <h3>Tema</h3>
+                          <?php echo $tema ?>
+                          <br>
+                          <h3>Intergrantes</h3>
                           <?php
+                          foreach ($resultEstudiantes as $row) {
+                            echo $row["nombre"]
+                            ?> <br>
+                            <?php
+                          }
+                          ?>
+                          <br>
+                          <h3>Organización</h3>
+                          <?php echo $organizacion ?> <br>
+                          <h3>Supervisor</h3>
+                          <?php echo $supervisor ?> <br><br><br><br><br><br><br><br>
+
+                          -------- Fin de Página --------
+                          <br><br>
+                          <br><br><br><br>
+                        </center>
+                        <h3>Resumen de las actividades realizadas durante el TCU</h3>
+                        <?php
+                        for($i=0;$i<strlen($resumen_actividades);$i++){
+                          if( $resumen_actividades[$i] == "\n"){?>
+                            <br>
+                            <?php
+                          }else{
+                            echo $resumen_actividades[$i];
+                          }
+                        } ?>
+                        <h3>Evaluación</h3>
+                        <?php
+                        for($i=0;$i<strlen($evaluacion);$i++){
+                          if( $evaluacion[$i] == "\n"){?>
+                            <br>
+                            <?php
+                          }else{
+                            echo $evaluacion[$i];
+                          }
+                        } ?>
+                        <h3>Conclusión</h3>
+                        <?php
+                        for($i=0;$i<strlen($conclusion);$i++){
+                          if( $conclusion[$i] == "\n"){?>
+                            <br>
+                            <?php
+                          }else{
+                            echo $conclusion[$i];
+                          }
+                        } ?>
+                        <h3>Recomendaciones</h3>
+                        <?php
+                        for($i=0;$i<strlen($recomendaciones);$i++){
+                          if( $recomendaciones[$i] == "\n"){?>
+                            <br>
+                            <?php
+                          }else{
+                            echo $recomendaciones[$i];
+                          }
                         }
                         ?>
-                        <br>
-                        <h3>Organización</h3>
-                        <?php echo $organizacion ?> <br>
-                        <h3>Supervisor</h3>
-                        <?php echo $supervisor ?> <br><br><br><br><br><br><br><br>
+                        <br><br><br><br><br>
+                        <center>-------- Fin Documento -------</center>
+                      </div>
+                    </div> <!--   END DIV DOCUMENT -->
+                  </div>
+                </div>
+              </div>  <!--   END DIV Lecture Mode -->
 
-                        -------- Fin de Página --------
-                        <br><br>
-                        <br><br><br><br>
-                      </center>
-                      <h3>Resumen de las actividades realizadas durante el TCU</h3>
-                      <?php
-                      for($i=0;$i<strlen($resumen_actividades);$i++){
-                        if( $resumen_actividades[$i] == "\n"){?>
-                          <br>
-                          <?php
-                        }else{
-                          echo $resumen_actividades[$i];
-                        }
-                      } ?>
-                      <h3>Evaluación</h3>
-                      <?php
-                      for($i=0;$i<strlen($evaluacion);$i++){
-                        if( $evaluacion[$i] == "\n"){?>
-                          <br>
-                          <?php
-                        }else{
-                          echo $evaluacion[$i];
-                        }
-                      } ?>
-                      <h3>Conclusión</h3>
-                      <?php
-                      for($i=0;$i<strlen($conclusion);$i++){
-                        if( $conclusion[$i] == "\n"){?>
-                          <br>
-                          <?php
-                        }else{
-                          echo $conclusion[$i];
-                        }
-                      } ?>
-                      <h3>Recomendaciones</h3>
-                      <?php
-                      for($i=0;$i<strlen($recomendaciones);$i++){
-                        if( $recomendaciones[$i] == "\n"){?>
-                          <br>
-                          <?php
-                        }else{
-                          echo $recomendaciones[$i];
-                        }
-                      }
-                      ?>
-                      <br><br><br><br><br>
-                      <center>-------- Fin Documento -------</center>
-                    </div>
-                  </div> <!--   END DIV DOCUMENT -->
-                </div>
-                <div class="col-md-5" style=" height: 500px;  resize: both;">
-                  <h2>Observaciones</h2>
-                  <textarea style="width: 100%;height: 700px" id="txtA_observaciones" placeholder="Observaciones"></textarea>
+              <div id="RevisionMode" style="display: none; margin-right:10%;margin-left:10%;" class="well">
+                <div style="resize: both;">
+                  <h3><center>Observaciones</center></h3>
+                  <center><textarea  id="txtA_observaciones" placeholder="Observaciones" cols="70" rows="20"></textarea></center>
                 </div><!-- END DIV COL -->
-              </div> <!-- END DIV ROW -->
               <div class="row ">
-                <div class="col-md-3">
-                  <a onclick="ingresarCalificacion(<?php echo $id;?>,2,2)" class="btn btn-block btn-success">Aprobar</a>
+                <div class="col-md-2 col-md-offset-2" style="margin-left:20%">
+                  <a onclick="ingresarCalificacion(<?php echo $id;?>,4,2)" class="btn btn-block btn-danger">Reprobado </a>
                 </div>
-                <div class="col-md-4 col-md-offset-1">
+                <div class="col-md-3">
                   <a onclick="ingresarCalificacion(<?php echo $id;?>,3,2)" class="btn btn-block btn-primary">Aprobar con Observaciones</a>
                 </div>
-                <div class="col-md-3 col-md-offset-1">
-                  <a onclick="ingresarCalificacion(<?php echo $id;?>,4,2)" class="btn btn-block btn-danger">Reprobado </a>
+                <div class="col-md-2">
+                  <a onclick="ingresarCalificacion(<?php echo $id;?>,2,2)" class="btn btn-block btn-success">Aprobar</a>
                 </div><br>
-              </div>
+              </div><br>
+            </div>
+
             </form>
           </div>
         </div><!--.programa-evento-->
       </div><!--.contenedor-->
     </section><!--.section programa-->
   </main>
+
   <script src="../../js/calificarTcu.js"></script>
   <?php
     include '../../footer.php';

@@ -10,23 +10,20 @@
 		try {
 			echo $codigo;
 			if($codigo == ""){ // Crear nuevo
-							
 					$query = "INSERT INTO tigrupou_tcu.resumen_ejecutivo (grupo, resumen_actividades, evaluacion, conclusion, recomendaciones) VALUES ($grupo, '$texto', '', '', '');";
-					
-					$stmt = $db->prepare($query);//Inserta a DB 
+					$stmt = $db->prepare($query);//Inserta a DB
 	     			$stmt -> execute();
-	     	
 	     			echo "OK";
 	     			//redireccionar a la página principal
 			}else{
 				$query = "UPDATE tigrupou_tcu.resumen_ejecutivo SET $numeroPagina = '$texto';";
-				$stmt = $db->prepare($query);//Inserta a DB 
+				$stmt = $db->prepare($query);//Inserta a DB
 	     		$stmt -> execute();
 			}
 		} catch (Exception $e) {
 			echo "ERROR";
 		}
-			
-		
-	 
+
+
+
 ?>
