@@ -25,7 +25,7 @@
 
   <header class="site-header">
     <div class="clearfix">
-      <img src="img/Planificador.png" alt="Logo TCU">
+      <img src="img/FranjaTCU Planif.jpg" alt="Logo TCU">
     </div><!-- .fondo-encabezado -->
   </header>
 

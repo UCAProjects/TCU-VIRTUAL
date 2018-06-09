@@ -24,6 +24,7 @@
 
   $id = $_GET["id"];
   $carrera = $_SESSION["carreraFuncionario"]; // Carrera a la que partenece el funcionario
+  $rol = $_SESSION["rolFuncionario"];
   $query = "SELECT D.tema,D.organizacion, D.supervisor, A.* FROM tigrupou_tcu.datos D JOIN tigrupou_tcu.ante_proyecto A ON D.grupo like A.grupo WHERE D.grupo like $id";
   $queryEstudiantes = "SELECT CONCAT(primer_apellido,' ',segundo_apellido,' ',nombre_completo) nombre FROM tigrupou_tcu.estudiantes WHERE grupo LIKE $id order by primer_apellido";
   $stmt = $db->prepare($queryEstudiantes);
@@ -65,7 +66,6 @@
             <form class="">
               <h2>Ante Proyecto</h2>
 
-
               <ul class="nav nav-tabs" id="nav">
                   <li class="active"><a href="#nav" onclick="modeLecture()"><i class="fas fa-book"></i> Modo Lectura</a></li>
                   <li><a href="#nav" onclick="modeRevision()"><i class="fas fa-edit"></i> Modo Revisión</a></li>
@@ -90,12 +90,20 @@
                     <a href="<?php echo $linkCronograma?>" target="_blank"><i class="far fa-file-alt"></i> Cronograma de TCU</a>
                   </div>
                 </div>
-
               </div>
-
 
               <div id="LecturaModo" style="margin-right:10%;margin-left:10%;">
                 <div class="row well">
+                  <?php
+                    if($rol == 1){ ?>
+                      <div>
+                        <a href="#" onclick="cargarModal({'id':<?php echo $id; ?>},'modalModalDiv','verCalificacion-modal','modalCalificacionBE.php')">
+                          <i class="fas fa-pen-square"></i> Bienestard Estudiantil
+                        </a>
+                      </div><?php
+                    }
+                  ?>
+
                   <div class="well">
                     <h3><center>Ante Proyecto</center></h3>
                     <div id="divDocument"  style="background-color: white;">
@@ -202,19 +210,28 @@
               </div>  <!--   END DIV Lecture Mode -->
 
               <div id="RevisionMode" style="display: none; margin-right:10%;margin-left:10%;" class="well">
+                <?php
+                  if($rol == 1){ ?>
+                    <div>
+                      <a href="#" onclick="cargarModal({'id':<?php echo $id; ?>},'modalModalDiv','verCalificacion-modal','modalCalificacionBE.php')">
+                        <i class="fas fa-pen-square"></i> Bienestard Estudiantil
+                      </a>
+                    </div><?php
+                  }
+                ?>
                 <div style="resize: both;">
                   <h3><center>Observaciones</center></h3>
                   <center><textarea  id="txtA_observaciones" placeholder="Observaciones" cols="70" rows="20"></textarea></center>
                 </div><!-- END DIV COL -->
               <div class="row ">
                 <div class="col-md-2 col-md-offset-2" style="margin-left:20%">
-                  <a onclick="ingresarCalificacion(<?php echo $id;?>,4,1)" class="btn btn-block btn-danger">Reprobado </a>
+                  <a onclick="ingresarCalificacion(<?php echo $id;?>,4,1,<?php echo $rol;?>)" class="btn btn-block btn-danger">Reprobado </a>
                 </div>
                 <div class="col-md-3">
-                  <a onclick="ingresarCalificacion(<?php echo $id;?>,3,1)" class="btn btn-block btn-primary">Aprobar con Observaciones</a>
+                  <a onclick="ingresarCalificacion(<?php echo $id;?>,3,1,<?php echo $rol;?>)" class="btn btn-block btn-primary">Aprobar con Observaciones</a>
                 </div>
                 <div class="col-md-2">
-                  <a onclick="ingresarCalificacion(<?php echo $id;?>,2,1)" class="btn btn-block btn-success">Aprobar</a>
+                  <a onclick="ingresarCalificacion(<?php echo $id;?>,2,1, <?php echo $rol;?>)" class="btn btn-block btn-success">Aprobar</a>
                 </div><br>
               </div><br>
             </div>
@@ -230,5 +247,23 @@
   include '../../footer.php';
   ?>
   <script src="../../js/datosProyecto.js"></script>
+
+
+  <!-- Moda para agregar insumos a la actividad-->
+  <div class="modal fade" id="verCalificacion-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content" id="modal_content">
+        <div class="modal-header" align="center">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+          </button>
+        </div>
+        <div id="modalModalDiv"> <!--Div donde se carga el form para ingresar los datos -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 </body>
 </html>

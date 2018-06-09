@@ -22,6 +22,6 @@
 
 <header class="site-header">
   <div class="fondo-encabezado">
-    <img src="../../img/Planificador.png" alt="Logo TCU">
+    <img src="../../img/FranjaTCU Planif.jpg" alt="Logo TCU">
   </div>
 </header>

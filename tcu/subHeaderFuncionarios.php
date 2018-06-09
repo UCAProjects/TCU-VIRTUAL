@@ -4,13 +4,30 @@
     include '../../conection.php'; //Conección a la DB
 
       $carrera = $_SESSION["carreraFuncionario"];
-      $query = "select count(*) total from tigrupou_tcu.grupos G JOIN tigrupou_tcu.ante_proyecto A ON G.codigo LIKE A.grupo where G.carrera  like $carrera and A.estado like 1 ";
-      $stmt = $db->prepare($query);
+      $rol = $_SESSION["rolFuncionario"];
+
+      if($rol == 1){ // Director de Carrera
+        $queryA = "select count(*) total from tigrupou_tcu.grupos G JOIN tigrupou_tcu.ante_proyecto A ON G.codigo LIKE A.grupo where G.carrera  like $carrera and A.estado like 1 ";
+        $queryR = "select count(*) total from tigrupou_tcu.grupos G JOIN tigrupou_tcu.resumen_ejecutivo A ON G.codigo LIKE A.grupo where G.carrera  like $carrera and A.estado like 1 ";
+      }elseif ($rol == 2) { // Bienestar Estudiantil
+        $queryA = "select count(*) total from tigrupou_tcu.grupos G JOIN tigrupou_tcu.ante_proyecto A ON G.codigo LIKE A.grupo where G.carrera  like $carrera and A.estado_be like 1 ";
+        $queryR = "select count(*) total from tigrupou_tcu.grupos G JOIN tigrupou_tcu.resumen_ejecutivo A ON G.codigo LIKE A.grupo where G.carrera  like $carrera and A.estado_be like 1 ";
+      }
+
+      $stmt = $db->prepare($queryA);
       $stmt -> execute();
       $result = $stmt -> fetchAll();
       $numeroAnteProyecto = 0;
       foreach($result as $row){
           $numeroAnteProyecto = $row["total"];
+      }
+
+      $stmt = $db->prepare($queryR);
+      $stmt -> execute();
+      $result = $stmt -> fetchAll();
+      $numeroResumenEjecutivo = 0;
+      foreach($result as $row){
+          $numeroResumenEjecutivo = $row["total"];
       }
 ?>
 
@@ -44,7 +61,7 @@
             </li>
             <li>
               <a class="over" href="../calificarTCU/calificarDatosProyecto.php?class=2"><i class="fas fa-clipboard-check"></i> Resumen Ejecutivo
-              <span class="badge" style="background-color:#3a87ad"><?php echo $numeroAnteProyecto; ?></span></a>
+              <span class="badge" style="background-color:#3a87ad"><?php echo $numeroResumenEjecutivo; ?></span></a>
             </li>
           </ul>
       </li>

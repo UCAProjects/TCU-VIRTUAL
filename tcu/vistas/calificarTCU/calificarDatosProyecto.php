@@ -15,17 +15,43 @@
 
   $tipo = $_GET["class"];
   $query = "";
+  $rol = $_SESSION["rolFuncionario"];
   switch ($tipo){ //  ANTE PROYECTO
     case 1:
-      $url = "detalleAnteProyecto.php?id=";
-      $title = "Calificar Ante Proyecto";
-      $query = "SELECT G.codigo, G.descripcion from tigrupou_tcu.grupos G JOIN tigrupou_tcu.ante_proyecto A ON G.codigo LIKE A.grupo where G.carrera  like strCarrera and A.estado like 1";
+      switch ($rol) {
+        case 1:
+          $url = "detalleAnteProyecto.php?id=";
+          $title = "Calificar Ante Proyecto";
+          $query = "SELECT G.codigo, G.descripcion from tigrupou_tcu.grupos G JOIN tigrupou_tcu.ante_proyecto A ON G.codigo LIKE A.grupo where G.carrera  like strCarrera and A.estado like 1";
+          break;
+        case 2:
+          $url = "detalleAnteProyecto.php?id=";
+          $title = "Calificar Ante Proyecto";
+          $query = "SELECT G.codigo, G.descripcion from tigrupou_tcu.grupos G JOIN tigrupou_tcu.ante_proyecto A ON G.codigo LIKE A.grupo where G.carrera  like strCarrera and A.estado_be like 1";
+          break;
+
+        default:
+          break;
+      }
+
       break;
     case 2:    // RESUMEN EJECUTIVO
-      $title = "Calificar Resumen Ejecutivo";
-      $url = "detalleResumenEjecutivo.php?id=";
-      $query = "SELECT G.codigo, G.descripcion from tigrupou_tcu.grupos G JOIN tigrupou_tcu.resumen_ejecutivo A ON G.codigo LIKE A.grupo where G.carrera  like strCarrera and A.estado like 1";
+    switch ($rol) {
+      case 1:
+        $title = "Calificar Resumen Ejecutivo";
+        $url = "detalleResumenEjecutivo.php?id=";
+        $query = "SELECT G.codigo, G.descripcion from tigrupou_tcu.grupos G JOIN tigrupou_tcu.resumen_ejecutivo A ON G.codigo LIKE A.grupo where G.carrera  like strCarrera and A.estado like 1";
+        break;
+      case 2:
+        $title = "Calificar Resumen Ejecutivo";
+        $url = "detalleResumenEjecutivo.php?id=";
+        $query = "SELECT G.codigo, G.descripcion from tigrupou_tcu.grupos G JOIN tigrupou_tcu.resumen_ejecutivo A ON G.codigo LIKE A.grupo where G.carrera  like strCarrera and A.estado_be like 1";
       break;
+
+      default:
+        break;
+    }
+
     default:
       // code...
     break;

@@ -6,6 +6,7 @@
 	$estado = $_POST["estado"];
 	$observaciones = $_POST["observaciones"];
 	$documento = $_POST["documento"];
+  $rol = $_POST["rol"];
 
   // 1 para ante proyecto
   // 2 para resumen ejecutivo
@@ -18,10 +19,23 @@
 
   switch ($tipo) {
     case 1: // Caso ante proyecto
-      $queryNumeroRevisiones = "SELECT count(*) AS cantidad FROM tigrupou_tcu.revision_ante_proyecto WHERE ante_proyecto LIKE $documento";
-      $queryMaxVersionSelect = "SELECT max(version) AS max FROM tigrupou_tcu.revision_ante_proyecto WHERE ante_proyecto LIKE $documento";
-      $queryUpdate = "UPDATE tigrupou_tcu.ante_proyecto SET estado = $estado WHERE grupo LIKE $documento";
-      $queryInsert = "INSERT INTO tigrupou_tcu.revision_ante_proyecto(version, Observaciones,estado,ante_proyecto) values(version_value,'$observaciones',$estado,$documento)";
+      switch ($rol) {
+        case 1:
+          $queryNumeroRevisiones = "SELECT count(*) AS cantidad FROM tigrupou_tcu.revision_ante_proyecto WHERE ante_proyecto LIKE $documento";
+          $queryMaxVersionSelect = "SELECT max(version) AS max FROM tigrupou_tcu.revision_ante_proyecto WHERE ante_proyecto LIKE $documento";
+          $queryUpdate = "UPDATE tigrupou_tcu.ante_proyecto SET estado = $estado WHERE grupo LIKE $documento";
+          $queryInsert = "INSERT INTO tigrupou_tcu.revision_ante_proyecto(version, Observaciones,estado,ante_proyecto) values(version_value,'$observaciones',$estado,$documento)";
+          break;
+        case 2:
+          $queryNumeroRevisiones = "SELECT count(*) AS cantidad FROM tigrupou_tcu.revision_ante_proyecto_be WHERE ante_proyecto LIKE $documento";
+          $queryMaxVersionSelect = "SELECT max(version) AS max FROM tigrupou_tcu.revision_ante_proyecto_be WHERE ante_proyecto LIKE $documento";
+          $queryUpdate = "UPDATE tigrupou_tcu.ante_proyecto SET estado_be = $estado WHERE grupo LIKE $documento";
+          $queryInsert = "INSERT INTO tigrupou_tcu.revision_ante_proyecto_be(version, Observaciones,estado,ante_proyecto) values(version_value,'$observaciones',$estado,$documento)";
+          break;
+        default:
+          // code...
+          break;
+      }
       break;
     case 2: // Caso resumen ejecutivo
       $queryNumeroRevisiones = "SELECT count(*) AS cantidad FROM tigrupou_tcu.revision_resumen_ejecutivo WHERE resumen_ejecutivo LIKE $documento";
@@ -65,6 +79,8 @@
 
       $stmt = $db->prepare($queryUpdate);//Inserta a DB
       $stmt -> execute();
+
+
 
      	echo "OK";
      	//redireccionar a la página principal
