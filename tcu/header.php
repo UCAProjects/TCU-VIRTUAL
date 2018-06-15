@@ -21,7 +21,5 @@
 <!-- Add your site or application content here -->
 
 <header class="site-header">
-  <div class="fondo-encabezado">
     <img src="../../img/FranjaTCU Planif.jpg" alt="Logo TCU">
-  </div>
 </header>

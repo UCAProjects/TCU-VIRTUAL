@@ -29,89 +29,36 @@
                       <div class="formulario">
 
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#">Periodo Actual</a></li>
-                            <li><a href="#">Periodo Anterior</a></li>
+                            <li class="active"><a href="#">TCU Activos</a></li>
+                            <li><a href="#">TCU Inactivos</a></li>
                         </ul>
 
                         <br><br>
 
-                      <!--
+                        <!--
                         Boton buscar
                         Falta programabilidad
                         Evento onChance realiza consulta y setea los datos.
                         Por Ajax, emigrar pantalla de visualizacion a pantalla externa
                        -->
                       <div class="form-inline">
-                             <input type="text" style="width:50% !important" id="textBucar" class="form-control" placeholder="Buscar">
+                             <input type="text" style="width:50% !important" id="textBuscar" class="form-control" placeholder="Buscar">
                       </div>
                       <br>
                       <hr>
-                        <?php
-                          $query = "select distinct G.codigo, G.descripcion from tigrupou_tcu.grupos G join tigrupou_tcu.estudiantes E on G.codigo = E.grupo";
 
-                          $stmt = $db->prepare($query);//Consulta los grupos a DB
-                          $stmt -> execute();
-                          $result = $stmt -> fetchAll();
-                          foreach ($result as $row) {
-                              ?>
-                                    <div class="well">
-                                        <h3><span class="orange">Grupo <?php echo $row["codigo"] ?> :</span> <?php echo $row["descripcion"] ?></h3>
-
-                                        <table class="table table-striped">
-                                        <thead>
-                                          <tr>
-                                            <th>Cod</th>
-                                            <th>ced</th>
-                                            <th>Nombre</th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                              $codigo = $row["codigo"];
-                                              $queryUser = "select codigo, cedula, CONCAT(nombre_completo,' ', primer_apellido,' ',segundo_apellido) as nombre from tigrupou_tcu.estudiantes where grupo like $codigo";
-
-                                              $stmt = $db->prepare($queryUser);//Consulta los grupos a DB
-                                              $stmt -> execute();
-                                              $resultUser = $stmt -> fetchAll();
-                                              foreach ($resultUser as $user) {
-                                                ?>
-
-                                                    <tr>
-                                                      <td><?php echo $user["codigo"] ?></td>
-                                                      <td><?php echo $user["cedula"] ?></td>
-                                                      <td><?php echo $user["nombre"] ?></td>
-                                                    </tr>
-                                                <?php
-
-                                              }
-                                            ?>
-                                        </tbody>
-                                      </table>
-
-                                      <div>
-                                        <button class="btn btn-success" onclick="editarGrupo(<?php echo $codigo ?>)"><i class="far fa-edit"></i> Editar</button>
-                                      </div>
-
-                                      <div>
-                                        <button class="btn btn-warning" onclick="editarGrupo(<?php echo $codigo ?>)"><i class="far fa-calendar-check"></i> Detalle de Horas </button>
-                                      </div>
-
-                                        <br>
-                                    </div>
-                            <?php
-                          }
-                        ?>
-                      </div>
+                      <div id="loadGroups"></div>
+                      
+                    </div>
                   </div>
                 </div><!--.programa-evento-->
               </div><!--.contenedor-->
 
             </section><!--.section programa-->
           </main>
-          <script src="../../js/principalEstudiantes.js"></script>
           <?php
           include '../../footer.php';
           ?>
-          <script src="../../js/datosProyecto.js"></script>
+          <script src="../../js/funcionariosGrupos.js"></script>
         </body>
         </html>

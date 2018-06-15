@@ -17,7 +17,7 @@
   $stmt -> execute();
   $result = $stmt -> fetchAll();
   foreach($result as $row){
-      $fecha = $row["fecha"];
+      $_Date = $row["fecha"];
       $horaIn = $row["hora_entrada"];
       $horaEnd = $row["hora_salida"];
       $cantidadHoras = $row["numero_horas"];

@@ -36,7 +36,7 @@
         <ul class="lista-informacion clearfix">
           <li>
             <div class="tabla-informacion">
-              <h3>Uso del sistema</h3>
+              <h3>usos del sistema</h3>
               <p class="info">En esta sección encontrará una guía para el uso
                 correcto del sistema y cómo completar la información.
               </p>

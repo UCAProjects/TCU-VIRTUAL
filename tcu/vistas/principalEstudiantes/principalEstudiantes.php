@@ -17,7 +17,7 @@
     include '../../conection.php'; //Conección a la DB
 
 
-    $queryHistorialAP = "SELECT  DATE_FORMAT(RA.fecha_revision,'%d-%m-%y / %h:%i:%s') AS fecha, E.descripcion, RA.version FROM tigrupou_tcu.grupos AS G JOIN tigrupou_tcu.revision_ante_proyecto AS RA ON G.codigo LIKE RA.ante_proyecto JOIN tigrupou_tcu.estado AS E ON E.codigo LIKE RA.estado WHERE G.codigo LIKE $grupo";
+    $queryHistorialAP = "SELECT RA.version AS version, RA.ante_proyecto as cod, DATE_FORMAT(RA.fecha_revision,'%d-%m-%y / %h:%i:%s') AS fecha, E.descripcion, RA.version FROM tigrupou_tcu.grupos AS G JOIN tigrupou_tcu.revision_ante_proyecto AS RA ON G.codigo LIKE RA.ante_proyecto JOIN tigrupou_tcu.estado AS E ON E.codigo LIKE RA.estado WHERE G.codigo LIKE $grupo";
 
     $queryHistorialRE = "SELECT  DATE_FORMAT(RA.fecha_revision,'%d-%m-%y / %h:%i:%s') AS fecha, E.descripcion, RA.version FROM tigrupou_tcu.grupos AS G JOIN tigrupou_tcu.revision_resumen_ejecutivo AS RA ON G.codigo LIKE RA.resumen_ejecutivo JOIN tigrupou_tcu.estado AS E ON E.codigo LIKE RA.estado WHERE G.codigo LIKE $grupo";
 
@@ -61,7 +61,7 @@
                             <?php
                               foreach($resultHistorialAP as $row){ ?>
                                   <tr>
-                                    <td><?php echo $row["fecha"];?></td>
+                                    <td><a href="#" onclick="cargarModal({'id': <?php echo $row['cod']; ?>, 'version':<?php echo $row['version']; ?>},'calificacionDiv','verCalificacion-modal','modalVerCalificacion.php')"><?php echo $row["fecha"];?></a></td>
                                     <td><?php echo $row["descripcion"];?></td>
                                     <td><?php echo $row["version"];?></td>
                                   </tr> <?php
@@ -99,6 +99,21 @@
 
             </section><!--.section programa-->
           </main>
+
+          <div class="modal fade" id="verCalificacion-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content" id="addModal_content">
+                <div class="modal-header" align="center">
+      
+                <div class="modal-body">
+                  <div id="calificacionDiv"> <!--Div donde se carga el form para ingresar los datos de logueo-->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
           <script src="../../js/principalEstudiantes.js"></script>
           <?php
           include '../../footer.php';

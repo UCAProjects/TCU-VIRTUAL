@@ -98,7 +98,7 @@
                     if($rol == 1){ ?>
                       <div>
                         <a href="#" onclick="cargarModal({'id':<?php echo $id; ?>},'modalModalDiv','verCalificacion-modal','modalCalificacionBE.php')">
-                          <i class="fas fa-pen-square"></i> Bienestard Estudiantil
+                          <i class="fas fa-pen-square"></i> Bienestar Estudiantil
                         </a>
                       </div><?php
                     }
@@ -214,7 +214,7 @@
                   if($rol == 1){ ?>
                     <div>
                       <a href="#" onclick="cargarModal({'id':<?php echo $id; ?>},'modalModalDiv','verCalificacion-modal','modalCalificacionBE.php')">
-                        <i class="fas fa-pen-square"></i> Bienestard Estudiantil
+                        <i class="fas fa-pen-square"></i> Bienestar Estudiantil
                       </a>
                     </div><?php
                   }
@@ -223,6 +223,7 @@
                   <h3><center>Observaciones</center></h3>
                   <center><textarea  id="txtA_observaciones" placeholder="Observaciones" cols="70" rows="20"></textarea></center>
                 </div><!-- END DIV COL -->
+                <br>
               <div class="row ">
                 <div class="col-md-2 col-md-offset-2" style="margin-left:20%">
                   <a onclick="ingresarCalificacion(<?php echo $id;?>,4,1,<?php echo $rol;?>)" class="btn btn-block btn-danger">Reprobado </a>

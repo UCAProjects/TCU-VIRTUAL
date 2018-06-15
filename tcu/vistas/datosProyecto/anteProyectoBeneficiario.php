@@ -6,7 +6,7 @@
 ?>
 
 <?php
-    include '../../conection.php'; //Conección a la DB
+      include '../../conection.php'; //Conección a la DB
 
       $query = "select grupo, descripcion_beneficiario from tigrupou_tcu.ante_proyecto where grupo like $grupo;";
       $stmt = $db->prepare($query);

@@ -21,16 +21,62 @@
       include '../../header.php';
       include '../../subHeaderEstudiantes.php';
       include '../../conection.php'; //Conección a la DB
+
+      $grupo = $_SESSION["grupo"];
+
+      $linkAceptacion = "";
+      $linkSolicitud = "";
+      $linkCronograma = "";
+      $queryAdjutos = "SELECT url_carta_aceptacion,url_carta_solicitud, url_cronograma_tcu FROM tigrupou_tcu.cartas_adjuntas WHERE grupo LIKE $grupo";
+      $stmt = $db->prepare($queryAdjutos);
+      $stmt -> execute();
+      $resultAdjuntos = $stmt -> fetchAll();
+      foreach ($resultAdjuntos as $row) {
+        $linkAceptacion = $row["url_carta_aceptacion"];
+        $linkSolicitud = $row["url_carta_solicitud"];
+        $linkCronograma = $row["url_cronograma_tcu"];
+      }
     ?>
     <main class="site-main">
       <section class="seccion-informacion">
         <div class="contenedor clearfix">
           <div class="">
             <h2>ANTE PROYECTO</h2>
+            <?php 
+                if($linkAceptacion != "" or $linkCronograma != "" or $linkSolicitud != ""){ ?>
+                  <div class="well" id="adjuntos">
+                      <div class="row">
+                        <div class="col-md-2">
+                          <b>Adjuntos</b>
+                        </div>
+                        <?php
+                          if($linkSolicitud != ""){ ?>
+                            <div class="col-md-3" style="margin-right:10px;border-width:5px;border-style:ridge;">
+                              <a href="<?php echo $linkSolicitud?>" target="_blank"><i class="far fa-file-alt"></i> Carta Solicitud</a>
+                            </div>
+                          <?php } ?>
+
+                        <?php   
+                          if($linkAceptacion != ""){ ?>
+                            <div class="col-md-3 " style="margin-right:10px;border-width:5px;border-style:ridge;">
+                              <a href="<?php echo $linkAceptacion?>" target="_blank"><i class="far fa-file-alt"></i> Carta Aceptación</a>
+                            </div>
+                        <?php } ?>
+
+                        <?php   
+                          if($linkCronograma != ""){ ?>
+                            <div class="col-md-3 " style="border-width:5px;border-style:ridge;">
+                              <a href="<?php echo $linkCronograma?>" target="_blank"><i class="far fa-file-alt"></i> Cronograma de TCU</a>
+                            </div>
+                        <?php } ?>
+                      </div>
+                  </div>
+
+                <?php } ?>
             <div  class="ingreso ingresoTamano">
               <div class="container">
                 <ul class="progressbar">
-                  <li id="20" class="active" >Problema</li>
+                  <li id="20" class="active">Problema</li>
                   <li id="40">Beneficiario</li>
                   <li id="60" >Proyecto</li>
                   <li id="80">Objetivos</li>
@@ -49,8 +95,6 @@
         </div>
       </section><!--.section programa-->
     </main>
-
-
     <div class="modal fade" id="modalAdjuntarDatos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">

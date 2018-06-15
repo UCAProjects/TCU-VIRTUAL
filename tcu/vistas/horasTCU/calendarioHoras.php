@@ -64,11 +64,25 @@
         $cantidad = $row["HORAS"];
     }
 
+    $porcRealizadas = round($cantidad * 100 / 150,2);
+
     $restantes = 150 - $cantidad;
+
+    $porcFaltante = round($restantes * 100 / 150,2);
 
     if($restantes < 0){
       $restantes = 0;
     }
+
+    $queryCronogramaHoras = "SELECT url_cronograma_tcu FROM tigrupou_tcu.cartas_adjuntas WHERE grupo like $grupo";
+    $stmt = $db->prepare($queryCronogramaHoras);
+    $stmt -> execute();
+    $resultCronograma = $stmt -> fetchAll();
+    $urlCronograma = "";
+    foreach($resultCronograma as $row){
+        $urlCronograma = $row["url_cronograma_tcu"];
+    }
+
   ?>
 
   <main class="site-main">
@@ -78,8 +92,10 @@
         <div class="" id="content">
             <center><h3>Control de Horas Digital</h3></center>
             <div class="well">
-              <span><strong >Horas Complentadas:</strong> <?php echo $cantidad ?></span><br>
-              <span><strong >Horas Restantes:</strong> <?php echo $restantes ?> </span>
+            <span><meter min="0" max="150" id="meter" low="100" high="149" optimum="150" value="0" style="width:100%"></span><br>
+              <span><strong >Horas Realizadas:</strong> <?php echo $cantidad . " / " . $porcRealizadas . "%" ?></span><br>
+              <span><strong >Horas Pendientes:</strong> <?php echo $restantes . " / " . $porcFaltante . "%" ?> </span><br>
+              <span><strong ><a href="<?php echo $urlCronograma; ?> " target="blank"><i class="fas fa-download"></i> Cronograma de Horas</a></strong> </span>
             </div>
             <div id="contenedor" class="well">
               <!-- Cargar modal agregar actividad -->
@@ -130,6 +146,9 @@
   <script src='../../fullcalendar/locale/es.js'></script>
   <script src='../../fullcalendar-scheduler/scheduler.js'></script>
   <script src='../../js/calendario.js'></script>
+  <script>
+    setMeter(<?php echo $cantidad?>);
+  </script>
 
   <!--
     Javascrip with FullCalendar Settings
