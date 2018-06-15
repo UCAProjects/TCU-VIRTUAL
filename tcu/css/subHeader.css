@@ -1,40 +1,55 @@
     /* CSS used here will be applied after bootstrap.css */
+    
     .tabbable {
         margin: 30px;
         height: 300px;
         overflow: hidden;
         border-bottom: 1px solid #d45500;
     }
+    
     .nav-tabs {
         margin: 0;
     }
+    
     .tab-content {
         padding: 30px;
-        height: 100%; 
-        border-left: 1px solid #d45500 ; 
+        height: 100%;
+        border-left: 1px solid #d45500;
         border-right: 1px solid #d45500;
     }
-    .nav-tabs>.active>a, .nav-tabs>.active>a:hover, .nav-tabs>.active>a:focus {
+    
+    .nav-tabs>.active>a,
+    .nav-tabs>.active>a:hover,
+    .nav-tabs>.active>a:focus {
         border-color: #d45500;
         border-bottom-color: transparent;
     }
+    
     .nav-tabs {
         border-bottom: 1px solid #d45500;
     }
-    .nav li a:hover i, .nav li a:hover span, .active .color .white{
-        color:white !important;
+    
+    .nav li a:hover i,
+    .nav li a:hover span,
+    .active .color .white {
+        color: white !important;
     }
-    .active .color, .nav li a:hover{
-        background-color:#fe4918 !important;
-        color:white !important;
+    
+    .active .color,
+    .nav li a:hover {
+        background-color: #ffcb05 !important;
+        color: white !important;
     }
-    #liSalir{
+    
+    #liSalir {
         margin-right: 2%;
     }
-    .colorNaranja{
-        color:#fe4918;
+    
+    .colorNaranja {
+        color: #ffcb05;
     }
     /* Círculos de colores numerados */
+    
     span.circle {
         border-radius: 0.8em;
         -moz-border-radius: 0.8em;
@@ -45,21 +60,26 @@
         line-height: 1.6em;
         margin-right: 15px;
         text-align: center;
-        width: 1.6em; 
+        width: 1.6em;
     }
     /*Colores de los círculos */
-    span.red{
+    
+    span.red {
         background: red;
     }
+    
     span.grey {
         background: #cccccc;
     }
+    
     span.green {
         background: #5EA226;
     }
+    
     span.blue {
         background: #5178D0;
     }
+    
     span.pink {
         background: #EF0BD8;
     }

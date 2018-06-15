@@ -95,7 +95,7 @@
 
                         <div class="row">
                           <div class="col-md-6">
-                            <li><label for="lugar"ón o lugar >Organizacidonde realizará el T.C.U.</label></li>
+                            <li><label for="lugar"ón o lugar >Organización donde realizará el T.C.U.</label></li>
                             <li><textarea id="lugar" name="lugar" class="tamanoCompleto" placeholder="Digite la organización o lugar donde realizará el T.C.U." required><?php echo $organizacion ?></textarea></li>
                           </div>
                           <div class="col-md-6">

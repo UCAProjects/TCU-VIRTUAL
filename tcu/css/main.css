@@ -1,10 +1,12 @@
 /*! HTML5 Boilerplate v6.0.1 | MIT License | https://html5boilerplate.com/ */
 
+
 /*
  * What follows is the result of much research on cross-browser styling.
  * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
  * Kroc Camen, and the H5BP dev community and team.
  */
+
 
 /* ==========================================================================
    Base styles: opinionated defaults
@@ -15,6 +17,7 @@ html {
     font-size: 1em;
     line-height: 1.4;
 }
+
 
 /*
  * Remove text-shadow in selection highlight:
@@ -36,6 +39,7 @@ html {
     text-shadow: none;
 }
 
+
 /*
  * A better looking default horizontal rule
  */
@@ -48,6 +52,7 @@ hr {
     margin: 1em 0;
     padding: 0;
 }
+
 
 /*
  * Remove the gap between audio, canvas, iframes,
@@ -64,6 +69,7 @@ video {
     vertical-align: middle;
 }
 
+
 /*
  * Remove default fieldset styles.
  */
@@ -74,6 +80,7 @@ fieldset {
     padding: 0;
 }
 
+
 /*
  * Allow only vertical resizing of textareas.
  */
@@ -81,6 +88,7 @@ fieldset {
 textarea {
     resize: vertical;
 }
+
 
 /* ==========================================================================
    Browser Upgrade Prompt
@@ -93,101 +101,111 @@ textarea {
     padding: 0.2em 0;
 }
 
+
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
 
+
 /*Estilos generales */
 
 html {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
-*,*:before,*:after {
-  box-sizing: inherit;
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
 }
 
 body {
-  background-color: #f2f2f2;
-  font-family: 'Open Sans', sans-serif;
+    background-color: #f2f2f2;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .contenedor {
-  width: 80%;
-  margin: 0 auto;
+    width: 80%;
+    margin: 0 auto;
 }
 
 h2 {
-  font-family: 'Oswald', sans-serif;
-  font-size: 2.4em;
-  text-transform: uppercase;
-  text-align: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.4em;
+    text-transform: uppercase;
+    text-align: center;
 }
 
 h2::after {
-  content: '';
-  margin: 0 auto;
-  background-image: url(../img/separador.png);
-  height: 30px;
-  width: 100px;
-  display: block;
+    content: '';
+    margin: 0 auto;
+    background-image: url(../img/separador.png);
+    height: 30px;
+    width: 100px;
+    display: block;
 }
 
 li {
-  list-style: none;
+    list-style: none;
 }
 
+
 /*****HEADER*****/
+
 .site-header {
-  background-color: #ffffff;
-  width: 100%;
-  height: 150px;
-  margin: 0 auto;
+    background-color: #ffffff;
+    width: 100%;
+    height: 150px;
+    margin: 0 auto;
 }
+
 .sub-header {
-  background-color: #ffffff;
-  width: 100%;
-  height: 100px;
-  margin: 0 auto;
+    background-color: #ffffff;
+    width: 100%;
+    height: 100px;
+    margin: 0 auto;
 }
 
 .fondo-encabezado {
-  width: 70%;
-  margin: 0 auto;
+    width: 70%;
+    margin: 0 auto;
 }
 
 nav.redes-sociales {
-  text-align: right;
-  margin: 0;
+    text-align: right;
+    margin: 0;
 }
 
 nav.redes-sociales a {
-  color: #fe4918;
-  font-size: 2em;
-  margin-right: 10px;
+    color: #ffcb05;
+    font-size: 2em;
+    margin-right: 10px;
 }
+
 
 /*****SITE-MAIN*****/
 
+
 /*INFORMACIÓN*/
-ul.lista-informacion > li {
-  padding: 10px;
-  float: left;
-  width: 33.3%;
+
+ul.lista-informacion>li {
+    padding: 10px;
+    float: left;
+    width: 33.3%;
 }
 
 div.tabla-informacion {
-  border: 1px solid #e1e1e1;
-  background-color: #ffffff;
-  padding: 40px 0;
-  text-align: center;
-  -webkit-transition: all .3s ease-in-out;
+    border: 1px solid #e1e1e1;
+    background-color: #ffffff;
+    padding: 40px 0;
+    text-align: center;
+    -webkit-transition: all .3s ease-in-out;
 }
 
 div.tabla-informacion:hover {
-  transform: scale(1.1);
-  border: 1px solid #fe4918;
-  box-shadow: 0px 0px 50px #666;
+    transform: scale(1.1);
+    border: 1px solid #fe4918;
+    box-shadow: 0px 0px 50px #666;
 }
 
 div.tabla-informacion h3 {
@@ -197,183 +215,188 @@ div.tabla-informacion h3 {
 }
 
 div.tabla-informacion p.info {
-  color: #000000;
-  margin: 20px 20px 20px 20px;
-  text-align: justify;
+    color: #000000;
+    margin: 20px 20px 20px 20px;
+    text-align: justify;
 }
 
 .button {
-  font-family: 'Oswald', sans-serif;
-  background-color: #fe4918;
-  padding: 8px 40px;
-  color: #ffffff;
-  text-transform: uppercase;
-  font-weight: bold;
-  text-decoration: none;
-  font-size: 1em;
-  margin-top: 20px;
-  display: inline-block;
-  transition: all 0.6 ease;
-  border: 2px solid #fe4980;
-  width: 50%;
+    font-family: 'Oswald', sans-serif;
+    background-color: #fe4918;
+    padding: 8px 40px;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1em;
+    margin-top: 20px;
+    display: inline-block;
+    transition: all 0.6 ease;
+    border: 2px solid #fe4980;
+    width: 50%;
 }
 
 .button:hover {
-  background-color: #e33000;
+    background-color: #e33000;
 }
+
 
 /*INGRESO AL SISTEMA*/
-.seccion-ingreso {
-  position: relative;
-}
 
+.seccion-ingreso {
+    position: relative;
+}
 
 div.contenedor-video {
-  width: 100%;
-  height: 650px;
-  overflow-x: hidden;
-  overflow-y: hidden;
+    width: 100%;
+    height: 650px;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
-.formulario input{
-  color: #000000;
-  font-family: 'PT Sans', sans-serif;
-  width: 100%;
-  height: 35px;
-  margin-top: 5px;
-  margin-bottom: 5px;
+.formulario input {
+    color: #000000;
+    font-family: 'PT Sans', sans-serif;
+    width: 100%;
+    height: 35px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 div.contenido-programa {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 div.ingreso {
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 15px;
-  margin-top: 80px;
-  width: 50%;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 15px;
+    margin-top: 80px;
+    width: 50%;
 }
 
 .formulario ul {
-  width: 100%;
+    width: 100%;
 }
 
 .formulario ul li label {
-  color: #000000;
-  text-transform: uppercase;
-  font-family: 'Oswald', sans-serif;
+    color: #000000;
+    text-transform: uppercase;
+    font-family: 'Oswald', sans-serif;
 }
 
-.formulario ul li input{
-  color: #000000;
-  font-family: 'PT Sans', sans-serif;
-  width: 90%;
-  height: 35px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-.formulario ul li textarea{
-  color: #000000;
-  font-family: 'PT Sans', sans-serif;
-  width: 90%;
-  height: 35px;
-  margin-top: 5px;
-  margin-bottom: 5px;
+.formulario ul li input {
+    color: #000000;
+    font-family: 'PT Sans', sans-serif;
+    width: 90%;
+    height: 35px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
-.formulario ul li select{
-  color: #000000;
-  font-family: 'PT Sans', sans-serif;
-  width: 90%;
-  height: 35px;
-  margin-top: 5px;
-  margin-bottom: 5px;
+.formulario ul li textarea {
+    color: #000000;
+    font-family: 'PT Sans', sans-serif;
+    width: 90%;
+    height: 35px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
-.formulario ul li .seleccionar  {
-  font-size: 15px!important;
-  width: 50px!important;
-  height: 15px!important;
-  color: #fe4908!important;
-  margin-top: 15px;
+.formulario ul li select {
+    color: #000000;
+    font-family: 'PT Sans', sans-serif;
+    width: 90%;
+    height: 35px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
+.formulario ul li .seleccionar {
+    font-size: 15px!important;
+    width: 50px!important;
+    height: 15px!important;
+    color: #fe4908!important;
+    margin-top: 15px;
+}
 
 .formulario ul li button {
-  font-family: 'Oswald', sans-serif;
-  background-color: #fe4918;
-  padding: 10px 40px;
-  color: #ffffff;
-  text-transform: uppercase;
-  font-weight: bold;
-  text-decoration: none;
-  font-size: 1em;
-  margin-top: 30px;
-  display: inline-block;
-  transition: all 0.6 ease;
-  border: 2px solid #fe4980;
-  cursor: pointer;
+    font-family: 'Oswald', sans-serif;
+    background-color: #fe4918;
+    padding: 10px 40px;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1em;
+    margin-top: 30px;
+    display: inline-block;
+    transition: all 0.6 ease;
+    border: 2px solid #fe4980;
+    cursor: pointer;
 }
 
 .formulario ul li button:hover {
-  background-color: #e33000;
+    background-color: #e33000;
 }
+
 
 /*****SITE-FOOTER*****/
+
 .site-footer {
-  background-color: #353535;
-  padding-top: 40px;
-  margin-top: 0px;
+    background-color: #353535;
+    padding-top: 40px;
+    margin-top: 0px;
 }
 
-footer .contenedor > div {
-  color: #ffffff;
-  padding: 0px 20px;
-  font-size: 12px;
+footer .contenedor>div {
+    color: #ffffff;
+    padding: 0px 20px;
+    font-size: 12px;
 }
 
 @media only screen and (min-width:768px) {
-  footer .contenedor > div {
-    width: 50%;
-    float: left;
-  }
+    footer .contenedor>div {
+        width: 50%;
+        float: left;
+    }
 }
 
 footer h3 {
-  color: #ffffff;
-  text-transform: uppercase;
-  font-family: 'Oswald', sans-serif;
-  margin-bottom: 20px;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-family: 'Oswald', sans-serif;
+    margin-bottom: 20px;
 }
 
 footer h3 span {
-  color: #fe4918;
+    color: #ffcb05;
 }
 
 footer nav.redes-sociales {
-  text-align: right;
+    text-align: right;
 }
 
 p.footer-informacion {
-  text-align: justify;
+    text-align: justify;
 }
 
 p.copyright {
-  background-color: #2e2e2e;
-  padding: 10px 0;
-  color: #ffffff;
-  margin: 20px 0 0 0;
-  text-align: center;
+    background-color: #2e2e2e;
+    padding: 10px 0;
+    color: #ffffff;
+    margin: 20px 0 0 0;
+    text-align: center;
 }
+
 
 /* ==========================================================================
    Helper classes
    ========================================================================== */
+
 
 /*
  * Hide visually and from screen readers
@@ -382,6 +405,7 @@ p.copyright {
 .hidden {
     display: none !important;
 }
+
 
 /*
  * Hide only visually, but have it available for screen readers:
@@ -403,8 +427,10 @@ p.copyright {
     padding: 0;
     position: absolute;
     width: 1px;
-    white-space: nowrap; /* 1 */
+    white-space: nowrap;
+    /* 1 */
 }
+
 
 /*
  * Extends the .visuallyhidden class to allow the element
@@ -425,6 +451,7 @@ p.copyright {
     white-space: inherit;
 }
 
+
 /*
  * Hide visually and from screen readers, but maintain layout
  */
@@ -432,6 +459,7 @@ p.copyright {
 .invisible {
     visibility: hidden;
 }
+
 
 /*
  * Clearfix: contain floats
@@ -447,13 +475,16 @@ p.copyright {
 
 .clearfix:before,
 .clearfix:after {
-    content: " "; /* 1 */
-    display: table; /* 2 */
+    content: " ";
+    /* 1 */
+    display: table;
+    /* 2 */
 }
 
 .clearfix:after {
     clear: both;
 }
+
 
 /* ==========================================================================
    EXAMPLE Media Queries for Responsive Design.
@@ -466,11 +497,12 @@ p.copyright {
 }
 
 @media print,
-       (-webkit-min-device-pixel-ratio: 1.25),
-       (min-resolution: 1.25dppx),
-       (min-resolution: 120dpi) {
+(-webkit-min-device-pixel-ratio: 1.25),
+(min-resolution: 1.25dppx),
+(min-resolution: 120dpi) {
     /* Style adjustments for high resolution devices */
 }
+
 
 /* ==========================================================================
    Print styles.
@@ -483,35 +515,30 @@ p.copyright {
     *:before,
     *:after {
         background: transparent !important;
-        color: #000 !important; /* Black prints faster:
+        color: #000 !important;
+        /* Black prints faster:
                                    http://www.sanbeiji.com/archives/953 */
         box-shadow: none !important;
         text-shadow: none !important;
     }
-
     a,
     a:visited {
         text-decoration: underline;
     }
-
     a[href]:after {
         content: " (" attr(href) ")";
     }
-
     abbr[title]:after {
         content: " (" attr(title) ")";
     }
-
     /*
      * Don't show links that are fragment identifiers,
      * or use the `javascript:` pseudo protocol
      */
-
     a[href^="#"]:after,
     a[href^="javascript:"]:after {
         content: "";
     }
-
     pre {
         white-space: pre-wrap !important;
     }
@@ -520,35 +547,28 @@ p.copyright {
         border: 1px solid #999;
         page-break-inside: avoid;
     }
-
     /*
      * Printing Tables:
      * http://css-discuss.incutio.com/wiki/Printing_Tables
      */
-
     thead {
         display: table-header-group;
     }
-
     tr,
     img {
         page-break-inside: avoid;
     }
-
     p,
     h2,
     h3 {
         orphans: 3;
         widows: 3;
     }
-
     h2,
     h3 {
         page-break-after: avoid;
     }
-
     .nav .active .over:hover {
-      background-color:#fe4918;
+        background-color: #fe4918;
     }
-
 }
