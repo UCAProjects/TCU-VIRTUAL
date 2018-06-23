@@ -28,6 +28,11 @@
     $stmt = $db->prepare($queryHistorialRE);
     $stmt -> execute();
     $resultHistorialRE = $stmt -> fetchAll();
+
+    
+
+    if(true){
+    }
  ?>
         <!--[if lte IE 9]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
@@ -114,11 +119,29 @@
             </div>
           </div>
 
+          <!-- Moda para Buscar Nombres de estudiantes-->
+        <div class="modal fade bd-example-modal-xl" id="termsConditions-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" style="width:80%;">
+              <div class="modal-content" id="modal_content">
+                <div id="termsConditionsDiv"> <!--Div donde se carga el form para ingresar los datos -->
+                </div>
+              </div>
+            </div>
+          </div>
+
           <?php
             include '../../footer.php';
           ?>
           <script src="../../js/principalEstudiantes.js"></script>
           
           <script src="../../js/datosProyecto.js"></script>
+
+          <?php
+          ?>
+            <script type="text/javascript">
+                 cargarModal(null,'termsConditionsDiv','termsConditions-modal','../../vistas/reglamento/TerminosCondiciones.php');
+             </script>
+          <?php 
+          ?>
         </body>
         </html>

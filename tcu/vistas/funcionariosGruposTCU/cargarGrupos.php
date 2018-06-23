@@ -13,7 +13,7 @@
         <div class="well">
             <h3>
                 <span class="orange">
-                    Grupo <?php echo $row["codigo"] ?> :
+                    Proyecto:
                 </span> 
                 <?php echo $row["descripcion"] ?>
             </h3>

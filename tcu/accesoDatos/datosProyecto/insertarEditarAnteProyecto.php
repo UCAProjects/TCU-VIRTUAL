@@ -8,20 +8,18 @@
 	$texto = $_POST["texto"];
 	$grupo = $_POST["grupo"];
 		try {
-			echo $codigo;
 			if($codigo == ""){ // Crear nuevo
 					$query = "INSERT INTO tigrupou_tcu.ante_proyecto (identificacion_problema, descripcion_problema,descripcion_beneficiario, justificacion_proyecto, objetivo_general,objetivos_especificos,estrategias_soluciones, grupo) VALUES ('$texto', '', '', '', '', '', '', $grupo);";
 					$stmt = $db->prepare($query);//Inserta a DB
-	     		$stmt -> execute();
-	     		echo "OK";
+	     			$stmt -> execute();
 	     			//redireccionar a la página principal
 			}else{
 				$query = "UPDATE tigrupou_tcu.ante_proyecto SET $numeroPagina = '$texto' where grupo like $grupo;";
 				$stmt = $db->prepare($query);//Inserta a DB
-	     	$stmt -> execute();
+	     		$stmt -> execute();
 			}
 		} catch (Exception $e) {
-			echo "ERROR";
+			echo $e;
 		}
 
 ?>

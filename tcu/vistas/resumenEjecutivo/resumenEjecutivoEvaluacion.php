@@ -21,7 +21,7 @@
 
 
 
-<label for="evaluacion">EVALUACION DEL TCU</label>
+<label for="evaluacion">EVALUACIÓN DEL TCU</label>
 <input type="hidden" name="hiddenCodigo" id="hiddenCodigo" value="<?php echo $codigo?>">
 <textarea  id="evaluacion"
           style=" overflow:hidden; font-size:15px; font-family:Arial; text-align : justify;line-height: 1.6; resize:none;"

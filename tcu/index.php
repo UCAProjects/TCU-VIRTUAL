@@ -122,7 +122,16 @@
               Todos los derechos reservados TCU VIRTUAL 2018
             </p>
           </footer>
-
+<!-- Moda para Buscar Nombres de estudiantes-->
+<div class="modal fade" id="termsConditions-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content" id="modal_content">
+                <div id="termsConditionsDiv"> <!--Div donde se carga el form para ingresar los datos -->
+                </div>
+              </div>
+            </div>
+          </div>
+          
           <script src="js/vendor/modernizr-3.5.0.min.js"></script>
           <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
           <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>')</script>

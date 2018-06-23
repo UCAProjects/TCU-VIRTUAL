@@ -23,7 +23,7 @@
  ?>
 
 
-<label for="identificacionProblema">DESCRIPCION DEL BENEFICIARIO</label>
+<label for="identificacionProblema">DESCRIPCIÓN DEL BENEFICIARIO</label>
 <input type="hidden" id="hiddenCodigo" name="hiddenCodigo" value="<?php echo $codigo ?>">
         <textarea  id="descripcion_beneficiario"
               style=" overflow:hidden; font-size:15px; font-family:Arial; text-align : justify;line-height: 1.6; resize:none;"

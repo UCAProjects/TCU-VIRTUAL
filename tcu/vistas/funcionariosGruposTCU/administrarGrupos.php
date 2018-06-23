@@ -24,7 +24,7 @@
             <section class="seccion-informacion">
               <div class="contenedor clearfix">
                 <div class="">
-                  <h2>Gestionar Grupos TCU</h2>
+                  <h2>Gestionar Proyectos TCU</h2>
                   <div  class="ingreso ingresoTamano">
                       <div class="formulario">
 

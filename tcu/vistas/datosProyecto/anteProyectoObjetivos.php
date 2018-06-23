@@ -26,12 +26,12 @@
 
 	<input type="hidden" name="hiddenCodigo" id="hiddenCodigo" value="<?php echo $codigo?>">
 
-  <label for="objetivo_general">DESCRIPCION DEL OBJETIVO GENERAL</label>
+  <label for="objetivo_general">DESCRIPCIÓN DEL OBJETIVO GENERAL</label>
   <textarea  id="objetivo_general"
         style=" overflow:hidden; font-size:15px; font-family:Arial; text-align : justify;line-height: 1.6; resize:none;"
                 rows="5" cols="87"><?php echo $general ?></textarea>
 
-  <label for="objetivos_especificos">DESCRIPCION DE OBJETIVOS ESPECIFICOS</label>
+  <label for="objetivos_especificos">DESCRIPCIÓN DE OBJETIVOS ESPECIFICOS</label>
   <textarea  id="objetivos_especificos"
         style=" overflow:hidden; font-size:15px; font-family:Arial; text-align : justify;line-height: 1.6; resize:none;"
                 rows="12" cols="87"> <?php echo $especificos ?> </textarea>

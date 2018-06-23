@@ -24,9 +24,11 @@
 	}
 	if(isset($_POST["contrasena"])){
 		$contrasena = $_POST["contrasena"];
+		
 	}
 
 	if(isset($_POST["btnRegistro"])){ //Si se presiona el boton de confirmar
+		
 		if($tipo == 0){
 			try {
 			$ano = date('Y');
@@ -68,7 +70,8 @@ values('$usuario','$contrasena',$id)";
 
 		     	$query = "update tigrupou_tcu.autentificacion_estudiantes set nombre_usuario = '$cedula' where usuario like $codigo ";
 		     	$stmt = $db->prepare($query);//Actualiza la DB
-		     	$stmt -> execute();
+				 $stmt -> execute();
+
 		     	redirect("../../vistas/principalEstudiantes/principalEstudiantes.php");
 
 			} catch (Exception $e) {
@@ -81,3 +84,14 @@ values('$usuario','$contrasena',$id)";
 		}
 	}
 ?>
+
+
+<!-- Moda para Buscar Nombres de estudiantes-->
+<div class="modal fade" id="termsConditions-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content" id="modal_content">
+                <div id="termsConditionsDiv"> <!--Div donde se carga el form para ingresar los datos -->
+                </div>
+              </div>
+            </div>
+          </div>

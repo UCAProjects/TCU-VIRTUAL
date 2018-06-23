@@ -80,16 +80,16 @@
               foreach($result as $row){
                 $cont ++;   ?>
                 <div class="well">
-                  <h3><span style="color:#fe4918">Grupo <?php echo $row["codigo"] ?>:</span> <?php echo $row["descripcion"] ?></h3>
+                  <h3><span style="color:#fe4918">Proyecto:</span> <?php echo $row["descripcion"] ?></h3>
                   <div>
-                    <a class="btn btn-success" href="<?php echo $url . $row['codigo'] ?>">Calificar</a>
+                    <a class="btn btn-success" href="<?php echo $url . $row['codigo'] ?>">Validar</a>
                   </div><br>
                 </div>
                 <?php
               }
               if($cont == 0 ){ ?>
                 <center>
-                  <span class="label label-info"> No hay Ante Proyectos a Calificar </span> </center>
+                  <span class="label label-info"> No hay Ante Proyectos a Validar </span> </center>
                   <?php
                 }
                 ?>
@@ -101,7 +101,7 @@
     </main>
     <script src="../../js/principalEstudiantes.js"></script>
     <?php
-    include '../../footer.php';
+      include '../../footer.php';
     ?>
     <script src="../../js/datosProyecto.js"></script>
   </body>

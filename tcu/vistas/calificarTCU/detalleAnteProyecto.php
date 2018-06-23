@@ -24,7 +24,7 @@
 
   $id = $_GET["id"];
   $carrera = $_SESSION["carreraFuncionario"]; // Carrera a la que partenece el funcionario
-  $rol = $_SESSION["rolFuncionario"];
+  $rol = $_SESSION["rolFuncionario"]; // Rol para saber rol del Funcionario:: 1 Director de Carrera | 2 Unidad Extensión 
   $query = "SELECT D.tema,D.organizacion, D.supervisor, A.* FROM tigrupou_tcu.datos D JOIN tigrupou_tcu.ante_proyecto A ON D.grupo like A.grupo WHERE D.grupo like $id";
   $queryEstudiantes = "SELECT CONCAT(primer_apellido,' ',segundo_apellido,' ',nombre_completo) nombre FROM tigrupou_tcu.estudiantes WHERE grupo LIKE $id order by primer_apellido";
   $stmt = $db->prepare($queryEstudiantes);
@@ -98,7 +98,7 @@
                     if($rol == 1){ ?>
                       <div>
                         <a href="#" onclick="cargarModal({'id':<?php echo $id; ?>},'modalModalDiv','verCalificacion-modal','modalCalificacionBE.php')">
-                          <i class="fas fa-pen-square"></i> Bienestar Estudiantil
+                          <i class="fas fa-pen-square"></i> Unidad de Extensión
                         </a>
                       </div><?php
                     }
@@ -214,7 +214,7 @@
                   if($rol == 1){ ?>
                     <div>
                       <a href="#" onclick="cargarModal({'id':<?php echo $id; ?>},'modalModalDiv','verCalificacion-modal','modalCalificacionBE.php')">
-                        <i class="fas fa-pen-square"></i> Bienestar Estudiantil
+                        <i class="fas fa-pen-square"></i> Unidad de Extensión
                       </a>
                     </div><?php
                   }
@@ -224,17 +224,30 @@
                   <center><textarea  id="txtA_observaciones" placeholder="Observaciones" cols="70" rows="20"></textarea></center>
                 </div><!-- END DIV COL -->
                 <br>
-              <div class="row ">
-                <div class="col-md-2 col-md-offset-2" style="margin-left:20%">
-                  <a onclick="ingresarCalificacion(<?php echo $id;?>,4,1,<?php echo $rol;?>)" class="btn btn-block btn-danger">Reprobado </a>
-                </div>
-                <div class="col-md-3">
-                  <a onclick="ingresarCalificacion(<?php echo $id;?>,3,1,<?php echo $rol;?>)" class="btn btn-block btn-primary">Aprobar con Observaciones</a>
-                </div>
-                <div class="col-md-2">
-                  <a onclick="ingresarCalificacion(<?php echo $id;?>,2,1, <?php echo $rol;?>)" class="btn btn-block btn-success">Aprobar</a>
-                </div><br>
-              </div><br>
+                <?php
+                  if($rol == 1){ // Director de Carrera  ?> 
+                      <div class="row ">
+                        <div class="col-md-2 col-md-offset-2" style="margin-left:20%">
+                          <a onclick="ingresarCalificacion(<?php echo $id;?>,4,1,<?php echo $rol;?>)" class="btn btn-block btn-danger">Rechazado </a>
+                        </div>
+                        <div class="col-md-3">
+                          <a onclick="ingresarCalificacion(<?php echo $id;?>,3,1,<?php echo $rol;?>)" class="btn btn-block btn-primary">Corregir Observaciones</a>
+                        </div>
+                        <div class="col-md-2">
+                          <a onclick="ingresarCalificacion(<?php echo $id;?>,2,1, <?php echo $rol;?>)" class="btn btn-block btn-success">Autorizado</a>
+                        </div>
+                        <br>
+                      </div>
+                  <?php }elseif($rol == 2){ //Unidad de Extensión ?>
+                      <div class="row ">
+                        <div class="col-md-2 col-md-offset-2" style="margin-left:20%">
+                          <a onclick="ingresarCalificacion(<?php echo $id;?>,4,1,<?php echo $rol;?>)" class="btn btn-block btn-danger">Validar</a>
+                        </div>
+                        <br>
+                      </div>
+                  <?php }
+                ?>
+              <br>
             </div>
 
             </form>
@@ -264,7 +277,5 @@
       </div>
     </div>
   </div>
-
-
 </body>
 </html>

@@ -163,7 +163,7 @@
         };
     }
 
-    function guardar(numeroPagina, grupo, tipo) {
+    function guardar(numeroPagina, grupo, tipo, codAux = 0) { // Insert : 1 Insert; 2 Update
         var url = "";
         if (tipo == 1) { //Insertar AnteProyecto
             url = "../../accesoDatos/datosProyecto/insertarEditarAnteProyecto.php";
@@ -172,7 +172,8 @@
         }
         var texto = $("#" + numeroPagina).val();
         var cod = $("#hiddenCodigo").val();
-
+        if (codAux != 0)
+            cod = codAux;
         var parametros = { "codigo": cod, "numeroPagina": numeroPagina, "texto": texto, "grupo": grupo }
         $.ajax({
             data: parametros,
@@ -185,4 +186,4 @@
                 mensaje('error', 'Error al cargar la información');
             }
         });
-    }
+    };

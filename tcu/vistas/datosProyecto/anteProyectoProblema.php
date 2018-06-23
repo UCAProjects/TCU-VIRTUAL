@@ -17,20 +17,21 @@
       }
  ?>
 
-<label for="identificacionProblema">IDENTIFICACION DEL PROBLEMA</label>
+<label for="identificacionProblema">IDENTIFICACIÓN DEL PROBLEMA</label>
 	<input type="hidden" name="hiddenCodigo" id="hiddenCodigo" value="<?php echo $codigo?>">
     <textarea  id="identificacion_problema"
           style="font-size:15px; font-family:Arial; text-align : justify;line-height: 1.6; resize:none;"
                 rows="15" cols="87" maxlength="1305"><?php echo $identificacionProblema ?></textarea>
 
-    <label for="identificacionProblema2">DESCRIPCION DEL PROBLEMA</label>
-    <textarea  id="descripcion_problema" onkeypress="return limitTextArea(event,this.value,21)"
-          style=" overflow:hidden; font-size:15px; font-family:Arial; text-align : justify;line-height: 1.6;"
+    <label for="identificacionProblema2">DESCRIPCIÓN DEL PROBLEMA</label>
+    <textarea  id="descripcion_problema"
+        style="font-size:15px; font-family:Arial; text-align : justify;line-height: 1.6; resize:none;"
                 rows="21" cols="87" maxlength="1827" > <?php echo $descripcionProblema ?> </textarea>
 
 <br>
-    <button class="btn" onclick="cargarFormularios('anteProyectoBeneficiario.php','contenedorAnteProyecto');
-                                    aumentarProgress(20); guardar('identificacion_problema',<?php echo $grupo ?>,1);
-                                          guardar('descripcion_problema',<?php echo $grupo ?>,1)"
+    <button class="btn" onclick="guardar('identificacion_problema',<?php echo $grupo ?>,1);
+                                    guardar('descripcion_problema',<?php echo $grupo ?>,1,<?php echo $grupo ?>);
+                                    cargarFormularios('anteProyectoBeneficiario.php','contenedorAnteProyecto');
+                                    aumentarProgress(20); "
                                               style="margin-left:74% !important">Continuar
                                                   <span class="glyphicon glyphicon-arrow-right"></span></button>

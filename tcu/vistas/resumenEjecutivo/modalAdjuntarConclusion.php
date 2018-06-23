@@ -1,5 +1,5 @@
 <form action="../../accesoDatos/resumenEjecutivo/insertResumenEjecutivo.php" enctype="multipart/form-data" id="insertarResumenEjecutivo-form" method="post">
-	<label for="uploadedAprobacion">Adjuntar carta de conclusión del TCU emitida por la institución responsable</label>
+	<label for="uploadedAprobacion">Adjuntar carta de conclusión del TCU por el </label>
 	<br><br>
 	<input name="uploadedAprobacion[]" id="uploadedAprobacion[]" type="file" />
 	<br>

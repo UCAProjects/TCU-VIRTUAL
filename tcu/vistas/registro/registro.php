@@ -177,7 +177,7 @@
 					   				</li>
                     		</div>
                     		<div class="col-md-4">
-					   			<li><label for="telefonoT">Teléfono del Trabajo</label></li>
+					   			<li><label for="telefonoT">Teléfono donde realizará el TCU</label></li>
                        			<li><input type="text" name="telefonoT" id="telefonoT" placeholder="Digite su teléfono" value="<?php echo $telTrabajo ?>" required></li>
                     		</div>
                     		<div class="col-md-4">

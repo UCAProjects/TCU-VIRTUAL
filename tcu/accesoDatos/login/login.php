@@ -4,9 +4,14 @@
  	$usuario = $_POST["usuario"]; //Se recibe el usuario a loguearse
 	$contrasena = $_POST["contrasena"]; // Se recibe la contraseña del usuario
 	$tipo = $_POST["tipo"]; // Se recibe un tipo para determinar si es estudiante o profesor
+
 	if($tipo == 1){//Logueo de Estudiante
 
-			$query = "SELECT E.codigo, E.grupo, A.nombre_usuario, A.password FROM tigrupou_tcu.estudiantes E JOIN tigrupou_tcu.autentificacion_estudiantes A ON E.codigo LIKE A.usuario WHERE A.nombre_usuario LIKE :usuario AND A.password like :contrasena ;";
+			$query = "SELECT E.codigo, E.grupo, A.nombre_usuario, A.password 
+						FROM tigrupou_tcu.estudiantes E 
+							JOIN tigrupou_tcu.autentificacion_estudiantes A 
+								ON E.codigo LIKE A.usuario 
+									WHERE A.nombre_usuario LIKE :usuario AND A.password like :contrasena ;";
 
 			$stmt = $db->prepare($query);
 			$stmt->execute(array(':usuario' => $usuario,':contrasena' => $contrasena));
@@ -55,7 +60,11 @@
 
 	}elseif($tipo == 2){//Logueo de Funcionario
 		try {
-			$query = "SELECT E.codigo, E.carrera, E.rol, A.nombre_usuario, A.password FROM tigrupou_tcu.funcionarios E JOIN tigrupou_tcu.autentificacion_funcionarios A ON E.codigo LIKE A.usuario WHERE A.nombre_usuario LIKE :usuario AND A.password like :contrasena ;";
+			$query = "SELECT E.codigo, E.carrera, E.rol, A.nombre_usuario, A.password 
+						FROM tigrupou_tcu.funcionarios E 
+							JOIN tigrupou_tcu.autentificacion_funcionarios A 
+								ON E.codigo LIKE A.usuario 
+									WHERE A.nombre_usuario LIKE :usuario AND A.password like :contrasena ;";
 
 			$stmt = $db->prepare($query);
 			$stmt->execute(array(':usuario' => $usuario,':contrasena' => $contrasena));
@@ -66,6 +75,7 @@
 			$contrasenaDB = "";
 			$carreraDB = "";
 			$rolDB = "";
+
 			if(count($result)>0){
 				foreach ($result as $row ) {
 					$codigoDB = $row["codigo"];
@@ -93,8 +103,4 @@
 			echo "error";
 		}
 	}
-
-
-
-
 ?>
