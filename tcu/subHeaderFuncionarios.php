@@ -51,7 +51,7 @@
                       <span class="white"><i class="fas fa-check-circle"></i>
                           Calificar TCU
                       </span>
-                      <span style="color: #fe4918" class="caret white"></span>
+                      <span  class="caret white colorNaranja"></span>
           </a>
           <ul class="dropdown-menu">
             <li>
@@ -78,7 +78,7 @@
       <!--       Reportes      -->
       <li class="dropdown" id="liSalir">
           <a class="color" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              <span class="white"><i class="fas fa-table"></i> Reportes </span><span style="color: #fe4918" class="caret white"></span>
+              <span class="white"><i class="fas fa-table"></i> Reportes </span><span class="caret white colorNaranja"></span>
           </a>
           <ul class="dropdown-menu">
             <li><a class="over" href="../calificarTCU/calificarDatosProyecto.php"><i class="fas fa-file-pdf"></i></i> Reporte por Estudiantes </a></li>
@@ -91,7 +91,7 @@
       <li class="navbar-right" id="liSalir"><a class="color"  href="../../index.php"><i  class="fas fa-sign-out-alt" aria-hidden="true" title="SALIR"></i></a></li>
 
       <li class="dropdown navbar-right">
-        <a  href="#" class="dropdown-toggle color" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ><i title="USUARIO" class="fa fa-user white" aria-hidden="true" ></i> <span  class="caret white"></span></a>
+        <a  href="#" class="dropdown-toggle color" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ><i title="USUARIO" class="fa fa-user white" aria-hidden="true" ></i> <span  class="caret white colorNaranja"></span></a>
         <ul class="dropdown-menu">
           <li><a href="../registro/registroFuncionarios.php?tipo=2"><i class="fas fa-edit"></i> Editar Perfil</a></li>
           <li><a href="../registro/editarContrasena.php?tipo=2"><i class="fas fa-key"></i> Cambiar Contraseña</a></li>

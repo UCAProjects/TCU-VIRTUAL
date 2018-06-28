@@ -44,10 +44,10 @@
             </table>
 
             <div>
-                <button class="btn btn-success" onclick="editarGrupo(<?php echo $codigo ?>)"><i class="far fa-edit"></i> Editar</button>
+                <button class="btn btn" onclick="editarGrupo(<?php echo $codigo ?>)"><i class="far fa-edit"></i> Editar</button>
             </div>
             <div>
-                <button class="btn btn-warning" onclick="editarGrupo(<?php echo $codigo ?>)"><i class="far fa-calendar-check"></i> Detalle de Horas </button>
+                <button class="btn btn-primary" onclick="editarGrupo(<?php echo $codigo ?>)"><i class="far fa-calendar-check"></i> Detalle de Horas </button>
             </div>
 
             <br>

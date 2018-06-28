@@ -57,7 +57,7 @@
                         <table class="table table-striped">
                           <thead>
                             <tr>
-                              <th> Fecha     /     Hora</th>
+                              <th> Fechas     /     Hora</th>
                               <th>Estatus</th>
                               <th>Versión de Revisión</th>
                             </tr>
@@ -66,7 +66,7 @@
                             <?php
                               foreach($resultHistorialAP as $row){ ?>
                                   <tr>
-                                    <td><a href="#" onclick="cargarModal({'id': <?php echo $row['cod']; ?>, 'version':<?php echo $row['version']; ?>,'tipo':1},'calificacionDiv','verCalificacion-modal','modalVerCalificacion.php')"><?php echo $row["fecha"];?></a></td>
+                                    <td ><a class="hoverA" href="#" onclick="cargarModal({'id': <?php echo $row['cod']; ?>, 'version':<?php echo $row['version']; ?>,'tipo':1},'calificacionDiv','verCalificacion-modal','modalVerCalificacion.php')"><?php echo $row["fecha"];?></a></td>
                                     <td><?php echo $row["descripcion"];?></td>
                                     <td><?php echo $row["version"];?></td>
                                   </tr> <?php
@@ -89,7 +89,7 @@
                             <?php
                               foreach($resultHistorialRE as $row){ ?>
                                   <tr>
-                                    <td><a href="#" onclick="cargarModal({'id': <?php echo $row['cod']; ?>, 'version':<?php echo $row['version']; ?>,'tipo':2},'calificacionDiv','verCalificacion-modal','modalVerCalificacion.php')"><?php echo $row["fecha"];?></a></td>
+                                    <td><a class="hoverA" href="#" onclick="cargarModal({'id': <?php echo $row['cod']; ?>, 'version':<?php echo $row['version']; ?>,'tipo':2},'calificacionDiv','verCalificacion-modal','modalVerCalificacion.php')"><?php echo $row["fecha"];?></a></td>
                                     <td><?php echo $row["descripcion"];?></td>
                                     <td><?php echo $row["version"];?></td>
                                   </tr> <?php

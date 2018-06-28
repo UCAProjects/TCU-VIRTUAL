@@ -62,16 +62,15 @@
     <section class="seccion-informacion">
       <div class=" clearfix">
         <div class="">
-          <div  class="ingreso ingresoTamano">
+        <h2>Ante Proyecto</h2>
+          
+          <div  class="ingreso ingresoTamano" style:" margin-left:50% !important">
             <form class="">
-              <h2>Ante Proyecto</h2>
-
-              <ul class="nav nav-tabs" id="nav">
-                  <li class="active"><a href="#nav" onclick="modeLecture()"><i class="fas fa-book"></i> Modo Lectura</a></li>
-                  <li><a href="#nav" onclick="modeRevision()"><i class="fas fa-edit"></i> Modo Revisión</a></li>
+            <ul class="nav nav-tabs" id="nav"> 
+              <li class="active"><a href="#nav" onclick="modeLecture()"><i class="fas fa-book"></i> Modo Lectura</a></li>
+              <li><a href="#nav" onclick="modeRevision()"><i class="fas fa-edit"></i> Modo Revisión</a></li>
 
               </ul><br>
-
               <div class="well" id="adjuntos">
                 <div class="row">
                   <div class="col-md-2">
@@ -97,13 +96,14 @@
                   <?php
                     if($rol == 1){ ?>
                       <div>
-                        <a href="#" onclick="cargarModal({'id':<?php echo $id; ?>},'modalModalDiv','verCalificacion-modal','modalCalificacionBE.php')">
-                          <i class="fas fa-pen-square"></i> Unidad de Extensión
-                        </a>
+                            <a class="btn" href="#" onclick="cargarModal({'id':<?php echo $id; ?>},'modalModalDiv','verCalificacion-modal','modalCalificacionBE.php')">
+                              <i class="fas fa-gavel"></i> Calificación de la Unidad de Extensión
+                            </a>
+                        
                       </div><?php
                     }
                   ?>
-
+                    <br>
                   <div class="well">
                     <h3><center>Ante Proyecto</center></h3>
                     <div id="divDocument"  style="background-color: white;">
@@ -213,8 +213,8 @@
                 <?php
                   if($rol == 1){ ?>
                     <div>
-                      <a href="#" onclick="cargarModal({'id':<?php echo $id; ?>},'modalModalDiv','verCalificacion-modal','modalCalificacionBE.php')">
-                        <i class="fas fa-pen-square"></i> Unidad de Extensión
+                      <a class="btn" href="#" onclick="cargarModal({'id':<?php echo $id; ?>},'modalModalDiv','verCalificacion-modal','modalCalificacionBE.php')">
+                              <i class="fas fa-gavel"></i> Calificación de la Unidad de Extensión
                       </a>
                     </div><?php
                   }
@@ -226,22 +226,46 @@
                 <br>
                 <?php
                   if($rol == 1){ // Director de Carrera  ?> 
-                      <div class="row ">
-                        <div class="col-md-2 col-md-offset-2" style="margin-left:20%">
-                          <a onclick="ingresarCalificacion(<?php echo $id;?>,4,1,<?php echo $rol;?>)" class="btn btn-block btn-danger">Rechazado </a>
-                        </div>
-                        <div class="col-md-3">
-                          <a onclick="ingresarCalificacion(<?php echo $id;?>,3,1,<?php echo $rol;?>)" class="btn btn-block btn-primary">Corregir Observaciones</a>
-                        </div>
-                        <div class="col-md-2">
-                          <a onclick="ingresarCalificacion(<?php echo $id;?>,2,1, <?php echo $rol;?>)" class="btn btn-block btn-success">Autorizado</a>
-                        </div>
-                        <br>
-                      </div>
+
+                  <?php
+                      $maxDCQ = "SELECT MAX(version) as max FROM tigrupou_tcu.revision_ante_proyecto WHERE ante_proyecto LIKE $id AND rol LIKE 1";
+                      $maxEEQ = "SELECT MAX(version) as max FROM tigrupou_tcu.revision_ante_proyecto WHERE ante_proyecto LIKE $id AND rol LIKE 2";
+
+                      $stmt = $db->prepare($maxDCQ);
+                      $stmt -> execute();
+                      $resultMaxDC = $stmt -> fetchAll();
+                      foreach ($resultMaxDC as $row) {
+                        $maxDC = $row["max"];
+                      }
+
+                      $stmt = $db->prepare($maxEEQ);
+                      $stmt -> execute();
+                      $resultMaxEE = $stmt -> fetchAll();
+                      foreach ($resultMaxEE as $row) {
+                        $maxEE = $row["max"];
+                      }
+
+                      if(($maxEE - $maxDC) == 1){ ?>
+                              <div class="row ">
+                                <div class="col-md-2 col-md-offset-2">
+                                  <a onclick="ingresarCalificacion(<?php echo $id;?>,4,1,<?php echo $rol;?>)" class="btn btn-block btn-danger">Rechazado </a>
+                                </div>
+                                <div class="col-md-4">
+                                  <a onclick="ingresarCalificacion(<?php echo $id;?>,3,1,<?php echo $rol;?>)" class="btn btn-block btn-primary">Corregir Observaciones</a>
+                                </div>
+                                <div class="col-md-2">
+                                  <a onclick="ingresarCalificacion(<?php echo $id;?>,2,1, <?php echo $rol;?>)" class="btn btn-block btn">Autorizado</a>
+                                </div>
+                                <br>
+                              </div>
+                              <?php }else{ ?>
+                             <br>
+                                      <center><p class="label label-danger"> No se puede continuar hasta que la Unidad de Extensión genere su Calificación.</p> <center>
+                            <?php } ?>
                   <?php }elseif($rol == 2){ //Unidad de Extensión ?>
                       <div class="row ">
-                        <div class="col-md-2 col-md-offset-2" style="margin-left:20%">
-                          <a onclick="ingresarCalificacion(<?php echo $id;?>,4,1,<?php echo $rol;?>)" class="btn btn-block btn-danger">Validar</a>
+                        <div class="col-md-2 col-md-offset-8">
+                          <a onclick="ingresarCalificacion(<?php echo $id;?>,3,1,<?php echo $rol;?>)" class="btn btn-block btn">Validar</a>
                         </div>
                         <br>
                       </div>

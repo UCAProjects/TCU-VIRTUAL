@@ -19,31 +19,16 @@
 
   switch ($tipo) {
     case 1: // Caso ante proyecto
-      switch ($rol) {
-        case 1:
-          $queryNumeroRevisiones = "SELECT count(*) AS cantidad FROM tigrupou_tcu.revision_ante_proyecto WHERE ante_proyecto LIKE $documento";
-          $queryMaxVersionSelect = "SELECT max(version) AS max FROM tigrupou_tcu.revision_ante_proyecto WHERE ante_proyecto LIKE $documento";
-          $queryUpdate = "UPDATE tigrupou_tcu.ante_proyecto SET estado = $estado WHERE grupo LIKE $documento";
-          $queryInsert = "INSERT INTO tigrupou_tcu.revision_ante_proyecto(version, Observaciones,estado,ante_proyecto) values(version_value,'$observaciones',$estado,$documento)";
-          break;
-        case 2:
-          $queryNumeroRevisiones = "SELECT count(*) AS cantidad FROM tigrupou_tcu.revision_ante_proyecto_be WHERE ante_proyecto LIKE $documento";
-          $queryMaxVersionSelect = "SELECT max(version) AS max FROM tigrupou_tcu.revision_ante_proyecto_be WHERE ante_proyecto LIKE $documento";
-          $queryUpdate = "UPDATE tigrupou_tcu.ante_proyecto SET estado_be = $estado WHERE grupo LIKE $documento";
-          $queryInsert = "INSERT INTO tigrupou_tcu.revision_ante_proyecto_be(version, Observaciones,estado,ante_proyecto) values(version_value,'$observaciones',$estado,$documento)";
-          break;
-        default:
-          // code...
-          break;
-      }
+      $queryNumeroRevisiones = "SELECT count(*) AS cantidad FROM tigrupou_tcu.revision_ante_proyecto WHERE ante_proyecto LIKE $documento and rol LIKE $rol";
+      $queryMaxVersionSelect = "SELECT max(version) AS max FROM tigrupou_tcu.revision_ante_proyecto WHERE ante_proyecto LIKE $documento and rol LIKE $rol";
+      $queryUpdate = "UPDATE tigrupou_tcu.ante_proyecto SET ESTADOC = $estado WHERE grupo LIKE $documento";
+      $queryInsert = "INSERT INTO tigrupou_tcu.revision_ante_proyecto(version, Observaciones,estado,ante_proyecto, rol) values(version_value,'$observaciones',$estado,$documento,$rol)";        
       break;
     case 2: // Caso resumen ejecutivo
-      $queryNumeroRevisiones = "SELECT count(*) AS cantidad FROM tigrupou_tcu.revision_resumen_ejecutivo WHERE resumen_ejecutivo LIKE $documento";
-      $queryMaxVersionSelect = "SELECT max(version) AS max FROM tigrupou_tcu.revision_resumen_ejecutivo WHERE resumen_ejecutivo LIKE $documento";
-      $queryUpdate = "UPDATE tigrupou_tcu.resumen_ejecutivo SET estado = $estado WHERE grupo LIKE $documento";
-      $queryInsert = "INSERT INTO tigrupou_tcu.revision_resumen_ejecutivo(version, observaciones,estado,resumen_ejecutivo) values(version_value,'$observaciones',$estado,$documento)";
-      break;
-    default:
+      $queryNumeroRevisiones = "SELECT count(*) AS cantidad FROM tigrupou_tcu.revision_resumen_ejecutivo WHERE resumen_ejecutivo LIKE $documento and rol LIKE $rol";
+      $queryMaxVersionSelect = "SELECT max(version) AS max FROM tigrupou_tcu.revision_resumen_ejecutivo WHERE resumen_ejecutivo LIKE $documento and rol LIKE $rol";
+      $queryUpdate = "UPDATE tigrupou_tcu.resumen_ejecutivo SET ESTADOC = $estado WHERE grupo LIKE $documento";
+      $queryInsert = "INSERT INTO tigrupou_tcu.revision_resumen_ejecutivo(version, observaciones,estado,resumen_ejecutivo, rol) values(version_value,'$observaciones',$estado,$documento, $rol)";
       break;
   }
 
@@ -77,16 +62,18 @@
 		  $stmt = $db->prepare($queryInsert);//Inserta a DB
      	$stmt -> execute();
 
+      if($rol == 1){ //Solo cuando un director de carrera genera la calificacion se actualiza al estudiante 
+        $queryUpdate = str_replace("ESTADOC", "estado", $queryUpdate);
+      }else{
+        $queryUpdate = str_replace("ESTADOC", "estado_be", $queryUpdate);
+      }
       $stmt = $db->prepare($queryUpdate);//Inserta a DB
       $stmt -> execute();
-
-
-
      	echo "OK";
      	//redireccionar a la página principal
 
 	} catch (Exception $e) {
-		echo "ERROR";
+		echo $e;
 	}
 
 ?>

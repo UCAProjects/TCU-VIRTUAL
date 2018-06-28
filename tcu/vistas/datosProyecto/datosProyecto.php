@@ -55,7 +55,6 @@
                 <div class="">
                   <h2>Datos del Proyecto</h2>
                   <div  class="ingreso ingresoTamano">
-
                     <form class="formulario" action="../../accesoDatos/datosProyecto/insertarEditarDatosProyecto.php" method="POST">
                       <ul>
                         <li>
@@ -129,7 +128,7 @@
                       </ul>
                       <br>
                       <div class="col-md-3 col-md-offset-9">
-                        <button  class="btn btn-block btn-success buttonForm" id="btnConfirmar" name="btnConfirmar" type="submit"><i class="far fa-save"></i> Confirmar</button>
+                        <button  class="btn btn-block btn buttonForm" id="btnConfirmar" name="btnConfirmar" type="submit"><i class="far fa-save"></i> Confirmar</button>
                       </div>
                       <br><br><br>
                     </form>

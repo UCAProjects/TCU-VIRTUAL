@@ -41,7 +41,7 @@
 
   <div class="row">
     <div class="col-md-6">
-      <button class="btn btn-warning" onclick="guardar('objetivo_general',<?php echo $grupo ?>,1);guardar('objetivos_especificos',<?php echo $grupo ?>,1); cargarFormularios('anteProyectoProyecto.php','contenedorAnteProyecto');disminuirProgress(20);"><span class="glyphicon glyphicon-arrow-left"> </span>  Atrás</button>
+      <button class="btn btn-primary" onclick="guardar('objetivo_general',<?php echo $grupo ?>,1);guardar('objetivos_especificos',<?php echo $grupo ?>,1); cargarFormularios('anteProyectoProyecto.php','contenedorAnteProyecto');disminuirProgress(20);"><span class="glyphicon glyphicon-arrow-left"> </span>  Atrás</button>
     </div>
     <div class="col-md-6">
       <button class="btn" onclick="guardar('objetivo_general',<?php echo $grupo ?>,1);guardar('objetivos_especificos',<?php echo $grupo ?>,1); cargarFormularios('anteProyectoEstrategiasPertenencias.php','contenedorAnteProyecto');aumentarProgress(20);" style="margin-left:45% !important">Continuar  <span class="glyphicon glyphicon-arrow-right"></span></button>

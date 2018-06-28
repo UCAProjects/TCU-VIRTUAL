@@ -34,7 +34,7 @@
 
 <div class="row">
     <div class="col-md-6">
-      <button class="btn btn-warning" onclick="guardar('justificacion_proyecto',<?php echo $grupo ?>,1); cargarFormularios('anteProyectoBeneficiario.php','contenedorAnteProyecto');disminuirProgress(20);"><span class="glyphicon glyphicon-arrow-left"> </span>  Atrás</button>
+      <button class="btn btn-primary  " onclick="guardar('justificacion_proyecto',<?php echo $grupo ?>,1); cargarFormularios('anteProyectoBeneficiario.php','contenedorAnteProyecto');disminuirProgress(20);"><span class="glyphicon glyphicon-arrow-left"> </span>  Atrás</button>
     </div>
     <div class="col-md-6">
       <button class="btn" onclick="guardar('justificacion_proyecto',<?php echo $grupo?>,1);aumentarProgress(20);cargarFormularios('anteProyectoObjetivos.php','contenedorAnteProyecto');" style="margin-left:45% !important">Continuar  <span class="glyphicon glyphicon-arrow-right"></span></button>

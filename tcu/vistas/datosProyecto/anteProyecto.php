@@ -42,6 +42,9 @@
         <div class="contenedor clearfix">
           <div class="">
             <h2>ANTE PROYECTO</h2>
+            
+            <div  class="ingreso ingresoTamano">
+            
             <?php 
                 if($linkAceptacion != "" or $linkCronograma != "" or $linkSolicitud != ""){ ?>
                   <div class="well" id="adjuntos">
@@ -73,8 +76,16 @@
                   </div>
 
                 <?php } ?>
-            <div  class="ingreso ingresoTamano">
-              <div class="container">
+                
+              <br><br>
+              <div style="margin-left:20%;" method="POST">
+                <div id="contenedorAnteProyecto">
+                </div>
+              </div>
+              <br><br><br>
+              <meter style="width: 90%; margin-left:5%" min="0" max="100" id="meter" low="25" high="75" optimum="100"    value="20">
+              </meter>
+              <!--<div class="container">
                 <ul class="progressbar">
                   <li id="20" class="active">Problema</li>
                   <li id="40">Beneficiario</li>
@@ -82,14 +93,10 @@
                   <li id="80">Objetivos</li>
                   <li id="100">Soluciones</li>
                 </ul>
-              </div><!--.programa-evento-->
-              <div style="margin-left:20%;" method="POST">
-                <div id="contenedorAnteProyecto">
-
-                </div>
-              </div>
-              <meter min="0" max="100" id="meter" low="25" high="75" optimum="100"    value="20">
-              </meter>
+              </div>--><!--.programa-evento-->
+              
+              
+              
             </div>
           </div><!--.contenedor-->
         </div>

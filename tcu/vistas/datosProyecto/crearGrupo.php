@@ -47,14 +47,14 @@ session_start();
                         <input type="text" name="cedula" id="cedula" placeholder="Cédula" required>
                       </div>
                       <div class="col-md-2">
-                        <button class="btn" onclick="consultaCed()"><span class="glyphicon glyphicon-plus-sign"></span> Agregar</button>
+                        <button class="btn btn-primary" style:"margin-top: 5px !important" onclick="consultaCed()"><span class="glyphicon glyphicon-plus-sign"></span> Agregar</button>
                       </div>
                     </div>
                   </div>
                 </div><!--.programa-evento-->
                 <hr>
                 <br>
-                <div>
+                <div class="ingreso ingresoTamano">
                   <table class="table table-striped">
                     <thead>
                       <tr>
@@ -107,7 +107,7 @@ session_start();
                   <hr>
                   <div class="row">
                     <div class="col-md-3 col-md-offset-8">
-                      <button onclick="agregarGrupo(<?php echo $grupo ?>)" class="btn btn-block btn-success buttonForm"><i class="far fa-save"></i> Confirmar</button>
+                      <button onclick="agregarGrupo(<?php echo $grupo ?>)" class="btn btn-block btn buttonForm"><i class="far fa-save"></i> Confirmar</button>
                     </div>
                   </div>
                   <br><br>

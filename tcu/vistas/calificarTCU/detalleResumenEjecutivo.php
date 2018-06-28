@@ -167,17 +167,31 @@
                   <h3><center>Observaciones</center></h3>
                   <center><textarea  id="txtA_observaciones" placeholder="Observaciones" cols="70" rows="20"></textarea></center>
                 </div><!-- END DIV COL -->
-              <div class="row ">
-                <div class="col-md-2 col-md-offset-2" style="margin-left:20%">
-                  <a onclick="ingresarCalificacion(<?php echo $id;?>,4,2)" class="btn btn-block btn-danger">Reprobado </a>
-                </div>
-                <div class="col-md-3">
-                  <a onclick="ingresarCalificacion(<?php echo $id;?>,3,2)" class="btn btn-block btn-primary">Aprobar con Observaciones</a>
-                </div>
-                <div class="col-md-2">
-                  <a onclick="ingresarCalificacion(<?php echo $id;?>,2,2)" class="btn btn-block btn-success">Aprobar</a>
-                </div><br>
-              </div><br>
+                <br>
+                <?php
+                  if($rol == 1){ // Director de Carrera  ?> 
+                      <div class="row ">
+                        <div class="col-md-2 col-md-offset-2" style="margin-left:20%">
+                          <a onclick="ingresarCalificacion(<?php echo $id;?>,4,2,<?php echo $rol;?>)" class="btn btn-block btn-danger">Rechazado </a>
+                        </div>
+                        <div class="col-md-3">
+                          <a onclick="ingresarCalificacion(<?php echo $id;?>,3,2,<?php echo $rol;?>)" class="btn btn-block btn-primary">Corregir Observaciones</a>
+                        </div>
+                        <div class="col-md-2">
+                          <a onclick="ingresarCalificacion(<?php echo $id;?>,2,2, <?php echo $rol;?>)" class="btn btn-block btn-success">Autorizado</a>
+                        </div>
+                        <br>
+                      </div>
+                  <?php }elseif($rol == 2){ //Unidad de Extensión ?>
+                      <div class="row ">
+                        <div class="col-md-2 col-md-offset-8" >
+                          <a onclick="ingresarCalificacion(<?php echo $id;?>,3,2,<?php echo $rol;?>)" class="btn btn-block btn">Validar</a>
+                        </div>
+                        <br>
+                      </div>
+                  <?php }
+                ?>
+              <br>
             </div>
 
             </form>

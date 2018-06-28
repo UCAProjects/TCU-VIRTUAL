@@ -9,7 +9,7 @@
 	<input name="uploadedCronograma[]" type="file" id="uploadedCronograma[]"/>
 	<br>
 	<div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fas fa-times"></i> Cerrar</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times"></i> Cerrar</button>
         <button type="submit" class="btn btn-segundary" id="btn_Enviar" name="btn_Enviar"><i class="far fa-paper-plane"></i> Enviar</button>
       </div>
     </div>

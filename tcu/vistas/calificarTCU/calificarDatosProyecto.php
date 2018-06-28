@@ -80,16 +80,16 @@
               foreach($result as $row){
                 $cont ++;   ?>
                 <div class="well">
-                  <h3><span style="color:#fe4918">Proyecto:</span> <?php echo $row["descripcion"] ?></h3>
+                  <h3><span class="orange">Proyecto:</span> <?php echo $row["descripcion"] ?></h3>
                   <div>
-                    <a class="btn btn-success" href="<?php echo $url . $row['codigo'] ?>">Validar</a>
+                    <a class="btn btn" href="<?php echo $url . $row['codigo'] ?>">Validar</a>
                   </div><br>
                 </div>
                 <?php
               }
               if($cont == 0 ){ ?>
                 <center>
-                  <span class="label label-info"> No hay Ante Proyectos a Validar </span> </center>
+                  <span class="label label-primary"> No hay Proyectos a Validar </span> </center>
                   <?php
                 }
                 ?>

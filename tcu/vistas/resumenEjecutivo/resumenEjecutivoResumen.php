@@ -28,7 +28,7 @@
                 rows="84" cols="87" maxlength="7308"><?php echo $resumen_actividades ?></textarea>
 <br>
 
-<a class="btn btn-success" href="#"
+<a class="btn btn" href="#"
       onclick="guardar('resumen_actividades',<?php echo $grupo ?>,2);cargarFormularios('resumenEjecutivoEvaluacion.php','contenedorResumenEjecutivo');
                     aumentarProgress(25);"
               style="margin-left:74% !important">Continuar  <span class="glyphicon glyphicon-arrow-right"></span></a>

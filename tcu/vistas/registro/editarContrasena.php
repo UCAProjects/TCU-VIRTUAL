@@ -71,7 +71,7 @@
                         </div>
                       </div>
                       <div class="col-md-3 col-md-offset-9">
-                        <button  class="btn btn-block btn-success buttonForm" id="btnUserContrasena" name="btnUserContrasena" onclick="validarEditarUsuarioContrasena(<?php echo $id ?>,<?php echo $tipo ?>)"><i class="far fa-save"></i> Confirmar</button>
+                        <button  class="btn btn-block btn buttonForm" id="btnUserContrasena" name="btnUserContrasena" onclick="validarEditarUsuarioContrasena(<?php echo $id ?>,<?php echo $tipo ?>)"><i class="far fa-save"></i> Confirmar</button>
                       </div>
                       <br><br><br>
                     </ul>

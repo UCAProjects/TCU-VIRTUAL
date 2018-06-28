@@ -206,7 +206,7 @@
                     </ul>
 
                     <div class="col-md-3 col-md-offset-9">
-                      <button class="btn btn-block btn-success buttonForm" type="submit" id="btnRegistro" name="btnRegistro"><i class="far fa-save"></i> Confirmar</button>
+                      <button class="btn btn-block btn buttonForm" type="submit" id="btnRegistro" name="btnRegistro"><i class="far fa-save"></i> Confirmar</button>
                     </div>
                     <br><br><br>
                   </form>

@@ -23,19 +23,20 @@
     margin-left: 48px;
 }
 
+.btn,
 button {
     font-family: 'Oswald', sans-serif;
-    background-color: #fe4918;
+    background-color: #e9b73e;
     padding: 10px 40px;
     color: #ffffff !important;
     text-transform: uppercase;
     font-weight: bold;
     text-decoration: none;
     font-size: 1em;
-    margin-top: 30px;
+    margin-top: 5px;
     display: inline-block;
     transition: all 0.6 ease;
-    border: 2px solid #fe4980;
+    border: 2px solid #e6ae28;
     cursor: pointer;
 }
 
@@ -48,7 +49,7 @@ button {
     font-size: 1em;
     transition: all 0.6 ease;
     cursor: pointer;
-    border: 2px solid #fe4980;
+    border: 2px solid #e6ae28;
 }
 
 div.ingresoTamano {
@@ -60,7 +61,7 @@ div.ingresoTamano {
 }
 
 .orange {
-    color: #fe4918 !important;
+    color: #e9b73e !important;
 }
 
 .container {
@@ -72,6 +73,10 @@ div.ingresoTamano {
     margin: 0;
     padding: 0;
     counter-reset: step;
+}
+
+.hoverA:hover {
+    color: #e9b73e;
 }
 
 

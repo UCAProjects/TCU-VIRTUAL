@@ -1,124 +1,85 @@
     /* CSS used here will be applied after bootstrap.css */
+    
     .tabbable {
         margin: 30px;
         height: 300px;
         overflow: hidden;
-        border-bottom: 1px solid #d45500;
+        border-bottom: 1px solid #e9b73e;
     }
-
+    
     .nav-tabs {
         margin: 0;
     }
-
+    
     .tab-content {
         padding: 30px;
-        height: 100%; 
-        border-left: 1px solid #d45500 ; 
-        border-right: 1px solid #d45500;
+        height: 100%;
+        border-left: 1px solid #e9b73e;
+        border-right: 1px solid #e9b73e;
     }
-
-    .nav-tabs>.active>a, .nav-tabs>.active>a:hover, .nav-tabs>.active>a:focus {
-        border-color: #d45500;
+    
+    .nav-tabs>.active>a,
+    .nav-tabs>.active>a:hover,
+    .nav-tabs>.active>a:focus {
+        border-color: #e9b73e;
         border-bottom-color: transparent;
     }
+    
     .nav-tabs {
-        border-bottom: 1px solid #d45500;
+        border-bottom: 1px solid #e9b73e;
     }
-
-    .nav li a:hover{
-        background-color:#fe4918;
-        color:white;
+    
+    .nav li a:hover i,
+    .nav li a:hover span,
+    .active .color .white {
+        color: white !important;
     }
-    .nav li a:hover i{
-        color:white !important;
+    
+    .active .color,
+    .nav li a:hover {
+        background-color: #e9b73e !important;
+        color: white !important;
     }
-     .nav li a:hover span{
-        color:white;
-    }
-    .nav li a:hover span{
-        color:white;
-    }
-
-    .active .color{
-        background-color:#fe4918 !important;
-        color:white !important;
-    }
-
-    #liSalir{
+    
+    #liSalir {
         margin-right: 2%;
     }
-
-    .colorNaranja{
-        color:#fe4918;
+    
+    .colorNaranja {
+        color: #e9b73e;
     }
-
     /* Círculos de colores numerados */
-span.red {
-  background: red;
-   border-radius: 0.8em;
-  -moz-border-radius: 0.8em;
-  -webkit-border-radius: 0.8em;
-  color: #ffffff;
-  display: inline-block;
-  font-weight: bold;
-  line-height: 1.6em;
-  margin-right: 15px;
-  text-align: center;
-  width: 1.6em; 
-}
-
-span.grey {
-  background: #cccccc;
-  border-radius: 0.8em;
-  -moz-border-radius: 0.8em;
-  -webkit-border-radius: 0.8em;
-  color: #fff;
-  display: inline-block;
-  font-weight: bold;
-  line-height: 1.6em;
-  margin-right: 15px;
-  text-align: center;
-  width: 1.6em; 
-}
-
-span.green {
-  background: #5EA226;
-  border-radius: 0.8em;
-  -moz-border-radius: 0.8em;
-  -webkit-border-radius: 0.8em;
-  color: #ffffff;
-  display: inline-block;
-  font-weight: bold;
-  line-height: 1.6em;
-  margin-right: 15px;
-  text-align: center;
-  width: 1.6em; 
-}
-
-span.blue {
-  background: #5178D0;
-  border-radius: 0.8em;
-  -moz-border-radius: 0.8em;
-  -webkit-border-radius: 0.8em;
-  color: #ffffff;
-  display: inline-block;
-  font-weight: bold;
-  line-height: 1.6em;
-  margin-right: 15px;
-  text-align: center;
-  width: 1.6em; 
-}
-
-span.pink {
-  background: #EF0BD8;
-  border-radius: 0.8em;
-  -moz-border-radius: 0.8em;
-  -webkit-border-radius: 0.8em;
-  color: #ffffff;
-  display: inline-block;
-  font-weight: bold;
-  line-height: 1.6em;
-  margin-right: 15px;
-  text-align: center;
-  width: 1.6em; 
-}
+    
+    span.circle {
+        border-radius: 0.8em;
+        -moz-border-radius: 0.8em;
+        -webkit-border-radius: 0.8em;
+        color: #ffffff;
+        display: inline-block;
+        font-weight: bold;
+        line-height: 1.6em;
+        margin-right: 15px;
+        text-align: center;
+        width: 1.6em;
+    }
+    /*Colores de los círculos */
+    
+    span.red {
+        background: red;
+    }
+    
+    span.grey {
+        background: #cccccc;
+    }
+    
+    span.green {
+        background: #5EA226;
+    }
+    
+    span.blue {
+        background: #5178D0;
+    }
+    
+    span.pink {
+        background: #EF0BD8;
+    }

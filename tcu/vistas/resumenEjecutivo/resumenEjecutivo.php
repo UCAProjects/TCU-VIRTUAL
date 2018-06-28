@@ -36,23 +36,23 @@
                   <h2>Resumen Ejecutivo</h2>
                   <div  class="ingreso ingresoTamano">
 
-                   <div class="container">
+                   <!--<div class="container">
                         <ul class="progressbar">
                             <li id="25" class="active" >Resumen</li>
                             <li id="50">Evalucación</li>
                             <li id="75" >conclusión</li>
                             <li id="100">Recomendaciones</li>
                         </ul>
-                  </div><!--.programa-evento-->
+                  </div>--><!--.programa-evento-->
+                  <br><br>
                     <div style="margin-left:20%;" method="POST">
                       <div id="contenedorResumenEjecutivo">
-
                       </div>
                     </div>
 
-                    <meter min="0" max="100" id="meter"
-                            low="25" high="75"
-                            optimum="100" value="25">
+                    <br><br><br>
+                    <meter style="width: 90%; margin-left:5%" min="0" max="100" id="meter" low="25" high="75" optimum="100"    value="20">
+                    </meter>
 
                   </div>
 
