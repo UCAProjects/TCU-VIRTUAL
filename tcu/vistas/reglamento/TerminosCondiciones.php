@@ -39,13 +39,25 @@
         </video>
 </div>
 <br>
+<?php
+    session_start();
+    include '../../conection.php'; //Conección a la DB
 
+    //Inicialización de variables
+    $id = $_SESSION["codigo"];
+    echo "No aun";
+    if(isset($_POST["reglamentoBtn"])){ //Si se presiona el boton de confirmar
+        echo "listo";
+        $queryUpdateReglamento = "UPDATE tigrupou_tcu.estudiantes SET reglamento = 1 WHERE codigo like $id";
+        $stmt = $db->prepare($queryUpdateReglamento);
+        $stmt -> execute();
+    }
+?>
 <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-success" data-dismiss="modal">Declaro haber leído la información aquí suministrada</button>
+        <button type="button"  onclick="reglamento()" data-dismiss="modal" class="btn btn-success" id="reglamentoBtn" name="reglamentoBtn">Declaro haber leído la información aquí suministrada</button>
 </div>
 
 
 <script src="../../PDFObject/pdfobject.js"></script>
 <script>PDFObject.embed("../../documentos/Reglamento-Trabajo-Comunal-Universitario-TCU.pdf", "#example1");</script>
-<script>PDFObject.embed("../../documentos/Reglamento-Trabajo-Comunal-Universitario-TCU.pdf", "#example2");</script>

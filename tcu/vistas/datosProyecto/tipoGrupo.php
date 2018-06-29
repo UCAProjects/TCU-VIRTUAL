@@ -71,9 +71,36 @@ session_start();
           </section><!--.section programa-->
         </main>
 
+         <!-- Moda para Buscar Nombres de estudiantes-->
+         <div class="modal fade bd-example-modal-xl" id="termsConditions-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" style="width:80%;">
+              <div class="modal-content" id="modal_content">
+                <div id="termsConditionsDiv"> <!--Div donde se carga el form para ingresar los datos -->
+                </div>
+              </div>
+            </div>
+          </div>
+
         <?php
           include '../../footer.php'
         ?>
+
+         <?php
+            $queryReglamento = "SELECT reglamento FROM tigrupou_tcu.estudiantes where codigo like $sesionId;";
+            $stmt = $db->prepare($queryReglamento);
+            $stmt -> execute();
+            $resultReglamento = $stmt -> fetchAll();
+            foreach($resultReglamento as $row){
+                $reglamento = $row["reglamento"];
+            }
+            if(!$reglamento){
+          ?>
+            <script type="text/javascript">
+                 cargarModal(null,'termsConditionsDiv','termsConditions-modal','../../vistas/reglamento/TerminosCondiciones.php');
+             </script>
+          <?php 
+            }
+          ?>
          <script src="../../js/datosProyecto.js"></script>
     </body>
 </html>

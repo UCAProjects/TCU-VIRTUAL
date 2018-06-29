@@ -45,12 +45,14 @@
 
 
   $linkConclusion = "";
-  $queryAdjutos = "SELECT url_carta_conclusion FROM tigrupou_tcu.cartas_adjuntas WHERE grupo LIKE $id";
+  $linkBitacora = "";
+  $queryAdjutos = "SELECT url_carta_conclusion, url_bitacora FROM tigrupou_tcu.cartas_adjuntas WHERE grupo LIKE $id";
   $stmt = $db->prepare($queryAdjutos);
   $stmt -> execute();
   $resultAdjuntos = $stmt -> fetchAll();
   foreach ($resultAdjuntos as $row) {
     $linkConclusion = $row["url_carta_conclusion"];
+    $linkBitacora = $row["url_bitacora"];
   }
   ?>
 
@@ -79,13 +81,26 @@
                     <a href="<?php echo $linkConclusion?>" target="_blank"><i class="far fa-file-alt"></i> Carta Conclusión</a>
                   </div>
 
+                  <div class="col-md-3" style="margin-right:10px;border-width:5px;border-style:ridge;">
+                    <a href="<?php echo $linkBitacora?>" target="_blank"><i class="far fa-file-alt"></i> Bitácora</a>
+                  </div>
+
                 </div>
 
               </div>
 
-
               <div id="LecturaModo" style="margin-right:10%;margin-left:10%;">
                 <div class="row well">
+                <?php
+                    if($rol == 1){ ?>
+                      <div>
+                            <a class="btn" href="#" onclick="cargarModal({'id':<?php echo $id; ?>},'modalModalDiv','verCalificacion-modal','modalCalificacionBEResumenEjecutivo.php')">
+                              <i class="fas fa-gavel"></i> Calificación de la Unidad de Extensión
+                            </a>
+                        
+                      </div><?php
+                    }
+                  ?> <br>
                   <div class="well">
                     <h3><center>Ante Proyecto</center></h3>
                     <div id="divDocument"  style="background-color: white;">
@@ -163,25 +178,58 @@
               </div>  <!--   END DIV Lecture Mode -->
 
               <div id="RevisionMode" style="display: none; margin-right:10%;margin-left:10%;" class="well">
+              <?php
+                    if($rol == 1){ ?>
+                      <div>
+                            <a class="btn" href="#" onclick="cargarModal({'id':<?php echo $id; ?>},'modalModalDiv','verCalificacion-modal','modalCalificacionBEResumenEjecutivo.php')">
+                              <i class="fas fa-gavel"></i> Calificación de la Unidad de Extensión
+                            </a>
+                        
+                      </div><?php
+                    }
+                  ?> <br>
                 <div style="resize: both;">
                   <h3><center>Observaciones</center></h3>
                   <center><textarea  id="txtA_observaciones" placeholder="Observaciones" cols="70" rows="20"></textarea></center>
                 </div><!-- END DIV COL -->
                 <br>
                 <?php
-                  if($rol == 1){ // Director de Carrera  ?> 
-                      <div class="row ">
-                        <div class="col-md-2 col-md-offset-2" style="margin-left:20%">
-                          <a onclick="ingresarCalificacion(<?php echo $id;?>,4,2,<?php echo $rol;?>)" class="btn btn-block btn-danger">Rechazado </a>
-                        </div>
-                        <div class="col-md-3">
-                          <a onclick="ingresarCalificacion(<?php echo $id;?>,3,2,<?php echo $rol;?>)" class="btn btn-block btn-primary">Corregir Observaciones</a>
-                        </div>
-                        <div class="col-md-2">
-                          <a onclick="ingresarCalificacion(<?php echo $id;?>,2,2, <?php echo $rol;?>)" class="btn btn-block btn-success">Autorizado</a>
-                        </div>
-                        <br>
-                      </div>
+                  if($rol == 1){ // Director de Carrera  
+                    
+                      $maxDCQ = "SELECT MAX(version) as max FROM tigrupou_tcu.revision_resumen_ejecutivo WHERE resumen_ejecutivo LIKE $id AND rol LIKE 1";
+                      $maxEEQ = "SELECT MAX(version) as max FROM tigrupou_tcu.revision_resumen_ejecutivo WHERE resumen_ejecutivo LIKE $id AND rol LIKE 2";
+
+                      $stmt = $db->prepare($maxDCQ);
+                      $stmt -> execute();
+                      $resultMaxDC = $stmt -> fetchAll();
+                      foreach ($resultMaxDC as $row) {
+                        $maxDC = $row["max"];
+                      }
+
+                      $stmt = $db->prepare($maxEEQ);
+                      $stmt -> execute();
+                      $resultMaxEE = $stmt -> fetchAll();
+                      foreach ($resultMaxEE as $row) {
+                        $maxEE = $row["max"];
+                      }
+                      
+                      if(($maxEE - $maxDC) == 1){ ?>?
+                          <div class="row ">
+                            <div class="col-md-2 col-md-offset-2" >
+                              <a onclick="ingresarCalificacion(<?php echo $id;?>,4,2,<?php echo $rol;?>)" class="btn btn-block btn-danger">Rechazado </a>
+                            </div>
+                            <div class="col-md-4">
+                              <a onclick="ingresarCalificacion(<?php echo $id;?>,3,2,<?php echo $rol;?>)" class="btn btn-block btn-primary">Corregir Observaciones</a>
+                            </div>
+                            <div class="col-md-2">
+                              <a onclick="ingresarCalificacion(<?php echo $id;?>,2,2, <?php echo $rol;?>)" class="btn btn-block btn">Autorizado</a>
+                            </div>
+                            <br>
+                          </div>
+                          <?php }else{ ?>
+                             <br>
+                                      <center><p class="label label-danger"> No se puede continuar hasta que la Unidad de Extensión genere su Calificación.</p> <center>
+                            <?php } ?>
                   <?php }elseif($rol == 2){ //Unidad de Extensión ?>
                       <div class="row ">
                         <div class="col-md-2 col-md-offset-8" >
@@ -200,6 +248,21 @@
       </div><!--.contenedor-->
     </section><!--.section programa-->
   </main>
+
+    <!-- Moda para agregar insumos a la actividad-->
+    <div class="modal fade" id="verCalificacion-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content" id="modal_content">
+        <div class="modal-header" align="center">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+          </button>
+        </div>
+        <div id="modalModalDiv"> <!--Div donde se carga el form para ingresar los datos -->
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="../../js/calificarTcu.js"></script>
   <?php

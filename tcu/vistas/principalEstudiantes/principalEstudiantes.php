@@ -137,11 +137,20 @@
           <script src="../../js/datosProyecto.js"></script>
 
           <?php
+            $queryReglamento = "SELECT reglamento FROM tigrupou_tcu.estudiantes where codigo like $sesionId;";
+            $stmt = $db->prepare($queryReglamento);
+            $stmt -> execute();
+            $resultReglamento = $stmt -> fetchAll();
+            foreach($resultReglamento as $row){
+                $reglamento = $row["reglamento"];
+            }
+            if(!$reglamento){
           ?>
             <script type="text/javascript">
                  cargarModal(null,'termsConditionsDiv','termsConditions-modal','../../vistas/reglamento/TerminosCondiciones.php');
              </script>
           <?php 
+            }
           ?>
         </body>
         </html>

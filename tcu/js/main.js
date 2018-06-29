@@ -112,6 +112,20 @@
         });
     }
 
+    function reglamento() {
+        var options = { "backdrop": "static", keyboard: true };
+        $.ajax({
+            type: "POST",
+            url: "../../accesoDatos/reglamento/updateReglamento.php",
+            success: function(data) {
+
+            },
+            error: function() {
+                mensaje('error', 'Error al cargar la información');
+            }
+        });
+    }
+
     function cargarFormularios(pUrl, id) {
         var options = { "backdrop": "static", keyboard: true };
         $.ajax({
