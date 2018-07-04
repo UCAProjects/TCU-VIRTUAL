@@ -10,7 +10,7 @@
               <div class="instrucciones-generales">
                 <h3>Acerca del Sistema</h3>
                 <p>
-                  El sistema de TCU Virtual es una iniciativa de la Universidad para facilitar el desarrollo del
+                  El sistema de TCU Virtual es una iniciativa de la Universidad para facilitar el desarrollo del Trabajo
                   Comunal Universitario. Esta propuesta, pretende digitalizar la información y apoyar al estudiante
                   a llevar un registro idóneo de todo el proceso de desarrollo de este,
                   como parte de su formación integral y como requisito ineludible para concluir su plan de estudios.

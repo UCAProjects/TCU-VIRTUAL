@@ -2,7 +2,7 @@
 	<label for="uploadedSolicitud">Adjuntar carta de solicitud para realización del TCU</label>
 	<input name="uploadedSolicitud[]" type="file" id="uploadedSolicitud[]" accept="application/pdf" required/>
 	<br>
-	<label for="uploadedAceptacion">Adjuntar carta de aceptación emita por la institución donde realizará el TCU.</label>
+	<label for="uploadedAceptacion">Adjuntar carta de aceptación emitida por la institución donde realizará el TCU.</label>
 	<input name="uploadedAceptacion[]" type="file" id="uploadedAceptacion[]" accept="application/pdf" required/>
 	<br>
 	<label for="uploadedAceptacion">Adjuntar cronograma de realización del TCU.</label>

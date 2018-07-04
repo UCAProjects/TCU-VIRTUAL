@@ -30,7 +30,6 @@
             </div><!--.contenedor-->
           </section><!--.site-main-->
         </main>
-
         <!--.FOOTER-->
         <?php include("../../footer.php") ?>
     </body>

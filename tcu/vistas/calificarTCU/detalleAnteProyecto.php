@@ -113,7 +113,7 @@
                           <h3>Tema</h3>
                           <?php echo $tema ?>
                           <br>
-                          <h3>Intergrantes</h3>
+                          <h3>Integrantes</h3>
                           <?php
                           foreach ($resultEstudiantes as $row) {
                             echo $row["nombre"]
@@ -181,7 +181,7 @@
                             echo $objetivo_general[$i];
                           }
                         } ?>
-                        <h3>Objetivos Especificos</h3>
+                        <h3>Objetivos Específicos</h3>
                         <?php
                         for($i=0;$i<strlen($objetivos_especificos);$i++){
                           if( $objetivos_especificos[$i] == "\n"){?>
