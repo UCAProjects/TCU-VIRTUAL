@@ -13,8 +13,7 @@
         include '../../conection.php';
 
         $tipo = $_GET['tipo'];
-
-
+        
         $pApellido = "";
         $sApellido = "";
         $nombre ="";
@@ -24,8 +23,8 @@
         $telTrabajo = "";
 
         if($tipo ==2){ //Editar Funcionarios
-          $sesionId = $_SESSION["codigo"];
           include '../../subHeaderFuncionarios.php';
+          $sesionId = $_SESSION["codigoFuncionario"];
           $query = "select * from tigrupou_tcu.funcionarios where codigo like $sesionId;";
           $stmt = $db->prepare($query);
           $stmt -> execute();
@@ -40,23 +39,18 @@
             $telTrabajo = $row["telefono_trabajo"];
           }
         }
-
-
-
-
       ?>
         <!--[if lte IE 9]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
         <![endif]-->
 
-        <!-- Add your site or application content here -->
         <main class="site-main">
           <section class="seccion-informacion">
               <div class="contenedor clearfix">
                 <div class="">
                   <h2>Registro</h2>
                 <div class="ingreso ingresoTamano">
-                  <form class="formulario" onsubmit="return validarRegistroFuncionarios()" action="../../accesoDatos/registro/insertarEditarRegistroFuncionarios.php" method="POST">
+                  <form class="formulario" onsubmit="return vegialidarRstroFuncionarios()" action="../../accesoDatos/registro/insertarEditarRegistroFuncionarios.php" method="POST">
                     <ul>
                       <input type="hidden" name="tipo" id="tipo" value="<?php echo $tipo ?>">
                       <input type="hidden" name="codigo" id="codigo" value="<?php echo $sesionId ?>">
@@ -107,15 +101,13 @@
                           </div> <?php
                         }
                       ?>
-
-
                       <li><button type="submit" id="btnRegistro" name="btnRegistro">Confirmar</button><br><br><br></li>
                     </ul>
                   </form>
-                </div><!--.programa-evento-->
-              </div><!--.contenedor-->
+                </div> <!--.programa-evento -->
+              </div> <!--.contenedor -->
 
-          </section><!--.section programa-->
+          </section> <!--.section programa -->
         </main>
         <?php
         	include '../../footer.php'

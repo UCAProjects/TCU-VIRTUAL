@@ -12,7 +12,7 @@
 <html class="no-js" lang="">
     <head>
         <title>
-        	Registro Estudiantes
+        	Cambio Contraseña
         </title>
          <link rel="stylesheet" href="../../css/datosProyecto.css">
     </head>

@@ -38,8 +38,11 @@ function abandonarGrupo(cod) {
 
 
 
-function consultaCed() {
+function consultaCed(pCed = null) {
     var ced = $('#cedula').val();
+    if (pCed != null) {
+        ced = pCed;
+    }
     if (ced != '') {
         var parametros = { "id": ced, "tipo": 1 }
         $.ajax({

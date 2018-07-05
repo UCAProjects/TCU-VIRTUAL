@@ -1,5 +1,5 @@
 <?php
-session_start();
+  session_start();
 
   $tipo = $_GET['tipo'];
   $sesionId = $_SESSION["codigo"];
@@ -19,11 +19,12 @@ session_start();
     <body>
 
       <?php
+        include '../../conection.php';
         include '../../header.php';
         if($tipo == 1){
           include '../../subHeaderEstudiantes.php';
         }
-        include '../../conection.php';
+
       ?>
 
 
@@ -131,5 +132,21 @@ session_start();
           include '../../footer.php'
         ?>
          <script src="../../js/datosProyecto.js"></script>
+         <?php
+            if($tipo != 1){
+              $queryAuto = "SELECT cedula FROM tigrupou_tcu.estudiantes WHERE codigo LIKE $sesionId";
+              $stmt = $db->prepare($queryAuto);//Actualiza la DB
+              $stmt -> execute();
+              $resultAuto = $stmt -> fetchAll();
+              foreach ($resultAuto as $row) {
+                $autoCed = $row["cedula"];
+              } 
+              ?>
+              <script>
+                consultaCed('<?php echo $autoCed ?>');
+              </script>
+              <?php
+            }
+         ?>
     </body>
 </html>
