@@ -1,39 +1,26 @@
 <?php
   session_start();
-
   $tipo = $_GET['tipo'];
   $sesionId = $_SESSION["codigo"];
   $grupo = 0;
 ?>
-
-
 <!doctype html>
 <html class="no-js" lang="">
     <head>
       <link rel="stylesheet" href="../../css/datosProyecto.css">
-        <title>
-          Crear Grupo
-        </title>
-
+      <title>
+        Crear Grupo
+      </title>
     </head>
     <body>
-
       <?php
         include '../../conection.php';
         include '../../header.php';
         if($tipo == 1){
           include '../../subHeaderEstudiantes.php';
         }
-
       ?>
-
-
-        <!--[if lte IE 9]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-        <![endif]-->
-
-        <!-- Add your site or application content here -->
-
+      
         <main class="site-main">
           <section class="seccion-informacion">
               <div class="contenedor clearfix">
@@ -76,12 +63,10 @@
                           foreach($result as $row){
                             $grupo = $row["grupo"];
                           }
-
                           $query = "select codigo,nombre_completo,primer_apellido, cedula from tigrupou_tcu.estudiantes where grupo like $grupo";
                           $stmt = $db->prepare($query);
                           $stmt -> execute();
                           $resultEstudiantes = $stmt -> fetchAll();
-
                                   foreach ($resultEstudiantes as $row ){
                                   ?>
                                   <tr>
@@ -94,14 +79,12 @@
                                         <a onclick="abandonarGrupo(<?php echo $sesionId ?>)"><i title="ABANDONAR GRUPO" class="fa fa-user-times" aria-hidden="true"></i></a> <?php
                                       }else{ ?>
                                       <i class="fa fa-lock"></i><?php
-
                                       } ?>
-
                                     </td>
                                   </tr><?php
                                 }
                               }
-      ?>
+                      ?>
                       <!-- Información de estudiantes -->
                     </tbody>
                   </table>
@@ -114,20 +97,17 @@
                   <br><br>
                 </div>
               </div><!--.contenedor-->
-
           </section><!--.section programa-->
         </main>
         <!-- Moda para Buscar Nombres de estudiantes-->
           <div class="modal fade" id="buscarEstudiante-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content" id="modal_content">
-
                 <div id="buscarEstudianteModalDiv"> <!--Div donde se carga el form para ingresar los datos -->
                 </div>
               </div>
             </div>
           </div>
-
         <?php
           include '../../footer.php'
         ?>

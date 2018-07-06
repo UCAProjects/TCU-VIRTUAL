@@ -42,7 +42,7 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-              <main class="site-main">
+        <main class="site-main">
           <section class="seccion-informacion">
               <div class="contenedor clearfix">
                 <div class="">
