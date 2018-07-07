@@ -8,11 +8,13 @@
 ?>
 
 <style>
+  /* Para opciones del menu Disable */ 
   .disabled {
-    pointer-events:none; //This makes it not clickable
-    opacity:0.6;         //This grays it out to look disabled
+    pointer-events:none; /* No clickable */
+    opacity:0.6;         /* Se ve disabled */
 }
 </style>
+
 <header class="sub-header">
   <div class="fondo-encabezado">
     <ul class="nav nav-tabs">
@@ -35,7 +37,7 @@
           <li id="liResumenEjectivo"><a href="../resumenEjecutivo/resumenEjecutivo.php"><i class="fas fa-book"></i> Resumen Ejecutivo</a></li>
         </ul>
       </li>
-    <!--<li class="navbar" id="liSalir"><a class="color"  href="# "><i class="fas fa-file-alt"></i> Ante Proyecto</a></li> -->
+
       <li class="dropdown">
         <a  href="#" class="dropdown-toggle color" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ><i class="fas fa-hourglass-half"></i> Realización de Horas <span  class="caret white colorNaranja"></span></a>
         <ul class="dropdown-menu">

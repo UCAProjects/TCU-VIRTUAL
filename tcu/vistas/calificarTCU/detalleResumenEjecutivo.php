@@ -71,25 +71,36 @@
 
               </ul><br>
 
-              <div class="well" id="adjuntos">
+              <div class="well" id="adjuntos" style="margin-right:4%;margin-left:4%;">
                 <div class="row">
-                  <div class="col-md-2">
-                    <b>Adjuntos</b>
-                  </div>
-
-                  <div class="col-md-3" style="margin-right:10px;border-width:5px;border-style:ridge;">
-                    <a href="<?php echo $linkConclusion?>" target="_blank"><i class="far fa-file-alt"></i> Carta Conclusión</a>
-                  </div>
-
-                  <div class="col-md-3" style="margin-right:10px;border-width:5px;border-style:ridge;">
-                    <a href="<?php echo $linkBitacora?>" target="_blank"><i class="far fa-file-alt"></i> Bitácora</a>
-                  </div>
-
+                  <div class="col-md-4">
+                    <fieldset>
+                      <legend>Adjuntos</legend>
+                        <a href="<?php echo $linkConclusion?>" target="_blank"><i class="far fa-file-alt"></i> Carta Conclusión</a>
+                        <a href="<?php echo $linkBitacora?>" target="_blank"><i class="far fa-file-alt"></i>    Bitácora</a>
+                      </fieldset>
+                  </div> 
+                  <div class="col-md-8">
+                    <fieldset>
+                      <legend>Evidencias</legend>
+                        <img src="../../upload/01-19-45logo.jpg"  width="60px" height="40px" />
+                        <img src="../../upload/01-19-45logo.jpg"  width="60px" height="40px"/>
+                        <img src="../../upload/01-19-45logo.jpg"  width="60px" height="40px"/>
+                        <img src="../../upload/01-19-45logo.jpg"  width="60px" height="40px"/>
+                        <img src="../../upload/01-19-45logo.jpg"  width="60px" height="40px"/>
+                        <img src="../../upload/01-19-45logo.jpg"  width="60px" height="40px"/>
+                        <img src="../../upload/01-19-45logo.jpg"  width="60px" height="40px"/>
+                        <img src="../../upload/01-19-45logo.jpg"  width="60px" height="40px"/>
+                        <img src="../../upload/01-19-45logo.jpg"  width="60px" height="40px"/>
+                        <img src="../../upload/01-19-45logo.jpg"  width="60px" height="40px"/>
+                    </fieldset>
+                  </div> 
                 </div>
-
+              
+  
               </div>
 
-              <div id="LecturaModo" style="margin-right:10%;margin-left:10%;">
+              <div id="LecturaModo" style="margin-right:5%;margin-left:5%;">
                 <div class="row well">
                 <?php
                     if($rol == 1){ ?>
@@ -177,7 +188,7 @@
                 </div>
               </div>  <!--   END DIV Lecture Mode -->
 
-              <div id="RevisionMode" style="display: none; margin-right:10%;margin-left:10%;" class="well">
+              <div id="RevisionMode" style="display: none; margin-right:5%;margin-left:5%;" class="well">
               <?php
                     if($rol == 1){ ?>
                       <div>

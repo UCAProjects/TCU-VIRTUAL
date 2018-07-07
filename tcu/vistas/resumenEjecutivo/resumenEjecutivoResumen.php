@@ -1,9 +1,28 @@
 <?php
   session_start();
+  include '../../conection.php'; //Conección a la DB
+
   $sesionId = $_SESSION["codigo"];
   $grupo = $_SESSION["grupo"];
 
-  include '../../conection.php'; //Conección a la DB
+  /**
+   * Codigo para verificar el estado del resumen Ejecutivo y así 
+   * dar acceso al usuario a las distintas opciones del menú.
+   */
+  $queryResumenEjecutivoStatus = "SELECT estado FROM tigrupou_tcu.resumen_ejecutivo WHERE grupo LIKE $grupo";
+  $stmt = $db->prepare($queryResumenEjecutivoStatus);
+  $stmt -> execute();
+  $resultResumenEjecutivoStatus = $stmt -> fetchAll();
+  foreach ($resultResumenEjecutivoStatus as $row) {
+    $estatusResumenEjecutivo = $row["estado"];
+  }
+  if($estatusResumenEjecutivo == '1' or $estatusResumenEjecutivo == '2'){
+    ?>
+      <script>
+        setReadOnly('resumen_actividades');
+      </script>
+      <?php
+  }
 
       $query = "SELECT grupo, resumen_actividades FROM tigrupou_tcu.resumen_ejecutivo where grupo like $grupo;";
       $stmt = $db->prepare($query);

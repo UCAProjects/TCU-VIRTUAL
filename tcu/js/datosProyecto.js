@@ -219,3 +219,23 @@ function redirectGrupo(tipo, id) {
         });
     }
 }
+
+/**
+ * Se encargar a partir de un Id de un componente
+ * poner su estado ReadOnly activo.
+ * @param pId Id del componente a setear el ReadOnly
+ * @returns 
+ */
+function setReadOnly(pId) {
+    $('#' + pId).prop('readonly', true);
+}
+
+/**
+ * Se encargar a partir de un Id de un componente
+ * poner su estado Disable activo.
+ * @param pId Id del componente a setear el Disable
+ * @returns 
+ */
+function setDisabled(pId) {
+    $('#' + pId).prop('disabled', true);
+}

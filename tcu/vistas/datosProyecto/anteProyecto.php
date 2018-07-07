@@ -1,19 +1,10 @@
-<?php
-  // session_start();
-  // $sesionId = $_SESSION["codigo"];
-  // $grupo = $_SESSION["grupo"];
-  // $tipo = $_GET['tipo'];
-?>
-
 <!doctype html>
 <html class="no-js" lang="">
   <head>
     <title>
       AnteProyecto
     </title>
-
     <link rel="stylesheet" href="../../css/datosProyecto.css">
-
   </head>
   <body>
     <?php
@@ -36,6 +27,7 @@
         $linkSolicitud = $row["url_carta_solicitud"];
         $linkCronograma = $row["url_cronograma_tcu"];
       }
+
     ?>
     <main class="site-main">
       <section class="seccion-informacion">

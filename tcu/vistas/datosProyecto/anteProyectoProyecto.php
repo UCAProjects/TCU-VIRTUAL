@@ -1,25 +1,40 @@
 
 <?php
   session_start();
+  include '../../conection.php'; //Conección a la DB
   $sesionId = $_SESSION["codigo"];
   $grupo = $_SESSION["grupo"];
 
-?>
+  /**
+   * Codigo para verificar el estado del anteProyecto y así 
+   * dar acceso al usuario a las distintas opciones del menú.
+   */
+  $queryAnteProyectoStatus = "SELECT estado FROM tigrupou_tcu.ante_proyecto WHERE grupo LIKE $grupo";
+  $stmt = $db->prepare($queryAnteProyectoStatus);
+  $stmt -> execute();
+  $resultAnteProyectoStatus = $stmt -> fetchAll();
+  foreach ($resultAnteProyectoStatus as $row) {
+    $estatusAnteProyecto = $row["estado"];
+  }
+  if($estatusAnteProyecto == '1' or $estatusAnteProyecto == '2'){
+    ?>
+      <script>
+        setReadOnly('justificacion_proyecto');
+      </script>
+      <?php
+  }
 
-<?php
-    include '../../conection.php'; //Conección a la DB
+  $query = "select grupo, justificacion_proyecto from tigrupou_tcu.ante_proyecto where grupo like $grupo;";
+  $stmt = $db->prepare($query);
+  $stmt -> execute();
+  $result = $stmt -> fetchAll();
 
-      $query = "select grupo, justificacion_proyecto from tigrupou_tcu.ante_proyecto where grupo like $grupo;";
-      $stmt = $db->prepare($query);
-      $stmt -> execute();
-      $result = $stmt -> fetchAll();
-
-      $descripcion_beneficiario = "";
-      $codigo = "";
-      foreach($result as $row){
-      	  $codigo = $row["grupo"];
-          $descripcion_beneficiario = $row["justificacion_proyecto"];
-      }
+  $descripcion_beneficiario = "";
+  $codigo = "";
+  foreach($result as $row){
+      $codigo = $row["grupo"];
+      $descripcion_beneficiario = $row["justificacion_proyecto"];
+  }
 
  ?>
 
@@ -34,9 +49,17 @@
 
 <div class="row">
     <div class="col-md-6">
-      <button class="btn btn-primary  " onclick="guardar('justificacion_proyecto',<?php echo $grupo ?>,1); cargarFormularios('anteProyectoBeneficiario.php','contenedorAnteProyecto');disminuirProgress(20);"><span class="glyphicon glyphicon-arrow-left"> </span>  Atrás</button>
+      <button class="btn btn-primary" href="#" 
+        onclick="guardar('justificacion_proyecto',<?php echo $grupo ?>,1); cargarFormularios('anteProyectoBeneficiario.php','contenedorAnteProyecto');disminuirProgress(20);">
+          <span class="glyphicon glyphicon-arrow-left"> </span>  
+          Atrás
+      </button>
     </div>
     <div class="col-md-6">
-      <button class="btn" onclick="guardar('justificacion_proyecto',<?php echo $grupo?>,1);aumentarProgress(20);cargarFormularios('anteProyectoObjetivos.php','contenedorAnteProyecto');" style="margin-left:45% !important">Continuar  <span class="glyphicon glyphicon-arrow-right"></span></button>
+      <button class="btn" href="#"
+        onclick="guardar('justificacion_proyecto',<?php echo $grupo?>,1);aumentarProgress(20);cargarFormularios('anteProyectoObjetivos.php','contenedorAnteProyecto');" 
+          style="margin-left:45% !important">
+            Continuar  <span class="glyphicon glyphicon-arrow-right"></span>
+      </button>
     </div>
   </div>

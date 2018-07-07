@@ -2,7 +2,7 @@
 
 ?>
 <form action="../../accesoDatos/resumenEjecutivo/insertResumenEjecutivo.php" onsubmit="return validateNumber()" enctype="multipart/form-data" id="insertarResumenEjecutivo-form" method="post">
-<center><label id="errorLabel" class="label label-primary"> </label></center>
+<center><label id="errorLabel" class="label label-primary"></label></center>
 	<label for="uploadedAprobacion">Adjuntar carta de conclusión del TCU emitida por el supervisor </label>
 	<input name="uploadedAprobacion[]" id="uploadedAprobacion[]" type="file" accept="application/pdf" required/>
 	<br>
