@@ -11,49 +11,112 @@
       height: 700px  !important;
       width: 100% !important;
     }
+    * {box-sizing: border-box}
+    .mySlides1, .mySlides2 {display: none}
+    img {vertical-align: middle;}
+
+  /* Slideshow container */
+  .slideshow-container {
+    max-width: 200px;
+    width: 200px !important;
+    height: 20px !important;
+    position: relative;
+    margin: auto;
+  }
+
+  /* Next & previous buttons */
+  .prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+  }
+
+  /* Position the "next button" to the right */
+  .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+
+/* On hover, add a grey background color */
+.prev:hover, .next:hover {
+  background-color: #f1f1f1;
+  color: black;
+}
+
   </style>
 </head>
 <body>
 
-  <?php
-  session_start();
-  include '../../header.php';
-  include '../../subHeaderFuncionarios.php';
-  include '../../conection.php'; //Conección a la DB
+    <?php
+    session_start();
+    include '../../header.php';
+    include '../../subHeaderFuncionarios.php';
+    include '../../conection.php'; //Conección a la DB
 
-  $id = $_GET["id"];
-  $carrera = $_SESSION["carreraFuncionario"]; // Carrera a la que partenece el funcionario
-  $query = "SELECT D.tema,D.organizacion, D.supervisor, A.* FROM tigrupou_tcu.datos D JOIN tigrupou_tcu.resumen_ejecutivo A ON D.grupo like A.grupo WHERE D.grupo like $id";
-  $queryEstudiantes = "SELECT CONCAT(primer_apellido,' ',segundo_apellido,' ',nombre_completo) nombre FROM tigrupou_tcu.estudiantes WHERE grupo LIKE $id order by primer_apellido";
-  $stmt = $db->prepare($queryEstudiantes);
-  $stmt -> execute();
-  $resultEstudiantes = $stmt -> fetchAll();
-  $stmt = $db->prepare($query);
-  $stmt -> execute();
-  $result = $stmt -> fetchAll();
-  foreach ($result as $row) {
-    // Portada
-    $tema=$row["tema"];
-    $organizacion=$row["organizacion"];
-    $supervisor=$row["supervisor"];
-    //Contenido
-    $resumen_actividades=$row["resumen_actividades"];
-    $evaluacion = $row["evaluacion"];
-    $conclusion = $row["conclusion"];
-    $recomendaciones = $row["recomendaciones"];
-  }
+    $id = $_GET["id"];
+    $carrera = $_SESSION["carreraFuncionario"]; // Carrera a la que partenece el funcionario
+    $query = "SELECT D.tema,D.organizacion, D.supervisor, A.* FROM tigrupou_tcu.datos D JOIN tigrupou_tcu.resumen_ejecutivo A ON D.grupo like A.grupo WHERE D.grupo like $id";
+    $queryEstudiantes = "SELECT CONCAT(primer_apellido,' ',segundo_apellido,' ',nombre_completo) nombre FROM tigrupou_tcu.estudiantes WHERE grupo LIKE $id order by primer_apellido";
+    $stmt = $db->prepare($queryEstudiantes);
+    $stmt -> execute();
+    $resultEstudiantes = $stmt -> fetchAll();
+    $stmt = $db->prepare($query);
+    $stmt -> execute();
+    $result = $stmt -> fetchAll();
+    foreach ($result as $row) {
+      // Portada
+      $tema=$row["tema"];
+      $organizacion=$row["organizacion"];
+      $supervisor=$row["supervisor"];
+      //Contenido
+      $resumen_actividades=$row["resumen_actividades"];
+      $evaluacion = $row["evaluacion"];
+      $conclusion = $row["conclusion"];
+      $recomendaciones = $row["recomendaciones"];
+    }
 
 
-  $linkConclusion = "";
-  $linkBitacora = "";
-  $queryAdjutos = "SELECT url_carta_conclusion, url_bitacora FROM tigrupou_tcu.cartas_adjuntas WHERE grupo LIKE $id";
-  $stmt = $db->prepare($queryAdjutos);
-  $stmt -> execute();
-  $resultAdjuntos = $stmt -> fetchAll();
-  foreach ($resultAdjuntos as $row) {
-    $linkConclusion = $row["url_carta_conclusion"];
-    $linkBitacora = $row["url_bitacora"];
-  }
+    $linkConclusion = "";
+    $linkBitacora = "";
+    $queryAdjutos = "SELECT url_carta_conclusion, url_bitacora FROM tigrupou_tcu.cartas_adjuntas WHERE grupo LIKE $id";
+    $stmt = $db->prepare($queryAdjutos);
+    $stmt -> execute();
+    $resultAdjuntos = $stmt -> fetchAll();
+    foreach ($resultAdjuntos as $row) {
+      $linkConclusion = $row["url_carta_conclusion"];
+      $linkBitacora = $row["url_bitacora"];
+    }
+
+    $maxDCQ = "SELECT MAX(version) as max FROM tigrupou_tcu.revision_resumen_ejecutivo WHERE resumen_ejecutivo LIKE $id AND rol LIKE 1";
+    $maxEEQ = "SELECT MAX(version) as max FROM tigrupou_tcu.revision_resumen_ejecutivo WHERE resumen_ejecutivo LIKE $id AND rol LIKE 2";
+
+    $stmt = $db->prepare($maxDCQ);
+    $stmt -> execute();
+    $resultMaxDC = $stmt -> fetchAll();
+    foreach ($resultMaxDC as $row) {
+      $maxDC = $row["max"];
+    }
+    $stmt = $db->prepare($maxEEQ);
+    $stmt -> execute();
+    $resultMaxEE = $stmt -> fetchAll();
+    foreach ($resultMaxEE as $row) {
+      $maxEE = $row["max"];
+    } 
+
+
+    $queryPhotoEvi = "SELECT url FROM tigrupou_tcu.evidencias_adjuntas WHERE GRUPO LIKE $id LIMIT 0, 10";
+    $stmt = $db -> prepare($queryPhotoEvi);
+    $stmt -> execute();
+    $resultPhotoEvi = $stmt -> fetchAll();
   ?>
 
   <main class="site-main">
@@ -64,56 +127,57 @@
             <form class="">
               <h2>Resumen Ejecutivo</h2>
 
-
               <ul class="nav nav-tabs" id="nav">
                   <li class="active"><a href="#nav" onclick="modeLecture()"><i class="fas fa-book"></i> Modo Lectura</a></li>
                   <li><a href="#nav" onclick="modeRevision()"><i class="fas fa-edit"></i> Modo Revisión</a></li>
-
-              </ul><br>
+              </ul>
+              <br>
 
               <div class="well" id="adjuntos" style="margin-right:4%;margin-left:4%;">
                 <div class="row">
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <fieldset>
                       <legend>Adjuntos</legend>
-                        <a href="<?php echo $linkConclusion?>" target="_blank"><i class="far fa-file-alt"></i> Carta Conclusión</a>
-                        <a href="<?php echo $linkBitacora?>" target="_blank"><i class="far fa-file-alt"></i>    Bitácora</a>
+                        <a href="<?php echo $linkConclusion?>" target="_blank"><i class="far fa-file-alt"></i> Carta Conclusión</a> <br>  
+                        <a href="<?php echo $linkBitacora?>" target="_blank"><i class="far fa-file-alt"></i>    Bitácora   </a>
                       </fieldset>
                   </div> 
-                  <div class="col-md-8">
+                  <div class="col-md-9" > 
                     <fieldset>
-                      <legend>Evidencias</legend>
-                        <img src="../../upload/01-19-45logo.jpg"  width="60px" height="40px" />
-                        <img src="../../upload/01-19-45logo.jpg"  width="60px" height="40px"/>
-                        <img src="../../upload/01-19-45logo.jpg"  width="60px" height="40px"/>
-                        <img src="../../upload/01-19-45logo.jpg"  width="60px" height="40px"/>
-                        <img src="../../upload/01-19-45logo.jpg"  width="60px" height="40px"/>
-                        <img src="../../upload/01-19-45logo.jpg"  width="60px" height="40px"/>
-                        <img src="../../upload/01-19-45logo.jpg"  width="60px" height="40px"/>
-                        <img src="../../upload/01-19-45logo.jpg"  width="60px" height="40px"/>
-                        <img src="../../upload/01-19-45logo.jpg"  width="60px" height="40px"/>
-                        <img src="../../upload/01-19-45logo.jpg"  width="60px" height="40px"/>
+                      <legend>Evidencias</legend> 
+                      
+                      <?php 
+                          foreach ($resultPhotoEvi as $row) {
+                            $url = $row["url"]; ?>
+                            <a href="<?php echo $url ?>"  target="_blank" </a>
+                              <img src="<?php echo $url ?>" class="img-thumbnail"  style="width:82px; height:60px" />
+                            </a>
+                         <?php } 
+                      ?>
                     </fieldset>
                   </div> 
                 </div>
-              
-  
               </div>
-
               <div id="LecturaModo" style="margin-right:5%;margin-left:5%;">
                 <div class="row well">
                 <?php
                     if($rol == 1){ ?>
                       <div>
-                            <a class="btn" href="#" onclick="cargarModal({'id':<?php echo $id; ?>},'modalModalDiv','verCalificacion-modal','modalCalificacionBEResumenEjecutivo.php')">
-                              <i class="fas fa-gavel"></i> Calificación de la Unidad de Extensión
+                        <?php if(($maxEE - $maxDC) == 1){ ?>
+                          <a class="btn btn-success" href="#" onclick="cargarModal({'id':<?php echo $id; ?>},'modalModalDiv','verCalificacion-modal','modalCalificacionBEResumenEjecutivo.php')">
+                              <i class="fas fa-gavel"></i> Unidad de Extensión
                             </a>
-                        
+                        <?php }else{ ?> 
+                              <a class="btn btn-danger" href="#" onclick="cargarModal({'id':<?php echo $id; ?>},'modalModalDiv','verCalificacion-modal','modalCalificacionBEResumenEjecutivo.php')">
+                                <i class="fas fa-gavel"></i> Unidad de Extensión
+                              </a>
+                        <?php } ?>  
                       </div><?php
                     }
                   ?> <br>
                   <div class="well">
-                    <h3><center>Ante Proyecto</center></h3>
+                    <fieldset>
+                      <legend><h3>Ante Proyecto</h3></legend>
                     <div id="divDocument"  style="background-color: white;">
                       <div style="padding: 40px;">
                         <center>
@@ -184,44 +248,36 @@
                         <center>-------- Fin Documento -------</center>
                       </div>
                     </div> <!--   END DIV DOCUMENT -->
-                  </div>
+                    </fieldset>Acomp if setct in nevf
+                  </div> comz quer bnie poz apow queen on f
                 </div>
               </div>  <!--   END DIV Lecture Mode -->
 
-              <div id="RevisionMode" style="display: none; margin-right:5%;margin-left:5%;" class="well">
+              <div id="RevisionMode" style="display: none; margin-right:4%;margin-left:4%;" class="well">
               <?php
                     if($rol == 1){ ?>
                       <div>
-                            <a class="btn" href="#" onclick="cargarModal({'id':<?php echo $id; ?>},'modalModalDiv','verCalificacion-modal','modalCalificacionBEResumenEjecutivo.php')">
-                              <i class="fas fa-gavel"></i> Calificación de la Unidad de Extensión
+                        <?php if(($maxEE - $maxDC) == 1){ ?>
+                          <a class="btn btn-success" href="#" onclick="cargarModal({'id':<?php echo $id; ?>},'modalModalDiv','verCalificacion-modal','modalCalificacionBEResumenEjecutivo.php')">
+                              <i class="fas fa-gavel"></i> Unidad de Extensión
                             </a>
-                        
+                        <?php }else{ ?> 
+                              <a class="btn btn-danger" href="#" onclick="cargarModal({'id':<?php echo $id; ?>},'modalModalDiv','verCalificacion-modal','modalCalificacionBEResumenEjecutivo.php')">
+                                <i class="fas fa-gavel"></i> Unidad de Extensión
+                              </a>
+                        <?php } ?>  
                       </div><?php
                     }
-                  ?> <br>
+                  ?> 
                 <div style="resize: both;">
-                  <h3><center>Observaciones</center></h3>
-                  <center><textarea  id="txtA_observaciones" placeholder="Observaciones" cols="70" rows="20"></textarea></center>
+                  <fieldset>
+                      <legend><h3><h3>Observaciones</h3></h3></legend>
+                         <textarea  id="txtA_observaciones" placeholder="Observaciones" cols="120" rows="10"></textarea>
+                  </fieldset>
                 </div><!-- END DIV COL -->
                 <br>
                 <?php
                   if($rol == 1){ // Director de Carrera  
-                    
-                      $maxDCQ = "SELECT MAX(version) as max FROM tigrupou_tcu.revision_resumen_ejecutivo WHERE resumen_ejecutivo LIKE $id AND rol LIKE 1";
-                      $maxEEQ = "SELECT MAX(version) as max FROM tigrupou_tcu.revision_resumen_ejecutivo WHERE resumen_ejecutivo LIKE $id AND rol LIKE 2";
-
-                      $stmt = $db->prepare($maxDCQ);
-                      $stmt -> execute();
-                      $resultMaxDC = $stmt -> fetchAll();
-                      foreach ($resultMaxDC as $row) {
-                        $maxDC = $row["max"];
-                      }
-                      $stmt = $db->prepare($maxEEQ);
-                      $stmt -> execute();
-                      $resultMaxEE = $stmt -> fetchAll();
-                      foreach ($resultMaxEE as $row) {
-                        $maxEE = $row["max"];
-                      }
                       if(($maxEE - $maxDC) == 1){ ?>?
                           <div class="row ">
                             <div class="col-md-2 col-md-offset-2" >
@@ -271,11 +327,11 @@
       </div>
     </div>
   </div>
-
   <script src="../../js/calificarTcu.js"></script>
   <?php
     include '../../footer.php';
   ?>
   <script src="../../js/datosProyecto.js"></script>
+  
  </body>
 </html>

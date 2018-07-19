@@ -5,6 +5,7 @@
 
   $_Date = $_POST["fecha"];
   $_Id =  $_POST["codigo"];
+  $_Perm =  $_POST["tipo"]; // 0: estudiante; N: Funcionario
 
   $fecha = "";
   $horaIn = "";
@@ -52,12 +53,25 @@
      <label for="actividadesR">Actividades</label>
      <textarea class="form-control" id="actividadesR" rows="3"><?php echo $actividades ?></textarea>
    </div>
-   <?php if ($_Id != 0){?>
-      <a  class="btn btn-danger" onclick="eliminarActividad()"><i class="fas fa-times"></i> Eliminar</a>
-      <a  class="btn btn-primary" onclick="agregarActividad()"><i class="fas fa-edit"></i> Editar</a>
-   <?php }else{ ?>
-     <a  class="btn btn-primary" onclick="agregarActividad()"><i class="far fa-save"></i> Confirmar</a>
-   <?php } ?>
+   
+   <?php 
+    if($_Perm == 0){
+      if ($_Id != 0){?>
+        <p align="right">
+          <a  class="btn btn-danger" onclick="eliminarActividad(<?php echo $_Perm ?>)"><i class="fas fa-times"></i> Eliminar</a>
+          <a  class="btn btn-primary" onclick="agregarActividad(<?php echo $_Perm ?>)"><i class="fas fa-edit"></i> Editar</a>
+        </p>
+       <?php }else{ ?>
+        <p align="right">
+          <a  class="btn btn-primary" onclick="agregarActividad(<?php echo $_Perm ?>)"><i class="far fa-save"></i> Confirmar</a>
+        </p>
+       <?php }
+    }else{ ?> 
+      <p align="right">
+          <a  class="btn btn-danger" class="close" data-dismiss="modal"><i class="fas fa-times"></i> Cerrar</a>
+      </p>  <?php
+    } ?>
+    
 
 
  </form>

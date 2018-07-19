@@ -1,14 +1,12 @@
 <?php
-     session_start();
-     include '../../conection.php'; //Conección a la DB
-
+    session_start();
+    include '../../conection.php'; //Conección a la DB
     $nombre = $_POST["Nombre"];
     $tipo = $_POST["Tipo"];
-    $query = "SELECT distinct G.codigo, G.descripcion from tigrupou_tcu.grupos G join tigrupou_tcu.estudiantes E on G.codigo = E.grupo WHERE (G.descripcion like '%$nombre%' or E.nombre_completo like '%$nombre%' or E.primer_apellido  like '%$nombre%' or E.segundo_apellido like '%$nombre%') and G.estado like '$tipo';";
+    $query = "SELECT distinct G.codigo, G.descripcion from tigrupou_tcu.grupos G join tigrupou_tcu.estudiantes E on G.codigo = E.grupo WHERE (E.cedula like '%$nombre%' or G.descripcion like '%$nombre%' or E.nombre_completo like '%$nombre%' or E.primer_apellido  like '%$nombre%' or E.segundo_apellido like '%$nombre%') and G.estado like '$tipo';";
     $stmt = $db->prepare($query);//Consulta los grupos a DB
     $stmt -> execute();
     $result = $stmt -> fetchAll();
-
     foreach ($result as $row) { ?>
         <div class="well">
             <h3>
@@ -17,12 +15,11 @@
                 </span> 
                 <?php echo $row["descripcion"] ?>
             </h3>
-
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Cod</th>
-                        <th>ced</th>
+                        <th>Código</th>
+                        <th>Cédula</th>
                         <th>Nombre</th>
                     </tr>
                 </thead>
@@ -42,15 +39,10 @@
                         } ?>
                 </tbody>
             </table>
-
-            <div>
-                <button class="btn btn" onclick="editarGrupo(<?php echo $codigo ?>)"><i class="far fa-edit"></i> Editar</button>
-            </div>
-            <div>
-                <button class="btn btn-primary" onclick="editarGrupo(<?php echo $codigo ?>)"><i class="far fa-calendar-check"></i> Detalle de Horas </button>
-            </div>
-
-            <br>
+            <p align="right">
+                <a class="btn btn" href="../datosProyecto/datosProyecto.php?tipo=<?php echo $row["codigo"] ?>"> <i class="far fa-eye"></i> Ver</a>
+                <a class="btn btn-primary" href="../horasTCU/calendarioHoras.php?grupo=<?php echo $row["codigo"] ?>"><i class="far fa-calendar-check"></i> Detalle de Horas </a>
+            </p>
         </div><?php
     }
 ?>

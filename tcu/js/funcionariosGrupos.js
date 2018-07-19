@@ -1,8 +1,18 @@
+var _Tipo = 0;
 $(document).ready(function() {
-    cargarFormulariosPost("cargarGrupos.php", 'loadGroups', { 'Nombre': '', 'Tipo': 0 });
+    getInputText();
 });
 
 $("#textBuscar").on('input', function(e) {
-    var text = $('#textBuscar').val();
-    cargarFormulariosPost("cargarGrupos.php", 'loadGroups', { 'Nombre': text, 'Tipo': 0 });
+    getInputText();
 });
+
+function setTipo(pTipo) {
+    _Tipo = pTipo;
+    getInputText();
+}
+
+function getInputText() {
+    var text = $('#textBuscar').val();
+    cargarFormulariosPost("cargarGrupos.php", 'loadGroups', { 'Nombre': text, 'Tipo': _Tipo });
+}

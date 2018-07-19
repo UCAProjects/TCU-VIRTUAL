@@ -25,10 +25,9 @@ function validar() {
     return false;
 }
 
-function agregarActividad() {
+function agregarActividad(pGrupo) {
     getData();
     if (validar()) {
-        debugger;
         var parametros = {
             "codigo": codigo,
             "fecha": date,
@@ -46,7 +45,7 @@ function agregarActividad() {
                     alert("Ha ocurrido un error inesperado, intentelo nuevamente");
                 } else if (data == "OK") {
                     alert("Operación realizada con éxito");
-                    setTimeout(function() { window.location = "calendarioHoras.php"; }, 1000);
+                    setTimeout(function() { window.location = "calendarioHoras.php?grupo=" + pGrupo; }, 1000);
                 }
             },
             error: function() {
@@ -72,7 +71,7 @@ function zoomL() {
 
 }
 
-function eliminarActividad() {
+function eliminarActividad(pGrupo) {
     mCodigo = $("#Codigo").val();
     var parametros = { "codigo": mCodigo };
     $.ajax({
@@ -84,7 +83,7 @@ function eliminarActividad() {
                 alert("Ha ocurrido un error inesperado, intentelo nuevamente");
             } else if (data == "OK") {
                 alert("Se ha eliminado con éxito");
-                setTimeout(function() { window.location = "calendarioHoras.php"; }, 1000);
+                setTimeout(function() { window.location = "calendarioHoras.php?grupo=" + pGrupo; }, 1000);
             }
         },
         error: function() {

@@ -34,19 +34,24 @@
   <?php
     session_start();
     include '../../header.php';
-    include '../../subHeaderEstudiantes.php';
     include '../../conection.php'; //Conección a la DB
 
-    $grupo = $_SESSION["grupo"];
-    // $carrera = $_SESSION["carreraFuncionario"];
-    // $query = "SELECT G.codigo, G.descripcion
-    //             FROM tigrupou_tcu.grupos G
-    //               JOIN tigrupou_tcu.ante_proyecto A ON G.codigo LIKE A.grupo
-    //                 WHERE G.carrera  like $carrera and A.estado like 1";
-    //
-    // $stmt = $db->prepare($query);
-    // $stmt -> execute();
-    // $result = $stmt -> fetchAll();
+      /**
+     * Se recibe un grupo por parámetro
+     * En caso de ser 0, se entra en modo edición por el estudiante
+     * De lo contrario realiza la consulta a partir de ese dato.
+     */
+    $idGrupo = $_GET["grupo"];
+
+    if($idGrupo != 0){
+      $grupo = $idGrupo;
+      include '../../subHeaderFuncionarios.php';
+    }else{
+      $grupo = $_SESSION["grupo"];   
+      include '../../subHeaderEstudiantes.php';
+    }
+
+    
     /*Codigo que carga todas las actividades de horas Tcu
      desde la base de datos para su posterior uso*/
     $query = "SELECT * FROM tigrupou_tcu.horas_tcu where grupo like $grupo;";
@@ -55,6 +60,9 @@
     $result = $stmt -> fetchAll();
     /* -------------------------------------------------------------------------------- */
 
+    /**
+     * Se determina las horas totales de Tcu realizadas por un grupo
+     */
     $queryHoras = "SELECT sum(numero_horas) as HORAS FROM tigrupou_tcu.horas_tcu WHERE grupo like $grupo";
     $stmt = $db->prepare($queryHoras);
     $stmt -> execute();
@@ -63,17 +71,25 @@
     foreach($resultHoras as $row){
         $cantidad = $row["HORAS"];
     }
+    
 
+    /**
+     * Calculo de porcentajes de horas faltantes y horas realizadas.
+     */
     $porcRealizadas = round($cantidad * 100 / 150,2);
 
     $restantes = 150 - $cantidad;
-
-    $porcFaltante = round($restantes * 100 / 150,2);
 
     if($restantes < 0){
       $restantes = 0;
     }
 
+    $porcFaltante = round($restantes * 100 / 150,2);
+
+    
+    /**
+     * Carga el cronograma de horas propuesto por los grupos
+     */
     $queryCronogramaHoras = "SELECT url_cronograma_tcu FROM tigrupou_tcu.cartas_adjuntas WHERE grupo like $grupo";
     $stmt = $db->prepare($queryCronogramaHoras);
     $stmt -> execute();
@@ -99,7 +115,12 @@
             </div>
             <div id="contenedor" class="well">
               <!-- Cargar modal agregar actividad -->
-              <a href="#content" onclick="cargarModal({'fecha':_Date,'codigo':0},'AddModalDiv','addActivity-modal','agregarActividad.php')" id="plusActivity"><i class="fas fa-plus-circle a"></i></a>
+              <?php 
+                if($idGrupo == 0){ ?>
+                  <a href="#content" onclick="cargarModal({'fecha':_Date,'codigo':0, 'tipo': <?php echo $idGrupo ?>},'AddModalDiv','addActivity-modal','agregarActividad.php')" id="plusActivity"><i class="fas fa-plus-circle a"></i></a>
+                <?php
+                }
+              ?>
               <!-- Aumentar Zoom -->
               <!--<a href="#content" onclick="zoom()" id="plusActivity"><i class="fas fa-search-plus a"></i></a>  -->
               <!-- Disminuir Zoom -->
@@ -209,8 +230,7 @@
 
               /* Cuando el evento es clickeado, carga la página disponible para poder editar*/
               eventClick: function(calEvent, jsEvent, view) {
-                cargarModal({'fecha':_Date,'codigo':calEvent.id},'AddModalDiv','addActivity-modal','agregarActividad.php')
-
+                cargarModal({'fecha':_Date,'codigo':calEvent.id, 'tipo': <?php echo $idGrupo ?>},'AddModalDiv','addActivity-modal','agregarActividad.php')
               },
 
 
@@ -242,10 +262,21 @@
             var star =   $('#calendar').fullCalendar('getView').start.format('YYYY-MM-DD');/*Toma la primer fecha que tira le calendario*/
             _Date = star;
             if(view.name == "agendaDay"){
-              document.getElementById("plusActivity").style.visibility  = 'visible';/*Si el modo vista del calendario es día, pone visible el boton plus*/
+              <?php
+                if($idGrupo == 0){?>
+                  document.getElementById("plusActivity").style.visibility  = 'visible';/*Si el modo vista del calendario es día, pone visible el boton plus*/
+                <?php
+                } 
+              ?>
             }
             else { /*Si el modo vista del calendario es mes se oculta el boton plus*/
-              document.getElementById("plusActivity").style.visibility  = 'hidden';
+              <?php
+              if($idGrupo == 0){?>
+                document.getElementById("plusActivity").style.visibility  = 'hidden';
+              <?php
+              } 
+              ?>
+              
             }
           },
           /*

@@ -5,7 +5,12 @@
    TCU
  </title>
  <link rel="stylesheet" href="../../css/datosProyecto.css">
-</head>
+<style>
+  hr {
+  color: #123455;
+}
+</style>
+  </head>
 <body>
  <?php
     session_start();
@@ -19,7 +24,6 @@
 
           <!-- Add your site or application content here -->
 
-
           <main class="site-main">
             <section class="seccion-informacion">
               <div class="contenedor clearfix">
@@ -29,12 +33,10 @@
                       <div class="formulario">
 
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#">TCU Activos</a></li>
-                            <li><a href="#">TCU Inactivos</a></li>
+                            <li class="active"><a href="#" onclick="setTipo(0);">Periodo Actual</a></li>
+                            <li><a href="#" onclick="setTipo(5);">Periodo Anterior</a></li>
                         </ul>
-
                         <br><br>
-
                         <!--
                         Boton buscar
                         Falta programabilidad
@@ -46,9 +48,7 @@
                       </div>
                       <br>
                       <hr>
-
                       <div id="loadGroups"></div>
-                      
                     </div>
                   </div>
                 </div><!--.programa-evento-->

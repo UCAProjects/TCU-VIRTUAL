@@ -81,9 +81,11 @@
               <span class="white"><i class="fas fa-table"></i> Reportes </span><span class="caret white colorNaranja"></span>
           </a>
           <ul class="dropdown-menu">
-            <li><a class="over" href="../calificarTCU/calificarDatosProyecto.php"><i class="fas fa-file-pdf"></i></i> Reporte por Estudiantes </a></li>
-            <li><a class="over" href="../calificarTCU/calificarDatosProyecto.php"><i class="fas fa-file-pdf"></i></i> Reporte por Grupo </a></li>
-            <li><a class="over" href="../calificarTCU/calificarDatosProyecto.php"><i class="fas fa-file-pdf"></i></i> Reporte por Periodo </a></li>
+            <li><a class="over" href="../reportes/reportes.php?id=1"><i class="fas fa-file-pdf"></i></i> Reporte por Estudiante </a></li>
+            <li><a class="over" href="../reportes/reportes.php?id=2"><i class="fas fa-file-pdf"></i></i> Reporte por Periodo </a></li>
+            <li><a class="over" href="../reportes/reportes.php?id=3"><i class="fas fa-file-pdf"></i></i> Reporte por Sede </a></li>
+            <li><a class="over" href="../reportes/reportes.php?id=4"><i class="fas fa-file-pdf"></i></i> Reporte por Carrera </a></li>
+            <li><a class="over" href="../reportes/reportes.php?id=5"><i class="fas fa-file-pdf"></i></i> Reporte por Estatus </a></li>
           </ul>
         </li>
         <!-- ************************ -->
