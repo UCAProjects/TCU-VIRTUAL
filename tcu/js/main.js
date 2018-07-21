@@ -142,8 +142,6 @@
         });
     }
 
-
-
     function cargarFormulariosPost(pUrl, id, pParametros) {
         var param = pParametros
         var options = { "backdrop": "static", keyboard: true };
