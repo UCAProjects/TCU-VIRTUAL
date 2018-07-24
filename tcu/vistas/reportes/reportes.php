@@ -22,14 +22,22 @@
         <link rel="stylesheet" type="text/css" href="../../DataTables/datatables.min.css"/>
         <?php
           $url = "";
-          switch ($id) {
-            case '1':
-              $url =  "busquedaPeriodo.php";
-              break;
-            
+          switch ($id){
+            case '2':
+                $url =  "busquedaPeriodo.php";
+                break;
+            case '3':
+                $url =  "busquedaSede.php";
+                break;
+            case '4':
+                $url =  "busquedaCarrera.php";
+                break;
+            case '5':
+                $url =  "busquedaEstado.php";
+                break;
             default:
-              $url =  "busquedaPeriodo.php";
-              break;
+                $url =  "busquedaPeriodo.php";
+                break;
           }
         ?>
         
@@ -81,18 +89,58 @@
                 _TwoPeriodDate = true;
               }
             }); 
-          });  
-          function sendPeriodReport(){
+          });
+
+          function sendPeriodReport(){ //Faltan validaciones
                 var firtsDate = $("#yearO").val();
-                if(_TwoPeriodDate){
-                    var secondDate = $("#yearT").val();
-                    var query = "SELECT * FROM tigrupou_tcu.grupos WHERE year(fecha) between " + firtsDate +
-                        " AND " +  secondDate;
-                }else{
-                    var query = "SELECT * FROM tigrupou_tcu.grupos WHERE year(fecha) LIKE " +  firtsDate;
+                var query = "";
+                if(firtsDate != ""){
+                    if(_TwoPeriodDate){
+                        var secondDate = $("#yearT").val();
+                        if(secondDate != ""){
+                            var query = "SELECT * FROM tigrupou_tcu.grupos WHERE year(fecha) between " + firtsDate +
+                                " AND " +  secondDate;
+                        }
+                    }else{
+                        var query = "SELECT * FROM tigrupou_tcu.grupos WHERE year(fecha) LIKE " +  firtsDate;
+                    }
                 }
-                cargarFormulariosPost('resGrupo.php','result',{query:query})
-            }
+                cargarFormulariosPost('resGrupo.php','result',{query:query});
+          }
+
+          function sendSedeReport(){
+              var e = document.getElementById("selSede");
+              var codSede = e.options[e.selectedIndex].value;
+              var query = "";
+              if(codSede != "0"){
+                  query = "SELECT * FROM tigrupou_tcu.grupos WHERE sede like " + codSede;
+              }
+              cargarFormulariosPost('resGrupo.php','result',{query:query});
+
+          }
+
+          function sendCarreraReport(){
+              var e = document.getElementById("selCarrera");
+              var codSede = e.options[e.selectedIndex].value;
+
+              var query = "";
+              if(codSede != "0"){
+                  query = "SELECT * FROM tigrupou_tcu.grupos WHERE carrera like " + codSede;
+              }
+              alert(query);
+              cargarFormulariosPost('resGrupo.php','result',{query:query});
+          }
+
+          function sendEstadoReport(){
+              var e = document.getElementById("selEstado");
+              var codEst = e.options[e.selectedIndex].value;
+
+              var query = "";
+              if(codEst != "-1"){
+                  query = "SELECT * FROM tigrupou_tcu.grupos WHERE estado like " + codEst;
+              }
+              cargarFormulariosPost('resGrupo.php','result',{query:query});
+          }
         </script>  
         
       </body> 

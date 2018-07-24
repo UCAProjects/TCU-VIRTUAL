@@ -37,7 +37,7 @@
 			//insertar usuario y contraseña   
 			// insertar usuario y contraseña
 	     	$queryAutentificacion = "insert into tigrupou_tcu.autentificacion_funcionarios(nombre_usuario,password,usuario)  
-values('$usuario','$contrasena',$id)";
+                values('$usuario','$contrasena',$id)";
 		
 			$stmtAu = $db->prepare($queryAutentificacion);//Inserta a DB 
 	     	$stmtAu -> execute();
@@ -46,6 +46,7 @@ values('$usuario','$contrasena',$id)";
       		$_SESSION["codigo"] = $id;
       		$_SESSION["usuario"] = $nombre_usuario;
       		$_SESSION["grupo"] = "";
+      		$_SESSION["sede"] = "" ;
 
 	     	redirect("../../vistas/principalFuncionarios/principalFuncionarios.php");
 		}

@@ -1,44 +1,53 @@
 <?php
     include '../../conection.php'; //conección a la db
     /** recive the query */
-    $query = $_post["query"];
+    $query = $_POST["query"];
 
     /** execute the query */
-    $stmt = $db->prepare($query);
-    $stmt -> execute();
-    $result = $stmt -> fetchall();
+    if($query != ""){
+        $stmt = $db->prepare($query);
+        $stmt -> execute();
+        $result = $stmt -> fetchall(); ?>
 
+
+        <table id="example" class ="display table table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th> Grupo</th>
+                    <th> Carrera</th>
+                    <th> Fecha </th>
+                </tr >
+            </thead>
+            <tbody>
+
+                <?php
+                    foreach($result as $row){ ?>
+                    <tr>
+                        <td> <?php echo $row["descripcion"]?></td>
+                        <td> <?php echo $row["carrera"]?></td>
+                        <td> <?php echo $row["fecha"]?></td>
+                    </tr>
+                    <?php
+                    }
+                ?>
+            </tbody >
+            <tfoot>
+                <tr>
+                    <th> Grupo</th>
+                    <th> Carrera</th>
+                    <th> Fecha </th>
+                </tr >
+            </tfoot>
+        </table>
+
+    <?php
+    }else{ ?>
+        <center><label class="label label-danger">Consulta NO Válida.</label></center>
+    <?php
+    }
 ?>
 
-    <table id="example" class ="display table table-striped" style="width:100%">
-        <thead>
-            <tr>
-                <th> Grupo</th>
-                <th> Carrera</th>
-                <th> Fecha </th>
-            </tr >
-        </thead>
-        <tbody>
 
-            <?php
-                foreach($result as $row){ ?>
-                <tr>
-                    <td> <?php echo $row["descripcion"]?></td>
-                    <td> <?php echo $row["carrera"]?></td>
-                    <td> <?php echo $row["fecha"]?></td>
-                </tr>
-                <?php
-                }
-            ?>
-        </tbody >
-        <tfoot>
-            <tr>
-                <th> Grupo</th>
-                <th> Carrera</th>
-                <th> Fecha </th>
-            </tr >
-        </tfoot>
-    </table>
 
 
 <script>

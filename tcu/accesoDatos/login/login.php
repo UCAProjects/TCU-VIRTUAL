@@ -60,7 +60,7 @@
 
 	}elseif($tipo == 2){//Logueo de Funcionario
 		try {
-			$query = "SELECT E.codigo, E.carrera, E.rol, A.nombre_usuario, A.password 
+			$query = "SELECT E.codigo, E.carrera, E.rol, A.nombre_usuario, A.password, E.sede
 						FROM tigrupou_tcu.funcionarios E 
 							JOIN tigrupou_tcu.autentificacion_funcionarios A 
 								ON E.codigo LIKE A.usuario 
@@ -83,6 +83,7 @@
 					$contrasenaDB = $row["password"];
 					$carreraDB = $row["carrera"];
 					$rolDB = $row["rol"];
+					$sedeDB = $row["sede"];
 				}
 				if($usuario == $usuarioDB and $contrasena ==$contrasenaDB){
 					session_start();
@@ -90,6 +91,7 @@
       				$_SESSION["usuarioFuncionario"] = $usuarioDB;
       				$_SESSION["carreraFuncionario"] = $carreraDB;
       				$_SESSION["rolFuncionario"] = $rolDB;
+                    $_SESSION["sedeFuncionario"] = $sedeDB;
       				echo "2";
 
 				}else{

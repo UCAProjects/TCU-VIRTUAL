@@ -108,7 +108,7 @@
                     			<li><label for="carrera">Carrera</label></li>
                       			<li>
                       				<select name="carrera" id="carrera" required>
-                                <option value="0"> &ltSin Asignar&gt</option>
+                                        <option value="0"> &ltSin Asignar&gt</option>
                                         <?php
                                             $query = "SELECT * FROM tigrupou_tcu.carreras;";
                                             $stmt = $db->prepare($query);
