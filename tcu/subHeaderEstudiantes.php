@@ -57,15 +57,16 @@
   </div><!-- .fondo-encabezado -->
 </header>
 
-<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+ crossorigin="anonymous"></script>
 
 <?php
   //session_start();
   $grupo = $_SESSION["grupo"];
 
-  /**
-   * Codigo para verificar el estado del anteProyecto y así 
-   * dar acceso al usuario a las distintas opciones del menú.
+  /*
+    Codigo para verificar el estado del anteProyecto y así 
+    dar acceso al usuario a las distintas opciones del menú.
    */
   $queryAnteProyectoStatus = "SELECT estado FROM tigrupou_tcu.ante_proyecto WHERE grupo LIKE $grupo";
   $stmt = $db->prepare($queryAnteProyectoStatus);
@@ -85,4 +86,3 @@
   }
 
   
-?>

@@ -20,12 +20,7 @@
 	if(isset($_POST["contrasena"])){
 		$contrasena = $_POST["contrasena"];
 	}
-	
 
-	
-
-
-	
 	if(isset($_POST["btnRegistro"])){ //Si se presiona el boton de confirmar
 		if($tipo == 0){ // Insertar un nuevo registro
 			$query = "insert into tigrupou_tcu.funcionarios(primer_apellido,segundo_apellido,nombre_completo,cedula,correo_electronico,telefono_trabajo)values('$apellido1','$apellido2','$nombre','$cedula','$correo','$telefono')";
@@ -63,6 +58,4 @@
 		}
 			
 	}
-		
-	 
 ?>

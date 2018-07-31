@@ -7,38 +7,38 @@
         <link rel="stylesheet" href="../../css/datosProyecto.css">
     </head>
     <body>
-    	<?php
-        session_start();
-        include '../../header.php';
-        include '../../conection.php';
+        <?php
+            session_start();
+            include '../../header.php';
+            include '../../conection.php';
 
-        $tipo = $_GET['tipo'];
-        
-        $pApellido = "";
-        $sApellido = "";
-        $nombre ="";
-        $cedula ="";
-        $correo ="";
-        $telefono = "";
-        $telTrabajo = "";
+            $tipo = $_GET['tipo'];
 
-        if($tipo ==2){ //Editar Funcionarios
-          include '../../subHeaderFuncionarios.php';
-          $sesionId = $_SESSION["codigoFuncionario"];
-          $query = "select * from tigrupou_tcu.funcionarios where codigo like $sesionId;";
-          $stmt = $db->prepare($query);
-          $stmt -> execute();
-          $result = $stmt -> fetchAll();
-          foreach($result as $row){
-            $pApellido = $row["primer_apellido"];
-            $sApellido = $row["segundo_apellido"];
-            $nombre = $row["nombre_completo"];
-            $cedula = $row["cedula"];
-            $correo = $row["correo_electronico"];
-            $telefono = $row["celular"];
-            $telTrabajo = $row["telefono_trabajo"];
-          }
-        }
+            $pApellido = "";
+            $sApellido = "";
+            $nombre ="";
+            $cedula ="";
+            $correo ="";
+            $telefono = "";
+            $telTrabajo = "";
+
+            if($tipo ==2){ //Editar Funcionarios
+              include '../../subHeaderFuncionarios.php';
+              $sesionId = $_SESSION["codigoFuncionario"];
+              $query = "select * from tigrupou_tcu.funcionarios where codigo like $sesionId;";
+              $stmt = $db->prepare($query);
+              $stmt -> execute();
+              $result = $stmt -> fetchAll();
+              foreach($result as $row){
+                $pApellido = $row["primer_apellido"];
+                $sApellido = $row["segundo_apellido"];
+                $nombre = $row["nombre_completo"];
+                $cedula = $row["cedula"];
+                $correo = $row["correo_electronico"];
+                $telefono = $row["celular"];
+                $telTrabajo = $row["telefono_trabajo"];
+              }
+            }
       ?>
         <!--[if lte IE 9]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>

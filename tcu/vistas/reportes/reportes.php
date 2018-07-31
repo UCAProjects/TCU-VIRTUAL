@@ -1,12 +1,15 @@
-<!doctype html>  
- <html class="no-js" lang="">
-    <head>
-      <title > 
-        TCU 
-      </title >  <!-- Reportería se plantea hacer en menú -->  
-    </head >  
-    <body>  
-      <?php
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+	<title>
+		TCU
+	</title>
+	<!-- Reportería se plantea hacer en menú -->
+</head>
+
+<body>
+	<?php
         session_start(); 
         //$sesionId = $_SESSION["codigo"];
         //$grupo = $_SESSION["grupo"];
@@ -16,11 +19,11 @@
         include '../../conection.php'; //Conección a la DB
 
         $id = $_GET["id"];
-      ?>  
-    
-        <link rel='stylesheet' href='../../css/stilos.css'/>  
-        <link rel="stylesheet" type="text/css" href="../../DataTables/datatables.min.css"/>
-        <?php
+      ?>
+
+	<link rel='stylesheet' href='../../css/stilos.css' />
+	<link rel="stylesheet" type="text/css" href="../../DataTables/datatables.min.css" />
+	<?php
           $url = "";
           switch ($id){
             case '2':
@@ -40,29 +43,37 @@
                 break;
           }
         ?>
-        
 
-        <!--[if lte IE 9] >  <p class="browserupgrade" > You are using an <strong> outdated </strong > browser . Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p> 
-        <! [endif]-->  <!--Add your site or application content here -->  
 
-        <main class="site-main">  
-          <section class="seccion-informacion">  
-            <div class="contenedor clearfix">  
-              <div class="">  <br>  
-                <div class="well">  
-                  <div id="divBusqueda"></div> <!-- Se carga la sección para hacer la busqueda -->
-                  <br><hr>
-                  <div id ="result" >  </div > <!-- Se carga los resultados de la busqueda anterior --> 
-                </div>  
-              </div>  
-            </div> <!-- . programa - evento -->  
-          </div> <!-- . contenedor -->  
-        </section> <!-- . section programa -->  
-        </main >  
-        
-        <?php
+	<!--[if lte IE 9] >  <p class="browserupgrade" > You are using an <strong> outdated </strong > browser . Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p> 
+        <! [endif]-->
+	<!--Add your site or application content here -->
+
+	<main class="site-main">
+		<section class="seccion-informacion">
+			<div class="contenedor clearfix">
+				<div class="">
+					<br>
+					<div class="well">
+						<div id="divBusqueda"></div>
+						<!-- Se carga la sección para hacer la busqueda -->
+						<br>
+						<hr>
+						<div id="result"> </div>
+						<!-- Se carga los resultados de la busqueda anterior -->
+					</div>
+				</div>
+			</div>
+			<!-- . programa - evento -->
+			</div>
+			<!-- . contenedor -->
+		</section>
+		<!-- . section programa -->
+	</main>
+
+	<?php
           include '../../footer.php'; 
-        ?>
+  ?>
         <script>
           cargarFormularios('<?php echo $url;?>','divBusqueda');
         </script>
@@ -116,7 +127,6 @@
                   query = "SELECT * FROM tigrupou_tcu.grupos WHERE sede like " + codSede;
               }
               cargarFormulariosPost('resGrupo.php','result',{query:query});
-
           }
 
           function sendCarreraReport(){
@@ -144,4 +154,4 @@
         </script>  
         
       </body> 
-    </html> 
+    </html>
