@@ -27,7 +27,7 @@
         <a  class="color" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="white"><i class="fas fa-globe"></i> Proyecto TCU</span><span class="caret white colorNaranja"></span></a>
         <ul class="dropdown-menu">
           <li><a class="over" href="../datosProyecto/crearGrupo.php?tipo=1"><i class="fas fa-users"></i> Grupo de Trabajo</a></li>
-          <li><a href="../datosProyecto/datosProyecto.php?tipo=1"><i class="fas fa-info-circle"></i> Datos del Proyecto</a></li>
+          <li><a href="../datosProyecto/datosProyecto.php?tipo=-1"><i class="fas fa-info-circle"></i> Datos del Proyecto</a></li>
         </ul>
       </li>
       <li class="dropdown">
@@ -43,6 +43,14 @@
         <ul class="dropdown-menu">
           <li id="liHorasDigital"><a href="../horasTCU/calendarioHoras.php?grupo=0"><i class="fas fa-calendar-alt"></i> Control de horas digital</a></li>
           <li id="liControlDocumento"><a href="../../documentos/Bitácora.pdf" target="_blank"><i class="fas fa-download"></i> Documento para el control de horas</a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <a  href="#" class="dropdown-toggle color" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ><i class="fas fa-clipboard-list"></i> Plantillas <span  class="caret white colorNaranja"></span></a>
+        <ul class="dropdown-menu">
+          <li id="liHorasDigital"><a ><i class="far fa-file-alt"></i> Carta de Aceptación</a></li>
+          <li id="liControlDocumento"><a  target="_blank"><i class="far fa-file-alt"></i> Carta de Supervisión</a></li>
         </ul>
       </li>
       <li class="navbar-right" id="liSalir"><a class="color"  href="../../index.php"><i class="fas fa-sign-out-alt"></i></a></li>
@@ -72,6 +80,7 @@
   $stmt = $db->prepare($queryAnteProyectoStatus);
   $stmt -> execute();
   $resultAnteProyectoStatus = $stmt -> fetchAll();
+  $estatusAnteProyecto = '';
   foreach ($resultAnteProyectoStatus as $row) {
     $estatusAnteProyecto = $row["estado"];
   }

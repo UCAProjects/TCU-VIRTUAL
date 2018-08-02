@@ -12,6 +12,7 @@
   $stmt = $db->prepare($queryAnteProyectoStatus);
   $stmt -> execute();
   $resultAnteProyectoStatus = $stmt -> fetchAll();
+  $estatusAnteProyecto = "";
   foreach ($resultAnteProyectoStatus as $row) {
     $estatusAnteProyecto = $row["estado"];
   }

@@ -45,7 +45,6 @@
 
     //Inicialización de variables
     $id = $_SESSION["codigo"];
-    echo "No aun";
     if(isset($_POST["reglamentoBtn"])){ //Si se presiona el boton de confirmar
         echo "listo";
         $queryUpdateReglamento = "UPDATE tigrupou_tcu.estudiantes SET reglamento = 1 WHERE codigo like $id";

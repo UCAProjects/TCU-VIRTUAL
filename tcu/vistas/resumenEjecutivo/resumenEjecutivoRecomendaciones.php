@@ -13,6 +13,7 @@
   $stmt = $db->prepare($queryResumenEjecutivoStatus);
   $stmt -> execute();
   $resultResumenEjecutivoStatus = $stmt -> fetchAll();
+  $estatusResumenEjecutivo = "";
   foreach ($resultResumenEjecutivoStatus as $row) {
     $estatusResumenEjecutivo = $row["estado"];
   }
