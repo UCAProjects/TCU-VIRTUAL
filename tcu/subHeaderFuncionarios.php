@@ -114,6 +114,11 @@
 							<i class="fas fa-file-pdf"></i>
 							</i> Reporte por Estatus </a>
 					</li>
+					<li>
+						<a class="over" href="../reportes/reportes.php?id=5">
+							<i class="fas fa-file-pdf"></i>
+							</i> Reporte General </a>
+					</li>
 				</ul>
 			</li>
 			<!-- ************************ -->

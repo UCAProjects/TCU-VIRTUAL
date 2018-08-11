@@ -40,7 +40,6 @@
  ?>
 
 
-
 <label for="identificacionProblema">RESUMEN DE LAS ACTIVIDADES REALIZADAS DURANTE EL TCU</label>
 <input type="hidden" name="hiddenCodigo" id="hiddenCodigo" value="<?php echo $codigo?>">
 <textarea  id="resumen_actividades"

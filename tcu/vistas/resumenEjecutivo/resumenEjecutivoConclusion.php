@@ -13,9 +13,11 @@
   $stmt = $db->prepare($queryResumenEjecutivoStatus);
   $stmt -> execute();
   $resultResumenEjecutivoStatus = $stmt -> fetchAll();
-  foreach ($resultResumenEjecutivoStatus as $row) {
+  $estatusResumenEjecutivo = "";
+  foreach ($resultResumenEjecutivoStatus as $row){
     $estatusResumenEjecutivo = $row["estado"];
   }
+  
   if($estatusResumenEjecutivo == '1' or $estatusResumenEjecutivo == '2'){
     ?>
       <script>
