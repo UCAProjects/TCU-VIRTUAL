@@ -57,6 +57,32 @@
     $linkSolicitud = $row["url_carta_solicitud"];
     $linkCronograma = $row["url_cronograma_tcu"];
   }
+
+
+  $queryMaxVersion = "SELECT max(version) AS max FROM tigrupou_tcu.revision_ante_proyecto 
+  WHERE ante_proyecto like $id and rol LIKE $rol";
+
+  $stmt = $db->prepare($queryMaxVersion); 
+  $stmt -> execute();
+  $resultMaxV = $stmt -> fetchAll();
+  foreach ($resultMaxV as $row) {
+    $maxVersion = $row["max"];
+  }
+
+  $queryGuardado = "SELECT * FROM tigrupou_tcu.revision_ante_proyecto WHERE version like 
+    $maxVersion and ante_proyecto like $id and rol LIKE $rol";
+  
+  $stmt = $db->prepare($queryGuardado);
+  $stmt -> execute();
+  $resultGuardado = $stmt -> fetchAll();
+  
+  foreach ($resultGuardado as $row) {
+    $estadoGuardado = $row["estado"];
+    $version = $row["version"];
+    $observacionesGuardado = $row["Observaciones"];
+  }
+  echo $estadoGuardado;
+  
   ?>
   <main class="site-main">
     <section class="seccion-informacion">
@@ -219,8 +245,15 @@
                     </div><?php
                   }
                 ?>
-                <div style="resize: both;">
-                  <h3><center>Observaciones</center></h3>
+                <div style="resize: both;"><br>
+                  <div class="row">
+                    <div class="col-md-7 col-md-offset-2">
+                      <h3><center>Observaciones</center></h3>
+                    </div>
+                    <div class="col-md-2">
+                    <a class="btn btn-primary" onclick="ingresarCalificacion(<?php echo $id;?>,6,1,<?php echo $rol;?>)"><i class="fas fa-save"></i></a>
+                    </div>
+                  </div>
                   <center><textarea  id="txtA_observaciones" placeholder="Observaciones" cols="70" rows="20"></textarea></center>
                 </div><!-- END DIV COL -->
                 <br>
@@ -285,6 +318,14 @@
   ?>
   <script src="../../js/datosProyecto.js"></script>
 
+  <?php 
+    if($estadoGuardado == 6){ ?>
+      <script>
+        alert("si")
+        $("#txtA_observaciones").value = '<?php echo $observacionesGuardado ?>';
+      </script>
+    <?php }
+  ?>
 
   <!-- Moda para agregar insumos a la actividad-->
   <div class="modal fade" id="verCalificacion-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
