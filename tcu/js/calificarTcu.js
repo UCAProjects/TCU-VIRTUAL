@@ -10,9 +10,19 @@
  * @returns Nothing.
  * 
  **/
-function ingresarCalificacion(pCodigoAnteProyecto, pEstado, pTipo, pRol) {
+function ingresarCalificacion(pCodigoAnteProyecto, pCalificacion, pTipo, pRol, pGuardado) {
     var observaciones = $('#txtA_observaciones').val();
-    var parametros = { "estado": pEstado, "observaciones": observaciones, "documento": pCodigoAnteProyecto, "tipo": pTipo, "rol": pRol };
+    alert(pEditar);
+    debugger;
+    var parametros = {
+        "calificacion": pCalificacion,
+        "observaciones": observaciones,
+        "documento": pCodigoAnteProyecto,
+        "tipo": pTipo,
+        "rol": pRol,
+        "guardado": pGuardado
+    };
+
     $.ajax({
         data: parametros,
         type: "POST",
