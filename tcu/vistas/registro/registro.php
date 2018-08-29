@@ -50,7 +50,7 @@
             $carrera =$row["carrera"];;
             $grado =$row["grado"];;
             $sede =$row["sede"];;
-            $periodo =$row["cuatrimestre"];
+            $periodo =$row["periodo"];
           }
         }
 
@@ -144,12 +144,12 @@
 					   				<select name="periodo" id="periodo" required>
                       <option value="0"> &ltSin Asignar&gt</option>
 								  		<?php
-                                            $query = "SELECT * FROM tigrupou_tcu.periodos;";
+                                            $query = "SELECT P.codigo, CONCAT(P.anio, ' - ', SP.sub_periodo,' ', P.numero_periodo ) AS PERIODO FROM tigrupou_tcu.periodos P JOIN tigrupou_tcu.sub_periodo SP ON P.sub_periodo LIKE SP.codigo;";
                                             $stmt = $db->prepare($query);
                                             $stmt -> execute();
                                             $result = $stmt -> fetchAll();
                                             foreach ($result as $row) {
-                                              echo "<option value=\"$row[codigo]\"> $row[periodo] </option>";
+                                              echo "<option value=\"$row[codigo]\"> $row[PERIODO] </option>";
                                             }
                                         ?>
 									</select>

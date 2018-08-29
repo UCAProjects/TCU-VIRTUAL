@@ -38,6 +38,9 @@
             case '5':
                 $url =  "busquedaEstado.php";
                 break;
+            case '6':
+                $url =  "busquedaGeneral.php";
+                break;
             default:
                 $url =  "busquedaPeriodo.php";
                 break;
@@ -51,7 +54,7 @@
 
 	<main class="site-main">
 		<section class="seccion-informacion">
-			<div class="contenedor clearfix">
+			<div class="" style="margin-left:1%;margin-right:1%">
 				<div class="">
 					<br>
 					<div class="well">
@@ -150,6 +153,61 @@
                   query = "SELECT * FROM tigrupou_tcu.grupos WHERE estado like " + codEst;
               }
               cargarFormulariosPost('resGrupo.php','result',{query:query});
+          }
+
+          
+          function createQuery(pCont, pStr){
+              if(pCont == 0){
+                  return " WHERE " + pStr;
+              }
+              else{
+                  return " AND " + pStr;
+              }
+          }
+
+          function sendGeneralReport(){
+            var cont = 0; /** Controla el numero de condiciones activas */
+            var query = "SELECT G.codigo, G.fecha, G.descripcion, C.carrera, E.descripcion AS estado, S.sede AS sede, CONCAT(P.anio,' - ',SP.sub_periodo,' ', P.numero_periodo) AS periodo FROM tigrupou_tcu.grupos G  LEFT JOIN tigrupou_tcu.carreras C ON G.carrera LIKE C.codigo  LEFT JOIN tigrupou_tcu.estado E ON G.estado LIKE E.codigo  LEFT JOIN tigrupou_tcu.sedes S ON G.sede LIKE S.codigo LEFT JOIN tigrupou_tcu.periodos P ON G.periodo LIKE P.codigo LEFT JOIN tigrupou_tcu.sub_periodo SP ON P.sub_periodo LIKE SP.codigo AND P.codigo LIKE G.periodo ";
+
+            /** Select Carrera */
+            var e = document.getElementById("selCarrera");
+            var codCarrera = e.options[e.selectedIndex].value;
+
+            /** Select Sede */
+            var e = document.getElementById("selSede");
+            var codSede = e.options[e.selectedIndex].value;
+
+            var e = document.getElementById("selEstado");
+            var codEst = e.options[e.selectedIndex].value;
+
+            var e = document.getElementById("selPeriodo");
+            var codPeriod = e.options[e.selectedIndex].value;
+
+            if(codPeriod != "0"){
+                qSede = "G.periodo like " + codPeriod;
+                query += createQuery(cont,qSede);
+                cont ++;
+            }
+
+            if(codEst != "-1"){
+                qEstado = "G.estado like " + codEst;
+                query += createQuery(cont,qEstado);
+                cont ++;
+            }
+
+            if(codSede != "0"){
+                qSede = "G.sede like " + codSede;
+                query += createQuery(cont,qSede);
+                cont ++;
+            }
+
+            if(codCarrera != "0"){
+                qCarrera = "G.carrera like " + codCarrera;
+                query += createQuery(cont,qCarrera);
+                cont ++;
+            }
+            query += ";"
+            cargarFormulariosPost('resGrupo.php','result',{query:query});
           }
         </script>  
         

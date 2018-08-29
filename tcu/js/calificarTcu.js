@@ -12,7 +12,6 @@
  **/
 function ingresarCalificacion(pCodigoAnteProyecto, pCalificacion, pTipo, pRol, pGuardado) {
     var observaciones = $('#txtA_observaciones').val();
-    alert(pEditar);
     debugger;
     var parametros = {
         "calificacion": pCalificacion,
@@ -28,10 +27,12 @@ function ingresarCalificacion(pCodigoAnteProyecto, pCalificacion, pTipo, pRol, p
         type: "POST",
         url: "../../accesoDatos/calificarTcu/insertarCalificacionTcu.php",
         success: function(data) {
-            if (data == "OK") {
+            if (data == "CAL") {
                 mensaje('confirmation', "Se ha registrado la calificación", 2000);
                 var url = "calificarDatosProyecto.php?class=" + pTipo;
                 setTimeout(function() { window.location = url; }, 2000);
+            } else if (data == "SAVE") {
+                mensaje('confirmation', "Se ha guardado con éxito", 2000);
             } else {
                 mensaje('error', "Error al procesar la información, intentelo más tarde.", 2000);
             }

@@ -21,8 +21,8 @@
 						//echo $cod;
 						$query = "select grupo, cedula from tigrupou_tcu.estudiantes where codigo like $cod";
 						$stmt = $db->prepare($query);//Inserta a DB
-			     	$stmt -> execute();
-			     	$result = $stmt -> fetchAll();
+			     		$stmt -> execute();
+			     		$result = $stmt -> fetchAll();
 
 						foreach ($result as $row ){
 							if($row["grupo"] != ""){// VALOR NO NULL
@@ -51,6 +51,31 @@
 							$queryUpdate = "update tigrupou_tcu.grupos set  carrera = $carrera where codigo like $id";
 						     $stmt = $db->prepare($queryUpdate);//Inserta a DB
 						     $stmt -> execute();
+						}
+
+						$query = "SELECT sede, COUNT(sede) totpages FROM tigrupou_tcu.estudiantes where grupo = $id GROUP BY sede ORDER BY totpages DESC LIMIT 1";
+						$stmt = $db->prepare($query);//Inserta a DB
+			     		$stmt -> execute();
+			     		$result = $stmt -> fetchAll();
+
+			     		foreach ($result as $row ) {
+							$sede = $row["sede"];
+							$queryUpdate = "update tigrupou_tcu.grupos set  sede = $sede where codigo like $id";
+						    $stmt = $db->prepare($queryUpdate);//Inserta a DB
+						    $stmt -> execute();
+						}
+						
+
+						$query = "SELECT periodo, COUNT(periodo) totpages FROM tigrupou_tcu.estudiantes where grupo = $id GROUP BY periodo ORDER BY totpages DESC LIMIT 1";
+						$stmt = $db->prepare($query);//Inserta a DB
+			     		$stmt -> execute();
+			     		$result = $stmt -> fetchAll();
+
+			     		foreach ($result as $row ) {
+							$periodo = $row["periodo"];
+							$queryUpdate = "update tigrupou_tcu.grupos set  periodo = $periodo where codigo like $id";
+						    $stmt = $db->prepare($queryUpdate);//Inserta a DB
+						    $stmt -> execute();
 						}
 
 					if($valor and $cantidad >0){

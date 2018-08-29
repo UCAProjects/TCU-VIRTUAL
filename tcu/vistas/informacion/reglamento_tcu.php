@@ -22,6 +22,27 @@
                 </p>
                    <a href="../../documentos/Reglamento-Trabajo-Comunal-Universitario-TCU.pdf" target="_blank">
                      <i class="far fa-file-pdf" aria-hidden="true" style="font-size:30px;color:red"></i> Ver o descargar PDF</a>
+ 
+
+                 <h3>Tutoriales pra realizar el TCU</h3>
+                  <hr>
+                  <h4>ANTE PROYECTO</h4>
+                    <video width="90%" controls >
+                      <source src="../../video/tcu2.mp4" type="video/mp4">
+                      <source src="../../video/tcu2.webm" type="video/webm">
+                      Lo sentimos, su explorador no es compatible con el formato de video!
+                    </video>
+
+                  <hr>  
+                  <h4>INFORME FINAL</h4>
+                    <video width="90%" controls >
+                      <source src="../../video/tcu1.mp4" type="video/mp4">
+                      <source src="../../video/tcu1.webm" type="video/webm">
+                      Lo sentimos, su explorador no es compatible con el formato de video!
+                    </video>
+
+                   
+                <br><br>
                 <p>
                     Para cualquier duda o consulta, puede contactarnos por medio del formulario de <span>
                     <a href="contacto.php"><i class="fas fa-envelope" aria-hidden="true"></i> contacto</a></span> de la página y pronto le estaremos contactando.

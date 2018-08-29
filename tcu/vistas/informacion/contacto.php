@@ -6,7 +6,7 @@
             <h2>Conctactenos</h2>
             <div class="contenedor">
               <div class="ingreso">
-                <form class="formulario clearfix" action="contacto_enviar.php" method="post">
+                <form class="formulario clearfix" action="" method="post">
                   <ul>
                     <li><label for="correo">Correo:</label></li>
                     <li><input type="email" name="correo" id="correo" placeholder="Digite su correo" autocomplete="on" required></li>

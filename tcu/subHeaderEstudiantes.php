@@ -34,7 +34,7 @@
         <a  href="#" class="dropdown-toggle color" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ><i class="fas fa-file-alt"></i> Documentación <span  class="caret white colorNaranja"></span></a>
         <ul class="dropdown-menu">
           <li><a href="../datosProyecto/anteProyecto.php?tipo=1"><i class="fas fa-book"></i> Ante Proyecto</a></li>
-          <li id="liResumenEjectivo"><a href="../resumenEjecutivo/resumenEjecutivo.php"><i class="fas fa-book"></i> Resumen Ejecutivo</a></li>
+          <li id="liResumenEjectivo"><a href="../resumenEjecutivo/resumenEjecutivo.php"><i class="fas fa-book"></i> Informe Final</a></li>
         </ul>
       </li>
 
@@ -49,8 +49,10 @@
       <li class="dropdown">
         <a  href="#" class="dropdown-toggle color" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ><i class="fas fa-clipboard-list"></i> Plantillas <span  class="caret white colorNaranja"></span></a>
         <ul class="dropdown-menu">
-          <li id="liHorasDigital"><a ><i class="far fa-file-alt"></i> Carta de Aceptación</a></li>
-          <li id="liControlDocumento"><a  target="_blank"><i class="far fa-file-alt"></i> Carta de Supervisión</a></li>
+          <li id="liHorasDigital"><a href="../../Plantillas/CartaAceptacion.docx"><i class="far fa-file-alt"></i> Carta de Aceptación</a></li>
+          <li id="liControlDocumento"><a href="../../Plantillas/CartaSolicitud.docx"><i class="far fa-file-alt"></i> Carta de Solicitud</a></li>
+          <li id="liControlDocumento"><a href="../../Plantillas/CartaFinalizacion.docx"><i class="far fa-file-alt"></i> Carta de Finalización</a></li>
+          <li id="liControlDocumento"><a href="../../Plantillas/BitácoraTCULogoNuevo2018.pdf" target="_blank"><i class="far fa-file-alt"></i> Cronograma</a></li>
         </ul>
       </li>
       <li class="navbar-right" id="liSalir"><a class="color"  href="../../index.php"><i class="fas fa-sign-out-alt"></i></a></li>

@@ -129,7 +129,7 @@
                       <li><input type="text" id="telTrabajo" name="telTrabajo" placeholder="Digite el teléfono del trabajo" value="<?php echo $telefono ?>" class="tamanoCompleto"></li>
                     </div>
                     <div class="col-md-3">
-                      <li><label for="cecular">Teléfono Celular</label></li>
+                      <li><label for="cecular">Teléfono Supervisor</label></li>
                       <li><input type="text" id="celular" name="celular" placeholder="Digite el teléfono celular" class="tamanoCompleto" value="<?php echo $celular ?>"></li>
                     </div>
                     <div class="col-md-6">

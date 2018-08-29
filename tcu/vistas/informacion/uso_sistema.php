@@ -15,18 +15,13 @@
                   a llevar un registro idóneo de todo el proceso de desarrollo de este,
                   como parte de su formación integral y como requisito ineludible para concluir su plan de estudios.
                 </p>
-                <h3>Registro e ingreso al sistema</h3>
+                <h3>Uso del Sistema</h3>
+                <div id="example1" style="height:700px" class="textTC"></div> 
+
+                <br><br>
                 <p>
-                  El estudiante debe registrar sus datos personales en el sistema previo a su ingreso, para lo cual
-                  es necesario que de clic sobre la opción de Registro el cual lo redirigirá a la sección para ingreso
-                  de sus datos personales, el sistema solicitará un usuario y contraseña para el ingreso al sistema.
-                  Es menester aclarar que el estudiante debe proporcionar una dirección de correo electrónico válido,
-                  de esa forma podrá notificársele sobre el desarrollo de su TCU.
-                </p>
-                <h3>Datos del proyecto</h3>
-                <p>
-                  Una vez registrado en el sistema, deberá ingresar su Usuario y Contraseña, el cual le permitirá
-                  ingresar los datos de su proyecto.
+                    Para cualquier duda o consulta, puede contactarnos por medio del formulario de <span>
+                    <a href="contacto.php"><i class="fas fa-envelope" aria-hidden="true"></i> contacto</a></span> de la página y pronto le estaremos contactando.
                 </p>
               </div>
             </div><!--.contenedor-->
@@ -35,5 +30,8 @@
 
         <!--.FOOTER-->
         <?php include("../../footer.php") ?>
+
+        <script src="../../PDFObject/pdfobject.js"></script>
+        <script>PDFObject.embed("../../documentos/MANUAL DE USUARIO DEL SOFTWARE DE TCU-V2.pdf", "#example1");</script>
     </body>
 </html>

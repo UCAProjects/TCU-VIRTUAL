@@ -13,9 +13,14 @@
         <table id="example" class ="display table table-striped" style="width:100%">
             <thead>
                 <tr>
+                    <th> Codigo</th>
                     <th> Grupo</th>
+                    <th> Sede</th>
                     <th> Carrera</th>
-                    <th> Fecha </th>
+                    <th> Estado</th>
+                    <th> Fecha Creación</th>
+                    <th> Periodo</th>
+
                 </tr >
             </thead>
             <tbody>
@@ -23,9 +28,13 @@
                 <?php
                     foreach($result as $row){ ?>
                     <tr>
+                        <td> <?php echo $row["codigo"]?></td>
                         <td> <?php echo $row["descripcion"]?></td>
+                        <td> <?php echo $row["sede"]?></td>
                         <td> <?php echo $row["carrera"]?></td>
+                        <td> <?php echo $row["estado"]?></td>
                         <td> <?php echo $row["fecha"]?></td>
+                        <td> <?php echo $row["periodo"]?></td>
                     </tr>
                     <?php
                     }

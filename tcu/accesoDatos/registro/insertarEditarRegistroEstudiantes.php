@@ -31,8 +31,7 @@
 		
 		if($tipo == 0){
 			try {
-			$ano = date('Y');
-			$query = "insert into tigrupou_tcu.estudiantes(primer_apellido,segundo_apellido,nombre_completo,cedula,correo_electronico,telefono_trabajo,celular,carrera,grado,cuatrimestre,aino,sede,lugar_trabajo) values('$apellido1','$apellido2','$nombre','$cedula','$correo','$telefonoT','$telefono',$carrera,$grado,$periodo,'$ano',$sede,'$lugarTrabajo')";
+			$query = "insert into tigrupou_tcu.estudiantes(primer_apellido,segundo_apellido,nombre_completo,cedula,correo_electronico,telefono_trabajo,celular,carrera,grado,periodo,sede,lugar_trabajo) values('$apellido1','$apellido2','$nombre','$cedula','$correo','$telefonoT','$telefono',$carrera,$grado,$periodo,$sede,'$lugarTrabajo')";
 
 			$stmt = $db->prepare($query);//Inserta a DB
 	     	$stmt -> execute();
@@ -63,7 +62,7 @@ values('$usuario','$contrasena',$id)";
 			}
 		}else{
 			try {
-				$query = "update tigrupou_tcu.estudiantes set primer_apellido = '$apellido1',segundo_apellido = '$apellido2' ,nombre_completo = '$nombre' ,cedula = '$cedula',correo_electronico = '$correo',telefono_trabajo = '$telefonoT',celular = '$telefono',carrera = $carrera,grado = $grado,cuatrimestre = $periodo,sede = $sede ,lugar_trabajo = '$lugarTrabajo' where codigo like $codigo ";
+				$query = "update tigrupou_tcu.estudiantes set primer_apellido = '$apellido1',segundo_apellido = '$apellido2' ,nombre_completo = '$nombre' ,cedula = '$cedula',correo_electronico = '$correo',telefono_trabajo = '$telefonoT',celular = '$telefono',carrera = $carrera,grado = $grado,periodo = $periodo,sede = $sede ,lugar_trabajo = '$lugarTrabajo' where codigo like $codigo ";
 
 				$stmt = $db->prepare($query);//Actualiza la DB
 		     	$stmt -> execute();

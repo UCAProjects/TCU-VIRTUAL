@@ -5,7 +5,6 @@
         margin-left: 5%;
     }
     .pdfobject { border: 1px solid #666; }
-
     .title{
         margin-left: 5%;
         font-weight: bold;
@@ -27,17 +26,46 @@
 <div class="modal.body body">
         <p class="title">Reglamento</p>
         <div id="example1" class="textTC"></div> 
-        <br>
-        <hr>
-        <br>
-        <p class="title">Uso del Sistema</p>
-        <video width="90%" style="margin-left:5%" controls>
-            <source src="../../video/video.mp4" type="video/mp4">
-            <source src="../../video/video.ogv" type="video/ogv">
-            <source src="../../video/video.webm" type="video/webm">
-            Your browser does not support HTML5 video.
-        </video>
-</div>
+        <div class="container" width="10%">
+            <p class="title">Videos Informátivos</p>
+            <div id="myCarousel" width="10%" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                            <video width="90%" controls >
+                                <source src="../../video/tcu2.mp4" type="video/mp4">
+                                <source src="../../video/tcu2.webm" type="video/webm">
+                                Lo sentimos, su explorador no es compatible con el formato de video!
+                            </video>
+                    </div>
+                    <div class="item">
+                        <video width="90%"  controls>
+                            <source src="../../video/tcu1.mp4" type="video/mp4">
+                            <source src="../../video/tcu1.webm" type="video/webm">
+                            Lo sentimos, su explorador no es compatible con el formato de video!
+                        </video>
+                        <!--<div class="carousel-caption">
+                        <h3>Informe Final</h3>
+                        </div>-->
+                    </div>
+                </div>
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <!--<a style="margin-right:13%; width:10px" class="right carousel-control" href="#myCarousel" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                    <span class="sr-only">Next</span>
+                </a> -->
+            </div>  
+        </div>
 <br>
 <?php
     session_start();
@@ -57,6 +85,11 @@
         <button type="button"  onclick="reglamento()" data-dismiss="modal" class="btn btn-success" id="reglamentoBtn" name="reglamentoBtn">Declaro haber leído la información aquí suministrada</button>
 </div>
 
+<script>
+    $('.carousel').carousel({
+        interval: false
+    }); 
 
+</script>
 <script src="../../PDFObject/pdfobject.js"></script>
 <script>PDFObject.embed("../../documentos/Reglamento-Trabajo-Comunal-Universitario-TCU.pdf", "#example1");</script>

@@ -94,7 +94,7 @@
 				</a>
 				<ul class="dropdown-menu">
 					<!-- <li><a class="over" href="../reportes/reportes.php?id=1"><i class="fas fa-file-pdf"></i></i> Reporte por Estudiante </a></li> -->
-					<li>
+					<!--<li>
 						<a class="over" href="../reportes/reportes.php?id=2">
 							<i class="fas fa-file-pdf"></i>
 							</i> Reporte por Periodo </a>
@@ -113,15 +113,22 @@
 						<a class="over" href="../reportes/reportes.php?id=5">
 							<i class="fas fa-file-pdf"></i>
 							</i> Reporte por Estatus </a>
-					</li>
+					</li> -->
 					<li>
-						<a class="over" href="../reportes/reportes.php?id=5">
+						<a class="over" href="../reportes/reportes.php?id=6">
 							<i class="fas fa-file-pdf"></i>
 							</i> Reporte General </a>
 					</li>
 				</ul>
 			</li>
 			<!-- ************************ -->
+
+			<!-- Convalidar TCU -->
+			<li id="liSalirs">
+				<a class="color" href="../convalidaciones/convalidaciones.php">
+				<i class="fas fa-clone"></i> Convalidar TCU</a>
+			</li>
+
 
 			<li class="navbar-right" id="liSalir">
 				<a class="color" href="../../index.php">

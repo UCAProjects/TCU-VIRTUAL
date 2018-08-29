@@ -38,10 +38,11 @@
 	     	$stmtAu -> execute();
 
 	     	session_start();
-      		$_SESSION["codigo"] = $id;
-      		$_SESSION["usuario"] = $nombre_usuario;
-      		$_SESSION["grupo"] = "";
-      		$_SESSION["sede"] = "" ;
+      		$_SESSION["codigoFuncionario"] = $id;
+      		$_SESSION["usuarioFuncionario"] = $nombre_usuario;
+      		$_SESSION["carreraFuncionario"] = "";
+			  $_SESSION["rolFuncionario"] = "" ;
+			  $_SESSION["sedeFuncionario"] = "" ;
 
 	     	redirect("../../vistas/principalFuncionarios/principalFuncionarios.php");
 		}
