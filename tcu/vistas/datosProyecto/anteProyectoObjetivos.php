@@ -51,7 +51,7 @@
   <label for="objetivos_especificos">OBJETIVOS ESPECIFICOS</label>
   <textarea  id="objetivos_especificos"
         style=" overflow:hidden; font-size:15px; font-family:Arial; text-align : justify;line-height: 1.6; resize:none;"
-                rows="12" cols="87"> <?php echo $especificos ?> </textarea>
+                rows="12" cols="87"><?php echo $especificos ?></textarea>
 
 <br>
 
@@ -59,14 +59,14 @@
   <div class="row">
     <div class="col-md-6">
       <button class="btn btn-primary" href="#"
-        onclick="guardar('objetivo_general',<?php echo $grupo ?>,1);guardar('objetivos_especificos',<?php echo $grupo ?>,1); cargarFormularios('anteProyectoProyecto.php','contenedorAnteProyecto');disminuirProgress(20);">
+        onclick="guardar('objetivo_general',<?php echo $grupo ?>,1);guardar('objetivos_especificos',<?php echo $grupo ?>,1, 'anteProyectoProyecto.php','contenedorAnteProyecto');disminuirProgress(20);">
           <span class="glyphicon glyphicon-arrow-left"> </span>  
           Atrás
       </button>
     </div>
     <div class="col-md-6">
       <button class="btn" href="#"
-        onclick="guardar('objetivo_general',<?php echo $grupo ?>,1);guardar('objetivos_especificos',<?php echo $grupo ?>,1); cargarFormularios('anteProyectoEstrategiasPertenencias.php','contenedorAnteProyecto');aumentarProgress(20);" 
+        onclick="guardar('objetivo_general',<?php echo $grupo ?>,1);guardar('objetivos_especificos',<?php echo $grupo ?>,1,'anteProyectoEstrategiasPertenencias.php','contenedorAnteProyecto'); aumentarProgress(20);" 
           style="margin-left:45% !important"> 
             Continuar  <span class="glyphicon glyphicon-arrow-right"></span>
       </button>

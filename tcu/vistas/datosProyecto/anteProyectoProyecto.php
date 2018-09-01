@@ -44,21 +44,20 @@
 <input type="hidden" id="hiddenCodigo" name="hiddenCodigo" value="<?php echo $codigo ?>">
 <textarea  id="justificacion_proyecto"
       style=" overflow:hidden; font-size:15px; font-family:Arial; text-align : justify;line-height: 1.6; resize:none;"
-            rows="20" cols="87" maxlength="1740"><?php echo $descripcion_beneficiario ?>
-</textarea>
+            rows="20" cols="87" maxlength="1740"><?php echo $descripcion_beneficiario ?></textarea>
 <br>
 
 <div class="row">
     <div class="col-md-6">
       <button class="btn btn-primary" href="#" 
-        onclick="guardar('justificacion_proyecto',<?php echo $grupo ?>,1); cargarFormularios('anteProyectoBeneficiario.php','contenedorAnteProyecto');disminuirProgress(20);">
+        onclick="guardar('justificacion_proyecto',<?php echo $grupo ?>,1,'anteProyectoBeneficiario.php','contenedorAnteProyecto'); disminuirProgress(20);">
           <span class="glyphicon glyphicon-arrow-left"> </span>  
           Atrás
       </button>
     </div>
     <div class="col-md-6">
       <button class="btn" href="#"
-        onclick="guardar('justificacion_proyecto',<?php echo $grupo?>,1);aumentarProgress(20);cargarFormularios('anteProyectoObjetivos.php','contenedorAnteProyecto');" 
+        onclick="guardar('justificacion_proyecto',<?php echo $grupo?>,1,'anteProyectoObjetivos.php','contenedorAnteProyecto');aumentarProgress(20);" 
           style="margin-left:45% !important">
             Continuar  <span class="glyphicon glyphicon-arrow-right"></span>
       </button>

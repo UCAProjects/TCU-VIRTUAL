@@ -18,7 +18,7 @@
   <button type="button" class="close black" data-dismiss="modal" aria-label="Close">
     <span class="glyphicon glyphicon-remove black" aria-hidden="true"></span>
   </button>
-  <h2><i class="fas fa-file-signature"></i> Reglamento y Uso del Sistema</h2>
+  <h2><i class="fas fa-file-signature"></i> Reglamento y Tutoriales del Sistema</h2>
 </div>
 
 <br>

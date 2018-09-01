@@ -11,7 +11,7 @@
   $directorio = '../../upload/'; //Declaramos un  variable con la ruta donde guardaremos los archivos
   if(isset($_POST["btn_Enviar"])){ //Si se presiona el boton de confirmar
 
-    $queryUpdate = "UPDATE tigrupou_tcu.resumen_ejecutivo SET estado = 1 WHERE grupo like $grupo;";
+    $queryUpdate = "UPDATE tigrupou_tcu.resumen_ejecutivo SET estado = 1, estado_be = 1 WHERE grupo like $grupo;";
 
     foreach($_FILES['uploadedAprobacion']['tmp_name'] as $key => $tmp_name)
     {

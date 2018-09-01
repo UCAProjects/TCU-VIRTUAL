@@ -34,8 +34,13 @@
     $codigo = "";
     foreach($result as $row){
         $codigo = $row["grupo"];
-        $identificacionProblema = $row["identificacion_problema"];
-        $descripcionProblema = $row["descripcion_problema"];
+        if($row["identificacion_problema"] != ""){
+            $identificacionProblema = $row["identificacion_problema"];
+        }
+        if($row["descripcion_problema"] != ""){
+            $descripcionProblema = $row["descripcion_problema"];
+        }
+        
     }
  ?>
 
@@ -48,13 +53,12 @@
     <label for="identificacionProblema2">DESCRIPCIÓN DEL PROBLEMA</label>
     <textarea  id="descripcion_problema"
         style="font-size:15px; font-family:Arial; text-align : justify;line-height: 1.6; resize:none;"
-                rows="21" cols="87" maxlength="1827" > <?php echo $descripcionProblema ?> </textarea>
+                rows="21" cols="87" maxlength="1827" ><?php echo $descripcionProblema ?></textarea>
 
 <br>
     <button class="btn" href="#"
-        onclick="guardar('identificacion_problema',<?php echo $grupo ?>,1);
-                    guardar('descripcion_problema',<?php echo $grupo ?>,1,<?php echo $grupo ?>);
-                    cargarFormularios('anteProyectoBeneficiario.php','contenedorAnteProyecto');
+        onclick="guardar('identificacion_problema',<?php echo $grupo ?>,1,'','');
+                    guardar('descripcion_problema',<?php echo $grupo ?>,1,'anteProyectoBeneficiario.php','contenedorAnteProyecto', <?php echo $grupo ?>);
                     aumentarProgress(20); "
         style="margin-left:74% !important">Continuar
             <span class="glyphicon glyphicon-arrow-right"></span>

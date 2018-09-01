@@ -16,7 +16,7 @@
 	     			echo "OK";
 	     			//redireccionar a la página principal
 			}else{
-				$query = "UPDATE tigrupou_tcu.resumen_ejecutivo SET $numeroPagina = '$texto';";
+				$query = "UPDATE tigrupou_tcu.resumen_ejecutivo SET $numeroPagina = '$texto' where grupo like $grupo;; " ;
 				$stmt = $db->prepare($query);//Inserta a DB
 	     		$stmt -> execute();
 			}

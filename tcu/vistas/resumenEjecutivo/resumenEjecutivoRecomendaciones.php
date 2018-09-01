@@ -67,12 +67,12 @@
   <div class="row">
     <div class="col-md-6">
       <a class="btn btn-primary"  href="#"
-          onclick="guardar('recomendaciones',<?php echo $grupo ?>,2); cargarFormularios('resumenEjecutivoConclusion.php','contenedorResumenEjecutivo'); disminuirProgress(25);">
+          onclick="guardar('recomendaciones',<?php echo $grupo ?>,2,'resumenEjecutivoConclusion.php','contenedorResumenEjecutivo'); disminuirProgress(25);">
               <span class="glyphicon glyphicon-arrow-left"> </span>Atrás</a>
     </div>
     <div class="col-md-6">
       <button id="btnEnviar" class="btn" 
-        onclick="guardar('recomendaciones',<?php echo $grupo?>,2); 
+        onclick="guardar('recomendaciones',<?php echo $grupo?>,2,'',''); 
             cargarModal(null,'mostrarModalConclusion','modalAdjuntarConclusion','modalAdjuntarConclusion.php');" 
         style="margin-left:50% !important"><i class="far fa-paper-plane"></i> ENVIAR
       </button>

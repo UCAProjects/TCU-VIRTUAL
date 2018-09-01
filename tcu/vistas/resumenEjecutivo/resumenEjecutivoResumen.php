@@ -48,6 +48,6 @@
 <br>
 
 <a class="btn btn" href="#"
-      onclick="guardar('resumen_actividades',<?php echo $grupo ?>,2);cargarFormularios('resumenEjecutivoEvaluacion.php','contenedorResumenEjecutivo');
+      onclick="guardar('resumen_actividades',<?php echo $grupo ?>,2,'resumenEjecutivoEvaluacion.php','contenedorResumenEjecutivo');
                     aumentarProgress(25);"
               style="margin-left:74% !important">Continuar  <span class="glyphicon glyphicon-arrow-right"></span></a>

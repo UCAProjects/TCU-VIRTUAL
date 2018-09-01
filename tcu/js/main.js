@@ -175,7 +175,7 @@
         };
     }
 
-    function guardar(numeroPagina, grupo, tipo, codAux = 0) { // Insert : 1 Insert; 2 Update
+    function guardar(numeroPagina, grupo, tipo, redir1, redir2, codAux = 0) { // Insert : 1 Insert; 2 Update
         var url = "";
         if (tipo == 1) { //Insertar AnteProyecto
             url = "../../accesoDatos/datosProyecto/insertarEditarAnteProyecto.php";
@@ -187,12 +187,17 @@
         if (codAux != 0)
             cod = codAux;
         var parametros = { "codigo": cod, "numeroPagina": numeroPagina, "texto": texto, "grupo": grupo }
+
         $.ajax({
             data: parametros,
             type: "POST",
             url: url,
             success: function(data) {
-                mensaje('information', 'Guardando..', 1000)
+                mensaje('information', 'Guardando..', 1000);
+                if (redir1 != "" && redir2 != "") {
+                    cargarFormularios(redir1, redir2);
+                }
+
             },
             error: function() {
                 mensaje('error', 'Error al cargar la información');

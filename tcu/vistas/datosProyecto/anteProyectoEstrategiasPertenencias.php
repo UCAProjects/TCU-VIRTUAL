@@ -51,14 +51,14 @@
   <div class="row">
     <div class="col-md-6">
       <button class="btn btn-primary" href="#"
-        onclick="guardar('estrategias_soluciones',<?php echo $grupo ?>,1); cargarFormularios('anteProyectoObjetivos.php','contenedorAnteProyecto'); disminuirProgress(20);">
+        onclick="guardar('estrategias_soluciones',<?php echo $grupo ?>,1,'anteProyectoObjetivos.php','contenedorAnteProyecto'); disminuirProgress(20);">
           <span class="glyphicon glyphicon-arrow-left"> </span>  
           Atrás
       </button>
     </div>
     <div class="col-md-6">
       <button id="btnEnviar" class="btn" 
-        onclick="guardar('estrategias_soluciones',<?php echo $grupo ?>,1); cargarModal(null,'mostrarModal','modalAdjuntarDatos','modalDatosAdjuntos.php');" 
+        onclick="guardar('estrategias_soluciones',<?php echo $grupo ?>,1,'',''); cargarModal(null,'mostrarModal','modalAdjuntarDatos','modalDatosAdjuntos.php');" 
           style="margin-left:50% !important">
             <i class="far fa-paper-plane"></i> 
             ENVIAR

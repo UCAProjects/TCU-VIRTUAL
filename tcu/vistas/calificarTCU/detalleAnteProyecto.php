@@ -15,6 +15,7 @@
         }
     </style>
 
+
 </head>
 
 <body>
@@ -35,7 +36,7 @@
   $stmt = $db->prepare($query);
   $stmt -> execute();
   $result = $stmt -> fetchAll();
-  foreach ($result as $row) {
+  foreach ($result as $row){
     $tema=$row["tema"];
     $organizacion=$row["organizacion"];
     $supervisor=$row["supervisor"];
@@ -54,7 +55,7 @@
   $stmt = $db->prepare($queryAdjutos);
   $stmt -> execute();
   $resultAdjuntos = $stmt -> fetchAll();
-  foreach ($resultAdjuntos as $row) {
+  foreach ($resultAdjuntos as $row){
     $linkAceptacion = $row["url_carta_aceptacion"];
     $linkSolicitud = $row["url_carta_solicitud"];
     $linkCronograma = $row["url_cronograma_tcu"];
@@ -64,30 +65,34 @@
   $queryMaxVersion = "SELECT max(version) AS max FROM tigrupou_tcu.revision_ante_proyecto 
   WHERE ante_proyecto like $id and rol LIKE $rol";
 
+  $maxVersion = 0;
   $stmt = $db->prepare($queryMaxVersion); 
   $stmt -> execute();
   $resultMaxV = $stmt -> fetchAll();
   foreach ($resultMaxV as $row) {
-    $maxVersion = $row["max"];
+      if($row["max"] != ""){
+        $maxVersion = $row["max"];
+      }
   }
+
 
 
   /**
    * Se verifica que haya una calificación guardada con anterioridad 
    */
-  $queryGuardado = "SELECT * FROM tigrupou_tcu.revision_ante_proyecto WHERE version like 
-  $maxVersion and ante_proyecto like $id and rol LIKE $rol";
-  
+  $queryGuardado = "SELECT * FROM tigrupou_tcu.revision_ante_proyecto WHERE version like $maxVersion and ante_proyecto like $id and rol LIKE $rol";
   $stmt = $db->prepare($queryGuardado);
   $stmt -> execute();
   $resultGuardado = $stmt -> fetchAll();
   
+  $estadoGuardado = 0;
+  $version = 0;
+  $observacionesGuardado = "";
   foreach ($resultGuardado as $row) {
     $estadoGuardado = $row["estado"];
     $version = $row["version"];
     $observacionesGuardado = $row["Observaciones"];
   }
-  echo $estadoGuardado;
   
   ?>
     <main class="site-main">
@@ -95,7 +100,6 @@
             <div class=" clearfix">
                 <div class="">
                     <h2>Ante Proyecto</h2>
-
                     <div class="ingreso ingresoTamano" style: " margin-left:50% !important">
                         <form class="">
                             <ul class="nav nav-tabs" id="nav">
@@ -290,7 +294,10 @@
                       $resultMaxDC = $stmt -> fetchAll();
                       $maxDC = 0;
                       foreach ($resultMaxDC as $row) {
-                        $maxDC = $row["max"]; // Max del director de carrera
+                          if($row["max"] != ""){
+                            $maxDC = $row["max"]; // Max del director de carrera
+                          }
+                        
                       }
 
                       $stmt = $db->prepare($maxEEQ);
@@ -298,7 +305,10 @@
                       $resultMaxEE = $stmt -> fetchAll();
                       $maxEE = 0;
                       foreach ($resultMaxEE as $row) {
-                        $maxEE = $row["max"]; // Maximo de la Unidad de extensión
+                        if($row["max"] != ""){
+                            $maxEE = $row["max"]; // Maximo de la Unidad de extensión
+                          }
+                        
                       }
 
                       $estadoDCQ = str_replace("MAXVERSION", $maxDC, $estadoDCQ);
@@ -341,7 +351,7 @@
                                     <p class="label label-danger"> No se puede continuar hasta que la Unidad de Extensión genere su Calificación.</p>
                                 </center>
                                         <?php } ?>
-                                        <?php }elseif($rol == 2){ //Unidad de Extensión ?>
+                    <?php }elseif($rol == 2){ //Unidad de Extensión ?>
                                         <div class="row ">
                                             <div class="col-md-2 col-md-offset-8">
                                                 <a onclick="ingresarCalificacion(<?php echo $id;?>,3,1,<?php echo $rol;?>,<?php echo $estadoGuardado;?>)" class="btn btn-block btn">Validar</a>
@@ -361,13 +371,14 @@
         </section>
         <!--.section programa-->
     </main>
-    <script src="../../js/calificarTcu.js">
-    </script>
+
+    <script src="../../js/datosProyecto.js"></script>
+
+    <script src="../../js/calificarTcu.js"></script>
     <?php
-  include '../../footer.php';
-  ?>
-    <script src="../../js/datosProyecto.js">
-    </script>
+        include '../../footer.php';
+    ?>
+     
 
     <?php 
     if($estadoGuardado == 6){ // Estado 6: estado para editar la calificicación  ?> 
@@ -392,6 +403,8 @@
             </div>
         </div>
     </div>
+
+
 </body>
 
 </html>

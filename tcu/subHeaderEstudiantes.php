@@ -42,17 +42,17 @@
         <a  href="#" class="dropdown-toggle color" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ><i class="fas fa-hourglass-half"></i> Realización de Horas <span  class="caret white colorNaranja"></span></a>
         <ul class="dropdown-menu">
           <li id="liHorasDigital"><a href="../horasTCU/calendarioHoras.php?grupo=0"><i class="fas fa-calendar-alt"></i> Control de horas digital</a></li>
-          <li id="liControlDocumento"><a href="../../documentos/Bitácora.pdf" target="_blank"><i class="fas fa-download"></i> Documento para el control de horas</a></li>
+          
         </ul>
       </li>
 
       <li class="dropdown">
         <a  href="#" class="dropdown-toggle color" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ><i class="fas fa-clipboard-list"></i> Plantillas <span  class="caret white colorNaranja"></span></a>
         <ul class="dropdown-menu">
-          <li id="liHorasDigital"><a href="../../Plantillas/CartaAceptacion.docx"><i class="far fa-file-alt"></i> Carta de Aceptación</a></li>
-          <li id="liControlDocumento"><a href="../../Plantillas/CartaSolicitud.docx"><i class="far fa-file-alt"></i> Carta de Solicitud</a></li>
-          <li id="liControlDocumento"><a href="../../Plantillas/CartaFinalizacion.docx"><i class="far fa-file-alt"></i> Carta de Finalización</a></li>
-          <li id="liControlDocumento"><a href="../../Plantillas/BitácoraTCULogoNuevo2018.pdf" target="_blank"><i class="far fa-file-alt"></i> Cronograma</a></li>
+          <li id="liHorasDigital"><a href="../../Plantillas/CartaAceptacion.docx"><i class="fas fa-file-word"></i> Carta de Aceptación</a></li>
+          <li id="liControlDocumento"><a href="../../Plantillas/CartaSolicitud.docx"><i class="fas fa-file-word"></i> Carta de Solicitud</a></li>
+          <li id="liControlDocumento"><a href="../../Plantillas/CartaFinalizacion.docx"><i class="fas fa-file-word"></i> Carta de Finalización</a></li>
+          <li id="liControlDocumento"><a href="../../Plantillas/BitácoraTCULogoNuevo2018.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Cronograma</a></li>
         </ul>
       </li>
       <li class="navbar-right" id="liSalir"><a class="color"  href="../../index.php"><i class="fas fa-sign-out-alt"></i></a></li>

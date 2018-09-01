@@ -52,12 +52,12 @@
 <div class="row">
     <div class="col-md-6">
       <a class="btn btn-primary" href="#"
-          onclick="guardar('evaluacion',<?php echo $grupo ?>,2); cargarFormularios('resumenEjecutivoResumen.php','contenedorResumenEjecutivo');disminuirProgress(25);">
+          onclick="guardar('evaluacion',<?php echo $grupo ?>,2,'resumenEjecutivoResumen.php','contenedorResumenEjecutivo');disminuirProgress(25);">
               <span class="glyphicon glyphicon-arrow-left"> </span>  Atrás</a>
     </div>
     <div class="col-md-6">
       <a class="btn btn" href="#"
-          onclick="guardar('evaluacion',<?php echo $grupo?>,2);cargarFormularios('resumenEjecutivoConclusion.php','contenedorResumenEjecutivo');aumentarProgress(25);"
+          onclick="guardar('evaluacion',<?php echo $grupo?>,2,'resumenEjecutivoConclusion.php','contenedorResumenEjecutivo');aumentarProgress(25);"
               style="margin-left:45% !important">Continuar  <span class="glyphicon glyphicon-arrow-right"></span></a>
     </div>
   </div>

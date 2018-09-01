@@ -44,9 +44,11 @@ function ingresarCalificacion(pCodigoAnteProyecto, pCalificacion, pTipo, pRol, p
 }
 
 function modeLecture() {
+    alert("dd");
     document.getElementById("RevisionMode").style.display = "none";
     document.getElementById("LecturaModo").style.display = "block";
 }
+
 
 function modeRevision() {
     document.getElementById("RevisionMode").style.display = "block";

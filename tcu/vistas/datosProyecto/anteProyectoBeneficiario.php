@@ -33,7 +33,10 @@
   $codigo = "";
   foreach($result as $row){
       $codigo = $row["grupo"];
-      $descripcion_beneficiario = $row["descripcion_beneficiario"];
+      if($row["descripcion_beneficiario"] != ""){
+        $descripcion_beneficiario = $row["descripcion_beneficiario"];
+      }
+     
   }
 
  ?>
@@ -43,21 +46,20 @@
 <input type="hidden" id="hiddenCodigo" name="hiddenCodigo" value="<?php echo $codigo ?>">
         <textarea  id="descripcion_beneficiario"
               style=" overflow:hidden; font-size:15px; font-family:Arial; text-align : justify;line-height: 1.6; resize:none;"
-                    rows="15" cols="87" maxlength="1305"><?php echo $descripcion_beneficiario ?>
-        </textarea>
+                    rows="15" cols="87" maxlength="1305"><?php echo $descripcion_beneficiario ?></textarea>
         <br>
 
  <div class="row">
     <div class="col-md-6">
       <button class="btn btn-primary"  href="#"
-          onclick="guardar('descripcion_beneficiario',<?php echo $grupo ?>,1); cargarFormularios('anteProyectoProblema.php','contenedorAnteProyecto');disminuirProgress(20);">
+          onclick="guardar('descripcion_beneficiario',<?php echo $grupo ?>,1,'anteProyectoProblema.php','contenedorAnteProyecto');disminuirProgress(20);">
             <span class="glyphicon glyphicon-arrow-left"> </span>  
             Atrás
       </button>
     </div>
     <div class="col-md-6">
       <button class="btn" href="#"
-        onclick="guardar('descripcion_beneficiario',<?php echo $grupo?>,1);cargarFormularios('anteProyectoProyecto.php','contenedorAnteProyecto'); aumentarProgress(20);" 
+        onclick="guardar('descripcion_beneficiario',<?php echo $grupo?>,1,'anteProyectoProyecto.php','contenedorAnteProyecto'); aumentarProgress(20);" 
         style="margin-left:45% !important">
           Continuar  
           <span class="glyphicon glyphicon-arrow-right"></span>
