@@ -8,7 +8,12 @@
 </head>
 <body>
  <?php
-    session_start();
+    session_start(); //iniciamos el manejo de sesiones
+    if(!isset($_SESSION["codigo"])) //si la variable de sesion codigo no existe, entonces redireccionamos a la pagina de principal de invitados
+    {
+      header("Location: ../../index.php");
+    }
+
     $sesionId = $_SESSION["codigo"];
     $grupo = $_SESSION["grupo"];
 
@@ -17,9 +22,9 @@
     include '../../conection.php'; //Conección a la DB
 
 
-    $queryHistorialAP = "SELECT RA.version AS version, RA.ante_proyecto as cod, DATE_FORMAT(RA.fecha_revision,'%d-%m-%y / %h:%i:%s') AS fecha, E.descripcion, RA.version FROM tigrupou_tcu.grupos AS G JOIN tigrupou_tcu.revision_ante_proyecto AS RA ON G.codigo LIKE RA.ante_proyecto JOIN tigrupou_tcu.estado AS E ON E.codigo LIKE RA.estado WHERE G.codigo LIKE $grupo AND rol like 1";
+    $queryHistorialAP = "SELECT RA.version AS version, RA.ante_proyecto as cod, DATE_FORMAT(RA.fecha_revision,'%d-%m-%y / %h:%i:%s') AS fecha, E.descripcion, RA.version FROM tigrupou_tcu.grupos AS G JOIN tigrupou_tcu.revision_ante_proyecto AS RA ON G.codigo LIKE RA.ante_proyecto JOIN tigrupou_tcu.estado AS E ON E.codigo LIKE RA.estado WHERE G.codigo LIKE $grupo AND RA.rol like 1";
 
-    $queryHistorialRE = "SELECT  RA.version AS version, RA.resumen_ejecutivo as cod, DATE_FORMAT(RA.fecha_revision,'%d-%m-%y / %h:%i:%s') AS fecha, E.descripcion, RA.version FROM tigrupou_tcu.grupos AS G JOIN tigrupou_tcu.revision_resumen_ejecutivo AS RA ON G.codigo LIKE RA.resumen_ejecutivo JOIN tigrupou_tcu.estado AS E ON E.codigo LIKE RA.estado WHERE G.codigo LIKE $grupo AND rol like 1";
+    $queryHistorialRE = "SELECT  RA.version AS version, RA.resumen_ejecutivo as cod, DATE_FORMAT(RA.fecha_revision,'%d-%m-%y / %h:%i:%s') AS fecha, E.descripcion, RA.version FROM tigrupou_tcu.grupos AS G JOIN tigrupou_tcu.revision_resumen_ejecutivo AS RA ON G.codigo LIKE RA.resumen_ejecutivo JOIN tigrupou_tcu.estado AS E ON E.codigo LIKE RA.estado WHERE G.codigo LIKE $grupo AND RA.rol like 1";
 
     $stmt = $db->prepare($queryHistorialAP);
     $stmt -> execute();
@@ -29,9 +34,51 @@
     $stmt -> execute();
     $resultHistorialRE = $stmt -> fetchAll();
 
-    
+    $queryStatus = "SELECT estado FROM tigrupou_tcu.ante_proyecto WHERE grupo LIKE $grupo";
+    $stmt = $db->prepare($queryStatus);
+    $stmt -> execute();
+    $resultStatus = $stmt -> fetchAll();
 
-    if(true){
+    $estado = -1;
+    foreach($resultStatus as $row){
+          $estado = $row["estado"];
+
+    }
+
+    $statusProyecto = "Sin documentos";
+    if($estado == 0){
+      $statusProyecto = "Ante Proyecto Creado";
+    }elseif($estado == 1){
+      $statusProyecto = "Ante Proyecto en Revisión";
+    }elseif($estado == 3){
+      $statusProyecto = "Ante Proyecto Aprobado con observaciones";
+    }elseif($estado == 4){
+      $statusProyecto = "Ante Proyecto Reprobado";
+    }elseif($estado == 2){
+      $statusProyecto = "Ante Proyecto Aprobado";
+    }
+
+    $queryStatus = "SELECT estado FROM tigrupou_tcu.resumen_ejecutivo WHERE grupo LIKE $grupo";
+    $stmt = $db->prepare($queryStatus);
+    $stmt -> execute();
+    $resultStatus = $stmt -> fetchAll();
+
+    $estado = -1;
+    foreach($resultStatus as $row){
+      $estado = $row["estado"];
+    }
+
+    $statusProyectoR = "Sin documentos";
+    if($estado == 0){
+      $statusProyectoR = "Resumen Ejecutivo Creado";
+    }elseif($estado == 1){
+      $statusProyectoR = "Resumen Ejecutivo en Revisión";
+    }elseif($estado == 3){
+      $statusProyectoR = "Resumen Ejecutivo Aprobado con observaciones";
+    }elseif($estado == 4){
+      $statusProyectoR = "Resumen Ejecutivo Reprobado";
+    }elseif($estado == 2){
+      $statusProyectoR = "Resumen Ejecutivo Aprobado";
     }
  ?>
         <!--[if lte IE 9]>
@@ -53,7 +100,8 @@
                            <span class="h3 orange">Estatus:</span> <span class="h2">Revisado</span>
                         </li> -->
                         <hr>
-                        <h3><span class="h3 orange">Revisión Ante Proyecto</span></h3>
+                        <p><span class="h3 orange">Revisión Ante Proyecto:</span> <b style="color: #337ab7"><?php echo $statusProyecto ?></b></p>
+                        <br>
                         <table class="table table-striped">
                           <thead>
                             <tr>
@@ -76,7 +124,8 @@
                         </table>
 
                         <hr>
-                        <h3><span class="h3 orange">Revisión Resumen Ejecutivo</span></h3>
+                        <p><span class="h3 orange">Revisión Resumen Ejecutivo:</span> <b style="color: #337ab7"><?php echo $statusProyectoR ?></b></p>
+                        <br>
                         <table class="table table-striped">
                           <thead>
                             <tr>

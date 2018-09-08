@@ -28,7 +28,7 @@
   $id = $_GET["id"];
   $carrera = $_SESSION["carreraFuncionario"]; // Carrera a la que partenece el funcionario
   $rol = $_SESSION["rolFuncionario"]; // Rol para saber rol del Funcionario:: 1 Director de Carrera | 2 Unidad Extensión 
-  $query = "SELECT D.tema,D.organizacion, D.supervisor, A.* FROM tigrupou_tcu.datos D JOIN tigrupou_tcu.ante_proyecto A ON D.grupo like A.grupo WHERE D.grupo like $id";
+  $query = "SELECT D.tema,D.organizacion, D.supervisor, A.*,C.carrera FROM tigrupou_tcu.datos D JOIN tigrupou_tcu.ante_proyecto A ON D.grupo like A.grupo JOIN tigrupou_tcu.grupos G ON G.codigo LIKE A.grupo JOIN tigrupou_tcu.carreras C ON G.carrera LIKE C.codigo WHERE D.grupo like $id";
   $queryEstudiantes = "SELECT CONCAT(primer_apellido,' ',segundo_apellido,' ',nombre_completo) nombre FROM tigrupou_tcu.estudiantes WHERE grupo LIKE $id order by primer_apellido";
   $stmt = $db->prepare($queryEstudiantes);
   $stmt -> execute();
@@ -47,6 +47,7 @@
     $objetivo_general=$row["objetivo_general"];
     $objetivos_especificos=$row["objetivos_especificos"];
     $estrategias_soluciones=$row["estrategias_soluciones"];
+    $carrera = $row["carrera"];
   }
   $linkAceptacion = "";
   $linkSolicitud = "";
@@ -75,8 +76,6 @@
       }
   }
 
-
-
   /**
    * Se verifica que haya una calificación guardada con anterioridad 
    */
@@ -93,6 +92,7 @@
     $version = $row["version"];
     $observacionesGuardado = $row["Observaciones"];
   }
+
   
   ?>
     <main class="site-main">
@@ -155,6 +155,9 @@
                                                     <img src="../../img/uca.png" alt="Smiley face"> <br><br><br><br>
                                                     <h3>Tema</h3>
                                                     <?php echo $tema ?>
+                                                    <br>
+                                                    <h3>Carrera</h3>
+                                                    <?php echo $carrera ?>
                                                     <br>
                                                     <h3>Integrantes</h3>
                                                     <?php
@@ -254,14 +257,14 @@
 
                             <div id="RevisionMode" style="display: none; margin-right:10%;margin-left:10%;" class="well">
                                 <?php
-                  if($rol == 1){ ?>
+                    if($rol == 1){ ?>
                                 <div>
                                     <a class="btn" href="#" onclick="cargarModal({'id':<?php echo $id; ?>},'modalModalDiv','verCalificacion-modal','modalCalificacionBE.php')">
                                         <i class="fas fa-gavel"></i> Calificación de la Unidad de Extensión
                                     </a>
                                 </div>
                                 <?php
-                  }
+                    }
                 ?>
                                 <div style="resize: both;"><br>
                                     <div class="row">
@@ -272,12 +275,15 @@
                                         </div>
                                         <div class="col-md-2">
                                             <a class="btn btn-primary" onclick="ingresarCalificacion(<?php echo $id;?>,6,1,<?php echo $rol;?>,
-                                                <?php echo $estadoGuardado;?>)"><i
+                                                <?php echo $estadoGuardado;?>);"><i
                                                     class="fas fa-save"></i>
                                             </a>
                                         </div>
                                     </div>
-                                    <center><textarea id="txtA_observaciones" placeholder="Observaciones" cols="70" rows="20"></textarea></center>
+                                    <center><textarea id="txtA_observaciones" placeholder="Observaciones" cols="70" rows="20"><?php
+                                    if($estadoGuardado == 6){
+                                        echo $observacionesGuardado;
+                                    }?></textarea></center>
                                 </div><!-- END DIV COL -->
                                 <br>
                                 <?php
@@ -374,15 +380,17 @@
 
     <script src="../../js/datosProyecto.js"></script>
 
-    <script src="../../js/calificarTcu.js"></script>
+    <script src="../../js/calificarTcu.js?version=2"></script>
     <?php
         include '../../footer.php';
     ?>
      
 
     <?php 
+    $estadoGuardado;
     if($estadoGuardado == 6){ // Estado 6: estado para editar la calificicación  ?> 
     <script>
+        alert("no");
         $("#txtA_observaciones").val('<?php echo $observacionesGuardado ?>');
     </script>
     <?php }

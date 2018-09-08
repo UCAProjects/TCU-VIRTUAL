@@ -7,9 +7,9 @@
     $tipo = $_POST["tipo"];
 
     if($tipo == 1){
-      $queryDetalle ="SELECT DATE_FORMAT(RA.fecha_revision,'%d-%m-%y / %h:%i:%s') AS fecha, E.descripcion as estado,  RA.Observaciones, G.descripcion as nombre FROM tigrupou_tcu.grupos AS G JOIN tigrupou_tcu.revision_ante_proyecto AS RA ON G.codigo LIKE RA.ante_proyecto JOIN tigrupou_tcu.estado AS E ON E.codigo LIKE RA.estado WHERE G.codigo LIKE $id and RA.version like $version;";
+      $queryDetalle ="SELECT DATE_FORMAT(RA.fecha_revision,'%d-%m-%y / %h:%i:%s') AS fecha, E.descripcion as estado,  RA.Observaciones, G.descripcion as nombre FROM tigrupou_tcu.grupos AS G JOIN tigrupou_tcu.revision_ante_proyecto AS RA ON G.codigo LIKE RA.ante_proyecto JOIN tigrupou_tcu.estado AS E ON E.codigo LIKE RA.estado WHERE G.codigo LIKE $id and RA.version like $version AND RA.rol like 1;";
     }else{
-      $queryDetalle ="SELECT DATE_FORMAT(RA.fecha_revision,'%d-%m-%y / %h:%i:%s') AS fecha, E.descripcion as estado,  RA.Observaciones, G.descripcion as nombre FROM tigrupou_tcu.grupos AS G JOIN tigrupou_tcu.revision_resumen_ejecutivo AS RA ON G.codigo LIKE RA.resumen_ejecutivo JOIN tigrupou_tcu.estado AS E ON E.codigo LIKE RA.estado WHERE G.codigo LIKE $id and RA.version like $version;";
+      $queryDetalle ="SELECT DATE_FORMAT(RA.fecha_revision,'%d-%m-%y / %h:%i:%s') AS fecha, E.descripcion as estado,  RA.Observaciones, G.descripcion as nombre FROM tigrupou_tcu.grupos AS G JOIN tigrupou_tcu.revision_resumen_ejecutivo AS RA ON G.codigo LIKE RA.resumen_ejecutivo JOIN tigrupou_tcu.estado AS E ON E.codigo LIKE RA.estado WHERE G.codigo LIKE $id and RA.version like $version AND RA.rol like 1;";
     }
 
     $stmt = $db->prepare($queryDetalle);

@@ -85,6 +85,8 @@
                         } else {
                             mensaje("error", "Error al procesar la transacción");
                         }
+                    } else {
+                        mensaje("error", "Error al procesar la transacción");
                     }
                 },
                 error: function() {

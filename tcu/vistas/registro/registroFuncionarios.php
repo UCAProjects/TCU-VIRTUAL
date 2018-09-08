@@ -14,7 +14,7 @@
 
             $tipo = $_GET['tipo'];
 
-            $pApellido = "";
+          $pApellido = "";
             $sApellido = "";
             $nombre ="";
             $cedula ="";
@@ -38,7 +38,7 @@
                 $telefono = $row["celular"];
                 $telTrabajo = $row["telefono_trabajo"];
               }
-            }
+            
       ?>
         <!--[if lte IE 9]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
@@ -50,7 +50,7 @@
                 <div class="">
                   <h2>Registro</h2>
                 <div class="ingreso ingresoTamano">
-                  <form class="formulario" onsubmit="return vegialidarRstroFuncionarios()" action="../../accesoDatos/registro/insertarEditarRegistroFuncionarios.php" method="POST">
+                  <form class="formulario"  action="../../accesoDatos/registro/insertarEditarRegistroFuncionarios.php" method="POST">
                     <ul>
                       <input type="hidden" name="tipo" id="tipo" value="<?php echo $tipo ?>">
                       <input type="hidden" name="codigo" id="codigo" value="<?php echo $sesionId ?>">
@@ -72,15 +72,15 @@
                     	<div class="row">
                     		<div class="col-md-4">
                     			<li><label for="cedula">Cédula</label></li>
-                      			<li><input type="text" name="cedula" id="cedula" placeholder="Digite su cédula" value="<?php echo $cedula ?>" required></li>
+                      			<li><input type="text" name="cedula" id="cedula" placeholder="Digite su cédula" value="<?php echo $cedula ?>" required readonly></li>
                     		</div>
                     		<div class="col-md-4">
                     			<li><label for="correo">Correo</label></li>
-                      			<li><input type="email" name="correo" id="correo" placeholder="Digite su correo" value="<?php echo $correo ?>" required></li>
+                      			<li><input type="email" name="correo" id="correo" placeholder="Digite su correo" value="<?php echo $correo ?>" ></li>
                     		</div>
                     		<div class="col-md-4">
                     			 <li><label for="telefono">Teléfono</label></li>
-                       			<li><input type="text" name="telefono" id="telefono" placeholder="Digite su teléfono" value="<?php echo $telTrabajo ?>" required></li>
+                       			<li><input type="text" name="telefono" id="telefono" placeholder="Digite su teléfono" value="<?php echo $telTrabajo ?>" ></li>
                     		</div>
                     	</div>
                       <?php
@@ -110,8 +110,15 @@
           </section> <!--.section programa -->
         </main>
         <?php
+            }else{?>
+            <div class="well">
+              <label class="label label-danger">No se cuenta con permisos para realizar esta acción</label>
+            </div>
+              
+            <?php
+            }
         	include '../../footer.php'
         ?>
-        <script src="../../js/registro.js"></script>
+        <script src="../../js/registro.js?version=5"></script>
     </body>
 </html>

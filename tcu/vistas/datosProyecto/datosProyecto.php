@@ -23,6 +23,7 @@
       include '../../subHeaderEstudiantes.php';
       $grupo = $_SESSION["grupo"];
     }elseif($tipo == 0){ // Estudiante a crear
+      include '../../subHeaderSalir.php';
       $sesionId = $_SESSION["codigo"];
       $grupo = $_SESSION["grupo"];
     }else{

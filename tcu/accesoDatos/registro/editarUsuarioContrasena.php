@@ -7,7 +7,7 @@
 	$tipo = $_POST["tipo"]; //Ya sea estudiantes o administrativos
 		if($tipo == 1){ //Se actualiza el usuario y contraseña de estudiantes
 			try {
-					$query = "update tigrupou_tcu.autentificacion_estudiantes set password = $contrasena where usuario = $codigo";
+					$query = "update tigrupou_tcu.autentificacion_estudiantes set password = '$contrasena' where usuario = $codigo";
 
 					$stmt = $db->prepare($query);//Inserta a DB 
 					$stmt -> execute();
@@ -20,7 +20,7 @@
 	     	
 		}elseif($tipo ==2){
 			try {
-					$query = "update tigrupou_tcu.autentificacion_funcionarios set password = $contrasena where usuario = $codigo";
+					$query = "update tigrupou_tcu.autentificacion_funcionarios set password = '$contrasena' where usuario = $codigo";
 
 					$stmt = $db->prepare($query);//Inserta a DB 
 					$stmt -> execute();

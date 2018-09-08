@@ -216,11 +216,10 @@
           </section><!--.section programa-->
         </main>
 
-
         <?php
         	include '../../footer.php'; ?>
 
-          <script src="../../js/registro.js"></script>
+          <script src="../../js/registro.js?version=4"></script>
     <?php
           if($tipo == 1){ // Modo editar ?>
             <script type="text/javascript">

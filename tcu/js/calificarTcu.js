@@ -12,7 +12,6 @@
  **/
 function ingresarCalificacion(pCodigoAnteProyecto, pCalificacion, pTipo, pRol, pGuardado) {
     var observaciones = $('#txtA_observaciones').val();
-    debugger;
     var parametros = {
         "calificacion": pCalificacion,
         "observaciones": observaciones,
@@ -33,9 +32,12 @@ function ingresarCalificacion(pCodigoAnteProyecto, pCalificacion, pTipo, pRol, p
                 setTimeout(function() { window.location = url; }, 2000);
             } else if (data == "SAVE") {
                 mensaje('confirmation', "Se ha guardado con éxito", 2000);
+                location.reload(true);
+                modeRevision();
             } else {
                 mensaje('error', "Error al procesar la información, intentelo más tarde.", 2000);
             }
+
         },
         error: function() {
             mensaje('error', 'Error al cargar la información', 3000);
@@ -44,7 +46,6 @@ function ingresarCalificacion(pCodigoAnteProyecto, pCalificacion, pTipo, pRol, p
 }
 
 function modeLecture() {
-    alert("dd");
     document.getElementById("RevisionMode").style.display = "none";
     document.getElementById("LecturaModo").style.display = "block";
 }

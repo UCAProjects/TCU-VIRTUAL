@@ -54,11 +54,11 @@ $sesionId = '8';
                           </div>
                           <div class="col-md-4">
                             <li><label for="correo">Correo</label></li>
-                            <li><input type="email" name="correo" id="correo" placeholder="Digite su correo" autocomplete="on" required></li>
+                            <li><input type="email" name="correo" id="correo" placeholder="Digite su correo" autocomplete="on" ></li>
                           </div>
                           <div class="col-md-4">
                            <li><label for="telefono">Teléfono</label></li>
-                           <li><input type="text" name="telefono" id="telefono" placeholder="Digite su teléfono" autocomplete="on" required></li>
+                           <li><input type="text" name="telefono" id="telefono" placeholder="Digite su teléfono" autocomplete="on"></li>
                          </div>
                        </div>
                        <div class="row">

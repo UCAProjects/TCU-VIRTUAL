@@ -80,7 +80,8 @@
     include '../../conection.php'; //Conección a la DB
 
     $id = $_GET["id"];
-    $carrera = $_SESSION["carreraFuncionario"]; // Carrera a la que partenece el funcionario
+		$carrera = $_SESSION["carreraFuncionario"]; // Carrera a la que partenece el funcionario
+		$rol = $_SESSION["rolFuncionario"]; // Rol para saber rol del Funcionario:: 1 Director de Carrera | 2 Unidad Extensión 
     $query = "SELECT D.tema,D.organizacion, D.supervisor, A.* FROM tigrupou_tcu.datos D JOIN tigrupou_tcu.resumen_ejecutivo A ON D.grupo like A.grupo WHERE D.grupo like $id";
     $queryEstudiantes = "SELECT CONCAT(primer_apellido,' ',segundo_apellido,' ',nombre_completo) nombre FROM tigrupou_tcu.estudiantes WHERE grupo LIKE $id order by primer_apellido";
     $stmt = $db->prepare($queryEstudiantes);
@@ -133,7 +134,40 @@
     $queryPhotoEvi = "SELECT url FROM tigrupou_tcu.evidencias_adjuntas WHERE GRUPO LIKE $id LIMIT 0, 10";
     $stmt = $db -> prepare($queryPhotoEvi);
     $stmt -> execute();
-    $resultPhotoEvi = $stmt -> fetchAll();
+		$resultPhotoEvi = $stmt -> fetchAll();
+		
+
+
+		$queryMaxVersion = "SELECT max(version) AS max FROM tigrupou_tcu.revision_resumen_ejecutivo 
+  WHERE resumen_ejecutivo like $id and rol LIKE $rol";
+
+  $maxVersion = 0;
+  $stmt = $db->prepare($queryMaxVersion); 
+  $stmt -> execute();
+  $resultMaxV = $stmt -> fetchAll();
+  foreach ($resultMaxV as $row) {
+      if($row["max"] != ""){
+        $maxVersion = $row["max"];
+      }
+  }
+
+
+		/**
+   * Se verifica que haya una calificación guardada con anterioridad 
+   */
+  $queryGuardado = "SELECT * FROM tigrupou_tcu.revision_resumen_ejecutivo WHERE version like $maxVersion and resumen_ejecutivo like $id and rol LIKE $rol";
+  $stmt = $db->prepare($queryGuardado);
+  $stmt -> execute();
+  $resultGuardado = $stmt -> fetchAll();
+  
+  $estadoGuardado = 0;
+  $version = 0;
+  $observacionesGuardado = "";
+  foreach ($resultGuardado as $row) {
+    $estadoGuardado = $row["estado"];
+    $version = $row["version"];
+    $observacionesGuardado = $row["observaciones"];
+  }
   ?>
 
 	<main class="site-main">
@@ -324,45 +358,97 @@
                     }
                   ?>
 								<div style="resize: both;">
-									<fieldset>
-										<legend>
-											<h3>
-												<h3>Observaciones</h3>
-											</h3>
-										</legend>
+										<div class="row">
+												<div class="col-md-7 col-md-offset-2">
+														<h3>
+															Observaciones
+														</h3>
+												</div>
+												<div class="col-md-2">
+														<a class="btn btn-primary" onclick="ingresarCalificacion(<?php echo $id;?>,6,2,<?php echo $rol;?>,
+																<?php echo $estadoGuardado;?>)"><i
+																		class="fas fa-save"></i>
+														</a>
+												</div>
+										</div>
+									
 										<textarea id="txtA_observaciones" placeholder="Observaciones" cols="120" rows="10"></textarea>
-									</fieldset>
 								</div>
 								<!-- END DIV COL -->
 								<br>
 								<?php
-                  if($rol == 1){ // Director de Carrera  
-                      if(($maxEE - $maxDC) == 1){ ?>?
-								<div class="row ">
-									<div class="col-md-2 col-md-offset-2">
-										<a onclick="ingresarCalificacion(<?php echo $id;?>,4,2,<?php echo $rol;?>)"
-										 class="btn btn-block btn-danger">Rechazado </a>
-									</div>
-									<div class="col-md-4">
-										<a onclick="ingresarCalificacion(<?php echo $id;?>,3,2,<?php echo $rol;?>)"
-										 class="btn btn-block btn-primary">Corregir Observaciones</a>
-									</div>
-									<div class="col-md-2">
-										<a onclick="ingresarCalificacion(<?php echo $id;?>,2,2, <?php echo $rol;?>)"
-										 class="btn btn-block btn">Autorizado</a>
-									</div>
-									<br>
-								</div>
-								<?php }else{ ?>
-								<br>
-								<center>
-									<p class="label label-danger"> No se puede continuar hasta que la Unidad de Extensión genere su Calificación.</p>
-									<center>
-										<?php } ?>
+									if($rol == 1){ // Director de Carrera  
+										$maxDCQ = "SELECT MAX(version) as max FROM tigrupou_tcu.revision_resumen_ejecutivo WHERE resumen_ejecutivo LIKE $id AND rol LIKE 1";
+										$maxEEQ = "SELECT MAX(version) as max FROM tigrupou_tcu.revision_resumen_ejecutivo WHERE resumen_ejecutivo LIKE $id AND rol LIKE 2";
+										$estadoDCQ = "SELECT estado FROM tigrupou_tcu.revision_resumen_ejecutivo WHERE resumen_ejecutivo LIKE $id AND rol LIKE 1 AND version LIKE MAXVERSION;";
+										$estadoEEQ = "SELECT estado FROM tigrupou_tcu.revision_resumen_ejecutivo WHERE resumen_ejecutivo LIKE $id AND rol LIKE 2 AND version LIKE MAXVERSION;";
+
+										$stmt = $db->prepare($maxDCQ);
+										$stmt -> execute();
+										$resultMaxDC = $stmt -> fetchAll();
+										$maxDC = 0;
+										foreach ($resultMaxDC as $row) {
+												if($row["max"] != ""){
+													$maxDC = $row["max"]; // Max del director de carrera
+												}
+											
+										}
+
+										$stmt = $db->prepare($maxEEQ);
+										$stmt -> execute();
+										$resultMaxEE = $stmt -> fetchAll();
+										$maxEE = 0;
+										foreach ($resultMaxEE as $row) {
+											if($row["max"] != ""){
+													$maxEE = $row["max"]; // Maximo de la Unidad de extensión
+												}
+											
+										}
+
+										$estadoDCQ = str_replace("MAXVERSION", $maxDC, $estadoDCQ);
+										$stmt = $db->prepare($estadoDCQ);
+										$stmt -> execute();
+										$resultEstadoDC = $stmt -> fetchAll();
+										$estadoResult = 0;
+										foreach ($resultEstadoDC as $row) {
+											$estadoResult = $row["estado"]; // Maximo de la Unidad de extensión
+										}
+
+										$estadoEEQ = str_replace("MAXVERSION", $maxEE, $estadoEEQ);
+										$stmt = $db->prepare($estadoEEQ);
+										$stmt -> execute();
+										$resultEstadoEE = $stmt -> fetchAll();
+										$estadoResultEE = 0;
+										foreach ($resultEstadoEE as $row) {
+											$estadoResultEE = $row["estado"]; // Maximo de la Unidad de extensión
+										}
+
+										if((($maxEE - $maxDC) == 1 and $estadoResultEE != 6) or (($maxEE - $maxDC) == 0 and $estadoResult == 6 and $estadoResultEE != 6)){ ?>
+															<div class="row ">
+																	<div class="col-md-2 col-md-offset-2">
+																			<a onclick="ingresarCalificacion(<?php echo $id;?>,4,2,<?php echo $rol;?>,
+																					<?php echo $estadoGuardado;?>)" class="btn btn-block btn-danger">Rechazado
+																			</a>
+																	</div>
+																	<div class="col-md-4">
+																			<a onclick="ingresarCalificacion(<?php echo $id;?>,3,2,<?php echo $rol;?>,<?php echo $estadoGuardado;?>)" class="btn btn-block btn-primary">Corregir
+																					Observaciones</a>
+																	</div>
+																	<div class="col-md-2">
+																			<a onclick="ingresarCalificacion(<?php echo $id;?>,2,2, <?php echo $rol;?>,<?php echo $estadoGuardado;?>)" class="btn btn-block btn">Autorizado</a>
+																	</div>
+																	<br>
+															</div>
+															<?php }else{ ?>
+															<br>
+															<center>
+																	<p class="label label-danger"> No se puede continuar hasta que la Unidad de Extensión genere su Calificación.</p>
+															</center>
+																			<?php } ?>
 										<?php }elseif($rol == 2){ //Unidad de Extensión ?>
 										<div class="row ">
 											<div class="col-md-2 col-md-offset-8">
-												<a onclick="ingresarCalificacion(<?php echo $id;?>,3,2,<?php echo $rol;?>)"
+												<a onclick="ingresarCalificacion(<?php echo $id;?>,3,2,<?php echo $rol;?>,<?php echo $estadoGuardado;?>)"
 												 class="btn btn-block btn">Validar</a>
 											</div>
 											<br>
@@ -381,6 +467,21 @@
 		<!--.section programa-->
 	</main>
 
+
+	<script src="../../js/calificarTcu.js"></script>
+	<?php
+    include '../../footer.php';
+  ?>
+  <script src="../../js/datosProyecto.js"></script>
+	<?php 
+
+    if($estadoGuardado == 6){ // Estado 6: estado para editar la calificicación  ?> 
+    <script>
+        $("#txtA_observaciones").val('<?php echo $observacionesGuardado ?>');
+    </script>
+    <?php }
+  ?>
+
 	<!-- Moda para agregar insumos a la actividad-->
 	<div class="modal fade" id="verCalificacion-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
@@ -396,11 +497,7 @@
 			</div>
 		</div>
 	</div>
-	<script src="../../js/calificarTcu.js"></script>
-	<?php
-    include '../../footer.php';
-  ?>
-  <script src="../../js/datosProyecto.js"></script>
+	
   
  </body>
 </html>

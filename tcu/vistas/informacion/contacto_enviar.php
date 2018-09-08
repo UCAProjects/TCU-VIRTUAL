@@ -9,7 +9,7 @@ if(isset($_POST['correo'])) {
     $asunto = $_POST['asunto'];
     $mensaje = $_POST['mensaje'];
 
-    $email_to = "asistenciainformatica@uca.ac.cr";
+    $email_to = "tcudigital@uca.ac.cr";
     $email_subject = $asunto;
 
     $email_exp = '/^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/';
@@ -22,11 +22,11 @@ if(isset($_POST['correo'])) {
         return str_replace($blancos,"",$string);
     }
 
-    $email_message .= "Correo: ".limpiar_blancos(correo)."\n";
-    $email_message .= "Estudiante: ".limpiar_blancos(nombre)." ".limpiar_blancos(apellidos)."\n";
-    $email_message .= "Telefono: ".limpiar_blancos(telefono)."\n\n";
-    $email_message .= "Asunto: ".limpiar_blancos(asunto)."\n";
-    $email_message .= "Mensaje: ".limpiar_blancos(mensaje)."\n";
+    $email_message .= "Correo: ".limpiar_blancos($correo)."\n";
+    $email_message .= "Estudiante: ".limpiar_blancos($nombre)." ".limpiar_blancos(apellidos)."\n";
+    $email_message .= "Telefono: ".limpiar_blancos($telefono)."\n\n";
+    $email_message .= "Asunto: ".limpiar_blancos($asunto)."\n";
+    $email_message .= "Mensaje: ".limpiar_blancos($mensaje)."\n";
 
     $headers = 'From: '.$correo."\r\n".
     'Reply-To: '.$correo."\r\n" .

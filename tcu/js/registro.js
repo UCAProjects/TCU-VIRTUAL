@@ -1,20 +1,45 @@
-$( document ).ready(function() {
-    $('#cedula').on('input', function() { 
-      $('#usuario').val($(this).val());
+$(document).ready(function() {
+    $('#cedula').on('input', function() {
+        $('#usuario').val($(this).val());
     });
 });
 
-function validarContrasena(){
-	  var contrasena = $("#contrasena").val();
+function validarContrasena() {
+    var contrasena = $("#contrasena").val();
     var contrasena2 = $("#contrasena2").val();
-    if(contrasena == contrasena2){
-    	return true;
+    if (contrasena == contrasena2) {
+        return true;
     }
     return false;
 }
 
-function validarRegistroEstudiantes(){
-	  var carrera = document.getElementById("carrera");
+$("#cedula").change(function() {
+    existCed($("#cedula").val())
+});
+
+function existCed(ced) {
+    var parametros = { "cedula": ced };
+    $.ajax({
+        data: parametros,
+        type: "POST",
+        url: "../../accesoDatos/registro/consultarced.php",
+        success: function(data) {
+            if (data == 0) {
+                return true;
+            } else {
+                mensaje('warning', 'Ya existe un usuario asociado a esta cédula, por favor digitarla de nuevo', 5000);
+                $("#cedula").val("");
+                $("#usuario").val("");
+            }
+        },
+        error: function() {
+            mensaje('error', 'Error al cargar la información', 3000);
+        }
+    });
+}
+
+function validarRegistroEstudiantes() {
+    var carrera = document.getElementById("carrera");
     var valueCarrera = carrera.options[carrera.selectedIndex].value;
 
     var grado = document.getElementById("grado");
@@ -26,80 +51,84 @@ function validarRegistroEstudiantes(){
     var sede = document.getElementById("sede");
     var valueSede = sede.options[sede.selectedIndex].value;
 
-    if(valueCarrera == 0 || valueGrado == 0 ||valuePeriodo == 0 || valueSede == 0){
-      mensaje('warning','Datos imcopletos');
-    	return false;
+    var cedula = $("#cedula").val();
 
-    }else if(!validarContrasena()){
-      mensaje('warning','Las contraseñas no coinciden')
-    	return false;
+    if (valueCarrera == 0 || valueGrado == 0 || valuePeriodo == 0 || valueSede == 0) {
+        mensaje('warning', 'Datos imcopletos');
+        return false;
+
+    } else if (!validarContrasena()) {
+        mensaje('warning', 'Las contraseñas no coinciden')
+        return false;
+    } else if (isNaN(cedula)) {
+        mensaje('warning', 'La cedula no debe contener guiones, ni ningún carácter especial')
+        return false;
     }
     return true;
 }
 
-function validarRegistroFuncionarios(){
-    if(!validarContrasena()){
-      mensaje('warning','Las contraseñas no coinciden')
-    	return false;
+function validarRegistroFuncionarios() {
+    if (!validarContrasena()) {
+        mensaje('warning', 'Las contraseñas no coinciden')
+        return false;
     }
     return true;
 }
 
-function validarEditarUsuarioContrasena(cod,tipo){
-  var contrasenaA = $('#contrasenaA').val();
-  if(contrasenaA != ''){
-      var parametros = {"id":cod,"tipo":tipo}
-      $.ajax({
-          data: parametros,
-          type: "POST",
-          url: "../../accesoDatos/registro/consultasRegistro.php",
-          success: function (data) {
-            if(data != "Error al procesar la información"){
-              if(data != contrasenaA){
-                mensaje('error','Contraseña Incorrecta');
-              }else{
-                var contrasenaN = $('#contrasenaN').val();
-                var contrasenaN2 = $('#contrasenaN2').val();
-                if(contrasenaN != "" && contrasenaN2 != ""){
-                  if(contrasenaN == contrasenaN2){
-                    cambiarContrasena(cod,contrasenaN,tipo);
-                  }else{
-                    mensaje('error','Las nuevas contraseñas no coinciden');
-                  }
-                }else{
-                  mensaje('warning','Datos incompletos');
+function validarEditarUsuarioContrasena(cod, tipo) {
+    var contrasenaA = $('#contrasenaA').val();
+    if (contrasenaA != '') {
+        var parametros = { "id": cod, "tipo": tipo }
+        $.ajax({
+            data: parametros,
+            type: "POST",
+            url: "../../accesoDatos/registro/consultasRegistro.php",
+            success: function(data) {
+                if (data != "Error al procesar la información") {
+                    if (data != contrasenaA) {
+                        mensaje('error', 'Contraseña Incorrecta');
+                    } else {
+                        var contrasenaN = $('#contrasenaN').val();
+                        var contrasenaN2 = $('#contrasenaN2').val();
+                        if (contrasenaN != "" && contrasenaN2 != "") {
+                            if (contrasenaN == contrasenaN2) {
+                                cambiarContrasena(cod, contrasenaN, tipo);
+                            } else {
+                                mensaje('error', 'Las nuevas contraseñas no coinciden');
+                            }
+                        } else {
+                            mensaje('warning', 'Datos incompletos');
+                        }
+                    }
+                } else {
+                    mensaje('error', 'Error al procesar la información');
                 }
-              }
-            }else{
-              mensaje('error','Error al procesar la información');
+            },
+            error: function() {
+                mensaje('error', 'Error al cargar la información');
             }
-          },
-          error: function () {
-            mensaje('error','Error al cargar la información');
-          }
-      });
-  }else{
-    mensaje('warning','Datos incompletos');
-  }
+        });
+    } else {
+        mensaje('warning', 'Datos incompletos');
+    }
 }
 
-function cambiarContrasena(cod, contrasena, tipo){
-  var parametros = {"codigo":cod,"tipo":tipo, "contrasena":contrasena}
-  $.ajax({
-          data: parametros,
-          type: "POST",
-          url: "../../accesoDatos/registro/editarUsuarioContrasena.php",
-          success: function (data) {
-            mensaje('information',data)
-          },
-          error: function () {
-            mensaje('error','Error al cargar la información');
-          }
-      });
+function cambiarContrasena(cod, contrasena, tipo) {
+    var parametros = { "codigo": cod, "tipo": tipo, "contrasena": contrasena }
+    $.ajax({
+        data: parametros,
+        type: "POST",
+        url: "../../accesoDatos/registro/editarUsuarioContrasena.php",
+        success: function(data) {
+            mensaje('information', data);
+            setTimeout(location.reload(true), 3000);
+        },
+        error: function() {
+            mensaje('error', 'Error al cargar la información');
+        }
+    });
 }
 
-function valueSelect(id,value){
-  $("#" + id).val(value);
+function valueSelect(id, value) {
+    $("#" + id).val(value);
 }
-
-

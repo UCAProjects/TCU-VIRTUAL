@@ -60,7 +60,7 @@
 
 	}elseif($tipo == 2){//Logueo de Funcionario
 		try {
-			$query = "SELECT E.codigo, E.carrera, E.rol, A.nombre_usuario, A.password, E.sede
+			$query = "SELECT E.codigo, E.rol, A.nombre_usuario, A.password, E.sede
 						FROM tigrupou_tcu.funcionarios E 
 							JOIN tigrupou_tcu.autentificacion_funcionarios A 
 								ON E.codigo LIKE A.usuario 
@@ -76,12 +76,20 @@
 			$carreraDB = "";
 			$rolDB = "";
 
+			
+
 			if(count($result)>0){
 				foreach ($result as $row ) {
 					$codigoDB = $row["codigo"];
 					$usuarioDB = $row["nombre_usuario"];
 					$contrasenaDB = $row["password"];
-					$carreraDB = $row["carrera"];
+
+
+					$queryC = "SELECT carrera FROM tigrupou_tcu.carreras_director WHERE funcionario LIKE $codigoDB";
+					$stmt = $db->prepare($queryC);
+					$stmt->execute();
+					$resultC = $stmt -> fetchAll();
+					$carreraDB = $resultC;
 					$rolDB = $row["rol"];
 					$sedeDB = $row["sede"];
 				}
@@ -102,7 +110,7 @@
 			}
 
 		}catch (Exception $e){
-			echo "error";
+			echo $e;
 		}
 	}
 ?>

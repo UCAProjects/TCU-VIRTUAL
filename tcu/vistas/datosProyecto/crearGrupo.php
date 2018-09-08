@@ -18,6 +18,8 @@
         include '../../header.php';
         if($tipo == 1){
           include '../../subHeaderEstudiantes.php';
+        }else{
+          include '../../subHeaderSalir.php';
         }
       ?>
       

@@ -15,6 +15,10 @@
     <body>
         <?php
         session_start();
+        if(!isset($_SESSION["codigo"])) //si la variable de sesion codigo no existe, entonces redireccionamos a la pagina de principal de invitados
+        {
+            header("Location: ../../index.php");
+        }
         include '../../header.php';
         include '../../subHeaderEstudiantes.php';
         include '../../conection.php'; //Conección a la DB

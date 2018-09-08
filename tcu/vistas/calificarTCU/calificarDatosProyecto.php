@@ -9,6 +9,10 @@
 <body>
   <?php
   session_start();
+  if(!isset($_SESSION["codigoFuncionario"])) //si la variable de sesion codigo no existe, entonces redireccionamos a la pagina de principal de invitados
+  {
+      header("Location: ../../index.php");
+  }
   include '../../header.php';
   include '../../subHeaderFuncionarios.php';
   include '../../conection.php'; //Conección a la DB
@@ -22,12 +26,12 @@
         case 1:
           $url = "detalleAnteProyecto.php?id=";
           $title = "Calificar Ante Proyecto";
-          $query = "SELECT G.codigo, G.descripcion from tigrupou_tcu.grupos G JOIN tigrupou_tcu.ante_proyecto A ON G.codigo LIKE A.grupo where G.carrera  like strCarrera and A.estado like 1";
+          $query = "SELECT G.codigo, G.descripcion, C.carrera from tigrupou_tcu.grupos G JOIN tigrupou_tcu.ante_proyecto A ON G.codigo LIKE A.grupo JOIN tigrupou_tcu.carreras C ON C.codigo LIKE G.carrera  where strCarrera and A.estado like 1";
           break;
         case 2:
           $url = "detalleAnteProyecto.php?id=";
           $title = "Calificar Ante Proyecto";
-          $query = "SELECT G.codigo, G.descripcion from tigrupou_tcu.grupos G JOIN tigrupou_tcu.ante_proyecto A ON G.codigo LIKE A.grupo where G.carrera  like strCarrera and A.estado_be like 1";
+          $query = "SELECT G.codigo, G.descripcion, C.carrera from tigrupou_tcu.grupos G JOIN tigrupou_tcu.ante_proyecto A ON G.codigo LIKE A.grupo JOIN tigrupou_tcu.carreras C ON C.codigo LIKE G.carrera  where A.estado_be like 1";
           break;
 
         default:
@@ -40,12 +44,12 @@
       case 1:
         $title = "Calificar Resumen Ejecutivo";
         $url = "detalleResumenEjecutivo.php?id=";
-        $query = "SELECT G.codigo, G.descripcion from tigrupou_tcu.grupos G JOIN tigrupou_tcu.resumen_ejecutivo A ON G.codigo LIKE A.grupo where G.carrera  like strCarrera and A.estado like 1";
+        $query = "SELECT G.codigo, G.descripcion, C.carrera from tigrupou_tcu.grupos G JOIN tigrupou_tcu.resumen_ejecutivo A ON G.codigo LIKE A.grupo JOIN tigrupou_tcu.carreras C ON C.codigo LIKE G.carrera where strCarrera and A.estado like 1";
         break;
       case 2:
         $title = "Calificar Resumen Ejecutivo";
         $url = "detalleResumenEjecutivo.php?id=";
-        $query = "SELECT G.codigo, G.descripcion from tigrupou_tcu.grupos G JOIN tigrupou_tcu.resumen_ejecutivo A ON G.codigo LIKE A.grupo where G.carrera  like strCarrera and A.estado_be like 1";
+        $query = "SELECT G.codigo, G.descripcion, C.carrera from tigrupou_tcu.grupos G JOIN tigrupou_tcu.resumen_ejecutivo A ON G.codigo LIKE A.grupo JOIN tigrupou_tcu.carreras C ON C.codigo LIKE G.carrera where A.estado_be like 1";
       break;
 
       default:
@@ -57,7 +61,21 @@
     break;
   }
   $carrera = $_SESSION["carreraFuncionario"];
-  $querySelect = str_replace("strCarrera", $carrera, $query);
+
+  $strQuery = "(";
+	  $cont = 0;
+	  foreach ($carreraR as $row) {
+		$carrera = $row["carrera"];
+		if($cont != 0){
+			$strQuery .= " OR ";
+		}
+		$strQuery .= "G.carrera  like $carrera ";
+		$cont ++;
+	  }
+	  $strQuery .= ")";
+  $querySelect = str_replace("strCarrera", $strQuery, $query);
+
+
   $stmt = $db->prepare($querySelect);
   $stmt -> execute();
   $result = $stmt -> fetchAll();
@@ -81,6 +99,7 @@
                 $cont ++;   ?>
                 <div class="well">
                   <h3><span class="orange">Proyecto:</span> <?php echo $row["descripcion"] ?></h3>
+                  <h4><span class="orange">Carrera:</span> <?php echo $row["carrera"] ?></h4>
                   <div>
                     <a class="btn btn" href="<?php echo $url . $row['codigo'] ?>">Validar</a>
                   </div><br>

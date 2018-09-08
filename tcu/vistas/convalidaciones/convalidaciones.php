@@ -32,7 +32,7 @@
             <div class="contenedor clearfix">
                 <h2>Convalidación del TCU</h2>
                 <div class="ingreso ingresoTamano">
-                    <form class="formulario" onsubmit="return validarRegistroEstudiantes()" method="POST" action="../../accesoDatos/registro/insertarEditarRegistroEstudiantes.php">
+                    <form class="formulario" method="POST" action="../../accesoDatos/registro/insertarEditarRegistroEstudiantes.php">
                         <ul>
                             <input type="hidden" name="tipo" id="tipo" >
                             <input type="hidden" name="codigo" id="codigo">

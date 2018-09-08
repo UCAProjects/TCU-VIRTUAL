@@ -2,16 +2,30 @@
   //session_start();
     include '../../conection.php'; //Conección a la DB
 
-      $carrera = $_SESSION["carreraFuncionario"];
+	  $carreraR = $_SESSION["carreraFuncionario"];
+	  $strQuery = "(";
+	  $cont = 0;
+	  foreach ($carreraR as $row) {
+		$carrera = $row["carrera"];
+		if($cont != 0){
+			$strQuery .= " OR ";
+		}
+		$strQuery .= "G.carrera  like $carrera ";
+		$cont ++;
+	  }
+	  $strQuery .= ")";
+	  if($strQuery == "()"){
+		  $strQuery = "true";
+	  }
       $rol = $_SESSION["rolFuncionario"];
 
       if($rol == 1){ // Director de Carrera
-        $queryA = "select count(*) total from tigrupou_tcu.grupos G JOIN tigrupou_tcu.ante_proyecto A ON G.codigo LIKE A.grupo where G.carrera  like $carrera and A.estado like 1 ";
-        $queryR = "select count(*) total from tigrupou_tcu.grupos G JOIN tigrupou_tcu.resumen_ejecutivo A ON G.codigo LIKE A.grupo where G.carrera  like $carrera and A.estado like 1 ";
+        $queryA = "select count(*) total from tigrupou_tcu.grupos G JOIN tigrupou_tcu.ante_proyecto A ON G.codigo LIKE A.grupo where $strQuery and A.estado like 1 ";
+        $queryR = "select count(*) total from tigrupou_tcu.grupos G JOIN tigrupou_tcu.resumen_ejecutivo A ON G.codigo LIKE A.grupo where $strQuery and A.estado like 1 ";
       }elseif ($rol == 2) { // Bienestar Estudiantil
-        $queryA = "select count(*) total from tigrupou_tcu.grupos G JOIN tigrupou_tcu.ante_proyecto A ON G.codigo LIKE A.grupo where G.carrera  like $carrera and A.estado_be like 1 ";
-        $queryR = "select count(*) total from tigrupou_tcu.grupos G JOIN tigrupou_tcu.resumen_ejecutivo A ON G.codigo LIKE A.grupo where G.carrera  like $carrera and A.estado_be like 1 ";
-      }
+        $queryA = "select count(*) total from tigrupou_tcu.grupos G JOIN tigrupou_tcu.ante_proyecto A ON G.codigo LIKE A.grupo where  A.estado_be like 1 ";
+        $queryR = "select count(*) total from tigrupou_tcu.grupos G JOIN tigrupou_tcu.resumen_ejecutivo A ON G.codigo LIKE A.grupo where A.estado_be like 1 ";
+	  }
 
       $stmt = $db->prepare($queryA);
       $stmt -> execute();
@@ -64,7 +78,7 @@
 					</li>
 					<li>
 						<a class="over" href="../calificarTCU/calificarDatosProyecto.php?class=2">
-							<i class="fas fa-clipboard-check"></i> Resumen Ejecutivo
+							<i class="fas fa-clipboard-check"></i> Informe Final
 							<span class="badge" style="background-color:#3a87ad">
 								<?php echo $numeroResumenEjecutivo; ?>
 							</span>
@@ -129,6 +143,15 @@
 				<i class="fas fa-clone"></i> Convalidar TCU</a>
 			</li>
 
+	  		<li class="dropdown">
+				<a  href="#" class="dropdown-toggle color" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ><i class="fas fa-clipboard-list"></i> Plantillas <span  class="caret white colorNaranja"></span></a>
+				<ul class="dropdown-menu">
+				<li id="liHorasDigital"><a href="../../Plantillas/CartaAceptacion.docx"><i class="fas fa-file-word"></i> Carta de Aceptación</a></li>
+				<li id="liControlDocumento"><a href="../../Plantillas/CartaSolicitud.docx"><i class="fas fa-file-word"></i> Carta de Solicitud</a></li>
+				<li id="liControlDocumento"><a href="../../Plantillas/CartaFinalizacion.docx"><i class="fas fa-file-word"></i> Carta de Finalización</a></li>
+				<li id="liControlDocumento"><a href="../../Plantillas/BitacoraTCULogoNuevo2018.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Cronograma</a></li>
+				</ul>
+      		</li>
 
 			<li class="navbar-right" id="liSalir">
 				<a class="color" href="../../index.php">

@@ -84,6 +84,6 @@
         <?php
         	include '../../footer.php'
         ?>
-        <script src="../../js/registro.js"></script>
+        <script src="../../js/registro.js?version=5"></script>
     </body>
 </html>
