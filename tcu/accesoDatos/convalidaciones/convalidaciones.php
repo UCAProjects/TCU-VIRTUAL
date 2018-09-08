@@ -6,12 +6,12 @@
 	$apellido2= $_POST["apellido2"];
 	$nombre= $_POST["nombre"];
 	$cedula= $_POST["cedula"];
-	$correo= $_POST["universidad"];
-	$telefono= $_POST["periodo"];
-	$carrera = $_POST["descripcionProyecto"];
+	$universidad= $_POST["universidad"];
+	$periodo = $_POST["periodo"];
+	$descripcion = $_POST["descripcionProyecto"];
 
 	if(isset($_POST["btnRegistro"])){ //Si se presiona el boton de confirmar
-        $query = "insert into tigrupou_tcu.estudiantes(primer_apellido,segundo_apellido,nombre_completo,cedula,correo_electronico,telefono_trabajo,celular,carrera,grado,periodo,sede,lugar_trabajo) values('$apellido1','$apellido2','$nombre','$cedula','$correo','$telefonoT','$telefono',$carrera,$grado,$periodo,$sede,'$lugarTrabajo')";
+        $query = "INSERT INTO tigrupou_tcu.convalidaciones (primer_apellido, segundo_apellido, nombre, cedula, periodo, universidad, descripcion_proyecto) VALUES ($apellido1,$apellido2,$nombre,$cedula, $periodo,$universidad,$descripcion);";
         $stmt = $db->prepare($query);//Inserta a DB
         $stmt -> execute();
         $id = $db->lastInsertId();  //Se obtiene el id del elemento insertado anteriormente
