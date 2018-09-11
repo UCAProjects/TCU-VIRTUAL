@@ -32,7 +32,7 @@
             <div class="contenedor clearfix">
                 <h2>Convalidación del TCU</h2>
                 <div class="ingreso ingresoTamano">
-                    <form class="formulario" method="POST" action="../../accesoDatos/registro/insertarEditarRegistroEstudiantes.php">
+                    <form class="formulario" method="POST" action="../../accesoDatos/convalidaciones/convalidaciones.php">
                         <ul>
                             <input type="hidden" name="tipo" id="tipo" >
                             <input type="hidden" name="codigo" id="codigo">
@@ -40,26 +40,26 @@
                     	    <div class="row">
                                 <div class="col-md-4">
                                     <li><label for="apellido1">Primer Apellido</label></li>
-                                    <li><input type="text" name="apellido1" id="apellido1" placeholder="Digite su primer apellido"  required></li>
+                                    <li><input type="text" name="apellido1" id="apellido1" placeholder="Digite el primer apellido"  required></li>
                                 </div>
                                 <div class="col-md-4">
                                     <li><label for="apellido2">Segundo Apellido</label></li>
-                                    <li><input type="text" name="apellido2" id="apellido2" placeholder="Digite su segundo apellido" required></li>
+                                    <li><input type="text" name="apellido2" id="apellido2" placeholder="Digite el segundo apellido" required></li>
                                 </div>
                                 <div class="col-md-4">
                                     <li><label for="nombre">nombre</label></li>
-                                    <li><input type="text" name="nombre" id="nombre" placeholder="Digite su nombre"  required></li>
+                                    <li><input type="text" name="nombre" id="nombre" placeholder="Digite el nombre"  required></li>
                                 </div>
                     	    </div>
 
                             <div class="row">
                                 <div class="col-md-4">
-                                    <li><label for="apellido1">Cédula</label></li>
-                                    <li><input type="text" name="apellido1" id="apellido1" placeholder="Digite su primer apellido"  required></li>
+                                    <li><label for="cedula">Cédula</label></li>
+                                    <li><input type="number" name="cedula" id="cedula" placeholder="Digite la cédula"  required></li>
                                 </div>
                                 <div class="col-md-4">
-                                    <li><label for="apellido2">Universidad de Procedencia</label></li>
-                                    <li><input type="text" name="apellido2" id="apellido2" placeholder="Digite su segundo apellido" required></li>
+                                    <li><label for="universidad">Universidad de Procedencia</label></li>
+                                    <li><input type="text" name="universidad" id="universidad" placeholder="Digite la Universidad de Procedencia" required></li>
                                 </div>
                                 <div class="col-md-4">
                                     <li><label for="periodo">Período</label></li>
@@ -82,11 +82,8 @@
 
                             <div class="row">
                                 <div class="col-md-12">
-                                    <li><label for="apellido1">Descripción del proyecto</label></li>
-                                    
-                                        <textarea style="width:97%; height: 200px !important"  placeholder="Digite una breve descripción del proyecto" required></textarea>
-                                    
-                                    
+                                    <li><label for="descripcionProyecto">Descripción del proyecto</label></li>
+                                        <textarea name="descripcionProyecto" id="descripcionProyecto" style="width:97%; height: 200px !important"  placeholder="Digite una breve descripción del proyecto" required></textarea>
                                 </div>
                             </div>
                         </ul>
@@ -97,7 +94,6 @@
                     </form>
                 </div><!--.programa-evento-->
               </div><!--.contenedor-->
-
           </section><!--.section programa-->
         </main>
 

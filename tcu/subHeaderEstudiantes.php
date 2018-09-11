@@ -51,7 +51,7 @@
           <li id="liHorasDigital"><a href="../../Plantillas/CartaAceptacion.docx"><i class="fas fa-file-word"></i> Carta de Aceptación</a></li>
           <li id="liControlDocumento"><a href="../../Plantillas/CartaSolicitud.docx"><i class="fas fa-file-word"></i> Carta de Solicitud</a></li>
           <li id="liControlDocumento"><a href="../../Plantillas/CartaFinalizacion.docx"><i class="fas fa-file-word"></i> Carta de Finalización</a></li>
-          <li id="liControlDocumento"><a href="../../Plantillas/BitacoraTCULogoNuevo2018.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Cronograma</a></li>
+          <li id="liControlDocumento"><a href="../../Plantillas/BitacoraTCULogoNuevo2018.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Bitácora</a></li>
         </ul>
       </li>
       <li class="navbar-right" id="liSalir"><a class="color"  href="../../index.php"><i class="fas fa-sign-out-alt"></i></a></li>

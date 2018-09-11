@@ -11,11 +11,11 @@
 	$descripcion = $_POST["descripcionProyecto"];
 
 	if(isset($_POST["btnRegistro"])){ //Si se presiona el boton de confirmar
-        $query = "INSERT INTO tigrupou_tcu.convalidaciones (primer_apellido, segundo_apellido, nombre, cedula, periodo, universidad, descripcion_proyecto) VALUES ($apellido1,$apellido2,$nombre,$cedula, $periodo,$universidad,$descripcion);";
+        $query = "INSERT INTO tigrupou_tcu.convalidaciones (primer_apellido, segundo_apellido, nombre, cedula, periodo, universidad, descripcion_proyecto) VALUES ('$apellido1','$apellido2','$nombre',$cedula, $periodo,'$universidad','$descripcion');";
         $stmt = $db->prepare($query);//Inserta a DB
         $stmt -> execute();
-        $id = $db->lastInsertId();  //Se obtiene el id del elemento insertado anteriormente
-			
 	}
+
+	redirect("../../vistas/convalidaciones/convalidaciones.php");
 
 ?>

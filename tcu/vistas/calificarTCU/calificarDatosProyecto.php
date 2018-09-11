@@ -101,7 +101,7 @@
                   <h3><span class="orange">Proyecto:</span> <?php echo $row["descripcion"] ?></h3>
                   <h4><span class="orange">Carrera:</span> <?php echo $row["carrera"] ?></h4>
                   <div>
-                    <a class="btn btn" href="<?php echo $url . $row['codigo'] ?>">Validar</a>
+                    <a class="btn btn" href="<?php echo $url . $row['codigo'] ?>">Revisar</a>
                   </div><br>
                 </div>
                 <?php

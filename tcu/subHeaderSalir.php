@@ -18,6 +18,16 @@
 <header class="sub-header">
   <div class="fondo-encabezado">
     <ul class="nav nav-tabs">
+      <li class="dropdown">
+          <a  href="#" class="dropdown-toggle color" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ><i class="fas fa-clipboard-list"></i> Plantillas <span  class="caret white colorNaranja"></span></a>
+          <ul class="dropdown-menu">
+            <li id="liHorasDigital"><a href="../../Plantillas/CartaAceptacion.docx"><i class="fas fa-file-word"></i> Carta de Aceptación</a></li>
+            <li id="liControlDocumento"><a href="../../Plantillas/CartaSolicitud.docx"><i class="fas fa-file-word"></i> Carta de Solicitud</a></li>
+            <li id="liControlDocumento"><a href="../../Plantillas/CartaFinalizacion.docx"><i class="fas fa-file-word"></i> Carta de Finalización</a></li>
+            <li id="liControlDocumento"><a href="../../Plantillas/BitacoraTCULogoNuevo2018.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Bitácora</a></li>
+          </ul>
+        </li>
+        
       <li class="navbar-right" id="liSalir"><a class="color"  href="../../index.php"> Salir <i class="fas fa-sign-out-alt"></i></a></li>
     </ul>
   </div><!-- .fondo-encabezado -->
