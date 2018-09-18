@@ -1,0 +1,1 @@
+SELECT * FROM tigrupou_tcu.autentificacion_estudiantes WHERE USUARIO LIKE 39;

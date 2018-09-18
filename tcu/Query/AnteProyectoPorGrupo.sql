@@ -1,0 +1,1 @@
+SELECT * FROM tigrupou_tcu.ante_proyecto where grupo like 426;

@@ -11,7 +11,7 @@
   .disabled {
     pointer-events:none; /* No clickable */
     opacity:0.6;         /* Se ve disabled */
-}
+  }
 </style>
 
 <header class="sub-header">
@@ -51,6 +51,7 @@
           <li id="liHorasDigital"><a href="../../Plantillas/CartaAceptacion.docx"><i class="fas fa-file-word"></i> Carta de Aceptación</a></li>
           <li id="liControlDocumento"><a href="../../Plantillas/CartaSolicitud.docx"><i class="fas fa-file-word"></i> Carta de Solicitud</a></li>
           <li id="liControlDocumento"><a href="../../Plantillas/CartaFinalizacion.docx"><i class="fas fa-file-word"></i> Carta de Finalización</a></li>
+          <li id="liControlDocumento"><a href="../../Plantillas/CronogramaTCU.docx"><i class="fas fa-file-word"></i> Cronograma</a></li>
           <li id="liControlDocumento"><a href="../../Plantillas/BitacoraTCULogoNuevo2018.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Bitácora</a></li>
         </ul>
       </li>

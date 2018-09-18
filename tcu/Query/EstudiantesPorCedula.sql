@@ -1,0 +1,1 @@
+SELECT * FROM tigrupou_tcu.estudiantes WHERE CEDULA LIKE 116160963;

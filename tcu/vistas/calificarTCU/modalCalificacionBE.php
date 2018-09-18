@@ -28,22 +28,50 @@
 <?php
     $maxDCQ = "SELECT MAX(version) as max FROM tigrupou_tcu.revision_ante_proyecto WHERE ante_proyecto LIKE $id AND rol LIKE 1";
     $maxEEQ = "SELECT MAX(version) as max FROM tigrupou_tcu.revision_ante_proyecto WHERE ante_proyecto LIKE $id AND rol LIKE 2";
+    $estadoDCQ = "SELECT estado FROM tigrupou_tcu.revision_ante_proyecto WHERE ante_proyecto LIKE $id AND rol LIKE 1 AND version LIKE MAXVERSION;";
+    $estadoEEQ = "SELECT estado FROM tigrupou_tcu.revision_ante_proyecto WHERE ante_proyecto LIKE $id AND rol LIKE 2 AND version LIKE MAXVERSION;";
 
     $stmt = $db->prepare($maxDCQ);
     $stmt -> execute();
     $resultMaxDC = $stmt -> fetchAll();
+    $maxDC = 0;
     foreach ($resultMaxDC as $row) {
-      $maxDC = $row["max"];
+        if($row["max"] != ""){
+          $maxDC = $row["max"]; // Max del director de carrera
+        }
+      
     }
 
     $stmt = $db->prepare($maxEEQ);
     $stmt -> execute();
     $resultMaxEE = $stmt -> fetchAll();
+    $maxEE = 0;
     foreach ($resultMaxEE as $row) {
-      $maxEE = $row["max"];
+      if($row["max"] != ""){
+          $maxEE = $row["max"]; // Maximo de la Unidad de extensión
+        }
+      
     }
 
-    if(($maxEE - $maxDC) == 1){ ?>
+    $estadoDCQ = str_replace("MAXVERSION", $maxDC, $estadoDCQ);
+    $stmt = $db->prepare($estadoDCQ);
+    $stmt -> execute();
+    $resultEstadoDC = $stmt -> fetchAll();
+    $estadoResult = 0;
+    foreach ($resultEstadoDC as $row) {
+      $estadoResult = $row["estado"]; // Maximo de la Unidad de extensión
+    }
+
+    $estadoEEQ = str_replace("MAXVERSION", $maxEE, $estadoEEQ);
+    $stmt = $db->prepare($estadoEEQ);
+    $stmt -> execute();
+    $resultEstadoEE = $stmt -> fetchAll();
+    $estadoResultEE = 0;
+    foreach ($resultEstadoEE as $row) {
+      $estadoResultEE = $row["estado"]; // Maximo de la Unidad de extensión
+    }
+
+    if((($maxEE - $maxDC) == 1 and $estadoResultEE != 6) or (($maxEE - $maxDC) == 0 and $estadoResult == 6 and $estadoResultEE != 6)){  ?>
       <table class="table table-striped">
   <thead>
     <tr>

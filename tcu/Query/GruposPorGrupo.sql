@@ -1,0 +1,1 @@
+SELECT * FROM tigrupou_tcu.grupos where codigo like 426;

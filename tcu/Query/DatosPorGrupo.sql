@@ -1,0 +1,1 @@
+SELECT * FROM tigrupou_tcu.datos WHERE GRUPO LIKE 426;

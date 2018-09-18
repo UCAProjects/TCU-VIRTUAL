@@ -1,0 +1,1 @@
+INSERT INTO `estado` (`codigo`, `descripcion`, `reporte`) VALUES (0,'Activo',1),(1,'En revisión',0),(2,'Aprobado',0),(3,'Aprobado con Observaciones',0),(4,'Reprobado',1),(5,'Concluído',1),(6,'Guardado',0),(7,'Inactivo ',1);

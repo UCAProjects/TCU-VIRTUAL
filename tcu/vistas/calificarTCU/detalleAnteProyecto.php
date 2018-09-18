@@ -100,7 +100,7 @@
             <div class=" clearfix">
                 <div class="">
                     <h2>Ante Proyecto</h2>
-                    <div class="ingreso ingresoTamano" style: " margin-left:50% !important">
+                    <div class="ingreso ingresoTamano">
                         <form class="">
                             <ul class="nav nav-tabs" id="nav">
                                 <li class="active"><a href="#nav" onclick="modeLecture()"><i class="fas fa-book"></i> Modo
@@ -129,22 +129,30 @@
                                             Cronograma de TCU</a>
                                     </div>
                                 </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <b>Calificaciones</b>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                            <a class="btn btn-block btn-success" onclick="cargarModal({'id':<?php echo $id; ?>},'modalModalDiv','verCalificacion-modal','modalHistorialCalificacion.php')">
+                                            <i class="fas fa-list-alt"></i> Historial de Calificaciones
+                                            </a>
+                                    </div>
+                                    <?php   if($rol == 1){ ?>
+                                        <div class="col-md-3">
+                                            <a class="btn btn-block"  onclick="cargarModal({'id':<?php echo $id; ?>},'modalModalDiv','verCalificacion-modal','modalCalificacionBE.php')">
+                                                <i class="fas fa-gavel"></i> Calificación de la Unidad de Extensión
+                                            </a>
+                                        </div>
+                                    <?php
+                                        }
+                                    ?>              
+                                </div>
                             </div>
 
-                            <div id="LecturaModo" style="margin-right:10%;margin-left:10%;">
-                                <div class="row well">
-                                    <?php
-                    if($rol == 1){ ?>
-                                    <div>
-                                        <a class="btn" href="#" onclick="cargarModal({'id':<?php echo $id; ?>},'modalModalDiv','verCalificacion-modal','modalCalificacionBE.php')">
-                                            <i class="fas fa-gavel"></i> Calificación de la Unidad de Extensión
-                                        </a>
-
-                                    </div>
-                                    <?php
-                    }
-                  ?>
-                                    <br>
+                            <div id="LecturaModo">
                                     <div class="well">
                                         <h3>
                                             <center>Ante Proyecto</center>
@@ -252,20 +260,10 @@
                                             </div> <!-- END WELL -->
                                         </div> <!--   END DIV DOCUMENT -->
                                     </div>
-                                </div>
                             </div> <!--   END DIV Lecture Mode -->
 
-                            <div id="RevisionMode" style="display: none; margin-right:10%;margin-left:10%;" class="well">
-                                <?php
-                    if($rol == 1){ ?>
-                                <div>
-                                    <a class="btn" href="#" onclick="cargarModal({'id':<?php echo $id; ?>},'modalModalDiv','verCalificacion-modal','modalCalificacionBE.php')">
-                                        <i class="fas fa-gavel"></i> Calificación de la Unidad de Extensión
-                                    </a>
-                                </div>
-                                <?php
-                    }
-                ?>
+                            <div id="RevisionMode" style="display: none;" class="well">
+                                
                                 <div style="resize: both;"><br>
                                     <div class="row">
                                         <div class="col-md-7 col-md-offset-2">
@@ -280,7 +278,7 @@
                                             </a>
                                         </div>
                                     </div>
-                                    <center><textarea id="txtA_observaciones" placeholder="Observaciones" cols="70" rows="20"><?php
+                                    <center><textarea id="txtA_observaciones" placeholder="Observaciones" cols="90" rows="20"><?php
                                     if($estadoGuardado == 6){
                                         echo $observacionesGuardado;
                                     }?></textarea></center>
@@ -370,7 +368,6 @@
                             </div>
                         </form>
                     </div>
-                </div>
                 <!--.programa-evento-->
             </div>
             <!--.contenedor-->
@@ -390,7 +387,6 @@
     $estadoGuardado;
     if($estadoGuardado == 6){ // Estado 6: estado para editar la calificicación  ?> 
     <script>
-        alert("no");
         $("#txtA_observaciones").val('<?php echo $observacionesGuardado ?>');
     </script>
     <?php }
@@ -400,11 +396,6 @@
     <div class="modal fade" id="verCalificacion-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content" id="modal_content">
-                <div class="modal-header" align="center">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                    </button>
-                </div>
                 <div id="modalModalDiv">
                     <!--Div donde se carga el form para ingresar los datos -->
                 </div>

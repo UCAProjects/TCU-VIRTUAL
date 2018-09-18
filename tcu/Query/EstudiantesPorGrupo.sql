@@ -1,0 +1,1 @@
+SELECT * FROM tigrupou_tcu.estudiantes WHERE GRUPO LIKE 81;
