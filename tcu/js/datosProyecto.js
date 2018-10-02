@@ -181,7 +181,6 @@ function validateNumber() {
 }
 
 function redirectGrupo(tipo, id) {
-    debugger;
     if ($('#grupal').prop('checked')) {
         window.location.href = "crearGrupo.php?tipo=" + tipo;
     }

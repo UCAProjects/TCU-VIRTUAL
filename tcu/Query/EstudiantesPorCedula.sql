@@ -1,1 +1,1 @@
-SELECT * FROM tigrupou_tcu.estudiantes WHERE CEDULA LIKE 116160963;
+SELECT * FROM tigrupou_tcu.estudiantes WHERE CEDULA LIKE 304090706;

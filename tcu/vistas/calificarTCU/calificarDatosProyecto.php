@@ -93,25 +93,77 @@
           <h2><?php echo $title ?></h2>
           <div  class="ingreso ingresoTamano">
             <form class="formulario">
+            <h3><span class="text-primary" >Ante Proyectos Nuevos</span></h3>
+            <hr>
               <?php
-              $cont = 0;
+              $contI = 0;
               foreach($result as $row){
-                $cont ++;   ?>
-                <div class="well">
-                  <h3><span class="orange">Proyecto:</span> <?php echo $row["descripcion"] ?></h3>
-                  <h4><span class="orange">Carrera:</span> <?php echo $row["carrera"] ?></h4>
-                  <div>
-                    <a class="btn btn" href="<?php echo $url . $row['codigo'] ?>">Revisar</a>
-                  </div><br>
-                </div>
-                <?php
-              }
-              if($cont == 0 ){ ?>
-                <center>
-                  <span class="label label-primary"> No hay Proyectos a Validar </span> </center>
+                $cod = $row['codigo'];
+                $queryGuardado = "Select estado from tigrupou_tcu.revision_ante_proyecto WHERE version LIKE 
+                  (SELECT max(version) FROM tigrupou_tcu.revision_ante_proyecto WHERE ante_proyecto like $cod and rol like $rol) 
+                  AND ante_proyecto like $cod AND rol like $rol;";
+                
+                $stmt = $db->prepare($queryGuardado);
+                $stmt -> execute();
+                $resultGuardado = $stmt -> fetchAll();
+                $estado = 0;
+                foreach($resultGuardado as $rowG){
+                  $estado = $rowG["estado"];
+                }
+                if($estado != 6){
+                  $contI ++;   ?>
+                  <div class="well">
+                    <h3><span class="orange">Proyecto:</span> <?php echo $row["descripcion"] ?></h3>
+                    <h4><span class="orange">Carrera:</span> <?php echo $row["carrera"] ?></h4>
+                    <div>
+                      <a class="btn btn" href="<?php echo $url . $cod ?>">Revisar</a>
+                    </div><br>
+                  </div>
                   <?php
                 }
-                ?>
+                
+              } 
+              if($contI == 0){?>
+                  <center> <span class="label label-primary"> No hay Ante Proyectos Nuevos </span> </center>
+              <?php } 
+              $contI = 0;?>
+              <hr>
+             <h3><span class="text-primary">Ante Proyectos Guardados</span></h3>
+             <hr>
+              <?php
+              foreach($result as $row){
+                $cod = $row['codigo'];
+                $queryGuardado = "Select estado from tigrupou_tcu.revision_ante_proyecto WHERE version LIKE 
+                  (SELECT max(version) FROM tigrupou_tcu.revision_ante_proyecto WHERE ante_proyecto like $cod and rol like $rol) 
+                  AND ante_proyecto like $cod AND rol like $rol; ";
+                
+                $stmt = $db->prepare($queryGuardado);
+                $stmt -> execute();
+                $resultGuardado = $stmt -> fetchAll();
+                $estado = 0;
+                foreach($resultGuardado as $rowG){
+                  $estado = $rowG["estado"];
+                }
+                if($estado == 6){
+                  $contI ++;   ?>
+                  <div class="well">
+                    <h3><span class="orange">Proyecto:</span> <?php echo $row["descripcion"] ?></h3>
+                    <h4><span class="orange">Carrera:</span> <?php echo $row["carrera"] ?></h4>
+                    <div>
+                      <a class="btn btn" href="<?php echo $url . $cod ?>">Revisar</a>
+                    </div><br>
+                  </div>
+                  
+                  <?php
+                }
+                
+              }
+                    if($contI == 0){?>
+                      <center> <span class="label label-primary"> No hay Ante Proyectos Guardados </span> </center>
+                    <?php } 
+                    $contI = 0;
+                  ?>
+                  <hr>
               </form>
             </div>
           </div><!--.programa-evento-->

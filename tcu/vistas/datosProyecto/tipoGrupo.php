@@ -38,14 +38,13 @@ session_start();
                 <div class="">
                   <h2>Grupo</h2>
                   <div class="formulario well" novalidate>
-
-                    <br><br>
-
+                  <label class="label label-danger">Si su TCU es de carácter grupal, SOLAMENTE el lider del grupo deberá seleccionar la opción Grupal. Los demás integrantes deberán cerrar sesión sobrel el botón Salir, <br>y esperar a ser agregados por su respectivo Lider.</label>
+                  <label class="label label-danger"></label>
                     <p class="h3">¿El presente TCU será realizádo de forma grupal o individual?</p>
                     <br>
                     <div class="row">
                       <div class="col-md-2">
-                        Individual
+                        <h3>Individual</h3>
                       </div>
                       <div class="col-md-2">
                         <input type="checkbox" id="individual" name="individual" value="individual">
@@ -54,14 +53,14 @@ session_start();
 
                     <div class="row">
                       <div class="col-md-2">
-                        Grupal
+                        <h3>Grupal</h3>
                       </div>
                       <div class="col-md-2">
                         <input type="checkbox" id="grupal" name="grupal" value="grupal">
                       </div>
                     </div>
-
-                    <a class="btn btn-success btn-lg" onclick="redirectGrupo(<?php echo $tipo?>,<?php echo $sesionId?>)">Confirmar</a>
+                  <hr>
+                    <a class="btn" onclick="redirectGrupo(<?php echo $tipo?>,<?php echo $sesionId?>)">Confirmar</a>
 
                     <br><br><br>
 
