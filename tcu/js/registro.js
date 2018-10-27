@@ -25,17 +25,20 @@ function existCed(ced) {
         url: "../../accesoDatos/registro/consultarced.php",
         success: function(data) {
             if (data == 0) {
-                return true;
+                return false;
             } else {
                 mensaje('warning', 'Ya existe un usuario asociado a esta cédula, por favor digitarla de nuevo', 5000);
                 $("#cedula").val("");
                 $("#usuario").val("");
+                return true;
             }
         },
         error: function() {
             mensaje('error', 'Error al cargar la información', 3000);
+            return true;
         }
     });
+    return true;
 }
 
 function validarRegistroEstudiantes() {
@@ -63,6 +66,28 @@ function validarRegistroEstudiantes() {
     } else if (isNaN(cedula)) {
         mensaje('warning', 'La cedula no debe contener guiones, ni ningún carácter especial')
         return false;
+    }else{
+        var ced = $("#cedula").val();
+        var parametros = { "cedula": ced };
+        $.ajax({
+            data: parametros,
+            type: "POST",
+            url: "../../accesoDatos/registro/consultarced.php",
+            success: function(data) {
+                if (data == 0) {
+                    break;
+                } else {
+                    mensaje('warning', 'Ya existe un usuario asociado a esta cédula, por favor digitarla de nuevo', 5000);
+                    $("#cedula").val("");
+                    $("#usuario").val("");
+                    return false;
+                }
+            },
+            error: function() {
+                mensaje('error', 'Error al cargar la información', 3000);
+                return false;
+            }
+        });
     }
     return true;
 }

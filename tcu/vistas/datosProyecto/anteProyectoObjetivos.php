@@ -41,17 +41,28 @@
 
  ?>
 
-	<input type="hidden" name="hiddenCodigo" id="hiddenCodigo" value="<?php echo $codigo?>">
+  <div class="row">
+    <input type="hidden" name="hiddenCodigo" id="hiddenCodigo" value="<?php echo $codigo?>">
 
-  <label for="objetivo_general">OBJETIVO GENERAL</label>
-  <textarea  id="objetivo_general"
+    <label for="objetivo_general">OBJETIVO GENERAL</label>
+  </div>
+	
+  <div class="row">
+    <textarea  id="objetivo_general"
         style=" overflow:hidden; font-size:15px; font-family:Arial; text-align : justify;line-height: 1.6; resize:none;"
                 rows="5" cols="87"><?php echo $general ?></textarea>
-
-  <label for="objetivos_especificos">OBJETIVOS ESPECIFICOS</label>
-  <textarea  id="objetivos_especificos"
+  </div>
+  
+  <div class="row">
+    <label for="objetivos_especificos">OBJETIVOS ESPECIFICOS</label>
+  </div>
+  
+  <div class="row">
+    <textarea  id="objetivos_especificos"
         style=" overflow:hidden; font-size:15px; font-family:Arial; text-align : justify;line-height: 1.6; resize:none;"
                 rows="12" cols="87"><?php echo $especificos ?></textarea>
+  </div>
+  
 
 <br>
 

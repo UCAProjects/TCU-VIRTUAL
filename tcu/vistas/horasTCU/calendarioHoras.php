@@ -54,7 +54,7 @@
     
     /*Codigo que carga todas las actividades de horas Tcu
      desde la base de datos para su posterior uso*/
-    $query = "SELECT * FROM tigrupou_tcu.horas_tcu where grupo like $grupo;";
+    $query = "SELECT *, replace(actividades_realizadas, '\n', '****') AS actividades FROM tigrupou_tcu.horas_tcu where grupo like $grupo;";
     $stmt = $db->prepare($query);
     $stmt -> execute();
     $result = $stmt -> fetchAll();
@@ -178,7 +178,9 @@
         /*Javascrip encargado de configurar y dar el diseño a fullCalendar  */
         //var calendarHeight = 2.5;
         var _Date;
+      
         $(document).ready(function() {
+          debugger;
           $('#calendar').fullCalendar({
             /*Configuración para las etiquetas de años y dias */
             monthNames:['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio','Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
@@ -200,7 +202,7 @@
             eventLimit: false , /* Se encargar de poner un limite a los eventos que se ven por día */
 
            /* Utiliza las actividades cargadas desde la base de datos anteriormente y las muestra en el calendario*/
-
+            
            events: [
            <?php foreach($result as $event):   /*  Result contiene el resultado de la consulta de todos los evnentos que existan*/
            $start= [$event['fecha'],$event['hora_entrada']];
@@ -219,7 +221,7 @@
            {
              id: '<?php echo $event['codigo']; ?>',
              title: '<?php echo "Horas Realizadas: " . $event['numero_horas']; ?>',
-             description:'<?php echo $event['actividades_realizadas']; ?>',
+             description: '<?php echo $event['actividades']; ?>',
              start: '<?php echo $start; ?>',
              end: '<?php echo $end; ?>'
            },

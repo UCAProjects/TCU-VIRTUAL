@@ -41,30 +41,36 @@
 
  ?>
 
-<label for="identificacionProblema">ESTRATEGIAS Y PERTENENCIAS DE LAS POSIBLES SOLUCIONES</label>
+<div class="row">
+  <label for="identificacionProblema">ESTRATEGIAS Y PERTENENCIAS DE LAS POSIBLES SOLUCIONES</label>
 	<input type="hidden" name="hiddenCodigo" id="hiddenCodigo" value="<?php echo $codigo?>">
-    <textarea  id="estrategias_soluciones"
-          style=" overflow:hidden; font-size:15px; font-family:Arial; text-align : justify;line-height: 1.6; resize:none;"
-                rows="30" cols="87" maxlength="2610"><?php echo $estrategias_soluciones  ?></textarea>
+</div>
+
+<div class="row">
+  <textarea  id="estrategias_soluciones"
+    style=" overflow:hidden; font-size:15px; font-family:Arial; text-align : justify;line-height: 1.6; resize:none;"
+      rows="30" cols="87" maxlength="2610"><?php echo $estrategias_soluciones  ?></textarea>
+</div>
+
 <br>
 
-  <div class="row">
-    <div class="col-md-6">
-      <button class="btn btn-primary" href="#"
-        onclick="guardar('estrategias_soluciones',<?php echo $grupo ?>,1,'anteProyectoObjetivos.php','contenedorAnteProyecto'); disminuirProgress(20);">
-          <span class="glyphicon glyphicon-arrow-left"> </span>  
-          Atrás
-      </button>
-    </div>
-    <div class="col-md-6">
-      <button id="btnEnviar" class="btn" 
-        onclick="guardar('estrategias_soluciones',<?php echo $grupo ?>,1,'',''); cargarModal(null,'mostrarModal','modalAdjuntarDatos','modalDatosAdjuntos.php');" 
-          style="margin-left:50% !important">
-            <i class="far fa-paper-plane"></i> 
-            ENVIAR
-      </button>
-    </div>
+<div class="row">
+  <div class="col-md-6">
+    <button class="btn btn-primary" href="#"
+      onclick="guardar('estrategias_soluciones',<?php echo $grupo ?>,1,'anteProyectoObjetivos.php','contenedorAnteProyecto'); disminuirProgress(20);">
+        <span class="glyphicon glyphicon-arrow-left"> </span>  
+        Atrás
+    </button>
   </div>
+  <div class="col-md-6">
+    <button id="btnEnviar" class="btn" 
+      onclick="guardar('estrategias_soluciones',<?php echo $grupo ?>,1,'',''); cargarModal(null,'mostrarModal','modalAdjuntarDatos','modalDatosAdjuntos.php');" 
+        style="margin-left:50% !important">
+          <i class="far fa-paper-plane"></i> 
+          ENVIAR
+    </button>
+  </div>
+</div>
 
-  <br><br>
-  <center><label id="labelNoAccess" class="label label-danger"></label></center>
+<br><br>
+<center><label id="labelNoAccess" class="label label-danger"></label></center>

@@ -41,13 +41,17 @@
 
  ?>
 
+<div class="row">
+  <label for="identificacionProblema">DESCRIPCIÓN DEL BENEFICIARIO</label>
+  <input type="hidden" id="hiddenCodigo" name="hiddenCodigo" value="<?php echo $codigo ?>">
+</div>
 
-<label for="identificacionProblema">DESCRIPCIÓN DEL BENEFICIARIO</label>
-<input type="hidden" id="hiddenCodigo" name="hiddenCodigo" value="<?php echo $codigo ?>">
-        <textarea  id="descripcion_beneficiario"
+<div class="row">
+  <textarea  id="descripcion_beneficiario"
               style=" overflow:hidden; font-size:15px; font-family:Arial; text-align : justify;line-height: 1.6; resize:none;"
                     rows="15" cols="87" maxlength="1305"><?php echo $descripcion_beneficiario ?></textarea>
-        <br>
+</div>
+<br>
 
  <div class="row">
     <div class="col-md-6">

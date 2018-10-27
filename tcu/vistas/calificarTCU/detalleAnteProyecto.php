@@ -25,10 +25,35 @@
   include '../../subHeaderFuncionarios.php';
   include '../../conection.php'; //Conección a la DB
 
+
+
   $id = $_GET["id"];
   $carrera = $_SESSION["carreraFuncionario"]; // Carrera a la que partenece el funcionario
   $rol = $_SESSION["rolFuncionario"]; // Rol para saber rol del Funcionario:: 1 Director de Carrera | 2 Unidad Extensión 
   $query = "SELECT D.tema,D.organizacion, D.supervisor, A.*,C.carrera FROM tigrupou_tcu.datos D JOIN tigrupou_tcu.ante_proyecto A ON D.grupo like A.grupo JOIN tigrupou_tcu.grupos G ON G.codigo LIKE A.grupo JOIN tigrupou_tcu.carreras C ON G.carrera LIKE C.codigo WHERE D.grupo like $id";
+  
+    /**
+   * Primero se determina si el anteproyecto esta habilitado para ser calificado
+   */
+   $val = "estado";
+   if($rol == 2){
+    $val = "estado_be";
+  }
+  $queryEstado = "SELECT $val AS ESTADO FROM tigrupou_tcu.ante_proyecto WHERE grupo like $id";
+  $stmt = $db->prepare($queryEstado);
+  $stmt -> execute();
+  $result = $stmt -> fetchAll();
+  $estado=0;
+  foreach ($result as $row){
+    $estado=$row["ESTADO"];
+  }
+  if($estado != 1){ ?>
+      <script>
+        window.history.back()
+      </script> <?php
+  }
+  
+  
   $queryEstudiantes = "SELECT CONCAT(primer_apellido,' ',segundo_apellido,' ',nombre_completo) nombre FROM tigrupou_tcu.estudiantes WHERE grupo LIKE $id order by primer_apellido";
   $stmt = $db->prepare($queryEstudiantes);
   $stmt -> execute();

@@ -44,17 +44,27 @@
     }
  ?>
 
-<label for="identificacionProblema">IDENTIFICACIÓN DEL PROBLEMA</label>
-	<input type="hidden" name="hiddenCodigo" id="hiddenCodigo" value="<?php echo $codigo?>">
+<div class="row">
+    <label for="identificacionProblema">IDENTIFICACIÓN DEL PROBLEMA</label>
+    <input type="hidden" name="hiddenCodigo" id="hiddenCodigo" value="<?php echo $codigo?>">
+</div>
+<div class="row">
     <textarea  id="identificacion_problema"
           style="font-size:15px; font-family:Arial; text-align : justify;line-height: 1.6; resize:none;"
                 rows="15" cols="87" maxlength="1305"><?php echo $identificacionProblema ?></textarea>
-
+</div>
+    
+<div class="row">
     <label for="identificacionProblema2">DESCRIPCIÓN DEL PROBLEMA</label>
+</div>
+
+<div class="row">
     <textarea  id="descripcion_problema"
         style="font-size:15px; font-family:Arial; text-align : justify;line-height: 1.6; resize:none;"
                 rows="21" cols="87" maxlength="1827" ><?php echo $descripcionProblema ?></textarea>
 
+</div>
+    
 <br>
     <button class="btn" href="#"
         onclick="guardar('identificacion_problema',<?php echo $grupo ?>,1,'','');
